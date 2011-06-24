@@ -5,13 +5,14 @@ import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.ui.INewWizard;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.dialogs.WizardNewProjectCreationPage;
+import org.globaltester.testspecification.ui.Messages;
 
 public class NewTestSpecWizard extends Wizard implements INewWizard {
 	
 	private WizardNewProjectCreationPage _pageOne;
 
 	public NewTestSpecWizard() {
-		setWindowTitle("GlobalTester TestSpecification Wizard");
+		setWindowTitle(Messages.NewTestSpecWizard_WIZARD_NAME);
 	}
 
 	@Override
@@ -29,9 +30,9 @@ public class NewTestSpecWizard extends Wizard implements INewWizard {
 	public void addPages() {
 	    super.addPages();
 
-	    _pageOne = new WizardNewProjectCreationPage("GlobalTester TestSpecification Project Wizard");
-	    _pageOne.setTitle("GlobalTester TestSpecification Project");
-	    _pageOne.setDescription("Create a new GlobalTester TestSpecification.");
+	    _pageOne = new WizardNewProjectCreationPage(Messages.NewTestSpecWizard_PAGE_NAME);
+	    _pageOne.setTitle(Messages.NewTestSpecWizard_GT_TestSpec_Project);
+	    _pageOne.setDescription(Messages.NewTestSpecWizard_create_new_GT_TestSpec);
 
 	    addPage(_pageOne);
 	}
