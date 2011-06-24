@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: GlobalTester TestSpecification UI
+Bundle-SymbolicName: org.globaltester.testspecification.ui;singleton:=true
+Bundle-Version: 3.0.0.qualifier
+Bundle-Activator: org.globaltester.testspecification.ui.Activator
+Bundle-Vendor: HJP Consulting GmbH
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.ui.ide;bundle-version="3.6.2"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy
