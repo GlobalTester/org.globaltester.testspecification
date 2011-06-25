@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         id="org.globaltester.testspecification.gtTestspecNature"
+         name="GT TestSpec Nature"
+         point="org.eclipse.core.resources.natures">
+      <runtime>
+         <run
+               class="org.globaltester.testspecification.natures.GtTestSpecNature">
+         </run>
+      </runtime>
+   </extension>
+
+</plugin>
