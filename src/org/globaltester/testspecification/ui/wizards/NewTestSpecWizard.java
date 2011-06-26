@@ -1,10 +1,13 @@
 package org.globaltester.testspecification.ui.wizards;
 
+import java.net.URI;
+
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.ui.INewWizard;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.dialogs.WizardNewProjectCreationPage;
+import org.globaltester.testspecification.projects.GtTestSpecProjectSupport;
 import org.globaltester.testspecification.ui.Messages;
 
 public class NewTestSpecWizard extends Wizard implements INewWizard {
@@ -17,14 +20,18 @@ public class NewTestSpecWizard extends Wizard implements INewWizard {
 
 	@Override
 	public void init(IWorkbench workbench, IStructuredSelection selection) {
-		// TODO Auto-generated method stub
-
+		// no initialization needed
 	}
 
 	@Override
 	public boolean performFinish() {
-		return true;
+	    String name = _pageOne.getProjectName();
+	    URI location = (_pageOne.useDefaults()) ? null : _pageOne.getLocationURI();
+	    GtTestSpecProjectSupport.createProject(name, location);
+
+	    return true;
 	}
+
 	
 	@Override
 	public void addPages() {
