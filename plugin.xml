@@ -14,6 +14,7 @@
    <extension
          point="org.eclipse.ui.navigator.navigatorContent">
       <navigatorContent
+            contentProvider="org.globaltester.testspecification.ui.navigator.ContentProvider"
             id="org.globaltester.testspecification.ui.gtTestSpecificationNavigatorContent"
             labelProvider="org.globaltester.testspecification.ui.navigator.LabelProvider"
             name="GlobalTester TestSpecification Content">
