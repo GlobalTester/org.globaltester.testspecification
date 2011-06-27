@@ -11,5 +11,31 @@
             project="true">
       </wizard>
    </extension>
-
+   <extension
+         point="org.eclipse.ui.navigator.navigatorContent">
+      <navigatorContent
+            id="org.globaltester.testspecification.ui.gtTestSpecificationNavigatorContent"
+            labelProvider="org.globaltester.testspecification.ui.navigator.LabelProvider"
+            name="GlobalTester TestSpecification Content">
+         <triggerPoints>
+            <instanceof
+                  value="org.eclipse.core.resources.IResource">
+            </instanceof>
+         </triggerPoints>
+      </navigatorContent>
+   </extension>
+   <extension
+         point="org.eclipse.ui.navigator.viewer">
+      <viewer
+            viewerId="org.globaltester.core.ui.views.GlobalTesterNavigator">
+      </viewer>
+      <viewerContentBinding
+            viewerId="org.globaltester.core.ui.views.GlobalTesterNavigator">
+         <includes>
+            <contentExtension
+                  pattern="org.globaltester.testspecification.ui.gtTestSpecificationNavigatorContent">
+            </contentExtension>
+         </includes>
+      </viewerContentBinding>
+   </extension>
 </plugin>
