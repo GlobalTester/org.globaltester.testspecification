@@ -39,4 +39,13 @@
          </includes>
       </viewerContentBinding>
    </extension>
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            class="org.globaltester.testspecification.ui.editors.TestSpecEditor"
+            default="false"
+            id="org.globaltester.testspecification.ui.testSpecEditor"
+            name="GT TestSpecEditor">
+      </editor>
+   </extension>
 </plugin>
