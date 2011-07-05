@@ -40,12 +40,14 @@ public class TestSpecEditorConfiguration extends SourceViewerConfiguration {
 		return doubleClickStrategy;
 	}
 
-	protected GtScanner getXMLScanner() {
+	protected GtScanner getScanner() {
 		if (formatScanner == null) {
 			formatScanner = new GtScanner(TokenType.TEXT_ATTRIBUTES);
-			
-			JSScanner.addAllPredicateRules(formatScanner, TokenType.TEXT_ATTRIBUTES);
-			XMLScanner.addAllPredicateRules(formatScanner, TokenType.TEXT_ATTRIBUTES);
+
+			JSScanner.addAllPredicateRules(formatScanner,
+					TokenType.TEXT_ATTRIBUTES);
+			XMLScanner.addAllPredicateRules(formatScanner,
+					TokenType.TEXT_ATTRIBUTES);
 		}
 		return formatScanner;
 	}
@@ -54,16 +56,20 @@ public class TestSpecEditorConfiguration extends SourceViewerConfiguration {
 			ISourceViewer sourceViewer) {
 		PresentationReconciler reconciler = new PresentationReconciler();
 
-		// add DamagerRepairer for XML content
-		DefaultDamagerRepairer dr = new DefaultDamagerRepairer(getXMLScanner());
+		// create DamagerRepairer
+		GtScanner scanner = getScanner();
+		DefaultDamagerRepairer dr = new DefaultDamagerRepairer(scanner);
 		reconciler.setDamager(dr, IDocument.DEFAULT_CONTENT_TYPE);
 		reconciler.setRepairer(dr, IDocument.DEFAULT_CONTENT_TYPE);
-		reconciler.setDamager(dr, ContentTypeAppearanceManager.CONTENT_TYPE_XML_COMMENT);
-		reconciler.setRepairer(dr, ContentTypeAppearanceManager.CONTENT_TYPE_XML_COMMENT);
-		reconciler.setDamager(dr, ContentTypeAppearanceManager.CONTENT_TYPE_XML_PROC_INSTR);
-		reconciler.setRepairer(dr, ContentTypeAppearanceManager.CONTENT_TYPE_XML_PROC_INSTR);
-		reconciler.setDamager(dr, ContentTypeAppearanceManager.CONTENT_TYPE_XML_TAG);
-		reconciler.setRepairer(dr, ContentTypeAppearanceManager.CONTENT_TYPE_XML_TAG);
+
+		// register damager/repairer for all content types supported by scanner
+		String[] contentTypes = scanner.getLegalContentTypes();
+		for (int i = 0; i < contentTypes.length; i++) {
+			if (contentTypes[i] == null)
+				continue;
+			reconciler.setDamager(dr, contentTypes[i]);
+			reconciler.setRepairer(dr, contentTypes[i]);
+		}
 
 		return reconciler;
 	}
