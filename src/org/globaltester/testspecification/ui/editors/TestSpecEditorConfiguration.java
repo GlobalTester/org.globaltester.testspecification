@@ -10,7 +10,6 @@ import org.eclipse.jface.text.reconciler.MonoReconciler;
 import org.eclipse.jface.text.rules.DefaultDamagerRepairer;
 import org.eclipse.jface.text.source.ISourceViewer;
 import org.eclipse.jface.text.source.SourceViewerConfiguration;
-import org.globaltester.core.ui.editors.ContentTypeAppearanceManager;
 import org.globaltester.core.ui.editors.GtScanner;
 import org.globaltester.core.ui.editors.GtScanner.TokenType;
 import org.globaltester.core.ui.editors.JSScanner;
@@ -26,11 +25,7 @@ public class TestSpecEditorConfiguration extends SourceViewerConfiguration {
 	}
 
 	public String[] getConfiguredContentTypes(ISourceViewer sourceViewer) {
-		return new String[] { IDocument.DEFAULT_CONTENT_TYPE,
-				ContentTypeAppearanceManager.CONTENT_TYPE_XML_COMMENT,
-				ContentTypeAppearanceManager.CONTENT_TYPE_XML_TAG,
-				ContentTypeAppearanceManager.CONTENT_TYPE_JS_COMMENT,
-				ContentTypeAppearanceManager.CONTENT_TYPE_JS_KEYWORD };
+		return getScanner().getLegalContentTypes();
 	}
 
 	public ITextDoubleClickStrategy getDoubleClickStrategy(

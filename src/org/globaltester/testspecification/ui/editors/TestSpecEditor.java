@@ -13,7 +13,6 @@ import org.eclipse.jface.text.source.projection.ProjectionSupport;
 import org.eclipse.jface.text.source.projection.ProjectionViewer;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.editors.text.TextEditor;
-import org.globaltester.core.ui.editors.ContentTypeAppearanceManager;
 
 /**
  * This class is the main class of GlobalTester TestSpecEditor
@@ -24,20 +23,17 @@ import org.globaltester.core.ui.editors.ContentTypeAppearanceManager;
 
 public class TestSpecEditor extends TextEditor {
 
-	private ContentTypeAppearanceManager colorManager;
 	private ProjectionSupport projectionSupport;
 	private ProjectionAnnotationModel annotationModel;
 	private Annotation[] oldAnnotations;
 
 	public TestSpecEditor() {
 		super();
-		colorManager = new ContentTypeAppearanceManager();
 		setSourceViewerConfiguration(new TestSpecEditorConfiguration(this));
 		setDocumentProvider(new TestSpecEditorDocumentProvider());
 	}
 
 	public void dispose() {
-		colorManager.dispose();
 		super.dispose();
 	}
 
