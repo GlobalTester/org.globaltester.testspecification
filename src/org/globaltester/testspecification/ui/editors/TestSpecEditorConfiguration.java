@@ -11,17 +11,17 @@ import org.eclipse.jface.text.rules.DefaultDamagerRepairer;
 import org.eclipse.jface.text.source.ISourceViewer;
 import org.eclipse.jface.text.source.SourceViewerConfiguration;
 import org.globaltester.core.ui.editors.ContentTypeAppearanceManager;
+import org.globaltester.core.ui.editors.GtScanner;
+import org.globaltester.core.ui.editors.GtScanner.TokenType;
+import org.globaltester.core.ui.editors.JSScanner;
 import org.globaltester.core.ui.editors.XMLScanner;
 
 public class TestSpecEditorConfiguration extends SourceViewerConfiguration {
 	private ITextDoubleClickStrategy doubleClickStrategy;
-	private XMLScanner scanner;
-	private ContentTypeAppearanceManager contentTypeAppearanceManager;
+	private GtScanner formatScanner;
 	private TestSpecEditor editor;
 
-	public TestSpecEditorConfiguration(
-			ContentTypeAppearanceManager colorManager, TestSpecEditor editor) {
-		this.contentTypeAppearanceManager = colorManager;
+	public TestSpecEditorConfiguration(TestSpecEditor editor) {
 		this.editor = editor;
 	}
 
@@ -40,13 +40,14 @@ public class TestSpecEditorConfiguration extends SourceViewerConfiguration {
 		return doubleClickStrategy;
 	}
 
-	protected XMLScanner getXMLScanner() {
-		if (scanner == null) {
-			scanner = new XMLScanner(XMLScanner.TokenType.TEXT_ATTRIBUTES);
-			scanner.setDefaultReturnToken(contentTypeAppearanceManager
-					.getContentTypeAppearance(ContentTypeAppearanceManager.CONTENT_TYPE_DEFAULT+"asd"));
+	protected GtScanner getXMLScanner() {
+		if (formatScanner == null) {
+			formatScanner = new GtScanner(TokenType.TEXT_ATTRIBUTES);
+			
+			JSScanner.addAllPredicateRules(formatScanner, TokenType.TEXT_ATTRIBUTES);
+			XMLScanner.addAllPredicateRules(formatScanner, TokenType.TEXT_ATTRIBUTES);
 		}
-		return scanner;
+		return formatScanner;
 	}
 
 	public IPresentationReconciler getPresentationReconciler(

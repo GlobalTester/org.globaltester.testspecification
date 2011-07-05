@@ -5,8 +5,9 @@ import org.eclipse.jface.text.IDocument;
 import org.eclipse.jface.text.IDocumentPartitioner;
 import org.eclipse.jface.text.rules.FastPartitioner;
 import org.eclipse.ui.editors.text.FileDocumentProvider;
-import org.globaltester.core.ui.editors.GTRuleBasedPartitionScanner;
-import org.globaltester.core.ui.editors.GTRuleBasedPartitionScanner.TokenType;
+import org.globaltester.core.ui.editors.GtScanner;
+import org.globaltester.core.ui.editors.GtScanner.TokenType;
+import org.globaltester.core.ui.editors.JSScanner;
 import org.globaltester.core.ui.editors.XMLScanner;
 
 /**
@@ -19,11 +20,13 @@ import org.globaltester.core.ui.editors.XMLScanner;
 
 public class TestSpecEditorDocumentProvider extends FileDocumentProvider {
 
+	
+	private GtScanner partitionScanner;
+
 	protected IDocument createDocument(Object element) throws CoreException {
 		IDocument document = super.createDocument(element);
 		if (document != null) {
-			GTRuleBasedPartitionScanner scanner = new GTRuleBasedPartitionScanner();
-			XMLScanner.addAllPredicateRules(scanner, TokenType.CONTENT_TYPE);
+			GtScanner scanner = getPartitionScanner();
 			IDocumentPartitioner partitioner =
 				new FastPartitioner(
 					scanner, scanner.getLegalContentTypes());
@@ -31,5 +34,15 @@ public class TestSpecEditorDocumentProvider extends FileDocumentProvider {
 			document.setDocumentPartitioner(partitioner);
 		}
 		return document;
+	}
+
+	protected GtScanner getPartitionScanner() {
+		if (partitionScanner == null) {
+			partitionScanner = new GtScanner(TokenType.CONTENT_TYPE);
+
+			JSScanner.addAllPredicateRules(partitionScanner, TokenType.CONTENT_TYPE);
+			XMLScanner.addAllPredicateRules(partitionScanner, TokenType.CONTENT_TYPE);
+		}
+		return partitionScanner;
 	}
 }

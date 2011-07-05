@@ -32,8 +32,7 @@ public class TestSpecEditor extends TextEditor {
 	public TestSpecEditor() {
 		super();
 		colorManager = new ContentTypeAppearanceManager();
-		setSourceViewerConfiguration(new TestSpecEditorConfiguration(
-				colorManager, this));
+		setSourceViewerConfiguration(new TestSpecEditorConfiguration(this));
 		setDocumentProvider(new TestSpecEditorDocumentProvider());
 	}
 
