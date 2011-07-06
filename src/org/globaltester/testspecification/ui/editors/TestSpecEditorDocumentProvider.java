@@ -40,8 +40,10 @@ public class TestSpecEditorDocumentProvider extends FileDocumentProvider {
 		if (partitionScanner == null) {
 			partitionScanner = new GtScanner(TokenType.CONTENT_TYPE);
 
-			JSScanner.addAllPredicateRules(partitionScanner, TokenType.CONTENT_TYPE);
-			XMLScanner.addAllPredicateRules(partitionScanner, TokenType.CONTENT_TYPE);
+			JSScanner.addAllPartitionRules(partitionScanner, TokenType.CONTENT_TYPE);
+			XMLScanner.addAllPartitionRules(partitionScanner, TokenType.CONTENT_TYPE);
+			
+			
 		}
 		return partitionScanner;
 	}

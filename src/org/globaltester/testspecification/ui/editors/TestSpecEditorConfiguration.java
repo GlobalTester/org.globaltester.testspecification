@@ -39,10 +39,11 @@ public class TestSpecEditorConfiguration extends SourceViewerConfiguration {
 		if (formatScanner == null) {
 			formatScanner = new GtScanner(TokenType.TEXT_ATTRIBUTES);
 
-			JSScanner.addAllPredicateRules(formatScanner,
-					TokenType.TEXT_ATTRIBUTES);
 			XMLScanner.addAllPredicateRules(formatScanner,
 					TokenType.TEXT_ATTRIBUTES);
+			JSScanner.addAllPredicateRules(formatScanner,
+					TokenType.TEXT_ATTRIBUTES);
+			
 		}
 		return formatScanner;
 	}
