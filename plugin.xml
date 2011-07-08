@@ -7,7 +7,7 @@
          point="org.eclipse.core.resources.natures">
       <runtime>
          <run
-               class="org.globaltester.testspecification.natures.GtTestSpecNature">
+               class="org.globaltester.testspecification.GtTestSpecNature">
          </run>
       </runtime>
    </extension>

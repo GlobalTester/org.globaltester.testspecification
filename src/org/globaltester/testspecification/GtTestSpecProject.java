@@ -1,4 +1,4 @@
-package org.globaltester.testspecification.projects;
+package org.globaltester.testspecification;
 
 import java.net.URI;
 
@@ -11,9 +11,8 @@ import org.eclipse.core.runtime.Assert;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 
-import org.globaltester.testspecification.natures.GtTestSpecNature;
 
-public class GtTestSpecProjectSupport {
+public class GtTestSpecProject {
 	/**
 	 * Create a GlobalTester TestSpecification Project. This includes creation
 	 * of the Eclipse project, adding the according nature and creating the

@@ -1,4 +1,4 @@
-package org.globaltester.testspecification.natures;
+package org.globaltester.testspecification;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectNature;
