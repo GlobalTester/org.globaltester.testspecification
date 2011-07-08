@@ -4,7 +4,8 @@ import java.io.File;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.AssertionFailedException;
-import org.globaltester.testspecification.natures.GtTestSpecNature;
+import org.globaltester.testspecification.GtTestSpecNature;
+import org.globaltester.testspecification.GtTestSpecProject;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -13,20 +14,20 @@ public class GtTestSpecProjectSupportTest {
 	@Test(expected = AssertionFailedException.class)
 	public void testCreateProjectWithEmptyNameArg() {
 		String projectName = " "; //$NON-NLS-1$
-		GtTestSpecProjectSupport.createProject(projectName, null);
+		GtTestSpecProject.createProject(projectName, null);
 	}
 
 	@Test(expected = AssertionFailedException.class)
 	public void testCreateProjectWithNullNameArg() {
 		String projectName = null;
-		GtTestSpecProjectSupport.createProject(projectName, null);
+		GtTestSpecProject.createProject(projectName, null);
 	}
 
 	@Test
 	public void testCreateProjectWithGoodArgs() throws Exception {
 		String projectName = "junitTestProject-deleteMe";
 
-		IProject project = GtTestSpecProjectSupport.createProject(projectName,
+		IProject project = GtTestSpecProject.createProject(projectName,
 				null);
 
 		// check nature is added
