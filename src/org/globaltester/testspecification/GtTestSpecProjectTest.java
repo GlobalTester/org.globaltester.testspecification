@@ -1,4 +1,4 @@
-package org.globaltester.testspecification.projects;
+package org.globaltester.testspecification;
 
 import java.io.File;
 
@@ -9,7 +9,7 @@ import org.globaltester.testspecification.GtTestSpecProject;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class GtTestSpecProjectSupportTest {
+public class GtTestSpecProjectTest {
 
 	@Test(expected = AssertionFailedException.class)
 	public void testCreateProjectWithEmptyNameArg() {
