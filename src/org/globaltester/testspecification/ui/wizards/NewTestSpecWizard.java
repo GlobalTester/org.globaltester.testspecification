@@ -7,7 +7,7 @@ import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.ui.INewWizard;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.dialogs.WizardNewProjectCreationPage;
-import org.globaltester.testspecification.projects.GtTestSpecProjectSupport;
+import org.globaltester.testspecification.GtTestSpecProject;
 import org.globaltester.testspecification.ui.Messages;
 
 public class NewTestSpecWizard extends Wizard implements INewWizard {
@@ -27,7 +27,7 @@ public class NewTestSpecWizard extends Wizard implements INewWizard {
 	public boolean performFinish() {
 	    String name = _pageOne.getProjectName();
 	    URI location = (_pageOne.useDefaults()) ? null : _pageOne.getLocationURI();
-	    GtTestSpecProjectSupport.createProject(name, location);
+	    GtTestSpecProject.createProject(name, location);
 
 	    return true;
 	}

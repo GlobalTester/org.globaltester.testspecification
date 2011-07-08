@@ -5,7 +5,7 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.ILabelProviderListener;
 import org.eclipse.swt.graphics.Image;
-import org.globaltester.testspecification.natures.GtTestSpecNature;
+import org.globaltester.testspecification.GtTestSpecNature;
 
 public class LabelProvider implements ILabelProvider {
 
