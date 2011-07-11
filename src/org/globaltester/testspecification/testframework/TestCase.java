@@ -39,7 +39,7 @@ public class TestCase extends TestExecutable {
 				"Root element is not TestCase");
 
 		// extract metadata
-		testCaseId = root.getAttribute("id").toString().trim();
+		testCaseId = root.getAttribute("id").getValue().trim();
 		testCaseTitle = root.getChild("Title", ns).getTextTrim();
 		testCaseVersion = root.getChild("Version", ns).getTextTrim();
 		testCasePurpose = root.getChild("Purpose", ns).getTextTrim();
@@ -84,10 +84,15 @@ public class TestCase extends TestExecutable {
 		return testSteps;
 	}
 
-	public void dumpTestCaseInformation() {
+	public void dumpTestCaseInfos() {
 		//TODO beautify this output
-		TestLogger.info("TestCaseId: "+testCaseId);
-		TestLogger.info("TestCaseTitle: "+testCaseTitle);
+		TestLogger.info("Testcase Title:   " + testCaseTitle);
+		TestLogger.info("Testcase ID:      " + testCaseId);
+		TestLogger.info("Testcase version: " + testCaseVersion);
+	}
+
+	public String getTestCaseID() {
+		return testCaseId;
 	}
 
 }
