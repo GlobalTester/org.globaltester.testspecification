@@ -11,9 +11,10 @@ import org.eclipse.core.runtime.CoreException;
  * 
  */
 public abstract class TestExecutable {
-	//TODO handle results and logging
+	// TODO handle results and logging
 
 	IFile iFile;
+	String name;
 
 	public IFile getIFile() {
 		return iFile;
@@ -31,6 +32,7 @@ public abstract class TestExecutable {
 	 */
 	public TestExecutable(IFile iFile) throws CoreException {
 		this.iFile = iFile;
+		name = iFile.getName();
 		initFromIFile();
 	}
 
@@ -39,5 +41,14 @@ public abstract class TestExecutable {
 	 * variable iFile
 	 */
 	protected abstract void initFromIFile();
+
+	/**
+	 * Returns the name of this instance
+	 * 
+	 * @return
+	 */
+	public String getName() {
+		return name;
+	}
 
 }
