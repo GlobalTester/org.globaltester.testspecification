@@ -49,10 +49,11 @@ public class TestCase extends TestExecutable {
 		@SuppressWarnings("unchecked")
 		List<Element> testStepElements = (List<Element>) root.getChildren(
 				"TestStep", ns);
+		int stepId = 1;
 		for (Iterator<Element> iterator = testStepElements.iterator(); iterator
 				.hasNext();) {
 			Element curElem = iterator.next();
-			TestStep curTestStep = new TestStep(curElem);
+			TestStep curTestStep = new TestStep(curElem, testCaseId+" - "+stepId++);
 			if (curTestStep != null) {
 				testSteps.add(curTestStep);
 			}
