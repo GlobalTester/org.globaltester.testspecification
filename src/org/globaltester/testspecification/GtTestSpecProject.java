@@ -6,6 +6,7 @@ import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectDescription;
+import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.core.runtime.CoreException;
@@ -39,6 +40,15 @@ public class GtTestSpecProject {
 		} catch (CoreException e) {
 			e.printStackTrace();
 			project = null;
+		}
+
+		// refresh the workspace
+		try {
+			ResourcesPlugin.getWorkspace().getRoot()
+						.refreshLocal(IResource.DEPTH_INFINITE, null);
+		} catch (CoreException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
 		return project;
