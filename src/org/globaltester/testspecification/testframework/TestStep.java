@@ -8,7 +8,7 @@ import org.eclipse.core.runtime.Assert;
 import org.jdom.Element;
 import org.jdom.Namespace;
 
-public class TestStep {
+public class TestStep implements ITestExecutable{
 
 	private String stepId;
 	private Element command;

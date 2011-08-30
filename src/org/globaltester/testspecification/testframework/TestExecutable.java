@@ -10,7 +10,7 @@ import org.eclipse.core.runtime.CoreException;
  * @author amay
  * 
  */
-public abstract class TestExecutable {
+public abstract class TestExecutable implements ITestExecutable {
 	// TODO handle results and logging
 
 	IFile iFile;
