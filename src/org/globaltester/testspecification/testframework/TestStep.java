@@ -25,7 +25,12 @@ public class TestStep implements ITestExecutable{
 		
 		stepId = id;
 		command = elem.getChild("Command", ns);
-		techCommand = elem.getChild("TechnicalCommand", ns).getTextTrim();
+		
+		//extract TechincalResult if present
+		Element techCommandElem = elem.getChild("TechnicalCommand", ns);
+		if (techCommandElem != null) {
+			techCommand = techCommandElem.getTextTrim();
+		}
 		
 		//extract description elements
 		@SuppressWarnings("rawtypes")
