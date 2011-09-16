@@ -28,9 +28,7 @@ public class TestCase extends TestExecutable {
 	@Override
 	protected void initFromIFile() {
 		Assert.isNotNull(iFile);
-		Document doc = XMLHelper.readDocument(iFile, false); // TODO enable
-																// validation
-																// here
+		Document doc = XMLHelper.readDocument(iFile);
 		Element root = doc.getRootElement();
 		Namespace ns = root.getNamespace();
 
@@ -68,9 +66,7 @@ public class TestCase extends TestExecutable {
 	 * @return
 	 */
 	public static boolean isFileRepresentation(IFile iFile) {
-		Document doc = XMLHelper.readDocument(iFile, false); // TODO enable
-																// validation
-																// here
+		Document doc = XMLHelper.readDocument(iFile);
 		Element rootElem = doc.getRootElement();
 
 		// check that root element has correct name
