@@ -20,6 +20,7 @@ public class ImportTestSpecWizardPage extends WizardPage {
 
 	private Text txtProjectName;
 	private List lstBundleSelection;
+	private boolean defaultName;
 
 	protected ImportTestSpecWizardPage() {
 		super("Some wizard Page");
@@ -43,6 +44,8 @@ public class ImportTestSpecWizardPage extends WizardPage {
 		txtProjectName.addModifyListener(new ModifyListener() {
 			@Override
 			public void modifyText(ModifyEvent e) {
+				//if name if modified do not update it with the default name when new source is selected
+				defaultName = false;
 				validateAndUpdate();
 			}
 		});
@@ -61,9 +64,6 @@ public class ImportTestSpecWizardPage extends WizardPage {
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				//TODO following line for debugging only, remove it
-				txtProjectName.setText(lstBundleSelection.getItem(lstBundleSelection.getSelectionIndex()));
-				
 				validateAndUpdate();
 			}
 
@@ -89,6 +89,7 @@ public class ImportTestSpecWizardPage extends WizardPage {
 			// select the first element
 			lstBundleSelection.select(0);
 			txtProjectName.setText(lstBundleSelection.getItem(0));
+			defaultName = true;
 		} else {
 			// no valid test specification plugins are present -> show error
 			// message
@@ -137,7 +138,11 @@ public class ImportTestSpecWizardPage extends WizardPage {
 	}
 
 	private void validateAndUpdate() {
-		// TODO check user input and generate according messages here
+		if (defaultName) {
+			//update the default name of the new project
+			txtProjectName.setText(lstBundleSelection.getItem(lstBundleSelection.getSelectionIndex()));
+			defaultName = true;
+		}
 
 		// update the dialog appearance
 		getContainer().updateButtons();

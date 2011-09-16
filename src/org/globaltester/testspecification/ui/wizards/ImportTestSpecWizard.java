@@ -39,8 +39,9 @@ public class ImportTestSpecWizard extends Wizard implements IImportWizard {
 			ResourcesPlugin.getWorkspace().getRoot()
 					.refreshLocal(IResource.DEPTH_INFINITE, null);
 		} catch (CoreException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			// refresh of workspace failed
+			// relevant CoreException will be in the eclipse log anyhow
+			// users most probably will ignore this behavior and refresh manually
 		}
 
 		return true;
