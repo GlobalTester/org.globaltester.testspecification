@@ -1,15 +1,22 @@
 package org.globaltester.testspecification.ui.wizards;
 
+import java.io.IOException;
+
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
+import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.ui.IImportWizard;
 import org.eclipse.ui.IWorkbench;
+import org.eclipse.ui.statushandlers.StatusManager;
 import org.globaltester.core.resources.GtResourceHelper;
 import org.globaltester.testspecification.GtTestSpecProject;
+import org.globaltester.testspecification.ui.Activator;
 import org.globaltester.testspecification.ui.Messages;
 
 public class ImportTestSpecWizard extends Wizard implements IImportWizard {
@@ -31,8 +38,15 @@ public class ImportTestSpecWizard extends Wizard implements IImportWizard {
 		String pluginName = _pageOne.getSelectedPlugin();
 
 		IProject project = GtTestSpecProject.createProject(name, null);
-		GtResourceHelper
-				.copyPluginContent2WorkspaceProject(pluginName, project);
+		try {
+			GtResourceHelper
+					.copyPluginContent2WorkspaceProject(pluginName, project);
+		} catch (IOException ex) {
+			Status st = new Status(IStatus.WARNING, Activator.PLUGIN_ID, ex
+					.getLocalizedMessage(), ex);
+			StatusManager.getManager().handle(st);
+			ErrorDialog.openError(getShell(), "Unable to copy Project to workspace", "The selected Project could not be imported into the workspace.", st);
+		}
 
 		// refresh the workspace
 		try {
@@ -40,8 +54,10 @@ public class ImportTestSpecWizard extends Wizard implements IImportWizard {
 					.refreshLocal(IResource.DEPTH_INFINITE, null);
 		} catch (CoreException e) {
 			// refresh of workspace failed
-			// relevant CoreException will be in the eclipse log anyhow
-			// users most probably will ignore this behavior and refresh manually
+			// log CoreException to eclipse log
+			StatusManager.getManager().handle(e, Activator.PLUGIN_ID);
+			
+			// users most probably will ignore this behavior and refresh manually, so do not open annoying dialog
 		}
 
 		return true;
