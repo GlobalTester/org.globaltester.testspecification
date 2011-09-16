@@ -86,7 +86,6 @@ public class TestCase extends TestExecutable {
 	}
 
 	public void dumpTestCaseInfos() {
-		//TODO beautify this output
 		TestLogger.info("Testcase Title:   " + testCaseTitle);
 		TestLogger.info("Testcase ID:      " + testCaseId);
 		TestLogger.info("Testcase version: " + testCaseVersion);
