@@ -79,7 +79,7 @@ public class ImportTestSpecWizardPage extends WizardPage {
 		for (int i = 0, n = bundles.length; i < n; i++) {
 			String bundleName = bundles[i].getSymbolicName();
 			// TODO check if bundle includes TestSpecProject
-			if (bundleName.startsWith("org.globaltester.")) {
+			if (bundleName.startsWith("org.globaltester.testspec.")) {
 				lstBundleSelection.add(bundleName);
 			}
 		}
