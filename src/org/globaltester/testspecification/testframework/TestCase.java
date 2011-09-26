@@ -91,4 +91,8 @@ public class TestCase extends TestExecutable {
 		return testCaseId;
 	}
 
+	public String getTestCasePurpose() {
+		return testCasePurpose;
+	}
+
 }
