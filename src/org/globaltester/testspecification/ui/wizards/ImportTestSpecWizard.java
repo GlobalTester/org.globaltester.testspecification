@@ -13,8 +13,8 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.ui.IImportWizard;
 import org.eclipse.ui.IWorkbench;
-import org.eclipse.ui.statushandlers.StatusManager;
 import org.globaltester.core.resources.GtResourceHelper;
+import org.globaltester.logging.logger.GtErrorLogger;
 import org.globaltester.testspecification.GtTestSpecProject;
 import org.globaltester.testspecification.ui.Activator;
 import org.globaltester.testspecification.ui.Messages;
@@ -41,10 +41,10 @@ public class ImportTestSpecWizard extends Wizard implements IImportWizard {
 		try {
 			GtResourceHelper
 					.copyPluginContent2WorkspaceProject(pluginName, project);
-		} catch (IOException ex) {
-			Status st = new Status(IStatus.WARNING, Activator.PLUGIN_ID, ex
-					.getLocalizedMessage(), ex);
-			StatusManager.getManager().handle(st);
+		} catch (IOException e) {
+			GtErrorLogger.log(Activator.PLUGIN_ID, e);
+			Status st = new Status(IStatus.WARNING, Activator.PLUGIN_ID, e
+					.getLocalizedMessage(), e);
 			ErrorDialog.openError(getShell(), "Unable to copy Project to workspace", "The selected Project could not be imported into the workspace.", st);
 		}
 
@@ -53,9 +53,9 @@ public class ImportTestSpecWizard extends Wizard implements IImportWizard {
 			ResourcesPlugin.getWorkspace().getRoot()
 					.refreshLocal(IResource.DEPTH_INFINITE, null);
 		} catch (CoreException e) {
-			// refresh of workspace failed
+			// refresh workspace failed
 			// log CoreException to eclipse log
-			StatusManager.getManager().handle(e, Activator.PLUGIN_ID);
+			GtErrorLogger.log(Activator.PLUGIN_ID, e);
 			
 			// users most probably will ignore this behavior and refresh manually, so do not open annoying dialog
 		}
