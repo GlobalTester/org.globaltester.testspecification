@@ -51,4 +51,23 @@ public abstract class TestExecutable implements ITestExecutable {
 		return name;
 	}
 
+	/**
+	 * Copy the specification of this TestExecutable to the new location and returns
+	 * a new instance of TestExecutable relating to the new file.
+	 * 
+	 * This needs to be overwritten if the underlying TestExecutable needs to
+	 * preserve any file based relationships other than the IFile.
+	 * 
+	 * @param targetSpecIFile
+	 * @return
+	 * @throws CoreException
+	 */
+	public TestExecutable copyTo(IFile targetSpecIFile) throws CoreException {
+		// copy the spec file
+		iFile.copy(targetSpecIFile.getFullPath(), false, null);
+		
+		//create and return the new instance
+		return TestExecutableFactory.getInstance(targetSpecIFile);
+	}
+
 }
