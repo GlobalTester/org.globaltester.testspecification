@@ -55,4 +55,21 @@ public class ExpectedResult implements ITestExecutable{
 		return descriptions;
 	}
 
+	@Override
+	public List<ITestExecutable> getChildren() {
+		// has no children
+		return null;
+	}
+
+	@Override
+	public boolean hasChildren() {
+		// has no children
+		return false;
+	}
+
+	@Override
+	public String getName() {
+		return getId();
+	}
+
 }

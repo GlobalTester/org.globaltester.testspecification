@@ -96,4 +96,19 @@ public class TestCase extends TestExecutable {
 		return testCasePurpose;
 	}
 
+	@Override
+	public List<ITestExecutable> getChildren() {
+		LinkedList<ITestExecutable> children = new LinkedList<ITestExecutable>();
+		
+		//add test steps to list of children
+		children.addAll(testSteps);
+		
+		return children;
+	}
+
+	@Override
+	public boolean hasChildren() {
+		return !testSteps.isEmpty();
+	}
+
 }
