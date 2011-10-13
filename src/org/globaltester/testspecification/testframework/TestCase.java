@@ -38,6 +38,7 @@ public class TestCase extends TestExecutable {
 
 		// extract metadata
 		testCaseId = root.getAttribute("id").getValue().trim();
+		name = testCaseId;
 		testCaseTitle = root.getChild("Title", ns).getTextTrim();
 		testCaseVersion = root.getChild("Version", ns).getTextTrim();
 		testCasePurpose = root.getChild("Purpose", ns).getTextTrim();
