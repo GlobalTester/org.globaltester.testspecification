@@ -7,7 +7,7 @@ import org.eclipse.core.runtime.CoreException;
 
 public class TestExecutableFactory {
 
-	private static Hashtable<IFile, TestExecutable> instances = new Hashtable<IFile, TestExecutable>();
+	private static Hashtable<IFile, FileTestExecutable> instances = new Hashtable<IFile, FileTestExecutable>();
 
 	/**
 	 * Return the instance representing the given IFile
@@ -16,10 +16,10 @@ public class TestExecutableFactory {
 	 * @return
 	 * @throws CoreException 
 	 */
-	public static TestExecutable getInstance(IFile iFile) throws CoreException {
+	public static FileTestExecutable getInstance(IFile iFile) throws CoreException {
 
 		if (!instances.containsKey(iFile)) {
-			TestExecutable newExecutionInstance = null;
+			FileTestExecutable newExecutionInstance = null;
 
 			if (TestCase.isFileRepresentation(iFile)) {
 				newExecutionInstance = new TestCase(iFile);

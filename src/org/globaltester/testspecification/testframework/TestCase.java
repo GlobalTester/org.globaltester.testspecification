@@ -13,7 +13,7 @@ import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.Namespace;
 
-public class TestCase extends TestExecutable {
+public class TestCase extends FileTestExecutable {
 
 	private String testCaseId;
 	private String testCaseTitle;

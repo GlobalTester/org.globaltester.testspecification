@@ -10,9 +10,7 @@ import org.eclipse.core.runtime.CoreException;
  * @author amay
  * 
  */
-public abstract class TestExecutable implements ITestExecutable {
-	// TODO handle results and logging
-
+public abstract class FileTestExecutable implements ITestExecutable {
 	IFile iFile;
 	String name;
 
@@ -30,7 +28,7 @@ public abstract class TestExecutable implements ITestExecutable {
 	 *            an GTTestSpecProject
 	 * @throws CoreException
 	 */
-	public TestExecutable(IFile iFile) throws CoreException {
+	public FileTestExecutable(IFile iFile) throws CoreException {
 		this.iFile = iFile;
 		name = iFile.getName();
 		initFromIFile();
@@ -62,7 +60,7 @@ public abstract class TestExecutable implements ITestExecutable {
 	 * @return
 	 * @throws CoreException
 	 */
-	public TestExecutable copyTo(IFile targetSpecIFile) throws CoreException {
+	public FileTestExecutable copyTo(IFile targetSpecIFile) throws CoreException {
 		// copy the spec file
 		iFile.copy(targetSpecIFile.getFullPath(), false, null);
 		
