@@ -61,7 +61,7 @@
    <extension
          point="org.eclipse.ui.ide.projectNatureImages">
       <image
-            icon="icons/testspec_overlay.png"
+            icon="icons/ovr_testspec.png"
             id="org.globaltester.testspecification.ui.image.testspec"
             natureId="org.globaltester.testspecification.gtTestSpecNature">
       </image>
