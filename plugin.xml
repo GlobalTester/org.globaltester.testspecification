@@ -11,5 +11,22 @@
          </run>
       </runtime>
    </extension>
+   <extension
+         point="org.eclipse.core.contenttype.contentTypes">
+      <content-type
+            base-type="org.eclipse.core.runtime.xml"
+            file-extensions="xml"
+            id="org.globaltester.testspecification.contenttypes.TestSpecification"
+            name="GlobalTester TestSpecification"
+            priority="normal">
+         <describer
+               class="org.eclipse.core.runtime.content.XMLRootElementContentDescriber2">
+            <parameter
+                  name="element"
+                  value="TestCase">
+            </parameter>
+         </describer>
+      </content-type>
+   </extension>
 
 </plugin>
