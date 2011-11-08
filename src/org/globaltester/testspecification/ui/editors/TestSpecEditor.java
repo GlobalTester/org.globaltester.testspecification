@@ -20,7 +20,6 @@ import org.eclipse.ui.editors.text.TextEditor;
  * @author Alexander May
  * 
  */
-
 public class TestSpecEditor extends TextEditor {
 
 	private ProjectionSupport projectionSupport;
@@ -31,10 +30,6 @@ public class TestSpecEditor extends TextEditor {
 		super();
 		setSourceViewerConfiguration(new TestSpecEditorConfiguration(this));
 		setDocumentProvider(new TestSpecEditorDocumentProvider());
-	}
-
-	public void dispose() {
-		super.dispose();
 	}
 
 	@Override
