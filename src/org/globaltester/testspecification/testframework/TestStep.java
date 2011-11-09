@@ -29,7 +29,7 @@ public class TestStep implements ITestExecutable{
 		//extract TechincalResult if present
 		Element techCommandElem = elem.getChild("TechnicalCommand", ns);
 		if (techCommandElem != null) {
-			techCommand = techCommandElem.getTextTrim();
+			techCommand = techCommandElem.getText();
 		}
 		
 		//extract description elements
