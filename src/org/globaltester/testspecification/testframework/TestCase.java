@@ -83,9 +83,10 @@ public class TestCase extends FileTestExecutable {
 	}
 
 	public void dumpTestCaseInfos() {
-		TestLogger.info("Testcase Title:   " + testCaseTitle);
-		TestLogger.info("Testcase ID:      " + testCaseId);
-		TestLogger.info("Testcase version: " + testCaseVersion);
+		String format = "Testcase %-10s %-46s -"; //format the output to be 100 chars wide (including log4j start of line)
+		TestLogger.info(String.format(format, "Title:", testCaseTitle));
+		TestLogger.info(String.format(format, "ID:", testCaseId));
+		TestLogger.info(String.format(format, "version:", testCaseVersion));
 	}
 
 	public String getTestCaseID() {
