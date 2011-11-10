@@ -24,10 +24,12 @@ public class TestSpecEditorConfiguration extends SourceViewerConfiguration {
 		this.editor = editor;
 	}
 
+	@Override
 	public String[] getConfiguredContentTypes(ISourceViewer sourceViewer) {
 		return getScanner().getLegalContentTypes();
 	}
 
+	@Override
 	public ITextDoubleClickStrategy getDoubleClickStrategy(
 			ISourceViewer sourceViewer, String contentType) {
 		if (doubleClickStrategy == null)
@@ -48,6 +50,7 @@ public class TestSpecEditorConfiguration extends SourceViewerConfiguration {
 		return formatScanner;
 	}
 
+	@Override
 	public IPresentationReconciler getPresentationReconciler(
 			ISourceViewer sourceViewer) {
 		PresentationReconciler reconciler = new PresentationReconciler();
@@ -70,8 +73,9 @@ public class TestSpecEditorConfiguration extends SourceViewerConfiguration {
 		return reconciler;
 	}
 
+	@Override
 	public IReconciler getReconciler(ISourceViewer sourceViewer) {
-		ReconcilingStrategy strategy = new ReconcilingStrategy();
+		TestSpecReconcilingStrategy strategy = new TestSpecReconcilingStrategy();
 		strategy.setEditor(editor);
 
 		MonoReconciler reconciler = new MonoReconciler(strategy, false);
