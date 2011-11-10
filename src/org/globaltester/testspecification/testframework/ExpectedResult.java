@@ -25,7 +25,7 @@ public class ExpectedResult implements ITestExecutable{
 		//extract TechincalResult if present
 		Element techResElem = elem.getChild("TechnicalResult", ns);
 		if (techResElem != null) {
-			techResult = techResElem.getTextTrim();
+			techResult = techResElem.getText();
 		}
 		
 		//extract description elements
