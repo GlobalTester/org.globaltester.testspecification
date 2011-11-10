@@ -87,6 +87,7 @@ public class TestCase extends FileTestExecutable {
 		TestLogger.info(String.format(format, "Title:", testCaseTitle));
 		TestLogger.info(String.format(format, "ID:", testCaseId));
 		TestLogger.info(String.format(format, "version:", testCaseVersion));
+		TestLogger.info("------------------------------------------------------------------ -");
 	}
 
 	public String getTestCaseID() {
