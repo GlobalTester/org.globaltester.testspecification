@@ -6,6 +6,7 @@
       <wizard
             category="org.globaltester.core.ui.newWizards.category"
             class="org.globaltester.testspecification.ui.wizards.NewTestSpecWizard"
+            icon="icons/testspec.png"
             id="org.globaltester.testspecification.ui.wizards.newTestSpecWizard"
             name="TestSpecification"
             project="true">
@@ -16,6 +17,7 @@
       <wizard
             category="org.globaltester.core.ui.importWizards.category"
             class="org.globaltester.testspecification.ui.wizards.ImportTestSpecWizard"
+            icon="icons/testspec.png"
             id="org.globaltester.testspecification.ui.wizards.importTestSpecWizard"
             name="Import TestSpecification from Plugin">
       </wizard>
