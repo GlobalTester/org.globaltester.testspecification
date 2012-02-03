@@ -3,10 +3,10 @@
 <schema targetNamespace="org.globaltester.testspecification" xmlns="http://www.w3.org/2001/XMLSchema">
 <annotation>
       <appinfo>
-         <meta.schema plugin="org.globaltester.testspecification" id="org.globaltester.testspecification.gt3" name="testspecs"/>
+         <meta.schema plugin="org.globaltester.testspecification" id="org.globaltester.testspecification.importables" name="Importable Testspecs"/>
       </appinfo>
       <documentation>
-         Extension point to GT3 plugins
+         [Enter description of this extension point.]
       </documentation>
    </annotation>
 
@@ -18,7 +18,7 @@
       </annotation>
       <complexType>
          <choice minOccurs="1" maxOccurs="unbounded">
-            <element ref="client"/>
+            <element ref="testspec"/>
          </choice>
          <attribute name="point" type="string" use="required">
             <annotation>
@@ -47,8 +47,29 @@
       </complexType>
    </element>
 
-   <element name="client">
+   <element name="testspec">
       <complexType>
+         <attribute name="name" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="bundle" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="descr" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
       </complexType>
    </element>
 
