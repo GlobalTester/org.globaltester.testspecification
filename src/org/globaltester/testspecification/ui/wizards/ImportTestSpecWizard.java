@@ -35,7 +35,7 @@ public class ImportTestSpecWizard extends Wizard implements IImportWizard {
 	@Override
 	public boolean performFinish() {
 		String name = _pageOne.getProjectName();
-		String pluginName = _pageOne.getSelectedPlugin();
+		String pluginName = _pageOne.getSelectedBundle();
 
 		IProject project = GtTestSpecProject.createProject(name, null);
 		try {
