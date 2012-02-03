@@ -43,7 +43,7 @@ public class LabelProvider implements ILabelProvider {
 			IProject proj = (IProject) element;
 			try {
 				if (proj.hasNature(GtTestSpecNature.NATURE_ID)) {
-					return proj.getName() + " (GT TestSpec)";
+					return proj.getName();
 				}
 			} catch (CoreException e) {
 				// ignore to label this project
