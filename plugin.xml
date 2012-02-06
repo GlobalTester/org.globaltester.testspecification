@@ -13,7 +13,7 @@
       </wizard>
    </extension>
    
-   <extension
+   <!--extension
          point="org.eclipse.ui.importWizards">
       <wizard
             category="org.globaltester.core.ui.importWizards.category"
@@ -22,21 +22,9 @@
             id="org.globaltester.testspecification.ui.wizards.importGT2ScriptsWizard"
             name="Import GT2 scripts from Plugin">
       </wizard>
-   </extension>
+   </extension-->
    
-	<!--
-   <extension
-         point="org.eclipse.ui.importWizards">
-      <wizard
-            category="org.globaltester.core.ui.importWizards.category"
-            class="org.eclipse.ui.wizards.datatransfer.ExternalProjectImportWizard"
-            icon="icons/testspec.png"
-            id="org.eclipse.ui.wizards.datatransfer.externalProjectImportWizard"
-            name="Import scripts from Plugin">
-      </wizard>
-   </extension>
-   -->
-   <extension
+    <extension
          point="org.eclipse.ui.importWizards">
       <wizard
             category="org.globaltester.core.ui.importWizards.category"
@@ -46,6 +34,18 @@
             name="Import TestSpecification from Plugin">
       </wizard>
    </extension>
+   
+    <extension
+         point="org.eclipse.ui.exportWizards">
+      <wizard
+            category="org.globaltester.core.ui.exportWizards.category"
+            class="org.globaltester.testspecification.ui.wizards.ExportTestSpecWizard"
+            icon="icons/testspec.png"
+            id="org.globaltester.testspecification.ui.wizards.importTestSpecWizard"
+            name="Export TestSpecification to OpenDocumentFormat">
+      </wizard>
+   </extension>
+   
    <extension
          point="org.eclipse.ui.navigator.navigatorContent">
       <navigatorContent

@@ -26,9 +26,9 @@ public class ImportTestSpecWizardPage extends WizardPage {
 	private IConfigurationElement[] configElements;
 
 	protected ImportTestSpecWizardPage() {
-		super("Some wizard Page");
-		setTitle("WizardPage Title");
-		setMessage("WizardPage Message");
+		super("");
+		setTitle("");
+		setMessage("");
 	}
 
 	@Override

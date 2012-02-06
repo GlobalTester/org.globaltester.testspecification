@@ -12,6 +12,8 @@ public class Messages extends NLS {
 	public static String ImportTestSpecWizard_GT_TestSpec_Project;
 	public static String ImportTestSpecWizard_PAGE_NAME;
 	public static String ImportTestSpecWizard_WIZARD_NAME;
+	public static String ExportTestSpecWizard_PAGE_NAME;
+	public static String ExportTestSpecWizard_WIZARD_NAME;
 	static {
 		// initialize resource bundle
 		NLS.initializeMessages(BUNDLE_NAME, Messages.class);
