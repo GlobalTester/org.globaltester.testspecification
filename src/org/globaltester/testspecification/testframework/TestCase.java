@@ -69,7 +69,7 @@ public class TestCase extends FileTestExecutable {
 		for (Iterator<Element> iterator = testStepElements.iterator(); iterator
 				.hasNext();) {
 			Element curElem = iterator.next();
-			TestStep curTestStep = new TestStep(curElem, testCaseId+" - "+stepId++);
+			TestStep curTestStep = new TestStep(curElem, testCaseId+" - TestStep "+stepId++);
 			if (curTestStep != null) {
 				testSteps.add(curTestStep);
 			}
