@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.help.toc">
+      <toc
+            file="toc/toc.xml"
+            primary="true">
+      </toc>
+      <toc
+            file="toc/UserGuide_ImportOfATestSpec.xml">
+      </toc>
+
+   </extension>
+   <extension
+         point="org.eclipse.ui.cheatsheets.cheatSheetContent">
+      <category
+            id="org.globaltester.testspecification.doc.ImportOfATestSpec"
+            name="GlobalTester User Guide Import of a test specification">
+      </category>
+      <cheatsheet
+            category="org.globaltester.testspecification.doc.ImportOfATestSpec"
+            composite="false"
+            contentFile="cheatsheets/importOfATestSpec.xml"
+            id="org.globaltester.testspecification.doc.cheatsheet.importOfATestSpec"
+            name="Import of a test spec">
+      </cheatsheet>
+   </extension>
+
+</plugin>

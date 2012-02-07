@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cheatsheet
+      title="Import of a test specification">
+   <intro>
+   <description>
+     In a few steps, this cheat sheet will guide you through the import of a test specification.
+      </description>
+   </intro>
+   <item
+         title="Open menu">
+      <description>
+         First, go with the mouse courser in the GlobalTester Navigator window. Right-click, and choose <b>&quot;Import&quot;.</b>
+      </description>
+   </item>
+   <item
+         title="Select TestSpecification">
+      <description>
+         In the tree view, select <b>&quot;GlobalTester &gt; Import TestSpecification from Plugin&quot;</b>. Click the <b>&quot;Next&quot;</b> button.
+      </description>
+   </item>
+   <item
+         title="WizardPage Title">
+      <description>
+         In the text field <b>&quot;Projectname&quot;</b>, choose a name for your project. You can import the same TestSpecification under different names in your workspace.
+In the drop-down menu, you can choose the TestSpecification you want to import. A description of it is given in the field below.
+Then click <b>&quot;Finish&quot;</b>.
+
+      </description>
+   </item>
+
+</cheatsheet>
