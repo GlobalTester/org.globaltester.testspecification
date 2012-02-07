@@ -2,15 +2,17 @@ package org.globaltester.testspecification.testframework;
 
 import org.jdom.Element;
 
-public class TestStep extends ActionStep{
+public class PreCondition extends ActionStep{
 
-	public TestStep(Element elem, String id) {
+	public PreCondition(Element elem, String id) {
 		super(elem, id);
 	}
 
 	@Override
 	protected String getElementName() {
-		return "TestStep";
+		return "Precondition";
 	}
+	
+	
 
 }

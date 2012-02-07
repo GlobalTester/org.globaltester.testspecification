@@ -19,7 +19,9 @@ public class TestCase extends FileTestExecutable {
 	private String testCaseTitle;
 	private String testCaseVersion;
 	private String testCasePurpose;
+	private LinkedList<PreCondition> preConditions;
 	private LinkedList<TestStep> testSteps;
+	private LinkedList<PostCondition> postConditions;
 
 	public TestCase(IFile iFile) throws CoreException {
 		super(iFile);
@@ -43,6 +45,21 @@ public class TestCase extends FileTestExecutable {
 		testCaseVersion = root.getChild("Version", ns).getTextTrim();
 		testCasePurpose = root.getChild("Purpose", ns).getTextTrim();
 
+		// extract Preconditions
+		preConditions = new LinkedList<PreCondition>();
+		@SuppressWarnings("unchecked")
+		List<Element> preConElements = (List<Element>) root.getChildren(
+				"Precondition", ns);
+		int preConId = 1;
+		for (Iterator<Element> iterator = preConElements.iterator(); iterator
+				.hasNext();) {
+			Element curElem = iterator.next();
+			PreCondition curPreCon = new PreCondition(curElem, testCaseId+" - Precondition "+preConId++);
+			if (curPreCon != null) {
+				preConditions.add(curPreCon);
+			}
+		}
+		
 		// extract TestSteps
 		testSteps = new LinkedList<TestStep>();
 		@SuppressWarnings("unchecked")
@@ -55,6 +72,21 @@ public class TestCase extends FileTestExecutable {
 			TestStep curTestStep = new TestStep(curElem, testCaseId+" - "+stepId++);
 			if (curTestStep != null) {
 				testSteps.add(curTestStep);
+			}
+		}
+
+		// extract Postconditions
+		postConditions = new LinkedList<PostCondition>();
+		@SuppressWarnings("unchecked")
+		List<Element> postConElements = (List<Element>) root.getChildren(
+				"Postcondition", ns);
+		int postConId = 1;
+		for (Iterator<Element> iterator = postConElements.iterator(); iterator
+				.hasNext();) {
+			Element curElem = iterator.next();
+			PostCondition curPostCon = new PostCondition(curElem, testCaseId+" - Postcondition "+postConId++);
+			if (curPostCon != null) {
+				postConditions.add(curPostCon);
 			}
 		}
 
@@ -78,8 +110,16 @@ public class TestCase extends FileTestExecutable {
 		return true;
 	}
 
+	public List<PreCondition> getPreConditions() {
+		return preConditions;
+	}
+
 	public List<TestStep> getTestSteps() {
 		return testSteps;
+	}
+
+	public List<PostCondition> getPostConditions() {
+		return postConditions;
 	}
 
 	public void dumpTestCaseInfos() {
@@ -103,14 +143,20 @@ public class TestCase extends FileTestExecutable {
 		LinkedList<ITestExecutable> children = new LinkedList<ITestExecutable>();
 		
 		//add test steps to list of children
+		children.addAll(preConditions);
 		children.addAll(testSteps);
+		children.addAll(postConditions);
 		
 		return children;
 	}
 
 	@Override
 	public boolean hasChildren() {
-		return !testSteps.isEmpty();
+		if ((preConditions != null) && (!preConditions.isEmpty())) return true;
+		if ((testSteps != null) && (!testSteps.isEmpty())) return true;
+		if ((postConditions != null) && (!postConditions.isEmpty())) return true;
+		
+		return false;
 	}
 
 }
