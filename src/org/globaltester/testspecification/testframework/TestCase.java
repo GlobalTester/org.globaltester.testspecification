@@ -31,62 +31,64 @@ public class TestCase extends FileTestExecutable {
 	protected void initFromIFile() {
 		Assert.isNotNull(iFile);
 		Document doc = XMLHelper.readDocument(iFile);
-		Element root = doc.getRootElement();
-		Namespace ns = root.getNamespace();
-
-		// check that root element has correct name
-		Assert.isTrue(root.getName().equals("TestCase"),
-				"Root element is not TestCase");
-
-		// extract metadata
-		testCaseId = root.getAttribute("id").getValue().trim();
-		name = testCaseId;
-		testCaseTitle = root.getChild("Title", ns).getTextTrim();
-		testCaseVersion = root.getChild("Version", ns).getTextTrim();
-		testCasePurpose = root.getChild("Purpose", ns).getTextTrim();
-
-		// extract Preconditions
-		preConditions = new LinkedList<PreCondition>();
-		@SuppressWarnings("unchecked")
-		List<Element> preConElements = (List<Element>) root.getChildren(
-				"Precondition", ns);
-		int preConId = 1;
-		for (Iterator<Element> iterator = preConElements.iterator(); iterator
-				.hasNext();) {
-			Element curElem = iterator.next();
-			PreCondition curPreCon = new PreCondition(curElem, testCaseId+" - Precondition "+preConId++);
-			if (curPreCon != null) {
-				preConditions.add(curPreCon);
+		if (doc != null) {
+			Element root = doc.getRootElement();
+			Namespace ns = root.getNamespace();
+	
+			// check that root element has correct name
+			Assert.isTrue(root.getName().equals("TestCase"),
+					"Root element is not TestCase");
+	
+			// extract metadata
+			testCaseId = root.getAttribute("id").getValue().trim();
+			name = testCaseId;
+			testCaseTitle = root.getChild("Title", ns).getTextTrim();
+			testCaseVersion = root.getChild("Version", ns).getTextTrim();
+			testCasePurpose = root.getChild("Purpose", ns).getTextTrim();
+	
+			// extract Preconditions
+			preConditions = new LinkedList<PreCondition>();
+			@SuppressWarnings("unchecked")
+			List<Element> preConElements = (List<Element>) root.getChildren(
+					"Precondition", ns);
+			int preConId = 1;
+			for (Iterator<Element> iterator = preConElements.iterator(); iterator
+					.hasNext();) {
+				Element curElem = iterator.next();
+				PreCondition curPreCon = new PreCondition(curElem, testCaseId+" - Precondition "+preConId++);
+				if (curPreCon != null) {
+					preConditions.add(curPreCon);
+				}
 			}
-		}
-		
-		// extract TestSteps
-		testSteps = new LinkedList<TestStep>();
-		@SuppressWarnings("unchecked")
-		List<Element> testStepElements = (List<Element>) root.getChildren(
-				"TestStep", ns);
-		int stepId = 1;
-		for (Iterator<Element> iterator = testStepElements.iterator(); iterator
-				.hasNext();) {
-			Element curElem = iterator.next();
-			TestStep curTestStep = new TestStep(curElem, testCaseId+" - TestStep "+stepId++);
-			if (curTestStep != null) {
-				testSteps.add(curTestStep);
+			
+			// extract TestSteps
+			testSteps = new LinkedList<TestStep>();
+			@SuppressWarnings("unchecked")
+			List<Element> testStepElements = (List<Element>) root.getChildren(
+					"TestStep", ns);
+			int stepId = 1;
+			for (Iterator<Element> iterator = testStepElements.iterator(); iterator
+					.hasNext();) {
+				Element curElem = iterator.next();
+				TestStep curTestStep = new TestStep(curElem, testCaseId+" - TestStep "+stepId++);
+				if (curTestStep != null) {
+					testSteps.add(curTestStep);
+				}
 			}
-		}
-
-		// extract Postconditions
-		postConditions = new LinkedList<PostCondition>();
-		@SuppressWarnings("unchecked")
-		List<Element> postConElements = (List<Element>) root.getChildren(
-				"Postcondition", ns);
-		int postConId = 1;
-		for (Iterator<Element> iterator = postConElements.iterator(); iterator
-				.hasNext();) {
-			Element curElem = iterator.next();
-			PostCondition curPostCon = new PostCondition(curElem, testCaseId+" - Postcondition "+postConId++);
-			if (curPostCon != null) {
-				postConditions.add(curPostCon);
+	
+			// extract Postconditions
+			postConditions = new LinkedList<PostCondition>();
+			@SuppressWarnings("unchecked")
+			List<Element> postConElements = (List<Element>) root.getChildren(
+					"Postcondition", ns);
+			int postConId = 1;
+			for (Iterator<Element> iterator = postConElements.iterator(); iterator
+					.hasNext();) {
+				Element curElem = iterator.next();
+				PostCondition curPostCon = new PostCondition(curElem, testCaseId+" - Postcondition "+postConId++);
+				if (curPostCon != null) {
+					postConditions.add(curPostCon);
+				}
 			}
 		}
 
@@ -99,15 +101,18 @@ public class TestCase extends FileTestExecutable {
 	 * @return
 	 */
 	public static boolean isFileRepresentation(IFile iFile) {
+		boolean correctXML = true;
 		Document doc = XMLHelper.readDocument(iFile);
-		Element rootElem = doc.getRootElement();
+		if (doc != null) { 
+			Element rootElem = doc.getRootElement();
 
-		// check that root element has correct name
-		if (!rootElem.getName().equals("TestCase")) {
-			return false;
+			// check that root element has correct name
+			if (!rootElem.getName().equals("TestCase")) {
+				correctXML = false;
+			}
 		}
 
-		return true;
+		return correctXML;
 	}
 
 	public List<PreCondition> getPreConditions() {
