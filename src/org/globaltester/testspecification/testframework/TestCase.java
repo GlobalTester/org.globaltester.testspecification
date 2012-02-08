@@ -101,18 +101,17 @@ public class TestCase extends FileTestExecutable {
 	 * @return
 	 */
 	public static boolean isFileRepresentation(IFile iFile) {
-		boolean correctXML = true;
 		Document doc = XMLHelper.readDocument(iFile);
 		if (doc != null) { 
 			Element rootElem = doc.getRootElement();
 
 			// check that root element has correct name
 			if (!rootElem.getName().equals("TestCase")) {
-				correctXML = false;
+				return false;
 			}
 		}
-
-		return correctXML;
+		
+		return true;
 	}
 
 	public List<PreCondition> getPreConditions() {
