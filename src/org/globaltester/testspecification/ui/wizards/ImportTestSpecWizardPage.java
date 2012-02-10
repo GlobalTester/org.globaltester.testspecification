@@ -20,6 +20,7 @@ public class ImportTestSpecWizardPage extends WizardPage {
 
 	private Text txtProjectName;
 	private List lstBundleSelection;
+	private Text txtNameSelection;
 	private Text txtDescription;
 	private boolean defaultName;
 	
@@ -42,8 +43,8 @@ public class ImportTestSpecWizardPage extends WizardPage {
 		Label lblName = new Label(container, SWT.NONE);
 		lblName.setText("Projectname:");
 		txtProjectName = new Text(container, SWT.BORDER);
-		txtProjectName.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true,
-				false, 1, 1));
+		txtProjectName.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 
+				1, 1));
 		txtProjectName.addModifyListener(new ModifyListener() {
 			@Override
 			public void modifyText(ModifyEvent e) {
@@ -75,14 +76,25 @@ public class ImportTestSpecWizardPage extends WizardPage {
 			}
 		});
 		
+		Label lblBundle = new Label(container, SWT.NONE);
+		lblBundle.setText("Bundlename:");
+		lblBundle.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, true, false,
+				2, 1));
+		txtNameSelection = new Text(container, SWT.BORDER);
+		txtNameSelection.setEditable(false);
+		txtNameSelection.setText("asdf");
+		txtNameSelection.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false,
+				2, 1));
+		
+		// add further controls to the container
 		Label lblDescr = new Label(container, SWT.NONE);
 		lblDescr.setText("Description:");
 		lblDescr.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, true, false,
 				2, 1));
-		txtDescription = new Text(container, SWT.WRAP | SWT.BORDER);
+		txtDescription = new Text(container, SWT.BORDER);
 		txtDescription.setEditable(false);
 		txtDescription.setText("asdf");
-		txtDescription.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, true, false,
+		txtDescription.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 
 				2, 1));
 		
 
@@ -94,16 +106,9 @@ public class ImportTestSpecWizardPage extends WizardPage {
 			IConfigurationElement curElem = configElements[i];
 
 			String name = curElem.getAttribute("name");
-			String bundle = curElem.getAttribute("bundle");
 
-			String listEntry = "";
-			if ((bundle != null) && (bundle.trim().length() > 0)) {
-				listEntry = name + " (" + bundle + ")";
-			} else {
-				listEntry = bundle;
-			}
-
-			lstBundleSelection.add(listEntry);
+			lstBundleSelection.add(name);
+			
 		}
 
 		// fill with default values
@@ -159,6 +164,7 @@ public class ImportTestSpecWizardPage extends WizardPage {
 		int selectedEntry = lstBundleSelection.getSelectionIndex();
 		//update the description
 		txtDescription.setText(configElements[selectedEntry].getAttribute("descr"));
+		txtNameSelection.setText(configElements[selectedEntry].getAttribute("bundle"));
 		
 		if (defaultName) {
 			//update the default name of the new project
