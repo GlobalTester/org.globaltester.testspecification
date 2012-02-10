@@ -20,7 +20,7 @@ public class ImportTestSpecWizardPage extends WizardPage {
 
 	private Text txtProjectName;
 	private List lstBundleSelection;
-	private Text txtNameSelection;
+	private Text txtBundleName;
 	private Text txtDescription;
 	private boolean defaultName;
 	
@@ -48,7 +48,7 @@ public class ImportTestSpecWizardPage extends WizardPage {
 		txtProjectName.addModifyListener(new ModifyListener() {
 			@Override
 			public void modifyText(ModifyEvent e) {
-				//if name if modified do not update it with the default name when new source is selected
+				//if name is modified do not update it with the default name when new source is selected
 				defaultName = false;
 				validateAndUpdate();
 			}
@@ -77,13 +77,13 @@ public class ImportTestSpecWizardPage extends WizardPage {
 		});
 		
 		Label lblBundle = new Label(container, SWT.NONE);
-		lblBundle.setText("Bundlename:");
+		lblBundle.setText("Bundle name:");
 		lblBundle.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, true, false,
 				2, 1));
-		txtNameSelection = new Text(container, SWT.BORDER);
-		txtNameSelection.setEditable(false);
-		txtNameSelection.setText("asdf");
-		txtNameSelection.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false,
+		txtBundleName = new Text(container, SWT.BORDER);
+		txtBundleName.setEditable(false);
+		txtBundleName.setText("asdf");
+		txtBundleName.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false,
 				2, 1));
 		
 		// add further controls to the container
@@ -163,8 +163,9 @@ public class ImportTestSpecWizardPage extends WizardPage {
 	private void validateAndUpdate() {
 		int selectedEntry = lstBundleSelection.getSelectionIndex();
 		//update the description
+		
 		txtDescription.setText(configElements[selectedEntry].getAttribute("descr"));
-		txtNameSelection.setText(configElements[selectedEntry].getAttribute("bundle"));
+		txtBundleName.setText(configElements[selectedEntry].getAttribute("bundle"));
 		
 		if (defaultName) {
 			//update the default name of the new project
