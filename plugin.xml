@@ -17,7 +17,7 @@
          point="org.eclipse.ui.cheatsheets.cheatSheetContent">
       <category
             id="org.globaltester.testspecification.doc.ImportOfATestSpec"
-            name="GlobalTester User Guide Import of a test specification">
+            name="GlobalTester User Guides">
       </category>
       <cheatsheet
             category="org.globaltester.testspecification.doc.ImportOfATestSpec"
