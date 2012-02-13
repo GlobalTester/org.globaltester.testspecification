@@ -24,7 +24,7 @@ public class ExportTestSpecWizard extends Wizard implements IExportWizard {
 		String projectName = _pageOne.getProjectName();
 		String targetFile = _pageOne.getDestination();
 
-		//FIXME add the code tom export the selected TestSpec here
+		//FIXME add the code to export the selected TestSpec here
 		
 		
 		return true;

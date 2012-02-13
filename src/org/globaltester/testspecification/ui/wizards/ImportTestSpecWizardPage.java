@@ -82,7 +82,7 @@ public class ImportTestSpecWizardPage extends WizardPage {
 				2, 1));
 		txtBundleName = new Text(container, SWT.BORDER);
 		txtBundleName.setEditable(false);
-		txtBundleName.setText("asdf");
+		txtBundleName.setText("");
 		txtBundleName.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false,
 				2, 1));
 		
@@ -93,7 +93,7 @@ public class ImportTestSpecWizardPage extends WizardPage {
 				2, 1));
 		txtDescription = new Text(container, SWT.BORDER);
 		txtDescription.setEditable(false);
-		txtDescription.setText("asdf");
+		txtDescription.setText("");
 		txtDescription.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 
 				2, 1));
 		
