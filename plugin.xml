@@ -22,7 +22,7 @@
       <cheatsheet
             category="org.globaltester.testspecification.doc.ImportOfATestSpec"
             composite="false"
-            contentFile="cheatsheets/importOfATestSpec.xml"
+            contentFile="cheatsheets/user/importOfATestSpec.xml"
             id="org.globaltester.testspecification.doc.cheatsheet.importOfATestSpec"
             name="Import of a test spec">
       </cheatsheet>
