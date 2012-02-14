@@ -5,11 +5,11 @@
    <extension
          point="org.eclipse.help.toc">
       <toc
-            file="toc/toc.xml"
+            file="toc/user/toc.xml"
             primary="true">
       </toc>
       <toc
-            file="toc/UserGuide_ImportOfATestSpec.xml">
+            file="toc/user/gettingstarted.xml">
       </toc>
 
    </extension>
