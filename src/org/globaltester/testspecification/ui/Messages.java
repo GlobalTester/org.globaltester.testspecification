@@ -8,6 +8,10 @@ public class Messages extends NLS {
 	public static String NewTestSpecWizard_GT_TestSpec_Project;
 	public static String NewTestSpecWizard_PAGE_NAME;
 	public static String NewTestSpecWizard_WIZARD_NAME;
+	public static String NewTestCaseWizard_create_new_GT_TestCase;
+	public static String NewTestCaseWizard_GT_TestCase_Project;
+	public static String NewTestCaseWizard_PAGE_NAME;
+	public static String NewTestCaseWizard_WIZARD_NAME;
 	public static String ImportTestSpecWizard_import_new_GT_TestSpec;
 	public static String ImportTestSpecWizard_GT_TestSpec_Project;
 	public static String ImportTestSpecWizard_PAGE_NAME;

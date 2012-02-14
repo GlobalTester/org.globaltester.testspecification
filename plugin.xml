@@ -11,6 +11,14 @@
             name="TestSpecification"
             project="true">
       </wizard>
+      <wizard
+            category="org.globaltester.core.ui.newWizards.category"
+            class="org.globaltester.testspecification.ui.wizards.NewTestCaseWizard"
+            icon="icons/testcase.png"
+            id="org.globaltester.testspecification.ui.wizards.newTestCaseWizard"
+            name="TestCase"
+            project="false">
+      </wizard>
    </extension>
    
    <!--extension

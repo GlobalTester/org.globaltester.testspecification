@@ -44,5 +44,4 @@ public class NewTestSpecWizard extends Wizard implements INewWizard {
 	    addPage(_pageOne);
 	}
 
-
 }
