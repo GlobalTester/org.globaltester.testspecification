@@ -11,21 +11,34 @@
       <toc
             file="toc/user/gettingstarted.xml">
       </toc>
-
    </extension>
+   
    <extension
          point="org.eclipse.ui.cheatsheets.cheatSheetContent">
       <category
-            id="org.globaltester.testspecification.doc.ImportOfATestSpec"
+            id="org.globaltester.testspecification.doc.UserGuides"
             name="GlobalTester User Guides">
       </category>
       <cheatsheet
-            category="org.globaltester.testspecification.doc.ImportOfATestSpec"
+            category="org.globaltester.testspecification.doc.UserGuides"
             composite="false"
             contentFile="cheatsheets/user/importOfATestSpec.xml"
             id="org.globaltester.testspecification.doc.cheatsheet.importOfATestSpec"
-            name="Import of a test spec">
+            name="Import of a TestSpecification">
+      </cheatsheet>
+      <category
+            id="org.globaltester.testspecification.doc.UserGuides"
+            name="GlobalTester User Guides">
+      </category>
+   <cheatsheet
+            category="org.globaltester.testspecification.doc.UserGuides"
+            composite="false"
+            contentFile="cheatsheets/user/runTestCases.xml"
+            id="org.globaltester.testspecification.doc.cheatsheet.user.runTestCases"
+            name="Run TestCases">
       </cheatsheet>
    </extension>
+   
+   
 
 </plugin>

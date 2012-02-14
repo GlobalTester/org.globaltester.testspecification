@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <cheatsheet
-      title="Import of a test specification">
+      title="Import of a TestSpecification">
    <intro>
    <description>
-     In a few steps, this cheat sheet will guide you through the import of a test specification.
+     In a few steps, this cheat sheet will guide you through the import of a TestSpecification.
       </description>
    </intro>
    <item
@@ -21,9 +21,10 @@
    <item
          title="WizardPage Title">
       <description>
-         In the text field <b>&quot;Projectname&quot;</b>, choose a name for your project. You can import the same TestSpecification under different names in your workspace.
-In the list, you can choose the TestSpecification you want to import. A description of it is given in the field below.
-Then click <b>&quot;Finish&quot;</b>.
+         In the text field <b>&quot;Projectname&quot;</b>, choose a name for your project. You can import the same TestSpecification under different 
+         names in your workspace.
+		 In the list, you can choose the TestSpecification you want to import. A description of it is given in the field below.
+		 Then click <b>&quot;Finish&quot;</b>.
 
       </description>
    </item>
