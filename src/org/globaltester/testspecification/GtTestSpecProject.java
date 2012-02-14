@@ -35,7 +35,7 @@ public class GtTestSpecProject {
 			addGtTestSpecNature(project);
 
 			String[] paths = { "TestData/Certificates", "TestData/Subroutines",
-					"TestLayer" }; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+					"TestCases" }; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 			addToProjectStructure(project, paths);
 		} catch (CoreException e) {
 			e.printStackTrace();

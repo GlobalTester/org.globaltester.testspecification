@@ -1,5 +1,9 @@
 package org.globaltester.testspecification.testframework;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -163,4 +167,63 @@ public class TestCase extends FileTestExecutable {
 		return false;
 	}
 
+	public static void createDefaultTestCase(IFile iFile) {
+		BufferedWriter out = null;
+		try {
+			File file = new File(iFile.getLocationURI());
+			// Create file
+			FileWriter fstream = new FileWriter(file);
+			out = new BufferedWriter(fstream);
+			out.write(defaultTestCase);
+			
+			
+			} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (out != null) {
+					out.close();
+				}
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	private static final String defaultTestCase = ""+
+	"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+	"<TestCase id=\"TestCase\" xmlns=\"http://globaltester.org/testspecification\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://globaltester.org/schema/testspecification.xsd\">\n" +
+	"	<Title>Sample TestCase</Title>\n" +
+	"	<Version>1.00</Version>\n" +
+	"	<Purpose>This test is used as simple base testcase for your own modifications</Purpose>\n" +
+	"	<Profile></Profile>\n" +
+	"	<Reference></Reference>\n" +
+	"	<Precondition>\n" +
+	"		<Command>\n" +
+	"			<Text>Reset card</Text>\n" +
+	"		</Command>\n" +
+	"		<TechnicalCommand>\n" +
+	"            card.gt_reset();\n" +
+	"		</TechnicalCommand>\n" +
+	"	</Precondition>\n" +
+	"	<TestStep>\n"+
+	"		<Command xsi:type=\"APDUCommand\">\n"+
+	"			<APDU>00 A4 3F 00 00</Text>\n"+
+	"		</Command>\n"+
+	"		<Description>\n"+
+	"			Select the MF\n"+
+	"		</Description>\n"+
+	"		<ExpectedResult xsi:type=\"APDUResult\">\n"+
+	"			<Text>First byte MUST be '61'</Text>\n"+
+	"			<TechnicalResult>\n"+
+	"				assertStatusWord(new Array(\"9000\"), card.SW.toString(HEX), FAILURE);\n"+
+	"				assertMatchValue(dg1.bytes(0,1), \"61\", FAILURE);\n"+
+	"			</TechnicalResult>\n"+
+	"		</ExpectedResult>\n"+
+	"	</TestStep>\n"+
+	"	<Postcondition>\n"+
+	"	</Postcondition>\n"+
+	"</TestCase>";
+	
 }
