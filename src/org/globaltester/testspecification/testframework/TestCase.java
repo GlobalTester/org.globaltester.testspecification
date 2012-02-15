@@ -94,6 +94,9 @@ public class TestCase extends FileTestExecutable {
 					postConditions.add(curPostCon);
 				}
 			}
+		} else {
+			System.out.println("Parsing XML returns an error!");
+			//ToDo open User.Dialog.Warning
 		}
 
 	}
@@ -218,7 +221,7 @@ public class TestCase extends FileTestExecutable {
 	"			<Text>First byte MUST be '61'</Text>\n"+
 	"			<TechnicalResult>\n"+
 	"				assertStatusWord(new Array(\"9000\"), card.SW.toString(HEX), FAILURE);\n"+
-	"				assertMatchValue(dg1.bytes(0,1), \"61\", FAILURE);\n"+
+	"				assertMatchValue(\"61\", dg1.bytes(0,1), FAILURE);\n"+
 	"			</TechnicalResult>\n"+
 	"		</ExpectedResult>\n"+
 	"	</TestStep>\n"+
