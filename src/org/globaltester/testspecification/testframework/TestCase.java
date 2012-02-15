@@ -95,8 +95,8 @@ public class TestCase extends FileTestExecutable {
 				}
 			}
 		} else {
-			System.out.println("Parsing XML returns an error!");
-			//ToDo open User.Dialog.Warning
+			//ToDo Error Handling
+			
 		}
 
 	}
