@@ -36,7 +36,7 @@ public class GtTestSpecProjectTest {
 
 		// check directory structure is created correctly
 		String[] paths = { "TestData/Certificates", "TestData/Subroutines",
-				"TestLayer" };
+				"TestCases" };
 		String projectPath = project.getLocation().toString();
 		for (String path : paths) {
 			File file = new File(projectPath + "/" + path);
