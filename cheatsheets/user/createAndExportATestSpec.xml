@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cheatsheet
+      title="Create and Export a TestSpecification">
+   <intro>
+      <description>
+         In a few steps, this cheat sheet will show you how to create and export a TestSpecification.
+      </description>
+   </intro>
+   <item
+         title="Create your own TestSpecification">
+      <description>
+         First, go with the mouse courser in the &quot;GlobalTester Navigator&quot; window. Right-click, and choose <b>&quot;New -> Project...&quot;</b>.
+         In the &quot;New Project&quot; wizard, select <b>&quot;GlobalTester -> TestSpecification&quot;</b>, and click <b>&quot;Next &gt;&quot;</b>.
+         Enter a name for your TestSpecification Project in the text fiel <b>&quot;Project name&quot;</b>.
+         Then click <b>&quot;Finish&quot;</b>
+      </description>
+   </item>
+   <item
+         title="Write a TestCase">
+      <description>
+        In the &quot;GlobalTester Navigator&quot; window, your own TestSpecification will be shown as a project folder. In its sub-folder TestCases,
+        you can now write a testCase as xml file in the new BSI XML Schema.
+      </description>
+   </item>
+</cheatsheet>

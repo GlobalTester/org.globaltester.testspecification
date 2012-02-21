@@ -11,6 +11,9 @@
       <toc
             file="toc/user/gettingstarted.xml">
       </toc>
+      <toc
+            file="toc/user/concepts.xml">
+      </toc>
    </extension>
    
    <extension
@@ -21,6 +24,13 @@
             contentFile="cheatsheets/user/importOfATestSpec.xml"
             id="org.globaltester.testspecification.doc.cheatsheet.importOfATestSpec"
             name="Import of a TestSpecification">
+      </cheatsheet>
+      <cheatsheet
+            category="org.globaltester.core.doc.userGuide"
+            composite="false"
+            contentFile="cheatsheets/user/createAndExportATestSpec.xml"
+            id="org.globaltester.testspecification.doc/cheatsheets/user/createAndExportATestSpec"
+            name="Create and Export a TestSpecification">
       </cheatsheet>
    </extension>
    

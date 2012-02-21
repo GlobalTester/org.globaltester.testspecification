@@ -1,0 +1,21 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>XML structure</title>
+</head>
+<body>
+	<ul>
+	<li><b>Command</b>: A tag that gives the test step a title, i.e. &quot;Reset Card&quot;.</li>
+	<li><b>Description</b>: A short description of the purpose of the test step.</li>
+	<li><b>TechnicalCommand</b>: In this tag the test step is executed. Commands and APDUs can be send and received.</li>
+	<li><b>ExpectedResult</b>: In this tag the result APDU can be verified, i.e. its status words and response data (if any) can be checked.
+			It is structured in two possible tags as well:
+			<ul>
+			<li><b>Text</b>: Gives a short textual description of the expected result, i.e. &quot;SW 9000&quot; if the status word 9000 is expected.</li>
+			<li><b>TechnicalResult</b>: Status words and response data can be checked in assertions.</li>
+			</ul>
+	</li>
+	</ul>
+</body>
+</html>

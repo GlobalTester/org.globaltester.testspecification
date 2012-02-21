@@ -2,6 +2,6 @@
 <?NLS TYPE="org.eclipse.help.toc"?>
 
 <toc label="Getting Started" link_to="../org.globaltester.core.doc/toc/user/toc.xml#gettingstarted"> 
-	<topic label="Import of a test specification"  href="html/user/gettingstarted/UserGuide_ImportOfATestSpec.html"> 
+	<topic label="Import of a TestSpecification"  href="html/user/gettingstarted/UserGuide_ImportOfATestSpec.html"> 
 	</topic>
 </toc>
