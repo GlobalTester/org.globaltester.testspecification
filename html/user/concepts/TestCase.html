@@ -5,6 +5,7 @@
 <title>TestCase</title>
 </head>
 <body>
+	<h1>TestCase</h1>
 	<p>
 	A TestCase is an XML file that conforms to the german BSI XML structure.
 	It will be structured in <b>PreCondition</b>, <b>TestStep</b>s, and <b>PostCondition</b>.
@@ -13,5 +14,36 @@
 	Communication between the chip or simulator and reader or prover in PreCondition, TestSteps, and PostCondition
 	will be organized in tags as described for the XML structure.
 	</p>
+	
+	<h2>PreCondition</h2>
+	<p>
+	A PreCondition may be a state of the card or simulator that can be achieved by performing some operations before the
+	TestSteps (that is the purpose of the TestCase) are performed.
+	</p>
+	
+	<h2>TestStep</h2>
+	<p>
+	In TestSteps, the actual purpose TestCase will be implemented.
+	</p>
+	
+	<h2>PostCondition</h2>
+	<p>
+	A PostCondition may be a state of the card or simulator that should be achieved after the TestSteps are performed.
+	</p>
+	
+	<h2>XML structure</h2>
+	PreCondition, TestSteps and PostConditions are organized in the following tags:
+	<ul>
+	<li><b>Command</b>: A tag that gives the test step a title, i.e. &quot;Reset Card&quot;.</li>
+	<li><b>Description</b>: A short description of the purpose of the test step.</li>
+	<li><b>TechnicalCommand</b>: In this tag the test step is executed. Commands and APDUs can be send and received.</li>
+	<li><b>ExpectedResult</b>: In this tag the result APDU can be verified, i.e. its status words and response data (if any) can be checked.
+			It is structured in two possible tags as well:
+			<ul>
+			<li><b>Text</b>: Gives a short textual description of the expected result, i.e. &quot;SW 9000&quot; if the status word 9000 is expected.</li>
+			<li><b>TechnicalResult</b>: Status words and response data can be checked in assertions.</li>
+			</ul>
+	</li>
+	</ul>
 </body>
 </html>

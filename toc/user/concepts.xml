@@ -4,10 +4,6 @@
 <toc label="Concepts" link_to="../org.globaltester.core.doc/toc/user/toc.xml#concepts"> 
 	
 	<topic label="TestCase"  href="html/user/concepts/TestCase.html">
-		<topic label="XMLstructure" href="html/user/concepts/XMLstructure.html" />
-		<topic label="PreCondition" href="html/user/concepts/PreCondition.html" />
-		<topic label="TestStep" href="html/user/concepts/TestStep.html" />
-		<topic label="PostCondition" href="html/user/concepts/PostCondition.html" />
 	</topic>
 	
 	<topic label="TestData"  href="html/user/concepts/TestData.html">
