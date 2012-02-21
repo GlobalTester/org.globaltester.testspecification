@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>XML structure for TestCases</title>
+</head>
+<body>
+
+	<h1>XML structure for TestCases</h1>
+
+	<p>	
+	A TestCase is structured in these XML tags:
+	<ul>
+	<li><b>id</b>: ID of the test case.
+	<li><b>Title</b>: The Title of the TestCase. It should correspond to the title of the test case in its according test specification.</li>
+	<li><b>Version</b>: The version number the test case has according to its test specification.</li>
+	<li><b>Purpose</b>: A short description of the purpose of the test case.</li>
+	<li><b>Profile</b>: A test specification often defines profiles. Each test case has some of them assigned to. They will be listed in this tag.</li>
+	<li><b>Reference</b> (optional): Reference can be listed in this tag, for example the technical guideline the test specification is based on.</li>
+	<li><b>PreCondition</b> (optional)</li>
+	<li><b>TestSteps</b> (several possible)</li>
+	<li><b>PostConditions</b> (optional)</li>
+	<li><b>MetaData</b>: This tag contains meta information in form of key-value pairs, for example if a test case is destructive.</li>
+	<li><b>Comment</b>: If a test case was deleted in a newer version of the test specification, this will be explained in this tag.</li>
+	</ul>
+	</p>
+	
+	<p>
+	PreCondition, TestSteps and PostConditions are organized in the following tags:
+	<ul>
+	<li><b>Command</b>: A tag that gives the test step a title, i.e. &quot;Reset Card&quot;.</li>
+	<li><b>Description</b>: A short description of the purpose of the test step.</li>
+	<li><b>TechnicalCommand</b>: In this tag the test step is executed. Commands and APDUs can be send and received.</li>
+	<li><b>ExpectedResult</b>: In this tag the result APDU can be verified, i.e. its status words and response data (if any) can be checked.
+			It is structured in two possible tags as well:
+			<ul>
+			<li><b>Text</b>: Gives a short textual description of the expected result, i.e. &quot;SW 9000&quot; if the status word 9000 is expected.</li>
+			<li><b>TechnicalResult</b>: Status words and response data can be checked in assertions.</li>
+			</ul>
+	</li>
+	</ul>
+	</p>
+
+</body>
+</html>

@@ -14,53 +14,15 @@
 	Communication between the chip or simulator and reader or prover in PreCondition, TestSteps, and PostCondition
 	will be organized in tags as described for the XML structure.
 	</p>
-	
-	<h2>PreCondition</h2>
 	<p>
 	A PreCondition may be a state of the card or simulator that can be achieved by performing some operations before the
 	TestSteps (that is the purpose of the TestCase) are performed.
 	</p>
-	
-	<h2>TestStep</h2>
 	<p>
 	In TestSteps, the actual purpose TestCase will be implemented.
 	</p>
-	
-	<h2>PostCondition</h2>
 	<p>
 	A PostCondition may be a state of the card or simulator that should be achieved after the TestSteps are performed.
-	</p>
-	
-	<h2>XML structure</h2>
-
-	<p>	
-	A TestCase in these XML tags:
-	<ul>
-	<li><b>Title</b>: The Title of the TestCase. It should correspond to the title of the test case in its according test specification.</li>
-	<li><b>Version</b>: The version number the test case has according to its test specification.</li>
-	<li><b>Purpose</b>: A short description of the purpose of the test case.</li>
-	<li><b>Profile</b>: A test specification often defines profiles. Each test case has some of them assigned to. They will be listed in this tag.</li>
-	<li><b>Reference</b>: Reference can be listed in this tag, for example the technical guideline the test specification is based on.</li>
-	<li><b>PreCondition</b></li>
-	<li><b>TestSteps</b></li>
-	<li><b>PostConditions</b></li>
-	</ul>
-	</p>
-	
-	<p>
-	PreCondition, TestSteps and PostConditions are organized in the following tags:
-	<ul>
-	<li><b>Command</b>: A tag that gives the test step a title, i.e. &quot;Reset Card&quot;.</li>
-	<li><b>Description</b>: A short description of the purpose of the test step.</li>
-	<li><b>TechnicalCommand</b>: In this tag the test step is executed. Commands and APDUs can be send and received.</li>
-	<li><b>ExpectedResult</b>: In this tag the result APDU can be verified, i.e. its status words and response data (if any) can be checked.
-			It is structured in two possible tags as well:
-			<ul>
-			<li><b>Text</b>: Gives a short textual description of the expected result, i.e. &quot;SW 9000&quot; if the status word 9000 is expected.</li>
-			<li><b>TechnicalResult</b>: Status words and response data can be checked in assertions.</li>
-			</ul>
-	</li>
-	</ul>
 	</p>
 	
 </body>

@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>XML Structure for Certificates</title>
+</head>
+<body>
+	
+	<h1>XML Structure for Certificates</h1>
+	<p>
+	A card verifiable certificate is structured in these XML tags:
+	<ul>
+	<li><b>SignerCertificate</b> (optional): If the certificate has a (regular) signer, its certificate is linded.</li>
+	<li><b>CertificateAuthorityReference</b> (optional, if a SignerCertificate is linked): A string that specifies the Certificate Holder Reference
+			of the signer certificate.</li>
+	<li><b>SigningKey</b> (optional, if a SignerCertificate is linked): The public key to verify the certificate.</li>
+	<li><b>CertificateHolderReference</b>: A string that identifies the public key contained in the certificate.</li>
+	<li><b>CertificateHolderAuthorization</b>: A string that lists the access rights that will be encoded in the 
+			Certificate Holder Authorization Template byte(s)</li>
+	<li><b>CertificateEffectiveDate</b>: The effective date of the certificate.</li>
+	<li><b>CertificateExpirationDate</b>: The expiration date of the certificate.</li>
+	<li><b>PublicKey</b>: The public key of this certificate.</li>
+	<li><b>CertificateExtension</b> (optional): They can encode the Discretionary Data Template that
+			will encode the Terminal Sectors for Restricted Identification.</li>
+	</ul>
+	</p>
+	
+
+</body>
+</html>

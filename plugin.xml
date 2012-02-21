@@ -14,6 +14,9 @@
       <toc
             file="toc/user/concepts.xml">
       </toc>
+      <toc
+            file="toc/user/reference.xml">
+      </toc>
    </extension>
    
    <extension
