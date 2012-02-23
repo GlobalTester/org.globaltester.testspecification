@@ -2,6 +2,6 @@
 <?NLS TYPE="org.eclipse.help.toc"?>
 
 <toc label="Tasks" link_to="../org.globaltester.core.doc/toc/user/toc.xml#tasks"> 
-	<topic label="WriteATestCase"  href="html/user/tasks/WriteATestCase.html">
+	<topic label="Write a TestCase"  href="html/user/tasks/WriteATestCase.html">
 	</topic>
 </toc>
