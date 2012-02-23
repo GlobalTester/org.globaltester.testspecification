@@ -3,12 +3,15 @@
 
 <toc label="Concepts" link_to="../org.globaltester.core.doc/toc/user/toc.xml#concepts"> 
 	
-	<topic label="TestCase"  href="html/user/concepts/TestCase.html">
-	</topic>
 	
-	<topic label="TestData"  href="html/user/concepts/TestData.html">
-		<topic label="Certificates" href="html/user/concepts/Certificates.html" />
-		<topic label="Subroutines" href="html/user/concepts/Subroutines.html" />
+	<topic label="TestSpecification"  href="html/user/concepts/TestSpecification.html">
+		
+			<topic label="TestCase"  href="html/user/concepts/TestCase.html" />
+			
+			<topic label="TestData"  href="html/user/concepts/TestData.html">
+			<topic label="Certificates" href="html/user/concepts/Certificates.html" />
+			<topic label="Subroutines" href="html/user/concepts/Subroutines.html" />
+			</topic>
+			
 	</topic>
-	
 </toc>

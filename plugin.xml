@@ -17,6 +17,9 @@
       <toc
             file="toc/user/reference.xml">
       </toc>
+      <toc
+            file="toc/user/tasks.xml">
+      </toc>
    </extension>
    
    <extension
