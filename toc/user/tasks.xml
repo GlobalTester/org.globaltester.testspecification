@@ -4,4 +4,6 @@
 <toc label="Tasks" link_to="../org.globaltester.core.doc/toc/user/toc.xml#tasks"> 
 	<topic label="Write a TestCase"  href="html/user/tasks/WriteATestCase.html">
 	</topic>
+ <topic href="html/user/tasks/createAndExportATestSpec.html" label="Create and export a TestSpecification">
+ </topic>
 </toc>
