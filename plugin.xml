@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.globaltester.testspecification.exportables">
+   		<layout
+   			name="GT TestSpecification Export Layout HJP"
+   			description="Export the test specification in HJP layout">   			
+   		</layout>
+   		
+   </extension>
+
+</plugin>
