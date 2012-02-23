@@ -3,6 +3,8 @@ package org.globaltester.testspecification.ui.wizards;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IConfigurationElement;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
@@ -21,12 +23,17 @@ import org.globaltester.testspecification.GtTestSpecNature;
 
 public class ExportTestSpecWizardPage extends WizardPage {
 	private List lstTestSpecSelection;
+	private List lstExportLayoutSelection;
 	private Text txtDestination;
+	private Text txtLayoutDescription;
 	private boolean isDefaultDestination;
 
+	//private boolean defaultName;
+	private IConfigurationElement[] configElements;
+	
 	protected ExportTestSpecWizardPage() {
 		super("");
-		setTitle("");
+		setTitle("TestSpecification Export Wizard");
 		setMessage("");
 	}
 
@@ -41,12 +48,12 @@ public class ExportTestSpecWizardPage extends WizardPage {
 		// Create the TestSpec project selection list
 		Label lblSpecs = new Label(container, SWT.NONE);
 		lblSpecs.setText("Select TestSpecification project to export:");
-		lblSpecs.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, true, false,
+		lblSpecs.setLayoutData(new GridData(SWT.LEFT, SWT.TOP, true, false,
 				2, 1));
 		new Label(container, SWT.NONE);
 		lstTestSpecSelection = new List(container, SWT.BORDER | SWT.SINGLE
 				| SWT.V_SCROLL);
-		lstTestSpecSelection.setLayoutData(new GridData(SWT.FILL, SWT.CENTER,
+		lstTestSpecSelection.setLayoutData(new GridData(SWT.FILL, SWT.TOP,
 				false, false, 2, 1));
 		new Label(container, SWT.NONE);
 		lstTestSpecSelection.addSelectionListener(new SelectionListener() {
@@ -62,6 +69,45 @@ public class ExportTestSpecWizardPage extends WizardPage {
 			}
 		});
 
+		// Create the TestSpec export layout selection list
+		Label lblExportLayout = new Label(container, SWT.NONE);
+		lblExportLayout.setText("Select TestSpecification export layout:");
+		lblExportLayout.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, true, false,
+				2, 1));
+		new Label(container, SWT.NONE);
+		lstExportLayoutSelection = new List(container, SWT.BORDER | SWT.SINGLE
+				| SWT.V_SCROLL);
+		lstExportLayoutSelection.setLayoutData(new GridData(SWT.FILL, SWT.CENTER,
+				false, false, 2, 1));
+		new Label(container, SWT.NONE);
+		lstExportLayoutSelection.addSelectionListener(new SelectionListener() {
+
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				validateAndUpdate();
+			}
+
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+				widgetSelected(e);
+			}
+		});
+
+//		// Create the TestSpec export layout description text
+//		Label lblLayoutDescr = new Label(container, SWT.NONE);
+//		lblLayoutDescr.setText("Description export layout:");
+//		lblLayoutDescr.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, true, false,
+//				2, 1));
+//		//new Label(container, SWT.NONE);
+//
+//		txtLayoutDescription = new Text(container, SWT.BORDER);
+//		txtLayoutDescription.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true,
+//				false, 2, 1));
+//		txtLayoutDescription.setEditable(false);
+//		txtLayoutDescription.setText("");
+
+		
+		// Export destination
 		Label lblDest = new Label(container, SWT.NONE);
 		lblDest.setText("Export destination:");
 		lblDest.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, true, false,
@@ -102,7 +148,7 @@ public class ExportTestSpecWizardPage extends WizardPage {
 			}
 		});
 
-		// Add all GT TestSPec projects to the list
+		// Add all GT TestSpec projects to the list
 		IProject[] projects = ResourcesPlugin.getWorkspace().getRoot()
 				.getProjects();
 
@@ -129,10 +175,38 @@ public class ExportTestSpecWizardPage extends WizardPage {
 			setErrorMessage("Currently no GT TestSpecification projects are available in the workspace.");
 		}
 
+		
+		// Add all export layouts to the list
+		String importablesExtensionId = "org.globaltester.testspecification.exportables";
+		configElements = Platform.getExtensionRegistry()
+				.getConfigurationElementsFor(importablesExtensionId);
+		for (int i = 0; i < configElements.length; i++) {
+			IConfigurationElement curElem = configElements[i];
+
+			String name = curElem.getAttribute("name");
+
+			lstExportLayoutSelection.add(name);
+			
+		}
+
+		// fill with default values
+		if (lstExportLayoutSelection.getItemCount() > 0) {
+			//defaultName = true;
+			// select the first element
+			lstExportLayoutSelection.select(0);
+			validateAndUpdate();
+		} else {
+			// no valid test specification export layouts are present -> show error
+			// message
+			setErrorMessage("No TestSpecification Export Layout is installed.");
+		}
+
+		
+		
 	}
 
 	private void setDefaultDestination() {
-		txtDestination.setText(System.getProperty("user.dir")+getProjectName() + ".odt");
+		txtDestination.setText(System.getProperty("user.dir")+System.getProperty("file.separator")+getProjectName() + ".odt");
 		isDefaultDestination = true;
 	}
 
@@ -165,6 +239,11 @@ public class ExportTestSpecWizardPage extends WizardPage {
 		if (isDefaultDestination) {
 			setDefaultDestination();
 		}
+
+		int selectedEntry = lstExportLayoutSelection.getSelectionIndex();
+		//update the description
+		
+		//txtLayoutDescription.setText(configElements[selectedEntry].getAttribute("description"));
 		
 		// update the dialog appearance
 		getContainer().updateButtons();
