@@ -12,5 +12,6 @@ Require-Bundle: org.eclipse.core.runtime,
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Export-Package: org.globaltester.testspecification,
+ org.globaltester.testspecification.exporter,
  org.globaltester.testspecification.importer,
  org.globaltester.testspecification.testframework

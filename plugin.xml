@@ -2,6 +2,7 @@
 <?eclipse version="3.4"?>
 <plugin>
    <extension-point id="org.globaltester.testspecification.importables" name="Importable Testspecs" schema="schema/org.globaltester.testspecification.importables.exsd"/>
+   <extension-point id="org.globaltester.testspecification.exportables" name="Exportable TestSpecification" schema="schema/org.globaltester.testspecification.exportables.exsd"/>
    <extension
          id="org.globaltester.testspecification.gtTestSpecNature"
          name="GT TestSpec Nature"
