@@ -35,7 +35,7 @@
             category="org.globaltester.core.doc.userGuide"
             composite="false"
             contentFile="cheatsheets/user/createAndExportATestSpec.xml"
-            id="org.globaltester.testspecification.doc/cheatsheets/user/createAndExportATestSpec"
+            id="org.globaltester.testspecification.doc.cheatsheets.createAndExportATestSpec"
             name="Create and Export a TestSpecification">
       </cheatsheet>
    </extension>
