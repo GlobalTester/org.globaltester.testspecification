@@ -13,7 +13,9 @@
       </description>
    </item>
    <item
-         title="Select TestSpecification">
+         title="Select TestSpecification" dialog = "true">
+         <command serialization="org.eclipse.ui.file.import"/>
+         <onCompletion> </onCompletion>
       <description>
          In the tree view, select <b>&quot;GlobalTester &gt; Import TestSpecification from Plugin&quot;</b>. Click the <b>&quot;Next&quot;</b> button.
       </description>

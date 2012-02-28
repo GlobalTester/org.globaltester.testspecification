@@ -7,7 +7,8 @@
       </description>
    </intro>
    <item
-         title="Create your own TestSpecification">
+         title="Create your own TestSpecification" dialog="true">
+         <command serialization="org.eclipse.ui.newWizard"/>
       <description>
          First, go with the mouse courser in the &quot;GlobalTester Navigator&quot; window. Right-click, and choose <b>&quot;New -> Project...&quot;</b>.
          In the &quot;New Project&quot; wizard, select <b>&quot;GlobalTester -> TestSpecification&quot;</b>, and click <b>&quot;Next &gt;&quot;</b>.
