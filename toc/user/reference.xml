@@ -3,10 +3,10 @@
 
 <toc label="Reference" link_to="../org.globaltester.core.doc/toc/user/toc.xml#reference"> 
 	
-	<topic label="XML Structure for TestCases"  href="html/user/references/XMLStructureForTestCases.html">
+	<topic label="XML Structure for TestCases"  href="html/user/reference/XMLStructureForTestCases.html">
 	</topic>
 	
-	<topic label="XML Structure for Certificates"  href="html/user/references/XMLStructureForCertificates.html">
+	<topic label="XML Structure for Certificates"  href="html/user/reference/XMLStructureForCertificates.html">
 	</topic>
 	
 </toc>
