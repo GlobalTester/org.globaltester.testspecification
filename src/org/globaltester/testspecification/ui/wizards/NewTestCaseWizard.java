@@ -4,12 +4,10 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.ui.INewWizard;
 import org.eclipse.ui.IWorkbench;
-import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.dialogs.WizardNewFileCreationPage;
 import org.globaltester.core.ui.GtUiHelper;
 import org.globaltester.logging.logger.GtErrorLogger;
@@ -20,6 +18,7 @@ import org.globaltester.testspecification.ui.Messages;
 public class NewTestCaseWizard extends Wizard implements INewWizard {
 
 	private WizardNewFileCreationPage _pageOne;
+	private IStructuredSelection selection;
 	
 	public NewTestCaseWizard() {
 		setWindowTitle(Messages.NewTestCaseWizard_WIZARD_NAME);
@@ -27,7 +26,7 @@ public class NewTestCaseWizard extends Wizard implements INewWizard {
 
 	@Override
 	public void init(IWorkbench workbench, IStructuredSelection selection) {
-		// no initialization needed
+        this.selection = selection;
 	}
 
 	@Override
@@ -60,20 +59,17 @@ public class NewTestCaseWizard extends Wizard implements INewWizard {
 	public void addPages() {
 	    super.addPages();
 
-	    ISelection iSel = PlatformUI.getWorkbench().getActiveWorkbenchWindow()
-		.getSelectionService().getSelection();
-	    
-	    IStructuredSelection structuredSel = null;
-	    if (iSel instanceof IStructuredSelection) {
-	    	structuredSel = (IStructuredSelection) iSel;
-	    }
-		_pageOne = new WizardNewFileCreationPage(Messages.NewTestCaseWizard_PAGE_NAME, structuredSel);
+		_pageOne = new WizardNewFileCreationPage(Messages.NewTestCaseWizard_PAGE_NAME, getSelection());
 	    _pageOne.setTitle(Messages.NewTestCaseWizard_GT_TestCase_Project);
 	    _pageOne.setDescription(Messages.NewTestCaseWizard_create_new_GT_TestCase);
 	    _pageOne.setFileExtension("xml");
 	    _pageOne.setFileName("TestCase.xml");
 
 	    addPage(_pageOne);
+	}
+
+	private IStructuredSelection getSelection() {
+		return selection;
 	}
 
 }
