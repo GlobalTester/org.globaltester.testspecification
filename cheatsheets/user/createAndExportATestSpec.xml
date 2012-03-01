@@ -29,4 +29,10 @@
         Then click <b>&quot;Finish&quot;</b>
       </description>
    </item>
+   <item
+         title="Export your TestSpecification">
+      <description>
+        TODO
+      </description>
+   </item>
 </cheatsheet>
