@@ -10,6 +10,7 @@
 
 	<p>	
 	A TestCase is structured in these XML tags:
+	</p>
 	<ul>
 	<li><b>id</b>: ID of the test case.
 	<li><b>Title</b>: The Title of the TestCase. It should correspond to the title of the test case in its according test specification.</li>
@@ -23,14 +24,16 @@
 	<li><b>MetaData</b>: This tag contains meta information in form of key-value pairs, for example if a test case is destructive.</li>
 	<li><b>Comment</b>: If a test case was deleted in a newer version of the test specification, this will be explained in this tag.</li>
 	</ul>
-	</p>
-	
 	<p>
 	PreCondition, TestSteps and PostConditions are organized in the following tags:
+	</p>
 	<ul>
-	<li><b>Command</b>: A tag that gives the test step a title, i.e. &quot;Reset Card&quot;.</li>
+	<li><b>Command</b>: A tag that gives the test step a title, i.e. &quot;Reset Card&quot;, encapsulated in a &lt;text&gt; tag.</li>
+	<li><b>APDUCommand</b>: A tag that gives the test step a title, i.e. &quot;Reset Card&quot;, encapsulated in a &lt;text&gt; tag;
+		 and specifies an APDU that will be sent.
+		Please note that its syntax is <i>&lt;Command xsi:type="APDUCommand"&gt;&lt;APDU&gt;&lt;/APDU&gt;&lt;/Command&gt; </i></li>
 	<li><b>Description</b>: A short description of the purpose of the test step.</li>
-	<li><b>TechnicalCommand</b>: In this tag the test step is executed. Commands and APDUs can be send and received.</li>
+	<li><b>TechnicalCommand</b>: In this tag variables can be set and function called within the Java Script scope, or APDUs declared as ByteString and sent.</li>
 	<li><b>ExpectedResult</b>: In this tag the result APDU can be verified, i.e. its status words and response data (if any) can be checked.
 			It is structured in two possible tags as well:
 			<ul>
@@ -39,7 +42,6 @@
 			</ul>
 	</li>
 	</ul>
-	</p>
 
 </body>
 </html>

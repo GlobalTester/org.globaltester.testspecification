@@ -8,21 +8,47 @@
 	<h1>TestCase</h1>
 	<p>
 	A TestCase is an XML file. The XML structure is a further development of the new German BSI XML structure.
-	It will be structured in <b>PreCondition</b>, <b>TestStep</b>s, and <b>PostCondition</b>.
+	It will be structured in the so called &quot;ActionSteps&quot;: <b>PreCondition</b>, <b>TestStep</b>s, and <b>PostCondition</b>.
 	</p>
 	<p>
-	Communication between the chip and reader in PreCondition, TestSteps, and PostCondition
-	will be organized in tags as described for the XML structure.
+	ActionSteps can encapsulate simple APDU commands,
+	or call more complex java script functions that may use variables that have been defined in them. 
 	</p>
 	<p>
 	A PreCondition may be a state of the card or simulator that can be achieved by performing some operations before the
-	TestSteps (that is the purpose of the TestCase) are performed.
+	TestSteps are performed.
 	</p>
 	<p>
-	In TestSteps, the actual purpose TestCase will be implemented.
+	In TestSteps, the actual purpose of the TestCase will be implemented.<br></br>
+	A TestStep may cover one major step of a TestCase, for example &quot;Perform BAC&quot;, &quot;Read Data Group XY&quot;,
+	&quot;Select Application Z&quot;, and so on.<br></br>
+	Sometimes the TestSpecification requires a finer granularity, for example if an erroneous APDU is sent,
+	and the according response APDU shall be checked.
+	Examples are &quot;MSE: Set AT&quot;, &quot;General Authenticate&quot;, &quot;PSO: Verify Certificate&quot;, etc.
 	</p>
 	<p>
 	A PostCondition may be a state of the card or simulator that should be achieved after the TestSteps are performed.
+	To ensure this condition, several commands can be sent and their responses be checked.
+	If the results comply to the ones that this certain state of the chip is supposed to send back,
+	the PostCondition is fulfilled.
+	</p>
+	<p>
+	PreCondition, TestSteps, and PostCondition will be organized in the following tags: 
+	<ul>
+	<li><b>Command</b> gives the &quot;ActionStep&quot; a title; or <b>APDUCommand</b> may specify an APDU to send in addition.
+		Variables that might be used here can be set in the &quot;TechnicalCommand&quot; tag.</li>
+	<li><b>Description</b> is a textual description of what happens in this step.</li>
+	<li><b>TechnicalCommand</b> may
+		<ul>
+		<li>set variables in the Java Script scope,</li>
+		<li>call Java Script functions, and</li>
+		<li>send APDU (declaration as ByteString and using the send command function).</li>
+		</ul></li>
+	<li><b>ExpectedResult</b> will evaluate the response data stored in the variable &quot;response&quot;.
+		Status words and response data can be checked using assertions.</li>
+	</ul>
+	For further and specific information also have a look at the 
+	<a href="../reference/XMLStructureForTestCases.html">XML structure for TestCases</a>.
 	</p>
 	
 </body>
