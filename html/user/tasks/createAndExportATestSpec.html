@@ -15,23 +15,25 @@
 	<p>
 	With GlobalTester 3 you cannot only use imported <a href="../concepts/TestSpecification.html">TestSpecifications</a>,
 	but you can also write your own.
-	You can also share it with the GlobalTester Community if you like to.<br></br> 
-	First, go with the mouse courser in the &quot;GlobalTester Navigator&quot; window.
+	You can also export it to a human-readable test specification in the Open Document Format if you like to.
+	</p>
+	<p>
+	First, go with the mouse cursor in the &quot;GlobalTester Navigator&quot; window.
 	You might already have some TestSpecifications or TestCampaigns created there.
-	Right-click, and choose <b>&quot;New -> Project...&quot;</b>.<br></br>
-    In the &quot;New Project&quot; wizard, select <b>&quot;GlobalTester -> TestSpecification&quot;</b>, and click <b>&quot;Next &gt;&quot;</b>.
+	Right-click, and choose <b>&quot;New -&gt; Project...&quot;</b>.<br>
+    In the &quot;New Project&quot; wizard, select <b>&quot;GlobalTester -&gt; TestSpecification&quot;</b>, and click <b>&quot;Next &gt;&quot;</b>.
     Enter a name for your TestSpecification Project in the text field <b>&quot;Project name&quot;</b>.
-    If the name typed in the field is already existing in your GlobalTester 3 runtime workspace, you will be notified.<br></br>
+    If the name typed in the field is already existing in your GlobalTester 3 runtime workspace, you will be notified.<br>
     Then click <b>&quot;Finish&quot;</b>
 	</p>
 	
 	<h2>Add a TestCase</h2>
 	<p>
 	In the &quot;GlobalTester Navigator&quot; window, your own TestSpecification will be shown as a project folder.
-    In its sub-folder TestCases, you can now add a default TestCase that will select the master file: <br></br>
-    Go with the mouse courser in the &quot;GlobalTester Navigator&quot; window and choose the <b>&quot;TestCases&quot;</b> folder.
-    Right-click, and choose <b>&quot;New -> Other...&quot;</b>.<br></br>
-    In the &quot;New&quot; wizard, select <b>&quot;GlobalTester -> TestCase&quot;</b>, and click <b>&quot;Next &gt;&quot;</b>.
+    In its sub-folder TestCases, you can now add a default TestCase that will select the master file: <br>
+    Go with the mouse cursor in the &quot;GlobalTester Navigator&quot; window and choose the <b>&quot;TestCases&quot;</b> folder.
+    Right-click, and choose <b>&quot;New -&gt; Other...&quot;</b>.<br>
+    In the &quot;New&quot; wizard, select <b>&quot;GlobalTester -&gt; TestCase&quot;</b>, and click <b>&quot;Next &gt;&quot;</b>.
     Enter a name for your TestCase in the text field <b>&quot;File name&quot;</b>.
     Then click <b>&quot;Finish&quot;</b><br>
 	</p>
@@ -40,21 +42,33 @@
 	<p>
     You can use this default TestCase as a basis for your own TestCase.
     It already comprises the XML structure it is supposed to have in order to be executable.
-    You can find an example of how to send an APDU command and evaluate its response in it, i.e. status word and response data.<br></br>
+    You can find an example of how to send an APDU command and evaluate its response in it, i.e. status word and response data.<br>
     For further and specific information, have a look at the User Guide <a href="../tasks/WriteATestCase.html">&quot;Write TestCases&quot;</a>,
 	and also the <a href="../reference/XMLStructureForTestCases.html">XML structure for TestCases</a>.
 	</p>
 	
 	<h2>Add TestCase Data</h2>
 	<p>
-	If you need any own card-verifiable certificates, you can specify them in the &quot;Test Data -> Certificates&quot; folder
-	using the <a href="../reference/XMLStructureForCertificates.html">XML structure for Certificates</a>.<br></br>
+	If you need any own card-verifiable certificates, you can specify them in the &quot;Test Data -&gt; Certificates&quot; folder
+	using the <a href="../reference/XMLStructureForCertificates.html">XML structure for Certificates</a>.<br>
 	You can create and your own <a href="../concepts/Subroutines.html">Subroutines</a> and use them in you TestCase(s) as well.
 	</p> 
 	
 	<h2>Export your TestSpecification</h2>
 	<p>
-	TODO
+	With the new  XML structure GlobalTester 3 uses, you can export TestSpecifications in a human-readable form to a file in the Open Document Format.
+	For exporting your own TestSpecification, go with the mouse cursor in the &quot;GlobalTester Navigator&quot; window.
+	Right-click, and choose <b>&quot;Export&quot;</b>.
+    In the tree view, select <b>&quot;GlobalTester &gt; Export TestSpecification to OpenDocumentFormat&quot;</b>. Click the <b>&quot;Next&quot;</b> button.<br>
+    In the TestSpecification Export Wizard, select
+    </p>
+    <ul>
+    <li>the TestSpecification you want to export (presumably the one you just created),</li>
+    <li>the export layout (i.e. the defined type setting that will be used; per default, this is the &quot;GT TestSpecification Export Layout HJP&quot;), and</li>
+    <li>the export destination.</li>
+    </ul>
+    <p>
+    Then click <b>&quot;Finish&quot;</b>.
 	</p>
 </body>
 </html>

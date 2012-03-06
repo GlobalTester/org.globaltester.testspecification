@@ -9,31 +9,38 @@
 	<h1>XML structure for TestCases</h1>
 
 	<p>	
-	A TestCase is structured in these XML tags:
+	A <a href="../concepts/TestCase.html">TestCase</a> is structured in these XML tags:
 	</p>
 	<ul>
 	<li><b>id</b>: ID of the test case.
 	<li><b>Title</b>: The Title of the TestCase. It should correspond to the title of the test case in its according test specification.</li>
-	<li><b>Version</b>: The version number the test case has according to its test specification.</li>
+	<li><b>Version</b>: The version number the test case has according to its TestSpecification.</li>
 	<li><b>Purpose</b>: A short description of the purpose of the test case.</li>
-	<li><b>Profile</b>: A test specification often defines profiles. Each test case has some of them assigned to. They will be listed in this tag.</li>
-	<li><b>Reference</b> (optional): Reference can be listed in this tag, for example the technical guideline the test specification is based on.</li>
+	<li><b>Profile</b>: A TestSpecification often defines profiles. Each test case has some of them assigned to. They will be listed in this tag.</li>
+	<li><b>Reference</b> (optional): References can be listed in this tag, for example the technical guideline the test specification is based on.</li>
 	<li><b>PreCondition</b> (optional)</li>
-	<li><b>TestSteps</b> (several possible)</li>
+	<li><b>TestStep</b> (several possible)</li>
 	<li><b>PostConditions</b> (optional)</li>
 	<li><b>MetaData</b>: This tag contains meta information in form of key-value pairs, for example if a test case is destructive.</li>
-	<li><b>Comment</b>: If a test case was deleted in a newer version of the test specification, this will be explained in this tag.</li>
+	<li><b>Comment</b>: If a test case was deleted in a later version of the test specification, this will be explained in this tag.</li>
 	</ul>
 	<p>
 	PreCondition, TestSteps and PostConditions are organized in the following tags:
 	</p>
 	<ul>
-	<li><b>Command</b>: A tag that gives the test step a title, i.e. &quot;Reset Card&quot;, encapsulated in a &lt;text&gt; tag.</li>
-	<li><b>APDUCommand</b>: A tag that gives the test step a title, i.e. &quot;Reset Card&quot;, encapsulated in a &lt;text&gt; tag;
-		 and specifies an APDU that will be sent.
-		Please note that its syntax is <i>&lt;Command xsi:type="APDUCommand"&gt;&lt;APDU&gt;&lt;/APDU&gt;&lt;/Command&gt; </i></li>
-	<li><b>Description</b>: A short description of the purpose of the test step.</li>
-	<li><b>TechnicalCommand</b>: In this tag variables can be set and function called within the Java Script scope, or APDUs declared as ByteString and sent.</li>
+	<li><b>Command</b>: A tag that gives the test step a title, i.e. &quot;Reset Card&quot;, encapsulated in a &lt;text&gt; tag.<br>
+		An <b>APDUCommand</b> is a special command that additionally specifies an APDU that will be sent in an &lt;apdu&gt; tag
+	</li>
+	<li><b>Description</b> (optional): A short description of the purpose of the test step.</li>
+	<li><b>TechnicalCommand</b> (optional): In this tag the concrete implementation of the textual description takes place. There can be 
+		<ul>
+		<li>Variables set within the Java Script scope,</li>
+		<li>functions called within the Java Script scope, or</li>
+		<li>APDUs declared as ByteString and sent.</li>
+		</ul>
+		Please note: Variables that may be used in the APDUCommand are set in the TechnicalCommand.
+		Thus, the TechnicalCommand will be evaluated first in the Java Script scope, and then the APDUCommand will be executed.
+	<li><b>TestDataReference</b> (optional): In this tag reference to some predefined test data, such as certificates, can be made.</li>
 	<li><b>ExpectedResult</b>: In this tag the result APDU can be verified, i.e. its status words and response data (if any) can be checked.
 			It is structured in two possible tags as well:
 			<ul>

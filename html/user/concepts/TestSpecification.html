@@ -10,8 +10,16 @@
 	
 	<p>
 	A TestSpecification is a static collection of TestCases.
-	Those are stored as XML files. The XML structure is a further development of the new German BSI XML structure.
-	They can be run directly, or can be used to generate a human-readable test specification. 
+	Those are stored as XML files. The XML structure is based the new German BSI XML structure.<br>
+	TestCases can be used to create a TestCampaign and be executed there. This is a pretty common approach.<br>
+	But they also can be used to generate a human-readable test specification in the Open Document Format.
+	So with the new XML structure, it is not at first a human-readable test specification that is then implemented in test cases,
+	it is at first an executable XML file out of which the human-readable test specification can be generated if required.
+	</p>
+	<p>
+	A TestSpecification often defines profiles.
+	Each test case has some of them assigned to in the &quot;Profile&quot;-tag.
+	For an execution of a TestCampaign, you can then choose profiles, and only the TestCases covering those profiles will be executed. 
 	</p>
 	<p>
 	All data needed for the TestCases (like <a href="Certificates.html">certificates</a>

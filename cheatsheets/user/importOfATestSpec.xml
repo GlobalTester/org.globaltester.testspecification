@@ -10,7 +10,7 @@
          title="Open menu" dialog = "true">
          <command serialization="org.eclipse.ui.file.import"/>
       <description>
-         First, go with the mouse courser in the &quot;GlobalTester Navigator&quot; window. Right-click, and choose <b>&quot;Import&quot;.</b>
+         First, go with the mouse cursor in the &quot;GlobalTester Navigator&quot; window. Right-click, and choose <b>&quot;Import&quot;.</b>
       </description>
    </item>
    <item
