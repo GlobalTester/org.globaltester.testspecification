@@ -212,7 +212,8 @@ public class TestCase extends FileTestExecutable {
 	"	</Precondition>\n" +
 	"	<TestStep>\n"+
 	"		<Command xsi:type=\"APDUCommand\">\n"+
-	"			<APDU>00 A4 3F 00 00</Text>\n"+
+	"			<Text>Select the MF application</Text>\n"+
+	"			<APDU>00 A4 3F 00 00</APDU>\n"+
 	"		</Command>\n"+
 	"		<Description>\n"+
 	"			Select the MF\n"+
