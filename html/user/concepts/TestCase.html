@@ -18,10 +18,12 @@
 	So if for example one ActionStep sets a variable, a following ActionStep still has access to that variable.
 	predefined variables can also be used.
 	</p>
+	<A NAME="PreCondition"></a>
 	<p>
 	A PreCondition may be a state of the card or simulator that can be achieved by performing some operations before the
 	TestSteps are performed.
 	</p>
+	<A NAME="TestStep"></a>
 	<p>
 	In TestSteps, the actual purpose of the TestCase will be implemented.<br>
 	A TestStep may cover one major step of a TestCase, for example &quot;Perform BAC&quot;, &quot;Read Data Group XY&quot;,
@@ -30,6 +32,7 @@
 	and the according response APDU shall be checked.
 	Examples are &quot;MSE: Set AT&quot;, &quot;General Authenticate&quot;, &quot;PSO: Verify Certificate&quot;, etc.
 	</p>
+	<A NAME="PostCondition"></a>
 	<p>
 	A PostCondition may be a state of the card or simulator that should be achieved after the TestSteps are performed.
 	To ensure this condition, several commands can be sent and their responses be checked.
