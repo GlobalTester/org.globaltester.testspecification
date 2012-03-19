@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<?NLS TYPE="org.eclipse.help.toc"?>
-
-<toc label="GlobalTester User Guide">
-   <topic label="Import of a TestSpecification" link_to="../org.globaltester.core.doc/toc/user/toc.xml#gettingstarted">
-      <anchor id="userguide_importTestSpec"/>
-   </topic>
-</toc>
