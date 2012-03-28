@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<office:document-meta xmlns:office="urn:oasis:names:tc:opendocument:xmlns:office:1.0"
+	xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:meta="urn:oasis:names:tc:opendocument:xmlns:meta:1.0" xmlns:ooo="http://openoffice.org/2004/office"
+	xmlns:grddl="http://www.w3.org/2003/g/data-view#" office:version="1.2">
+	<office:meta>
+		<meta:generator>LibreOffice/3.4$Win32
+			LibreOffice_project/340m1$Build-12</meta:generator>
+		<dc:description>Bitte tragen Sie in allen Feldern auf dieser
+			Registerkarte aussagekräftige Informationen ein.</dc:description>
+		<meta:creation-date>2010-07-13T15:17:30</meta:creation-date>
+		<meta:editing-cycles>140</meta:editing-cycles>
+		<meta:editing-duration>P2DT1H58M37S</meta:editing-duration>
+		<meta:initial-creator>Holger Funke</meta:initial-creator>
+		<dc:date>2011-07-13T20:51:28.48</dc:date>
+		<dc:creator>Holger Funke</dc:creator>
+		<dc:title>BSI Technical Guideline (TR)</dc:title>
+		<meta:document-statistic meta:table-count="338"
+			meta:image-count="1" meta:object-count="0" meta:page-count="544"
+			meta:paragraph-count="4374" meta:word-count="141294"
+			meta:character-count="823703" meta:non-whitespace-character-count="706017" />
+		<meta:user-defined meta:name="Info 1" />
+		<meta:user-defined meta:name="Info 2" />
+		<meta:user-defined meta:name="Info 3" />
+		<meta:user-defined meta:name="Info 4" />
+	</office:meta>
+</office:document-meta>

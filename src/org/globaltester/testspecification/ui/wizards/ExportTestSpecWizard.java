@@ -1,5 +1,10 @@
 package org.globaltester.testspecification.ui.wizards;
 
+import java.io.File;
+import java.io.IOException;
+
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.ui.IExportWizard;
@@ -24,8 +29,16 @@ public class ExportTestSpecWizard extends Wizard implements IExportWizard {
 		String projectName = _pageOne.getProjectName();
 		String targetFile = _pageOne.getDestination();
 
-		//FIXME add the code to export the selected TestSpec here
+		IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(projectName);
 		
+		File source = new File(project.getLocationURI().getPath().toString() + File.separator + "testSpecification.xml");
+		File target = new File(targetFile);
+		try {
+			OOExporter.export(target, source);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		return true;
 	}
