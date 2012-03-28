@@ -25,7 +25,7 @@
                class="org.eclipse.core.runtime.content.XMLRootElementContentDescriber2">
             <parameter
                   name="element"
-                  value="TestSpecification">
+                  value="TestCase">
             </parameter>
          </describer>
       </content-type>
