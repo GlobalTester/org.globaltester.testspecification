@@ -18,11 +18,6 @@ public class importOfATestSpecification_screenshotsTest {
 	private SWTWorkbenchBot bot = new SWTWorkbenchBot();
 	
 	@Test
-	public void testTest()throws Exception{
-		assertNotNull(1);
-	}
-	
-	@Test
 	public void testImportOfATestSpecification_screenshots(){
 		
 		bot.waitUntil(Conditions.shellIsActive(gtMainWindowTitle));
