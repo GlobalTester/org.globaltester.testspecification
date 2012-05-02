@@ -51,16 +51,10 @@ public class importOfATestSpecification_screenshotsTest {
 		
 //		globalTesterItem.getNode("Import TestSpecification from Plugin").select();
 
-
-		
-		
-
-		
 		bot.captureScreenshot("screenshots"+File.separator+"importTestSpec02.png");
-
+		
+		bot.button("Cancel").click();
 		assertNotNull(1);
-		
-		
 	}
 	
 }
