@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE toolbar:toolbar PUBLIC "-//OpenOffice.org//DTD OfficeDocument 1.0//EN" "toolbar.dtd">
-<toolbar:toolbar xmlns:toolbar="http://openoffice.org/2001/toolbar" xmlns:xlink="http://www.w3.org/1999/xlink" toolbar:uiname="Sprachwechsel">
- <toolbar:toolbaritem xlink:href="vnd.sun.star.script:Standard.Sprachwesel.Sprachwechsel_eng?language=Basic&amp;location=document" toolbar:text="Sprachwechsel_eng" toolbar:helpid="vnd.sun.star.script:Standard.Sprachwesel.Sprachwechsel_eng?language=Basic&amp;location=document"/>
- <toolbar:toolbaritem xlink:href="vnd.sun.star.script:Standard.Sprachwesel.Sprachwechsel_fra?language=Basic&amp;location=document" toolbar:text="Sprachwechsel_fra" toolbar:helpid="vnd.sun.star.script:Standard.Sprachwesel.Sprachwechsel_fra?language=Basic&amp;location=document"/>
- <toolbar:toolbarseparator/>
- <toolbar:toolbaritem xlink:href="vnd.sun.star.script:Standard.Module1.Absatz_Zusammenhalten?language=Basic&amp;location=application" toolbar:text="Absatz_Zusammenhalten" toolbar:helpid="vnd.sun.star.script:Standard.Module1.Absatz_Zusammenhalten?language=Basic&amp;location=application"/>
-</toolbar:toolbar>

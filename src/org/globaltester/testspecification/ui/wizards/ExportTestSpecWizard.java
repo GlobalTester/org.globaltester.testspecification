@@ -2,13 +2,20 @@ package org.globaltester.testspecification.ui.wizards;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 
+import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.ui.IExportWizard;
 import org.eclipse.ui.IWorkbench;
+import org.globaltester.core.Activator;
+import org.globaltester.document.export.Exporter;
+import org.globaltester.logging.logger.GtErrorLogger;
 import org.globaltester.testspecification.ui.Messages;
 
 public class ExportTestSpecWizard extends Wizard implements IExportWizard {
@@ -28,17 +35,27 @@ public class ExportTestSpecWizard extends Wizard implements IExportWizard {
 	public boolean performFinish() {
 		String projectName = _pageOne.getProjectName();
 		String targetFile = _pageOne.getDestination();
-
-		IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(projectName);
 		
-		File source = new File(project.getLocationURI().getPath().toString() + File.separator + "testSpecification.xml");
-		File target = new File(targetFile);
+		IProject project = ResourcesPlugin.getWorkspace().getRoot()
+				.getProject(projectName);
 		try {
-			OOExporter.export(target, source);
+			// get stylesheet and Open Office sources
+			InputStream stylesheetStream = _pageOne.getStylesheet();
+			InputStream sourceZipStream = _pageOne.getSourcesZip();
+			IFile testSpecIFile = project.getFile("testSpecification.xml");
+			String pathToProject = project.getProject().getLocationURI().getPath();
+			File testSpecification = new File(pathToProject + File.separator + testSpecIFile.getProjectRelativePath().toString());
+			try {
+				Exporter.export(new File(targetFile), testSpecification, stylesheetStream, sourceZipStream);
+			} catch (CoreException e) {
+				ErrorDialog.openError(getShell(), null, null, e.getStatus());
+			}
+			stylesheetStream.close();
+			sourceZipStream.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			GtErrorLogger.log(Activator.PLUGIN_ID, e);
 		}
+		
 		
 		return true;
 	}
