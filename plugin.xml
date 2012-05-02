@@ -2,12 +2,15 @@
 <?eclipse version="3.4"?>
 <plugin>
    <extension
-         point="org.globaltester.testspecification.exportables">
-   		<layout
-   			name="GT TestSpecification Export Layout HJP"
-   			description="Export the test specification in HJP layout">   			
-   		</layout>
-   		
+         id="org.globaltester.testspecification.export.hjp"
+         name="HJP Globaltester export data"
+         point="org.globaltester.core.document.export.exportData">
+      <exportData
+            description="Export a test specification as a GlobalTester Open Office Document"
+            name="Globaltester"
+            sourceZip="oosources.zip"
+            stylesheet="testspec_OO.xsl">
+      </exportData>
    </extension>
 
 </plugin>

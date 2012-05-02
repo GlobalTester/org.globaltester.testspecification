@@ -7,6 +7,7 @@ Bundle-Activator: org.globaltester.testspecification.export.hjp.Activator
 Bundle-Vendor: HJP Consulting GmbH
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
- org.globaltester.testspecification
+ org.globaltester.testspecification,
+ org.globaltester.core
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
