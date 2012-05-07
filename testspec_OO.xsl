@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 
 <xsl:stylesheet
+			xmlns:gt="http://globaltester.org/testspecification"
 			xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 			xmlns:office="urn:oasis:names:tc:opendocument:xmlns:office:1.0"
 			xmlns:style="urn:oasis:names:tc:opendocument:xmlns:style:1.0"
@@ -29,7 +30,7 @@
 	<xsl:output method="xml" indent="yes" />
 
 
-	<xsl:template match="TestSpecification">
+	<xsl:template match="gt:TestSpecification">
 	
 		<!-- Start of ODT file structure -->
 		<office:document-content
@@ -457,143 +458,13 @@
 					<text:p text:style-name="P9">Adresse 2</text:p>
 					
 					<text:p text:style-name="P14" />
-					<text:table-of-content text:style-name="Sect1"
-						text:protected="true" text:name="Inhaltsverzeichnis1">
-						<text:table-of-content-source
-							text:outline-level="4" text:relative-tab-stop-position="false">
-							<text:index-title-template
-								text:style-name="Contents_20_Heading">Table of Contents</text:index-title-template>
-							<text:table-of-content-entry-template
-								text:outline-level="1" text:style-name="Contents_20_1">
-								<text:index-entry-link-start
-									text:style-name="Internet_20_link" />
-								<text:index-entry-chapter />
-								<text:index-entry-tab-stop style:type="left"
-									style:position="0cm" style:leader-char=" " />
-								<text:index-entry-text />
-								<text:index-entry-tab-stop style:type="right"
-									style:leader-char="." />
-								<text:index-entry-link-end />
-								<text:index-entry-page-number />
-							</text:table-of-content-entry-template>
-							<text:table-of-content-entry-template
-								text:outline-level="2" text:style-name="Contents_20_2">
-								<text:index-entry-chapter />
-								<text:index-entry-tab-stop style:type="left"
-									style:position="0cm" style:leader-char=" " />
-								<text:index-entry-text />
-								<text:index-entry-tab-stop style:type="right"
-									style:leader-char="." />
-								<text:index-entry-page-number />
-							</text:table-of-content-entry-template>
-							<text:table-of-content-entry-template
-								text:outline-level="3" text:style-name="Contents_20_3">
-								<text:index-entry-chapter />
-								<text:index-entry-tab-stop style:type="left"
-									style:position="0cm" style:leader-char=" " />
-								<text:index-entry-text />
-								<text:index-entry-tab-stop style:type="right"
-									style:leader-char="." />
-								<text:index-entry-page-number />
-							</text:table-of-content-entry-template>
-							<text:table-of-content-entry-template
-								text:outline-level="4" text:style-name="Contents_20_4">
-								<text:index-entry-chapter />
-								<text:index-entry-tab-stop style:type="left"
-									style:position="0cm" style:leader-char=" " />
-								<text:index-entry-text />
-								<text:index-entry-tab-stop style:type="right"
-									style:leader-char="." />
-								<text:index-entry-page-number />
-							</text:table-of-content-entry-template>
-							<text:table-of-content-entry-template
-								text:outline-level="5" text:style-name="Contents_20_5">
-								<text:index-entry-chapter />
-								<text:index-entry-text />
-								<text:index-entry-tab-stop style:type="right"
-									style:leader-char="." />
-								<text:index-entry-page-number />
-							</text:table-of-content-entry-template>
-							<text:table-of-content-entry-template
-								text:outline-level="6" text:style-name="Contents_20_6">
-								<text:index-entry-chapter />
-								<text:index-entry-text />
-								<text:index-entry-tab-stop style:type="right"
-									style:leader-char="." />
-								<text:index-entry-page-number />
-							</text:table-of-content-entry-template>
-							<text:table-of-content-entry-template
-								text:outline-level="7" text:style-name="Contents_20_7">
-								<text:index-entry-chapter />
-								<text:index-entry-text />
-								<text:index-entry-tab-stop style:type="right"
-									style:leader-char="." />
-								<text:index-entry-page-number />
-							</text:table-of-content-entry-template>
-							<text:table-of-content-entry-template
-								text:outline-level="8" text:style-name="Contents_20_8">
-								<text:index-entry-chapter />
-								<text:index-entry-text />
-								<text:index-entry-tab-stop style:type="right"
-									style:leader-char="." />
-								<text:index-entry-page-number />
-							</text:table-of-content-entry-template>
-							<text:table-of-content-entry-template
-								text:outline-level="9" text:style-name="Contents_20_9">
-								<text:index-entry-chapter />
-								<text:index-entry-text />
-								<text:index-entry-tab-stop style:type="right"
-									style:leader-char="." />
-								<text:index-entry-page-number />
-							</text:table-of-content-entry-template>
-							<text:table-of-content-entry-template
-								text:outline-level="10" text:style-name="Contents_20_10">
-								<text:index-entry-chapter />
-								<text:index-entry-text />
-								<text:index-entry-tab-stop style:type="right"
-									style:leader-char="." />
-								<text:index-entry-page-number />
-							</text:table-of-content-entry-template>
-						</text:table-of-content-source>
-						<text:index-body>
-							<text:index-title text:style-name="Sect2"
-								text:name="Inhaltsverzeichnis1_Head">
-								<text:p text:style-name="P16">Table of Contents</text:p>
-							</text:index-title>
-							<text:p text:style-name="P12">
-								<text:a xlink:type="simple" xlink:href="#__RefHeading__5546_763239732"
-									text:style-name="Internet_20_link" text:visited-style-name="Internet_20_link">
-									1
-									<text:tab />
-									Introduction
-									<text:tab />
-									5
-								</text:a>
-							</text:p>
-							<text:p text:style-name="P12">
-								<text:a xlink:type="simple" xlink:href="#__RefHeading__5558_763239732"
-									text:style-name="Internet_20_link" text:visited-style-name="Internet_20_link">
-									<text:tab />
-									Annex
-									<text:tab />
-									6
-								</text:a>
-							</text:p>
-							<text:p text:style-name="P13">
-								<text:tab />
-								References
-								<text:tab />
-								6
-							</text:p>
-						</text:index-body>
-					</text:table-of-content>
 					<text:p text:style-name="Standard" />
 					<text:p text:style-name="Standard" />
 
 
 
 					<!-- Handling of introduction -->
-					<xsl:for-each select="Text">
+					<xsl:for-each select="gt:Text">
 						<xsl:for-each select="*">
 							<xsl:if test="name(.)='Paragraph'">
 								<text:p text:style-name="Standard">
@@ -607,564 +478,23 @@
 								<xsl:call-template name="Table"/>
 							</xsl:if>
 							<xsl:if test="name(.)='List'">
-								<xsl:for-each select="./Item">
+								<xsl:for-each select="./gt:Item">
 									<text:p text:style-name="Standard">
 										-
 										<xsl:value-of select="." />
 									</text:p>
 								</xsl:for-each>
 							</xsl:if>
-				<!--		<xsl:if test="name(.)='Image'">
-				 				<text:p text:style-name="Standard">
-									<draw:frame draw:style-name="fr1" draw:name="Rahmen1"
-										text:anchor-type="paragraph" svg:y="0cm" svg:width="17cm"
-										draw:z-index="1">
-										<draw:text-box fo:min-height="4.165cm">
-											<text:p text:style-name="Illustration">
-												<draw:frame draw:style-name="fr3" draw:name="Grafik1"
-													text:anchor-type="paragraph" svg:x="0.004cm" svg:y="0.002cm"
-													svg:width="17cm" style:rel-width="100%" svg:height="15.727cm"
-													style:rel-height="scale" draw:z-index="2">
-													<draw:image xlink:href="Pictures/10000000000006D7000006540FAEB6F4.jpg"
-														xlink:type="simple" xlink:show="embed" xlink:actuate="onLoad" />
-												</draw:frame>
-												Figure
-												<text:sequence text:ref-name="refIllustration0"
-													text:name="Illustration" text:formula="ooow:Illustration+1"
-													style:num-format="1">1</text:sequence>
-												: 
-												<xsl:value-of select="./@caption" />
-											</text:p>
-										</draw:text-box>
-									</draw:frame>
-								</text:p>
-							</xsl:if>
-				-->		
 						</xsl:for-each>
 					</xsl:for-each>
-
-					<!--  
-					<text:p text:style-name="Standard"> <draw:frame draw:style-name="fr3" 
-						draw:name="Grafik1" text:anchor-type="paragraph" svg:y="0cm" svg:width="17cm" 
-						svg:height="15.727cm" draw:z-index="2"> <draw:image xlink:href="Pictures/10000000000006D7000006540FAEB6F4.jpg" 
-						xlink:type="simple" xlink:show="embed" xlink:actuate="onLoad"/> </draw:frame> 
-						<text:soft-page-break/></text:p> 
-					 -->
-						
-						
-
-					<!-- Handling of profiles -->
-					<xsl:variable name="filenameProfiles" select="TestProfiles" />
-					<xsl:for-each select="document($filenameProfiles)">
-						<!-- Introducing text paragraphs of profiles -->
-						<xsl:for-each select="Profiles/Text">
-							<xsl:for-each select="*">
-								<xsl:if test="name(.)='Paragraph'">
-									<text:p text:style-name="Standard">
-										<xsl:value-of select="." />
-									</text:p>
-								</xsl:if>
-								<xsl:if test="name(.)='Heading'">
-									<xsl:call-template name="Headline"/>
-								</xsl:if>
-							</xsl:for-each>
-						</xsl:for-each>
-
-						<!-- Profiles -->
-						<text:h text:style-name="Heading_20_3" text:outline-level="3">Application
-							Profiles</text:h>
-						<table:table>
-							<table:table-column />
-							<table:table-column />
-							<table:table-column />
-							<table:table-row>
-								<table:table-cell>
-									<text:p>Profile ID</text:p>
-								</table:table-cell>
-								<table:table-cell>
-									<text:p>Profile Name</text:p>
-								</table:table-cell>
-								<table:table-cell>
-									<text:p>Description</text:p>
-								</table:table-cell>
-							</table:table-row>
-
-							<xsl:for-each select="Profiles/Profile[@type='Application Profile']">
-								<table:table-row>
-									<table:table-cell>
-										<text:p>
-											<xsl:apply-templates select="./@id" />
-										</text:p>
-									</table:table-cell>
-									<table:table-cell>
-										<text:p>
-											<xsl:apply-templates select="./Name" />
-										</text:p>
-									</table:table-cell>
-									<table:table-cell>
-										<text:p>
-											<xsl:apply-templates select="./Description" />
-										</text:p>
-									</table:table-cell>
-								</table:table-row>
-							</xsl:for-each>
-						</table:table>
-
-						<text:h text:style-name="Heading_20_3" text:outline-level="3">Protocol
-							Profiles</text:h>
-						<table:table>
-							<table:table-column />
-							<table:table-column />
-							<table:table-column />
-							<table:table-row>
-								<table:table-cell>
-									<text:p>Profile ID</text:p>
-								</table:table-cell>
-								<table:table-cell>
-									<text:p>Profile Name</text:p>
-								</table:table-cell>
-								<table:table-cell>
-									<text:p>Description</text:p>
-								</table:table-cell>
-							</table:table-row>
-
-							<xsl:for-each select="Profiles/Profile[@type='Protocol Profile']">
-								<table:table-row>
-									<table:table-cell>
-										<text:p>
-											<xsl:apply-templates select="./@id" />
-										</text:p>
-									</table:table-cell>
-									<table:table-cell>
-										<text:p>
-											<xsl:apply-templates select="./Name" />
-										</text:p>
-									</table:table-cell>
-									<table:table-cell>
-										<text:p>
-											<xsl:apply-templates select="./Description" />
-										</text:p>
-									</table:table-cell>
-								</table:table-row>
-							</xsl:for-each>
-						</table:table>
-
-						<text:h text:style-name="Heading_20_3" text:outline-level="3">Algorithm
-							Profiles</text:h>
-						<table:table>
-							<table:table-column />
-							<table:table-column />
-							<table:table-column />
-							<table:table-row>
-								<table:table-cell>
-									<text:p>Profile ID</text:p>
-								</table:table-cell>
-								<table:table-cell>
-									<text:p>Profile Name</text:p>
-								</table:table-cell>
-								<table:table-cell>
-									<text:p>Description</text:p>
-								</table:table-cell>
-							</table:table-row>
-
-							<xsl:for-each select="Profiles/Profile[@type='Algorithm Profile']">
-								<table:table-row>
-									<table:table-cell>
-										<text:p>
-											<xsl:apply-templates select="./@id" />
-										</text:p>
-									</table:table-cell>
-									<table:table-cell>
-										<text:p>
-											<xsl:apply-templates select="./Name" />
-										</text:p>
-									</table:table-cell>
-									<table:table-cell>
-										<text:p>
-											<xsl:apply-templates select="./Description" />
-										</text:p>
-									</table:table-cell>
-								</table:table-row>
-							</xsl:for-each>
-						</table:table>
-
-						<text:h text:style-name="Heading_20_3" text:outline-level="3">Data
-							Group Profiles</text:h>
-						<table:table>
-							<table:table-column />
-							<table:table-column />
-							<table:table-column />
-							<table:table-row>
-								<table:table-cell>
-									<text:p>Profile ID</text:p>
-								</table:table-cell>
-								<table:table-cell>
-									<text:p>Profile Name</text:p>
-								</table:table-cell>
-								<table:table-cell>
-									<text:p>Description</text:p>
-								</table:table-cell>
-							</table:table-row>
-
-							<xsl:for-each select="Profiles/Profile[@type='Data Group Profile']">
-								<table:table-row>
-									<table:table-cell>
-										<text:p>
-											<xsl:apply-templates select="./@id" />
-										</text:p>
-									</table:table-cell>
-									<table:table-cell>
-										<text:p>
-											<xsl:apply-templates select="./Name" />
-										</text:p>
-									</table:table-cell>
-									<table:table-cell>
-										<text:p>
-											<xsl:apply-templates select="./Description" />
-										</text:p>
-									</table:table-cell>
-								</table:table-row>
-							</xsl:for-each>
-						</table:table>
-
-					</xsl:for-each>
-
-
-					<!-- Handling of certificates -->
-					<xsl:variable name="filenameCertificates" select="CertificateDefinition" />
-					<xsl:for-each select="document($filenameCertificates)">
-						<!-- Introducing text paragraphs of certificates -->
-						<xsl:for-each select="Certificates/Text">
-							<xsl:for-each select="*">
-								<xsl:if test="name(.)='Paragraph'">
-									<text:p text:style-name="Standard">
-										<xsl:value-of select="." />
-									</text:p>
-								</xsl:if>
-								<xsl:if test="name(.)='Heading'">
-									<xsl:call-template name="Headline"/>
-								</xsl:if>
-								<xsl:if test="name(.)='Table'">
-									<xsl:call-template name="Table"/>
-								</xsl:if>
-
-							</xsl:for-each>
-						</xsl:for-each>
-
-						<!-- Certificates -->
-						<xsl:for-each select="Certificates/Certificate">
-							<xsl:variable name="filenameCertificate" select="." />
-							<xsl:for-each select="document($filenameCertificate)">
-								<text:h text:style-name="Heading_20_3"
-									text:outline-level="3">
-									Certificate <xsl:apply-templates select="Certificate/@id" />
-								</text:h>
-
-								<table:table table:name="TabelleCertificate"
-									table:style-name="Tabelle1">
-									<table:table-column table:style-name="Tabelle1.A" />
-									<table:table-column table:style-name="Tabelle1.B" />
-									<table:table-row>
-										<table:table-cell table:style-name="Tabelle1.A1"
-											office:value-type="string">
-											<text:p text:style-name="P8">ID</text:p>
-										</table:table-cell>
-										<table:table-cell table:style-name="Tabelle1.B1"
-											office:value-type="string">
-											<text:p text:style-name="Table_20_Contents">
-												<text:bookmark-start text:name="{Certificate/@id}"/><xsl:apply-templates select="Certificate/@id" /><text:bookmark-end text:name="{Certificate/@id}"/>
-											</text:p>
-										</table:table-cell>
-									</table:table-row>
-									<table:table-row>
-										<table:table-cell table:style-name="Tabelle1.A1"
-											office:value-type="string">
-											<text:p text:style-name="P8">Purpose</text:p>
-										</table:table-cell>
-										<table:table-cell table:style-name="Tabelle1.B1"
-											office:value-type="string">
-											<text:p text:style-name="Table_20_Contents">
-												<xsl:apply-templates select="Certificate/Purpose" />
-											</text:p>
-										</table:table-cell>
-									</table:table-row>
-									<table:table-row>
-										<table:table-cell table:style-name="Tabelle1.A1"
-											office:value-type="string">
-											<text:p text:style-name="P8">Version</text:p>
-										</table:table-cell>
-										<table:table-cell table:style-name="Tabelle1.B1"
-											office:value-type="string">
-											<text:p text:style-name="Table_20_Contents">
-												<xsl:apply-templates select="Certificate/Version" />
-											</text:p>
-										</table:table-cell>
-									</table:table-row>
-									<table:table-row>
-										<table:table-cell table:style-name="Tabelle1.A1"
-											office:value-type="string">
-											<text:p text:style-name="P8">Content / Parameter</text:p>
-										</table:table-cell>
-										<table:table-cell table:style-name="Tabelle1.B1"
-											office:value-type="string">
-											<xsl:for-each select="Certificate/CertificateContent/*">
-												<xsl:if
-													test="name(.)='CertificateAuthorityReference' and string-length(.)>=1">
-													<text:p text:style-name="Table_20_Contents">
-														CAR:
-														<xsl:value-of select="." />
-													</text:p>
-												</xsl:if>
-												<xsl:if
-													test="name(.)='SignerCertificate' and string-length(.)>=1">
-													<text:p text:style-name="Table_20_Contents">
-														Signer:
-														<xsl:value-of select="." />
-													</text:p>
-												</xsl:if>
-												<xsl:if test="name(.)='SigningKey' and string-length(.)>=1">
-													<text:p text:style-name="Table_20_Contents">
-														Signing Key:
-														<xsl:value-of select="." />
-													</text:p>
-												</xsl:if>
-												<xsl:if
-													test="name(.)='CertificateHolderReference' and string-length(.)>=1">
-													<text:p text:style-name="Table_20_Contents">
-														CHR:
-														<xsl:value-of select="." />
-													</text:p>
-												</xsl:if>
-												<xsl:if
-													test="name(.)='CertificateHolderAuthorization' and string-length(.)>=1">
-													<text:p text:style-name="Table_20_Contents">
-														CHA:
-														<xsl:value-of select="." />
-													</text:p>
-												</xsl:if>
-												<xsl:if
-													test="name(.)='CertificateEffectiveDate' and string-length(.)>=1">
-													<text:p text:style-name="Table_20_Contents">
-														Eff. Date:
-														<xsl:value-of select="." />
-													</text:p>
-												</xsl:if>
-												<xsl:if
-													test="name(.)='CertificateExpirationDate' and string-length(.)>=1">
-													<text:p text:style-name="Table_20_Contents">
-														Exp. Date:
-														<xsl:value-of select="." />
-													</text:p>
-												</xsl:if>
-												<xsl:if test="name(.)='PublicKey' and string-length(.)>=1">
-													<text:p text:style-name="Table_20_Contents">
-														Public Key:
-														<xsl:value-of select="." />
-													</text:p>
-												</xsl:if>
-											</xsl:for-each>
-										</table:table-cell>
-									</table:table-row>
-
-									<!-- Check for modifications -->
-									<xsl:for-each select="Certificate/CertificateModification">
-										<table:table-row>
-											<table:table-cell table:style-name="Tabelle1.A1"
-												office:value-type="string">
-												<text:p text:style-name="P8">Modification</text:p>
-											</table:table-cell>
-											<table:table-cell table:style-name="Tabelle1.B1"
-												office:value-type="string">
-												<text:p text:style-name="Table_20_Contents">
-													<xsl:value-of select="./Description" />
-												</text:p>
-											</table:table-cell>
-										</table:table-row>
-									</xsl:for-each>
-
-								</table:table>
-
-							</xsl:for-each>
-						</xsl:for-each>
-					</xsl:for-each>
-
-
-					<!-- Handling of routines -->
-					<xsl:variable name="filenameRoutines" select="Routines" />
-
-					<xsl:for-each select="document($filenameRoutines)">
-						<!-- Introducing text paragraphs of routines -->
-						<xsl:for-each select="Routines/Text">
-							<xsl:for-each select="*">
-								<xsl:if test="name(.)='Paragraph'">
-									<text:p text:style-name="Standard">
-										<xsl:value-of select="." />
-									</text:p>
-								</xsl:if>
-								<xsl:if test="name(.)='Heading'">
-									<xsl:call-template name="Headline"/>
-								</xsl:if>
-							</xsl:for-each>
-						</xsl:for-each>
-
-						<!-- Routines -->
-						<xsl:for-each select="Routines/Routine">
-							<xsl:variable name="filenameRoutine" select="." />
-							<xsl:for-each select="document($filenameRoutine)">
-								<text:h text:style-name="Heading_20_2"
-									text:outline-level="2">
-									Routine
-									<xsl:apply-templates select="Routine/Title" />
-								</text:h>
-								<table:table table:name="TabelleRoutines"
-									table:style-name="Tabelle1">
-									<table:table-column table:style-name="Tabelle1.A" />
-									<table:table-column table:style-name="Tabelle1.B" />
-									<table:table-row>
-										<table:table-cell table:style-name="Tabelle1.A1"
-											office:value-type="string">
-											<text:p text:style-name="P8">Routine ID</text:p>
-										</table:table-cell>
-										<table:table-cell table:style-name="Tabelle1.B1"
-											office:value-type="string">
-											<text:p text:style-name="Table_20_Contents">
-												<xsl:apply-templates select="Routine/@id" />
-											</text:p>
-										</table:table-cell>
-									</table:table-row>
-									<table:table-row>
-										<table:table-cell table:style-name="Tabelle1.A1"
-											office:value-type="string">
-											<text:p text:style-name="P8">Purpose</text:p>
-										</table:table-cell>
-										<table:table-cell table:style-name="Tabelle1.B1"
-											office:value-type="string">
-											<text:p text:style-name="Table_20_Contents">
-												<xsl:apply-templates select="Routine/Purpose" />
-											</text:p>
-										</table:table-cell>
-									</table:table-row>
-									<table:table-row>
-										<table:table-cell table:style-name="Tabelle1.A1"
-											office:value-type="string">
-											<text:p text:style-name="P8">Reference</text:p>
-										</table:table-cell>
-										<table:table-cell table:style-name="Tabelle1.B1"
-											office:value-type="string">
-											<text:p text:style-name="Table_20_Contents">
-												<xsl:for-each select="Routine/Reference">
-													<xsl:apply-templates select="." />
-													<xsl:if test="position() != last()">
-														<xsl:text>, </xsl:text>
-													</xsl:if>
-												</xsl:for-each>
-											</text:p>
-										</table:table-cell>
-									</table:table-row>
-									<table:table-row>
-										<table:table-cell table:style-name="Tabelle1.A1"
-											office:value-type="string">
-											<text:p text:style-name="P8">Parameter</text:p>
-										</table:table-cell>
-										<table:table-cell table:style-name="Tabelle1.B1"
-											office:value-type="string">
-											<xsl:for-each select="Routine/Parameter">
-												<text:p text:style-name="Table_20_Contents">
-													<xsl:apply-templates select="./@key"/>:	<xsl:apply-templates select="." />
-												</text:p>
-											</xsl:for-each>
-										</table:table-cell>
-									</table:table-row>
-
-									<table:table-row>
-										<table:table-cell table:style-name="Tabelle1.A2"
-											office:value-type="string">
-											<text:p text:style-name="P8">Routine steps</text:p>
-										</table:table-cell>
-										<table:table-cell table:style-name="Tabelle1.B2"
-											office:value-type="string">
-											<text:list text:style-name="L675">
-												<xsl:for-each select="Routine/RoutineStep">
-													<text:list-item>
-														<!-- Handling of all Action Step -->
-
-														<!-- ActionStep Command -->
-														<xsl:if test="boolean(Command)">
-															<text:p text:style-name="P18">
-																<xsl:apply-templates select="Command/Text" />
-															</text:p>
-															<xsl:if test="boolean(Command/APDU)">
-																<text:p text:style-name="P689">
-																	<xsl:apply-templates select="Command/APDU" />
-																</text:p>
-																<xsl:if test="Command/APDU/@sm='true'">
-																	<text:p text:style-name="P18"> within SM.</text:p>
-																</xsl:if>
-															</xsl:if>
-															<xsl:for-each select="Description">
-																<text:p text:style-name="P18">
-																	<xsl:apply-templates select="." />
-																</text:p>
-															</xsl:for-each>
-														</xsl:if>
-														<!-- ActionStep RoutineCall -->
-														<xsl:if test="boolean(RoutineCall)">
-															ROUTINE: perform
-															<xsl:apply-templates select="RoutineCall/@target" />
-															(
-															<xsl:for-each select="RoutineCall/Parameter">
-																<xsl:apply-templates select="." />
-																<xsl:if test="position() != last()">
-																	<xsl:text>, </xsl:text>
-																</xsl:if>
-															</xsl:for-each>
-															)
-														</xsl:if>
-
-														<!-- Expected Result -->
-														<xsl:for-each select="ExpectedResult">
-															<xsl:if test="string-length(Text)>=1">
-																<text:p text:style-name="P18">
-																	Expected Result:
-																	<xsl:apply-templates select="Text" />
-																</text:p>
-															</xsl:if>
-															<xsl:if test="APDU">
-																<text:p text:style-name="P18">
-																	Expected R-APDU: '<xsl:apply-templates select="APDU"/>'
-																	<xsl:if test="APDU/@sm='true'">
-																		within a valid SM response.
-																	</xsl:if>
-																</text:p>
-															</xsl:if>
-														</xsl:for-each>
-													</text:list-item>
-												</xsl:for-each>
-											</text:list>
-										</table:table-cell>
-									</table:table-row>
-								</table:table>
-							</xsl:for-each>
-						</xsl:for-each>
-					</xsl:for-each>
-
-
 
 
 					<!-- Handling of test layers -->
-					<xsl:for-each select="TestLayer">
+					<xsl:for-each select="gt:TestLayer">
 						<xsl:variable name="filenameLayer" select="." />
 						<xsl:for-each select="document($filenameLayer)">
-
-
-							<!-- Basic table: <table:table> <table:table-column/> <table:table-column/> 
-								<table:table-column/> <table:table-row> <table:table-cell><text:p>Zelle1</text:p></table:table-cell> 
-								<table:table-cell><text:p>Zelle2</text:p></table:table-cell> <table:table-cell><text:p>Zelle3</text:p></table:table-cell> 
-								</table:table-row> </table:table> -->
-
-
 							<!-- Introducing text paragraphs of layer -->
-							<xsl:for-each select="TestLayer/Text">
+							<xsl:for-each select="gt:TestLayer/gt:Text">
 								<xsl:for-each select="*">
 									<xsl:if test="name(.)='Paragraph'">
 										<text:p text:style-name="Standard">
@@ -1207,18 +537,18 @@
 
 							</xsl:for-each>
 
-							<xsl:variable name="filenameUnit" select="TestLayer/TestUnit" />
+							<xsl:variable name="filenameUnit" select="gt:TestLayer/gt:TestUnit" />
 							<xsl:for-each select="document($filenameUnit)">
 
 								<text:h text:style-name="Heading_20_2"
 									text:outline-level="2">
 									<text:bookmark text:name="__RefHeading__5546_763239732" />
-									<xsl:apply-templates select="TestUnit/@id" />
+									<xsl:apply-templates select="gt:TestUnit/@id" />
 									<text:bookmark-end text:name="__RefHeading__5546_763239732" />
 								</text:h>
 
 								<!-- Introducing text paragraphs of unit -->
-								<xsl:for-each select="TestUnit/Text">
+								<xsl:for-each select="gt:TestUnit/gt:Text">
 									<xsl:for-each select="*">
 										<xsl:if test="name(.)='Paragraph'">
 											<text:p text:style-name="Standard">
@@ -1257,23 +587,23 @@
 									</xsl:for-each>
 								</xsl:for-each>
 
-								<xsl:variable name="filenameTC" select="TestUnit/TestCase" />
+								<xsl:variable name="filenameTC" select="gt:TestUnit/gt:TestCase" />
 								<xsl:for-each select="document($filenameTC)">
 									<!-- Test Case -->
 									<!-- ID: <xsl:apply-templates select="TestCase/@id"/> -->
 									<text:h text:style-name="Heading_20_3"
 										text:outline-level="3">
-										<xsl:apply-templates select="TestCase/Title" />
+										<xsl:apply-templates select="gt:TestCase/gt:Title" />
 									</text:h>
 
 									<!-- Skip test case if comment = "deleted" -->
-									<xsl:if test="TestCase/Comment">
+									<xsl:if test="gt:TestCase/gt:Comment">
 										<text:p text:style-name="Standard">
 											Test case is deleted:
-											<xsl:apply-templates select="TestCase/Comment" />
+											<xsl:apply-templates select="gt:TestCase/gt:Comment" />
 										</text:p>
 									</xsl:if>
-									<xsl:if test="not(TestCase/Comment)">
+									<xsl:if test="not(gt:TestCase/gt:Comment)">
 
 										<table:table table:name="Tabelle1"
 											table:style-name="Tabelle1">
@@ -1287,7 +617,7 @@
 												<table:table-cell table:style-name="Tabelle1.B1"
 													office:value-type="string">
 													<text:p text:style-name="Table_20_Contents">
-														<xsl:apply-templates select="TestCase/@id" />
+														<xsl:apply-templates select="gt:TestCase/@id" />
 													</text:p>
 												</table:table-cell>
 											</table:table-row>
@@ -1299,7 +629,7 @@
 												<table:table-cell table:style-name="Tabelle1.B2"
 													office:value-type="string">
 													<text:p text:style-name="Table_20_Contents">
-														<xsl:apply-templates select="TestCase/Purpose" />
+														<xsl:apply-templates select="gt:TestCase/gt:Purpose" />
 													</text:p>
 												</table:table-cell>
 											</table:table-row>
@@ -1311,41 +641,7 @@
 												<table:table-cell table:style-name="Tabelle1.B2"
 													office:value-type="string">
 													<text:p text:style-name="Table_20_Contents">
-														<xsl:apply-templates select="TestCase/Version" />
-													</text:p>
-												</table:table-cell>
-											</table:table-row>
-											<table:table-row>
-												<table:table-cell table:style-name="Tabelle1.A2"
-													office:value-type="string">
-													<text:p text:style-name="P8">Profile</text:p>
-												</table:table-cell>
-												<table:table-cell table:style-name="Tabelle1.B2"
-													office:value-type="string">
-													<text:p text:style-name="Table_20_Contents">
-														<xsl:for-each select="TestCase/Profile">
-															<xsl:apply-templates select="." />
-															<xsl:if test="position() != last()">
-																<xsl:text>, </xsl:text>
-															</xsl:if>
-														</xsl:for-each>
-													</text:p>
-												</table:table-cell>
-											</table:table-row>
-											<table:table-row>
-												<table:table-cell table:style-name="Tabelle1.A2"
-													office:value-type="string">
-													<text:p text:style-name="P8">Reference</text:p>
-												</table:table-cell>
-												<table:table-cell table:style-name="Tabelle1.B2"
-													office:value-type="string">
-													<text:p text:style-name="Table_20_Contents">
-														<xsl:for-each select="TestCase/Reference">
-															<text:bookmark-ref text:reference-format="text" text:ref-name="{.}"><xsl:apply-templates select="." /></text:bookmark-ref>
-															<xsl:if test="position() != last()">
-																<xsl:text>, </xsl:text>
-															</xsl:if>
-														</xsl:for-each>
+														<xsl:apply-templates select="gt:TestCase/gt:Version" />
 													</text:p>
 												</table:table-cell>
 											</table:table-row>
@@ -1357,27 +653,61 @@
 												<table:table-cell table:style-name="Tabelle1.B2"
 													office:value-type="string">
 													<text:list text:style-name="L675">
-														<xsl:for-each select="TestCase/Precondition">
+														<xsl:for-each select="gt:TestCase/gt:Precondition">
 															<text:list-item>
-																<text:p text:style-name="P18">
-																	<xsl:if test="RoutineCall">
-																		perform
-																		<xsl:apply-templates select="RoutineCall/@target" />
-																		(
-																		<xsl:for-each select="RoutineCall/Parameter">
+																<!-- Handling of all Action Step -->
+
+																<!-- ActionStep Command -->
+																<xsl:if test="boolean(gt:Command)">
+																	<text:p text:style-name="P18">
+																		<xsl:apply-templates select="gt:Command/gt:Text" />
+																	</text:p>
+																	<xsl:if test="boolean(gt:Command/gt:APDU)">
+																		<text:p text:style-name="P689">
+																			<xsl:apply-templates select="gt:Command/gt:APDU" />
+																		</text:p>
+																		<xsl:if test="gt:Command/gt:APDU/@sm='true'">
+																			<text:p text:style-name="P18"> within SM.</text:p>
+																		</xsl:if>
+																	</xsl:if>
+																	<xsl:for-each select="gt:Description">
+																		<text:p text:style-name="P18">
 																			<xsl:apply-templates select="." />
-																			<xsl:if test="position() != last()">
-																				<xsl:text>, </xsl:text>
+																		</text:p>
+																	</xsl:for-each>
+																</xsl:if>
+																<!-- ActionStep RoutineCall -->
+																<xsl:if test="boolean(gt:RoutineCall)">
+																	ROUTINE: perform
+																	<xsl:apply-templates select="gt:RoutineCall/@target" />
+																	(
+																	<xsl:for-each select="gt:RoutineCall/gt:Parameter">
+																		<xsl:apply-templates select="." />
+																		<xsl:if test="position() != last()">
+																			<xsl:text>, </xsl:text>
+																		</xsl:if>
+																	</xsl:for-each>
+																	)
+																</xsl:if>
+
+																<!-- Expected Result -->
+																<xsl:for-each select="gt:ExpectedResult">
+																	<xsl:if test="string-length(Text)>=1">
+																		<text:p text:style-name="P18">
+																			Expected Result:
+																			<xsl:apply-templates select="gt:Text" />
+																		</text:p>
+																	</xsl:if>
+																	<xsl:if test="gt:APDU">
+																		<text:p text:style-name="P18">
+																			Expected R-APDU: '<xsl:apply-templates select="gt:APDU" />' <xsl:if test="gt:APDU/@sm='true'">
+																				within a valid SM response.
 																			</xsl:if>
-																		</xsl:for-each>
-																		)
+																		</text:p>
 																	</xsl:if>
-																	<xsl:if test="Text">
-																		<xsl:apply-templates select="Text" />
-																	</xsl:if>
-																	<!-- TODO: Add all ActionSteps here! -->
-																</text:p>
+																</xsl:for-each>
 															</text:list-item>
+														
 														</xsl:for-each>
 													</text:list>
 
@@ -1391,35 +721,35 @@
 												<table:table-cell table:style-name="Tabelle1.B2"
 													office:value-type="string">
 													<text:list text:style-name="L675">
-														<xsl:for-each select="TestCase/TestStep">
+														<xsl:for-each select="gt:TestCase/gt:TestStep">
 															<text:list-item>
 																<!-- Handling of all Action Step -->
 
 																<!-- ActionStep Command -->
-																<xsl:if test="boolean(Command)">
+																<xsl:if test="boolean(gt:Command)">
 																	<text:p text:style-name="P18">
-																		<xsl:apply-templates select="Command/Text" />
+																		<xsl:apply-templates select="gt:Command/gt:Text" />
 																	</text:p>
-																	<xsl:if test="boolean(Command/APDU)">
+																	<xsl:if test="boolean(gt:Command/gt:APDU)">
 																		<text:p text:style-name="P689">
-																			<xsl:apply-templates select="Command/APDU" />
+																			<xsl:apply-templates select="gt:Command/gt:APDU" />
 																		</text:p>
-																		<xsl:if test="Command/APDU/@sm='true'">
+																		<xsl:if test="gt:Command/gt:APDU/@sm='true'">
 																			<text:p text:style-name="P18"> within SM.</text:p>
 																		</xsl:if>
 																	</xsl:if>
-																	<xsl:for-each select="Description">
+																	<xsl:for-each select="gt:Description">
 																		<text:p text:style-name="P18">
 																			<xsl:apply-templates select="." />
 																		</text:p>
 																	</xsl:for-each>
 																</xsl:if>
 																<!-- ActionStep RoutineCall -->
-																<xsl:if test="boolean(RoutineCall)">
+																<xsl:if test="boolean(gt:RoutineCall)">
 																	ROUTINE: perform
-																	<xsl:apply-templates select="RoutineCall/@target" />
+																	<xsl:apply-templates select="gt:RoutineCall/@target" />
 																	(
-																	<xsl:for-each select="RoutineCall/Parameter">
+																	<xsl:for-each select="gt:RoutineCall/gt:Parameter">
 																		<xsl:apply-templates select="." />
 																		<xsl:if test="position() != last()">
 																			<xsl:text>, </xsl:text>
@@ -1429,16 +759,16 @@
 																</xsl:if>
 
 																<!-- Expected Result -->
-																<xsl:for-each select="ExpectedResult">
+																<xsl:for-each select="gt:ExpectedResult">
 																	<xsl:if test="string-length(Text)>=1">
 																		<text:p text:style-name="P18">
 																			Expected Result:
-																			<xsl:apply-templates select="Text" />
+																			<xsl:apply-templates select="gt:Text" />
 																		</text:p>
 																	</xsl:if>
-																	<xsl:if test="APDU">
+																	<xsl:if test="gt:APDU">
 																		<text:p text:style-name="P18">
-																			Expected R-APDU: '<xsl:apply-templates select="APDU" />' <xsl:if test="APDU/@sm='true'">
+																			Expected R-APDU: '<xsl:apply-templates select="gt:APDU" />' <xsl:if test="gt:APDU/@sm='true'">
 																				within a valid SM response.
 																			</xsl:if>
 																		</text:p>
@@ -1450,6 +780,76 @@
 
 												</table:table-cell>
 											</table:table-row>
+											
+											<table:table-row>
+												<table:table-cell table:style-name="Tabelle1.A2"
+													office:value-type="string">
+													<text:p text:style-name="P8">Post-conditions</text:p>
+												</table:table-cell>
+												<table:table-cell table:style-name="Tabelle1.B2"
+													office:value-type="string">
+													<text:list text:style-name="L675">
+														<xsl:for-each select="gt:TestCase/gt:Postcondition">
+															<text:list-item>
+																<!-- Handling of all Action Step -->
+
+																<!-- ActionStep Command -->
+																<xsl:if test="boolean(gt:Command)">
+																	<text:p text:style-name="P18">
+																		<xsl:apply-templates select="gt:Command/gt:Text" />
+																	</text:p>
+																	<xsl:if test="boolean(gt:Command/gt:APDU)">
+																		<text:p text:style-name="P689">
+																			<xsl:apply-templates select="gt:Command/gt:APDU" />
+																		</text:p>
+																		<xsl:if test="gt:Command/gt:APDU/@sm='true'">
+																			<text:p text:style-name="P18"> within SM.</text:p>
+																		</xsl:if>
+																	</xsl:if>
+																	<xsl:for-each select="gt:Description">
+																		<text:p text:style-name="P18">
+																			<xsl:apply-templates select="." />
+																		</text:p>
+																	</xsl:for-each>
+																</xsl:if>
+																<!-- ActionStep RoutineCall -->
+																<xsl:if test="boolean(gt:RoutineCall)">
+																	ROUTINE: perform
+																	<xsl:apply-templates select="gt:RoutineCall/@target" />
+																	(
+																	<xsl:for-each select="gt:RoutineCall/gt:Parameter">
+																		<xsl:apply-templates select="." />
+																		<xsl:if test="position() != last()">
+																			<xsl:text>, </xsl:text>
+																		</xsl:if>
+																	</xsl:for-each>
+																	)
+																</xsl:if>
+
+																<!-- Expected Result -->
+																<xsl:for-each select="gt:ExpectedResult">
+																	<xsl:if test="string-length(Text)>=1">
+																		<text:p text:style-name="P18">
+																			Expected Result:
+																			<xsl:apply-templates select="gt:Text" />
+																		</text:p>
+																	</xsl:if>
+																	<xsl:if test="gt:APDU">
+																		<text:p text:style-name="P18">
+																			Expected R-APDU: '<xsl:apply-templates select="gt:APDU" />' <xsl:if test="gt:APDU/@sm='true'">
+																				within a valid SM response.
+																			</xsl:if>
+																		</text:p>
+																	</xsl:if>
+																</xsl:for-each>
+															</text:list-item>
+														
+														</xsl:for-each>
+													</text:list>
+
+												</table:table-cell>
+											</table:table-row>
+											
 										</table:table>
 
 
@@ -1458,35 +858,6 @@
 							</xsl:for-each>
 						</xsl:for-each>
 					</xsl:for-each>	<!-- End of test layer -->
-
-
-
-
-					<!-- Annex -->
-					<text:h text:style-name="Heading_20_1" text:outline-level="1"
-						text:is-list-header="true">
-						<text:bookmark text:name="__RefHeading__5558_763239732" />
-						Annex
-						<text:bookmark-end text:name="__RefHeading__5558_763239732" />
-					</text:h>
-
-					<!-- Handling of references -->
-					<text:p text:style-name="Standard" />
-					<text:h text:style-name="Heading_20_2" text:outline-level="2"
-						text:is-list-header="true">References</text:h>
-
-					<xsl:variable name="filenameReferences" select="References" />
-					<xsl:for-each select="document($filenameReferences)">
-						<xsl:for-each select="References/Reference">
-							<text:p text:style-name="Standard">
-								[ <text:bookmark-start text:name="{./@id}"/><xsl:apply-templates select="./@id" /><text:bookmark-end text:name="{./@id}"/> ]:
-								<xsl:text>&#9; &#9;</xsl:text>
-								<xsl:apply-templates select="Content" />
-							</text:p>
-						</xsl:for-each>
-					</xsl:for-each>
-
-
 
 
 					<!-- Revision history -->
@@ -1517,30 +888,30 @@
 							</table:table-cell>
 						</table:table-row>
 
-						<xsl:for-each select="VersionHistory/Version">
+						<xsl:for-each select="gt:VersionHistory/gt:Version">
 							<table:table-row>
 								<table:table-cell table:style-name="Tabelle25.A2"
 									office:value-type="string">
 									<text:p text:style-name="Table_20_Contents">
-										<xsl:apply-templates select="VersionID" />
+										<xsl:apply-templates select="gt:VersionID" />
 									</text:p>
 								</table:table-cell>
 								<table:table-cell table:style-name="Tabelle25.A2"
 									office:value-type="string">
 									<text:p text:style-name="Table_20_Contents">
-										<xsl:apply-templates select="Date" />
+										<xsl:apply-templates select="gt:Date" />
 									</text:p>
 								</table:table-cell>
 								<table:table-cell table:style-name="Tabelle25.A2"
 									office:value-type="string">
 									<text:p text:style-name="Table_20_Contents">
-										<xsl:apply-templates select="Description" />
+										<xsl:apply-templates select="gt:Description" />
 									</text:p>
 								</table:table-cell>
 								<table:table-cell table:style-name="Tabelle25.D2"
 									office:value-type="string">
 									<text:p text:style-name="Table_20_Contents">
-										<xsl:apply-templates select="Editor" />
+										<xsl:apply-templates select="gt:Editor" />
 									</text:p>
 								</table:table-cell>
 							</table:table-row>
@@ -1556,14 +927,9 @@
 
 	</xsl:template>
 
-	<!-- Use this template to add references to every certificate -->
-	<xsl:template match="Link">
-		<text:bookmark-ref text:reference-format="text" text:ref-name="{@target}"><xsl:apply-templates select="@target" /></text:bookmark-ref>
-	</xsl:template>
-
 	<!-- Use this template to handle all three kinds of headlines -->
 	<xsl:template name="Headline">
-		<xsl:if test=".='Introduction'">
+		<xsl:if test=".='gt:Introduction'">
 			<!-- Use this type of heading to activate naming of paragraphs in 
 				headers -->
 			<text:h text:style-name="P15" text:outline-level="1"
@@ -1573,7 +939,7 @@
 				<text:bookmark-end text:name="__RefHeading__5546_763239732" />
 			</text:h>
 		</xsl:if>
-		<xsl:if test="(./@level='1') and not (.='Introduction')">
+		<xsl:if test="(./@level='1') and not (.='gt:Introduction')">
 			<text:h text:style-name="Heading_20_1"
 				text:outline-level="1">
 				<text:bookmark text:name="__RefHeading__5546_763239732" />
