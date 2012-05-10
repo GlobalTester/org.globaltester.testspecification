@@ -91,11 +91,12 @@ public class ImportTestSpecWizardPage extends WizardPage {
 		lblDescr.setText("Description:");
 		lblDescr.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, true, false,
 				2, 1));
-		txtDescription = new Text(container, SWT.BORDER);
+		txtDescription = new Text(container, SWT.BORDER | SWT.WRAP | SWT.V_SCROLL);
 		txtDescription.setEditable(false);
 		txtDescription.setText("");
 		txtDescription.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 
 				2, 1));
+		txtDescription.setSize(250, 100);
 		
 
 		// Add the bundles to the list
@@ -123,6 +124,9 @@ public class ImportTestSpecWizardPage extends WizardPage {
 			setErrorMessage("No Plugin defining an importable GT TestSpecification is installed.");
 		}
 
+		//update dialog size
+		parent.pack();
+		getControl().getParent().setSize(getControl().computeSize(SWT.DEFAULT, SWT.DEFAULT));
 	}
 
 	@Override
