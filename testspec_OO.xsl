@@ -458,6 +458,136 @@
 					<text:p text:style-name="P9">Adresse 2</text:p>
 					
 					<text:p text:style-name="P14" />
+					<text:table-of-content text:style-name="Sect1"
+						text:protected="true" text:name="Inhaltsverzeichnis1">
+						<text:table-of-content-source
+							text:outline-level="4" text:relative-tab-stop-position="false">
+							<text:index-title-template
+								text:style-name="Contents_20_Heading">Table of Contents</text:index-title-template>
+							<text:table-of-content-entry-template
+								text:outline-level="1" text:style-name="Contents_20_1">
+								<text:index-entry-link-start
+									text:style-name="Internet_20_link" />
+								<text:index-entry-chapter />
+								<text:index-entry-tab-stop style:type="left"
+									style:position="0cm" style:leader-char=" " />
+								<text:index-entry-text />
+								<text:index-entry-tab-stop style:type="right"
+									style:leader-char="." />
+								<text:index-entry-link-end />
+								<text:index-entry-page-number />
+							</text:table-of-content-entry-template>
+							<text:table-of-content-entry-template
+								text:outline-level="2" text:style-name="Contents_20_2">
+								<text:index-entry-chapter />
+								<text:index-entry-tab-stop style:type="left"
+									style:position="0cm" style:leader-char=" " />
+								<text:index-entry-text />
+								<text:index-entry-tab-stop style:type="right"
+									style:leader-char="." />
+								<text:index-entry-page-number />
+							</text:table-of-content-entry-template>
+							<text:table-of-content-entry-template
+								text:outline-level="3" text:style-name="Contents_20_3">
+								<text:index-entry-chapter />
+								<text:index-entry-tab-stop style:type="left"
+									style:position="0cm" style:leader-char=" " />
+								<text:index-entry-text />
+								<text:index-entry-tab-stop style:type="right"
+									style:leader-char="." />
+								<text:index-entry-page-number />
+							</text:table-of-content-entry-template>
+							<text:table-of-content-entry-template
+								text:outline-level="4" text:style-name="Contents_20_4">
+								<text:index-entry-chapter />
+								<text:index-entry-tab-stop style:type="left"
+									style:position="0cm" style:leader-char=" " />
+								<text:index-entry-text />
+								<text:index-entry-tab-stop style:type="right"
+									style:leader-char="." />
+								<text:index-entry-page-number />
+							</text:table-of-content-entry-template>
+							<text:table-of-content-entry-template
+								text:outline-level="5" text:style-name="Contents_20_5">
+								<text:index-entry-chapter />
+								<text:index-entry-text />
+								<text:index-entry-tab-stop style:type="right"
+									style:leader-char="." />
+								<text:index-entry-page-number />
+							</text:table-of-content-entry-template>
+							<text:table-of-content-entry-template
+								text:outline-level="6" text:style-name="Contents_20_6">
+								<text:index-entry-chapter />
+								<text:index-entry-text />
+								<text:index-entry-tab-stop style:type="right"
+									style:leader-char="." />
+								<text:index-entry-page-number />
+							</text:table-of-content-entry-template>
+							<text:table-of-content-entry-template
+								text:outline-level="7" text:style-name="Contents_20_7">
+								<text:index-entry-chapter />
+								<text:index-entry-text />
+								<text:index-entry-tab-stop style:type="right"
+									style:leader-char="." />
+								<text:index-entry-page-number />
+							</text:table-of-content-entry-template>
+							<text:table-of-content-entry-template
+								text:outline-level="8" text:style-name="Contents_20_8">
+								<text:index-entry-chapter />
+								<text:index-entry-text />
+								<text:index-entry-tab-stop style:type="right"
+									style:leader-char="." />
+								<text:index-entry-page-number />
+							</text:table-of-content-entry-template>
+							<text:table-of-content-entry-template
+								text:outline-level="9" text:style-name="Contents_20_9">
+								<text:index-entry-chapter />
+								<text:index-entry-text />
+								<text:index-entry-tab-stop style:type="right"
+									style:leader-char="." />
+								<text:index-entry-page-number />
+							</text:table-of-content-entry-template>
+							<text:table-of-content-entry-template
+								text:outline-level="10" text:style-name="Contents_20_10">
+								<text:index-entry-chapter />
+								<text:index-entry-text />
+								<text:index-entry-tab-stop style:type="right"
+									style:leader-char="." />
+								<text:index-entry-page-number />
+							</text:table-of-content-entry-template>
+						</text:table-of-content-source>
+						<text:index-body>
+							<text:index-title text:style-name="Sect2"
+								text:name="Inhaltsverzeichnis1_Head">
+								<text:p text:style-name="P16">Table of Contents</text:p>
+							</text:index-title>
+							<text:p text:style-name="P12">
+								<text:a xlink:type="simple" xlink:href="#__RefHeading__5546_763239732"
+									text:style-name="Internet_20_link" text:visited-style-name="Internet_20_link">
+									1
+									<text:tab />
+									Introduction
+									<text:tab />
+									5
+								</text:a>
+							</text:p>
+							<text:p text:style-name="P12">
+								<text:a xlink:type="simple" xlink:href="#__RefHeading__5558_763239732"
+									text:style-name="Internet_20_link" text:visited-style-name="Internet_20_link">
+									<text:tab />
+									Annex
+									<text:tab />
+									6
+								</text:a>
+							</text:p>
+							<text:p text:style-name="P13">
+								<text:tab />
+								References
+								<text:tab />
+								6
+							</text:p>
+						</text:index-body>
+					</text:table-of-content>
 					<text:p text:style-name="Standard" />
 					<text:p text:style-name="Standard" />
 
@@ -656,56 +786,7 @@
 														<xsl:for-each select="gt:TestCase/gt:Precondition">
 															<text:list-item>
 																<!-- Handling of all Action Step -->
-
-																<!-- ActionStep Command -->
-																<xsl:if test="boolean(gt:Command)">
-																	<text:p text:style-name="P18">
-																		<xsl:apply-templates select="gt:Command/gt:Text" />
-																	</text:p>
-																	<xsl:if test="boolean(gt:Command/gt:APDU)">
-																		<text:p text:style-name="P689">
-																			<xsl:apply-templates select="gt:Command/gt:APDU" />
-																		</text:p>
-																		<xsl:if test="gt:Command/gt:APDU/@sm='true'">
-																			<text:p text:style-name="P18"> within SM.</text:p>
-																		</xsl:if>
-																	</xsl:if>
-																	<xsl:for-each select="gt:Description">
-																		<text:p text:style-name="P18">
-																			<xsl:apply-templates select="." />
-																		</text:p>
-																	</xsl:for-each>
-																</xsl:if>
-																<!-- ActionStep RoutineCall -->
-																<xsl:if test="boolean(gt:RoutineCall)">
-																	ROUTINE: perform
-																	<xsl:apply-templates select="gt:RoutineCall/@target" />
-																	(
-																	<xsl:for-each select="gt:RoutineCall/gt:Parameter">
-																		<xsl:apply-templates select="." />
-																		<xsl:if test="position() != last()">
-																			<xsl:text>, </xsl:text>
-																		</xsl:if>
-																	</xsl:for-each>
-																	)
-																</xsl:if>
-
-																<!-- Expected Result -->
-																<xsl:for-each select="gt:ExpectedResult">
-																	<xsl:if test="string-length(Text)>=1">
-																		<text:p text:style-name="P18">
-																			Expected Result:
-																			<xsl:apply-templates select="gt:Text" />
-																		</text:p>
-																	</xsl:if>
-																	<xsl:if test="gt:APDU">
-																		<text:p text:style-name="P18">
-																			Expected R-APDU: '<xsl:apply-templates select="gt:APDU" />' <xsl:if test="gt:APDU/@sm='true'">
-																				within a valid SM response.
-																			</xsl:if>
-																		</text:p>
-																	</xsl:if>
-																</xsl:for-each>
+																<xsl:call-template name="ActionStep"/>
 															</text:list-item>
 														
 														</xsl:for-each>
@@ -724,56 +805,7 @@
 														<xsl:for-each select="gt:TestCase/gt:TestStep">
 															<text:list-item>
 																<!-- Handling of all Action Step -->
-
-																<!-- ActionStep Command -->
-																<xsl:if test="boolean(gt:Command)">
-																	<text:p text:style-name="P18">
-																		<xsl:apply-templates select="gt:Command/gt:Text" />
-																	</text:p>
-																	<xsl:if test="boolean(gt:Command/gt:APDU)">
-																		<text:p text:style-name="P689">
-																			<xsl:apply-templates select="gt:Command/gt:APDU" />
-																		</text:p>
-																		<xsl:if test="gt:Command/gt:APDU/@sm='true'">
-																			<text:p text:style-name="P18"> within SM.</text:p>
-																		</xsl:if>
-																	</xsl:if>
-																	<xsl:for-each select="gt:Description">
-																		<text:p text:style-name="P18">
-																			<xsl:apply-templates select="." />
-																		</text:p>
-																	</xsl:for-each>
-																</xsl:if>
-																<!-- ActionStep RoutineCall -->
-																<xsl:if test="boolean(gt:RoutineCall)">
-																	ROUTINE: perform
-																	<xsl:apply-templates select="gt:RoutineCall/@target" />
-																	(
-																	<xsl:for-each select="gt:RoutineCall/gt:Parameter">
-																		<xsl:apply-templates select="." />
-																		<xsl:if test="position() != last()">
-																			<xsl:text>, </xsl:text>
-																		</xsl:if>
-																	</xsl:for-each>
-																	)
-																</xsl:if>
-
-																<!-- Expected Result -->
-																<xsl:for-each select="gt:ExpectedResult">
-																	<xsl:if test="string-length(Text)>=1">
-																		<text:p text:style-name="P18">
-																			Expected Result:
-																			<xsl:apply-templates select="gt:Text" />
-																		</text:p>
-																	</xsl:if>
-																	<xsl:if test="gt:APDU">
-																		<text:p text:style-name="P18">
-																			Expected R-APDU: '<xsl:apply-templates select="gt:APDU" />' <xsl:if test="gt:APDU/@sm='true'">
-																				within a valid SM response.
-																			</xsl:if>
-																		</text:p>
-																	</xsl:if>
-																</xsl:for-each>
+																<xsl:call-template name="ActionStep"/>
 															</text:list-item>
 														</xsl:for-each>
 													</text:list>
@@ -792,56 +824,7 @@
 														<xsl:for-each select="gt:TestCase/gt:Postcondition">
 															<text:list-item>
 																<!-- Handling of all Action Step -->
-
-																<!-- ActionStep Command -->
-																<xsl:if test="boolean(gt:Command)">
-																	<text:p text:style-name="P18">
-																		<xsl:apply-templates select="gt:Command/gt:Text" />
-																	</text:p>
-																	<xsl:if test="boolean(gt:Command/gt:APDU)">
-																		<text:p text:style-name="P689">
-																			<xsl:apply-templates select="gt:Command/gt:APDU" />
-																		</text:p>
-																		<xsl:if test="gt:Command/gt:APDU/@sm='true'">
-																			<text:p text:style-name="P18"> within SM.</text:p>
-																		</xsl:if>
-																	</xsl:if>
-																	<xsl:for-each select="gt:Description">
-																		<text:p text:style-name="P18">
-																			<xsl:apply-templates select="." />
-																		</text:p>
-																	</xsl:for-each>
-																</xsl:if>
-																<!-- ActionStep RoutineCall -->
-																<xsl:if test="boolean(gt:RoutineCall)">
-																	ROUTINE: perform
-																	<xsl:apply-templates select="gt:RoutineCall/@target" />
-																	(
-																	<xsl:for-each select="gt:RoutineCall/gt:Parameter">
-																		<xsl:apply-templates select="." />
-																		<xsl:if test="position() != last()">
-																			<xsl:text>, </xsl:text>
-																		</xsl:if>
-																	</xsl:for-each>
-																	)
-																</xsl:if>
-
-																<!-- Expected Result -->
-																<xsl:for-each select="gt:ExpectedResult">
-																	<xsl:if test="string-length(Text)>=1">
-																		<text:p text:style-name="P18">
-																			Expected Result:
-																			<xsl:apply-templates select="gt:Text" />
-																		</text:p>
-																	</xsl:if>
-																	<xsl:if test="gt:APDU">
-																		<text:p text:style-name="P18">
-																			Expected R-APDU: '<xsl:apply-templates select="gt:APDU" />' <xsl:if test="gt:APDU/@sm='true'">
-																				within a valid SM response.
-																			</xsl:if>
-																		</text:p>
-																	</xsl:if>
-																</xsl:for-each>
+																<xsl:call-template name="ActionStep"/>
 															</text:list-item>
 														
 														</xsl:for-each>
@@ -1010,6 +993,64 @@
 				</table:table-row>
 			</xsl:for-each>
 		</table:table>
+	</xsl:template>
+
+	<!-- Use this template to handle ActionSteps -->
+
+	<xsl:template name="ActionStep">
+
+		<!-- ActionStep Command -->
+		<xsl:if test="boolean(gt:Command)">
+			<text:p text:style-name="P18">
+				<xsl:apply-templates select="gt:Command/gt:Text" />
+			</text:p>
+			<xsl:if test="boolean(gt:Command/gt:APDU)">
+				<text:p text:style-name="P689">
+					<xsl:apply-templates select="gt:Command/gt:APDU" />
+				</text:p>
+				<xsl:if test="gt:Command/gt:APDU/@sm='true'">
+					<text:p text:style-name="P18"> within SM.</text:p>
+				</xsl:if>
+			</xsl:if>
+			<xsl:for-each select="gt:Description">
+				<text:p text:style-name="P18">
+					<xsl:apply-templates select="." />
+				</text:p>
+			</xsl:for-each>
+		</xsl:if>
+		<!-- ActionStep RoutineCall -->
+		<xsl:if test="boolean(gt:RoutineCall)">
+			ROUTINE: perform
+			<xsl:apply-templates select="gt:RoutineCall/@target" />
+			(
+			<xsl:for-each select="gt:RoutineCall/gt:Parameter">
+				<xsl:apply-templates select="." />
+				<xsl:if test="position() != last()">
+					<xsl:text>, </xsl:text>
+				</xsl:if>
+			</xsl:for-each>
+			)
+		</xsl:if>
+
+		<!-- Expected Result -->
+		<xsl:for-each select="gt:ExpectedResult">
+			<xsl:if test="string-length(Text)>=1">
+				<text:p text:style-name="P18">
+					Expected Result:
+					<xsl:apply-templates select="gt:Text" />
+				</text:p>
+			</xsl:if>
+			<xsl:if test="gt:APDU">
+				<text:p text:style-name="P18">
+					Expected R-APDU: '
+					<xsl:apply-templates select="gt:APDU" />
+					'
+					<xsl:if test="gt:APDU/@sm='true'">
+						within a valid SM response.
+					</xsl:if>
+				</text:p>
+			</xsl:if>
+		</xsl:for-each>
 	</xsl:template>
 	
 
