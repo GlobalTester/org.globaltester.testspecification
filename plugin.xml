@@ -40,6 +40,9 @@
             icon="icons/testspec.png"
             id="org.globaltester.testspecification.ui.wizards.importTestSpecWizard"
             name="Import TestSpecification from Plugin">
+            <description>
+            Create new TestSpecification project as defined in an existing plug-in.
+         </description>
       </wizard>
    </extension>
    
