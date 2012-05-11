@@ -18,6 +18,7 @@ import org.globaltester.logging.logger.GtErrorLogger;
 import org.globaltester.testspecification.GtTestSpecProject;
 import org.globaltester.testspecification.ui.Activator;
 import org.globaltester.testspecification.ui.Messages;
+import org.globaltester.testspecification.ui.UiImages;
 
 public class ImportTestSpecWizard extends Wizard implements IImportWizard {
 
@@ -30,6 +31,9 @@ public class ImportTestSpecWizard extends Wizard implements IImportWizard {
 	@Override
 	public void init(IWorkbench workbench, IStructuredSelection selection) {
 		// no initialization needed
+
+		setDefaultPageImageDescriptor(UiImages.TESTSPEC_BANNER
+				.getImageDescriptor());
 	}
 
 	@Override
