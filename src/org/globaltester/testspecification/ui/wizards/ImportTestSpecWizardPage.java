@@ -15,6 +15,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.List;
 import org.eclipse.swt.widgets.Text;
+import org.globaltester.testspecification.ui.Messages;
 
 public class ImportTestSpecWizardPage extends WizardPage {
 
@@ -27,8 +28,8 @@ public class ImportTestSpecWizardPage extends WizardPage {
 	private IConfigurationElement[] configElements;
 
 	protected ImportTestSpecWizardPage() {
-		super("");
-		setTitle("");
+		super(Messages.ImportTestSpecWizard_PAGE_NAME);
+		setTitle(Messages.ImportTestSpecWizard_PAGE_TITLE);
 		setMessage("");
 	}
 
