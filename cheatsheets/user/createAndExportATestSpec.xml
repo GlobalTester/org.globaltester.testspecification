@@ -34,7 +34,7 @@
          <command serialization="org.eclipse.ui.file.export"/>
       <description>
         Go with the mouse cursor in the &quot;GlobalTester Navigator&quot; window. Right-click, and choose <b>&quot;Export&quot;</b>.
-        In the tree view, select <b>&quot;GlobalTester &gt; Export TestSpecification to OpenDocumentFormat&quot;</b>. Click the <b>&quot;Next&quot;</b> button.<br>
+        In the tree view, select <b>&quot;GlobalTester &gt; Export TestSpecification to OpenDocument Format&quot;</b>. Click the <b>&quot;Next&quot;</b> button.<br>
         In the TestSpecification Export Wizard, select the TestSpecification you want to export, its layout, and the destination.
         Then click <b>&quot;Finish&quot;</b>.
       </description>
