@@ -6,7 +6,7 @@
          name="HJP GlobalTester export data"
          point="org.globaltester.core.document.export.exportData">
       <exportData
-            description="Export a test specification as a GlobalTester Open Office Document"
+            description="Export test specification as a GlobalTester OpenDocument Format"
             name="GlobalTester"
             sourceZip="oosources.zip"
             stylesheet="testspec_OO.xsl">
