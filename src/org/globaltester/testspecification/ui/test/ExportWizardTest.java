@@ -29,7 +29,7 @@ public class ExportWizardTest {
 		assertNotNull(exportWizardShell);
 		bot.waitUntil(Conditions.shellIsActive(wizardTitle), 5000, 500);
 		exportWizardShell.bot().tree().getTreeItem("GlobalTester").expand()
-				.select("Export TestSpecification to OpenDocumentFormat");
+				.select("Export TestSpecification to OpenDocument Format");
 		bot.button("Next >").click();
 		bot.sleep(500);
 
