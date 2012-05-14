@@ -132,7 +132,7 @@ public class ExportTestSpecWizardPage extends WizardPage {
 			}
 		});	
 		Label lblSourcesZip = new Label(customExport, SWT.NONE);
-		lblSourcesZip.setText("Open Office Template:");
+		lblSourcesZip.setText("OpenDocument Template:");
 		lblSourcesZip.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, true, false, 2,1));
 		
 		txtSourcesZip = new Text(customExport, SWT.BORDER | SWT.FILL);
@@ -149,7 +149,7 @@ public class ExportTestSpecWizardPage extends WizardPage {
 		btnBrowseSourcesZip.addSelectionListener(new SelectionListener() {
 
 			public void widgetSelected(SelectionEvent event) {
-				txtSourcesZip.setText(showFileDialog(new String[] { "Open Office template zip file",
+				txtSourcesZip.setText(showFileDialog(new String[] { "OpenDocument template zip file",
 				"All Files (*.*)" },new String[] { "*.zip", "*" }, SWT.OPEN));
 			}
 
@@ -300,7 +300,7 @@ public class ExportTestSpecWizardPage extends WizardPage {
 				return false;
 			}
 			if (!(new File(txtSourcesZip.getText())).canRead()){
-				setErrorMessage("Please select a Open Office template zip");
+				setErrorMessage("Please select a OpenDocument template zip");
 				return false;
 			}
 		}
@@ -360,7 +360,7 @@ public class ExportTestSpecWizardPage extends WizardPage {
 	}
 	
 	/**
-	 * Return the Open Office template zip from the exporter plugin or the custom file
+	 * Return the OpenDocument template zip from the exporter plugin or the custom file
 	 * @return the selected stylesheet
 	 * @throws IOException
 	 */	
