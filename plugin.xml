@@ -53,7 +53,7 @@
             class="org.globaltester.testspecification.ui.wizards.ExportTestSpecWizard"
             icon="icons/testspec.png"
             id="org.globaltester.testspecification.ui.wizards.importTestSpecWizard"
-            name="Export TestSpecification to OpenDocumentFormat">
+            name="Export TestSpecification to OpenDocument Format">
       </wizard>
    </extension>
    
