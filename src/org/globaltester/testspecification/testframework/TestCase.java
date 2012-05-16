@@ -116,9 +116,11 @@ public class TestCase extends FileTestExecutable {
 			if (!rootElem.getName().equals("TestCase")) {
 				return false;
 			}
+			
+			return true;
 		}
 		
-		return true;
+		return false;
 	}
 
 	public List<PreCondition> getPreConditions() {
