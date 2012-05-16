@@ -14,6 +14,7 @@ public enum UiImages {
 	 * http://blogs.itemis.de/wendehal/2010/07/08/pretty-elegant-way-to-provide-images-in-eclipse-ui-plug-ins/
 	 */
  
+	TESTCASE_BANNER("icons/testcase_banner.png"),
 	TESTSPEC_BANNER("icons/testspec_banner.png");
  
         // add more image enumerations here...

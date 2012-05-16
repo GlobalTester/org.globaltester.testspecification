@@ -10,6 +10,9 @@
             id="org.globaltester.testspecification.ui.wizards.newTestSpecWizard"
             name="TestSpecification"
             project="true">
+            <description>
+            Create a new empty TestSpecification project.
+         </description>
       </wizard>
       <wizard
             category="org.globaltester.core.ui.newWizards.category"
@@ -18,6 +21,9 @@
             id="org.globaltester.testspecification.ui.wizards.newTestCaseWizard"
             name="TestCase"
             project="false">
+            <description>
+            Create a new TestCase project.
+         </description>
       </wizard>
    </extension>
    
@@ -54,6 +60,9 @@
             icon="icons/testspec.png"
             id="org.globaltester.testspecification.ui.wizards.importTestSpecWizard"
             name="Export TestSpecification to OpenDocument Format">
+            <description>
+            Export a TestSpecification project to an OpenDocument Format document.
+         </description>
       </wizard>
    </extension>
    

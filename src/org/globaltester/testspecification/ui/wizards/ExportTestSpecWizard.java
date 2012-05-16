@@ -17,6 +17,7 @@ import org.globaltester.core.Activator;
 import org.globaltester.document.export.Exporter;
 import org.globaltester.logging.logger.GtErrorLogger;
 import org.globaltester.testspecification.ui.Messages;
+import org.globaltester.testspecification.ui.UiImages;
 
 public class ExportTestSpecWizard extends Wizard implements IExportWizard {
 
@@ -28,7 +29,8 @@ public class ExportTestSpecWizard extends Wizard implements IExportWizard {
 
 	@Override
 	public void init(IWorkbench workbench, IStructuredSelection selection) {
-		// no initialization needed
+		setDefaultPageImageDescriptor(UiImages.TESTSPEC_BANNER
+				.getImageDescriptor());
 	}
 
 	@Override

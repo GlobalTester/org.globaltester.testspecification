@@ -14,6 +14,7 @@ import org.globaltester.logging.logger.GtErrorLogger;
 import org.globaltester.testspecification.testframework.TestCase;
 import org.globaltester.testspecification.ui.Activator;
 import org.globaltester.testspecification.ui.Messages;
+import org.globaltester.testspecification.ui.UiImages;
 
 public class NewTestCaseWizard extends Wizard implements INewWizard {
 
@@ -27,6 +28,8 @@ public class NewTestCaseWizard extends Wizard implements INewWizard {
 	@Override
 	public void init(IWorkbench workbench, IStructuredSelection selection) {
         this.selection = selection;
+		setDefaultPageImageDescriptor(UiImages.TESTCASE_BANNER
+				.getImageDescriptor());
 	}
 
 	@Override

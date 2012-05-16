@@ -9,6 +9,7 @@ import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.dialogs.WizardNewProjectCreationPage;
 import org.globaltester.testspecification.GtTestSpecProject;
 import org.globaltester.testspecification.ui.Messages;
+import org.globaltester.testspecification.ui.UiImages;
 
 public class NewTestSpecWizard extends Wizard implements INewWizard {
 	
@@ -20,7 +21,8 @@ public class NewTestSpecWizard extends Wizard implements INewWizard {
 
 	@Override
 	public void init(IWorkbench workbench, IStructuredSelection selection) {
-		// no initialization needed
+		setDefaultPageImageDescriptor(UiImages.TESTSPEC_BANNER
+				.getImageDescriptor());
 	}
 
 	@Override

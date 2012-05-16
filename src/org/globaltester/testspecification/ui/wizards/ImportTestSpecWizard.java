@@ -30,8 +30,6 @@ public class ImportTestSpecWizard extends Wizard implements IImportWizard {
 
 	@Override
 	public void init(IWorkbench workbench, IStructuredSelection selection) {
-		// no initialization needed
-
 		setDefaultPageImageDescriptor(UiImages.TESTSPEC_BANNER
 				.getImageDescriptor());
 	}
