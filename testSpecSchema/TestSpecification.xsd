@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2007 rel. 3 sp1 (http://www.altova.com) by POS (secunet Security Networks AG) -->
+<xs:schema xmlns="http://globaltester.org/testspecification" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://globaltester.org/testspecification" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="TestSpecificationSchema.xsd"/>
+	<xs:element name="TestSpecification" type="TestSpecification">
+		<xs:annotation>
+			<xs:documentation>The root element of GlobalTester Testspecification</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="TestSpecification">
+		<xs:annotation>
+			<xs:documentation>This type extends the Document type and contains all specific elements of TR03105 Part 3.3.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="Document">
+				<xs:sequence>
+					<!--  <xs:element name="References" type="TestHierarchyReference">
+						<xs:annotation>
+							<xs:documentation>The References element defines any kind of external specification that is used as base for this test specification. All references are collected within a separate XML file.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="TestProfiles" type="TestHierarchyReference">
+						<xs:annotation>
+							<xs:documentation>This element refers to the test profiles. All profiles are collected within a separate XML file.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="CertificateDefinition" type="TestHierarchyReference">
+						<xs:annotation>
+							<xs:documentation>This element refers to the certificate definitions. All certificates are collected within a separate XML file.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="Routines" type="TestHierarchyReference">
+						<xs:annotation>
+							<xs:documentation>This element refers to the test routines, i.e. a sequence of actions executed multiple times within different test cases. All routines are collected within a separate XML file.</xs:documentation>
+						</xs:annotation>
+					</xs:element> -->
+					<xs:element name="TestLayer" type="TestHierarchyReference" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>This element refers to the test layers. There can be multiple test layers within a single specification. Each test layer is described by a separate XML file.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+</xs:schema>
