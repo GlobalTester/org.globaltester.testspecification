@@ -11,11 +11,8 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.IConfigurationElement;
-import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
-import org.eclipse.core.runtime.Status;
-import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.TreeSelection;
 import org.eclipse.jface.wizard.WizardPage;
@@ -362,11 +359,10 @@ public class ExportTestSpecWizardPage extends WizardPage {
 		File newDestination = new File(txtDestination.getText());
 		if (!newDestination.equals(destinationFile)) {
 			if (newDestination.exists()) {
-				Status warning = new Status(IStatus.WARNING,
-						Activator.PLUGIN_ID, "The file "
-								+ newDestination.getAbsolutePath()
-								+ " already exists.");
-				ErrorDialog.openError(getShell(), "Warning", null, warning);
+				setMessage("The destination file already exists.",
+						WizardPage.WARNING);
+			} else {
+				setMessage(null);
 			}
 		}
 		destinationFile = newDestination;
