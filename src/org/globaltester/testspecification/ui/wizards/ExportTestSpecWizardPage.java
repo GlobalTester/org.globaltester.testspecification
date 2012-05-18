@@ -47,7 +47,8 @@ public class ExportTestSpecWizardPage extends WizardPage {
 	private Text txtStylesheet;
 	private Composite customExport;
 	private File destinationFile;
-
+	private boolean isDefaultDestination;
+	
 	protected ExportTestSpecWizardPage() {
 		super("");
 		setTitle("TestSpecification Export Wizard");
@@ -196,6 +197,7 @@ public class ExportTestSpecWizardPage extends WizardPage {
 		txtDestination.addModifyListener(new ModifyListener() {
 			@Override
 			public void modifyText(ModifyEvent e) {
+				isDefaultDestination = false;
 				validateAndUpdate();
 			}
 		});
@@ -315,6 +317,7 @@ public class ExportTestSpecWizardPage extends WizardPage {
 				+ System.getProperty("file.separator") + getProjectName()
 				+ ".odt");
 		destinationFile = new File(txtDestination.getText());
+		isDefaultDestination = true;
 	}
 	
 	@Override
@@ -355,6 +358,11 @@ public class ExportTestSpecWizardPage extends WizardPage {
 	}
 
 	private void validateAndUpdate() {
+		// update destination
+		if (isDefaultDestination) {
+			setDefaultDestination();
+		}
+		
 		// check if destination exists and warn user
 		File newDestination = new File(txtDestination.getText());
 		if (!newDestination.equals(destinationFile)) {
