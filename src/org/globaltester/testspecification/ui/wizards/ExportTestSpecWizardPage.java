@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.FileLocator;
@@ -15,6 +16,8 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.dialogs.ErrorDialog;
+import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.jface.viewers.TreeSelection;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
@@ -29,8 +32,11 @@ import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.List;
 import org.eclipse.swt.widgets.Text;
+import org.eclipse.ui.IWorkbenchPage;
+import org.eclipse.ui.PlatformUI;
 import org.globaltester.core.Activator;
 import org.globaltester.document.export.Exporter;
+import org.globaltester.logging.logger.GtErrorLogger;
 import org.globaltester.testspecification.GtTestSpecNature;
 
 public class ExportTestSpecWizardPage extends WizardPage {
@@ -231,6 +237,7 @@ public class ExportTestSpecWizardPage extends WizardPage {
 		if (lstTestSpecSelection.getItemCount() > 0) {
 			// select the first element
 			lstTestSpecSelection.select(0);
+			preSelectTestSpec();
 			setDefaultDestination();
 			validateAndUpdate();
 		} else {
@@ -261,6 +268,30 @@ public class ExportTestSpecWizardPage extends WizardPage {
 			// message
 			setErrorMessage("No TestSpecification Export Layout is installed.");
 		}
+	}
+
+	private void preSelectTestSpec() {
+		IWorkbenchPage page = PlatformUI.getWorkbench()
+				.getActiveWorkbenchWindow().getActivePage();
+		ISelection selection = page.getSelection();
+		if (selection != null && selection instanceof TreeSelection) {
+			TreeSelection navigatorSelection = (TreeSelection) selection;
+			Object firstSelected = navigatorSelection.getFirstElement();
+			if (firstSelected instanceof IResource) {
+				IProject project = ((IResource) firstSelected).getProject();
+				try {
+					if (project.hasNature(GtTestSpecNature.NATURE_ID)){
+						int index = lstTestSpecSelection.indexOf(project.getName());
+						if (index >= 0){
+							lstTestSpecSelection.select(index);
+						}
+					}
+				} catch (CoreException e) {
+					GtErrorLogger.log(Activator.PLUGIN_ID, e);
+				}
+			}
+		}
+
 	}
 
 	private String showFileDialog(String[] filterNames, String[] filterExtensions, int swtStyle) {
