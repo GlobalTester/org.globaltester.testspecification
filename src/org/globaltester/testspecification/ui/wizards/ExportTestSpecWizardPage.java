@@ -10,8 +10,11 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.IConfigurationElement;
+import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
+import org.eclipse.core.runtime.Status;
+import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
@@ -26,6 +29,7 @@ import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.List;
 import org.eclipse.swt.widgets.Text;
+import org.globaltester.core.Activator;
 import org.globaltester.document.export.Exporter;
 import org.globaltester.testspecification.GtTestSpecNature;
 
@@ -34,13 +38,13 @@ public class ExportTestSpecWizardPage extends WizardPage {
 	private List lstExportLayoutSelection;
 	private Text txtDestination;
 	private Text txtLayoutDescription;
-	
+
 	private IConfigurationElement[] configElements;
 	private Text txtSourcesZip;
 	private Text txtStylesheet;
 	private Composite customExport;
-	private boolean isDefaultDestination;
-	
+	private File destinationFile;
+
 	protected ExportTestSpecWizardPage() {
 		super("");
 		setTitle("TestSpecification Export Wizard");
@@ -79,12 +83,12 @@ public class ExportTestSpecWizardPage extends WizardPage {
 		// Create the TestSpec export layout selection list
 		Label lblExportLayout = new Label(container, SWT.NONE);
 		lblExportLayout.setText("Select TestSpecification export layout:");
-		lblExportLayout.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, true, false,
-				2, 1));
+		lblExportLayout.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, true,
+				false, 2, 1));
 		lstExportLayoutSelection = new List(container, SWT.BORDER | SWT.SINGLE
 				| SWT.V_SCROLL);
-		lstExportLayoutSelection.setLayoutData(new GridData(SWT.FILL, SWT.CENTER,
-				false, false, 2, 1));
+		lstExportLayoutSelection.setLayoutData(new GridData(SWT.FILL,
+				SWT.CENTER, false, false, 2, 1));
 		lstExportLayoutSelection.addSelectionListener(new SelectionListener() {
 
 			@Override
@@ -101,17 +105,20 @@ public class ExportTestSpecWizardPage extends WizardPage {
 		// Create the Custom export
 		customExport = new Composite(container, SWT.NONE);
 		customExport.setLayout(new GridLayout(2, false));
-		customExport.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 2,1));
+		customExport.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true,
+				false, 2, 1));
 		customExport.setVisible(false);
-		
+
 		Label lblStylesheet = new Label(customExport, SWT.NONE);
 		lblStylesheet.setText("Stylesheet:");
-		lblStylesheet.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, true, false, 2,1));
-		
+		lblStylesheet.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, true,
+				false, 2, 1));
+
 		txtStylesheet = new Text(customExport, SWT.BORDER | SWT.FILL);
-		txtStylesheet.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
+		txtStylesheet.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true,
+				false, 1, 1));
 		txtStylesheet.addModifyListener(new ModifyListener() {
-			
+
 			@Override
 			public void modifyText(ModifyEvent e) {
 				validateAndUpdate();
@@ -123,22 +130,25 @@ public class ExportTestSpecWizardPage extends WizardPage {
 		btnBrowseStylesheet.addSelectionListener(new SelectionListener() {
 
 			public void widgetSelected(SelectionEvent event) {
-				txtStylesheet.setText(showFileDialog(new String[] { "XSL Stylesheet",
-				"All Files (*.*)" },new String[] { "*.xsl", "*" },SWT.OPEN));
+				txtStylesheet.setText(showFileDialog(new String[] {
+						"XSL Stylesheet", "All Files (*.*)" }, new String[] {
+						"*.xsl", "*" }, SWT.OPEN));
 			}
 
 			public void widgetDefaultSelected(SelectionEvent event) {
 				widgetSelected(event);
 			}
-		});	
+		});
 		Label lblSourcesZip = new Label(customExport, SWT.NONE);
 		lblSourcesZip.setText("OpenDocument Template:");
-		lblSourcesZip.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, true, false, 2,1));
-		
+		lblSourcesZip.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, true,
+				false, 2, 1));
+
 		txtSourcesZip = new Text(customExport, SWT.BORDER | SWT.FILL);
-		txtSourcesZip.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
+		txtSourcesZip.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true,
+				false, 1, 1));
 		txtSourcesZip.addModifyListener(new ModifyListener() {
-			
+
 			@Override
 			public void modifyText(ModifyEvent e) {
 				validateAndUpdate();
@@ -149,28 +159,28 @@ public class ExportTestSpecWizardPage extends WizardPage {
 		btnBrowseSourcesZip.addSelectionListener(new SelectionListener() {
 
 			public void widgetSelected(SelectionEvent event) {
-				txtSourcesZip.setText(showFileDialog(new String[] { "OpenDocument template zip file",
-				"All Files (*.*)" },new String[] { "*.zip", "*" }, SWT.OPEN));
+				txtSourcesZip.setText(showFileDialog(new String[] {
+						"OpenDocument template zip file", "All Files (*.*)" },
+						new String[] { "*.zip", "*" }, SWT.OPEN));
 			}
 
 			public void widgetDefaultSelected(SelectionEvent event) {
 				widgetSelected(event);
 			}
 		});
-		
+
 		// Create the TestSpec export layout description text
 		Label lblLayoutDescr = new Label(container, SWT.NONE);
 		lblLayoutDescr.setText("Description export layout:");
-		lblLayoutDescr.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, true, false,
-				2, 1));
+		lblLayoutDescr.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, true,
+				false, 2, 1));
 
 		txtLayoutDescription = new Text(container, SWT.BORDER);
-		txtLayoutDescription.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true,
-				false, 2, 1));
+		txtLayoutDescription.setLayoutData(new GridData(SWT.FILL, SWT.CENTER,
+				true, false, 2, 1));
 		txtLayoutDescription.setEditable(false);
 		txtLayoutDescription.setText("");
 
-		
 		// Export destination
 		Label lblDest = new Label(container, SWT.NONE);
 		lblDest.setText("Export destination:");
@@ -183,18 +193,18 @@ public class ExportTestSpecWizardPage extends WizardPage {
 		txtDestination.addModifyListener(new ModifyListener() {
 			@Override
 			public void modifyText(ModifyEvent e) {
-				isDefaultDestination = false;
 				validateAndUpdate();
 			}
 		});
-		
+
 		Button btnBrowseDestination = new Button(container, SWT.NONE);
 		btnBrowseDestination.setText("Browse");
 		btnBrowseDestination.addSelectionListener(new SelectionListener() {
 
 			public void widgetSelected(SelectionEvent event) {
-				txtDestination.setText(showFileDialog(new String[] { "OpenDocumentText",
-				"All Files (*.*)" },new String[] { "*.odt", "*" }, getProjectName() + ".odt", SWT.SAVE));
+				txtDestination.setText(showFileDialog(new String[] {
+						"OpenDocumentText", "All Files (*.*)" }, new String[] {
+						"*.odt", "*" }, getProjectName() + ".odt", SWT.SAVE));
 			}
 
 			public void widgetDefaultSelected(SelectionEvent event) {
@@ -229,7 +239,6 @@ public class ExportTestSpecWizardPage extends WizardPage {
 			setErrorMessage("Currently no GT TestSpecification projects are available in the workspace.");
 		}
 
-		
 		// Add all export layouts to the list
 		configElements = Platform.getExtensionRegistry()
 				.getConfigurationElementsFor(Exporter.EXTENSIONPOINT_ID);
@@ -242,32 +251,29 @@ public class ExportTestSpecWizardPage extends WizardPage {
 
 		// fill with default values
 		if (lstExportLayoutSelection.getItemCount() > 0) {
-			//defaultName = true;
+			// defaultName = true;
 			// select the first element
 			lstExportLayoutSelection.select(0);
 			validateAndUpdate();
 		} else {
-			// no valid test specification export layouts are present -> show error
+			// no valid test specification export layouts are present -> show
+			// error
 			// message
 			setErrorMessage("No TestSpecification Export Layout is installed.");
 		}
-
-		
-		
 	}
 
-	private String showFileDialog(String [] filterNames, String [] filterExtensions, int swtStyle){
+	private String showFileDialog(String[] filterNames, String[] filterExtensions, int swtStyle) {
 		return showFileDialog(filterNames, filterExtensions, null, swtStyle);
-		
+
 	}
-	
-	private String showFileDialog(String [] filterNames, String [] filterExtensions, String defaultFileName, int swtStyle){
-		FileDialog dialog = new FileDialog(txtDestination.getShell(),
-				swtStyle);
+
+	private String showFileDialog(String[] filterNames, String[] filterExtensions, String defaultFileName, int swtStyle) {
+		FileDialog dialog = new FileDialog(txtDestination.getShell(), swtStyle);
 		dialog.setFilterNames(filterNames);
 		dialog.setFilterExtensions(filterExtensions);
-		if (defaultFileName != null){
-			dialog.setFileName(defaultFileName);	
+		if (defaultFileName != null) {
+			dialog.setFileName(defaultFileName);
 		}
 		String selectedFileName = dialog.open();
 		if (selectedFileName == null) {
@@ -275,12 +281,14 @@ public class ExportTestSpecWizardPage extends WizardPage {
 		}
 		return selectedFileName;
 	}
-	
-	private void setDefaultDestination() {
-		txtDestination.setText(System.getProperty("user.dir")+System.getProperty("file.separator")+getProjectName() + ".odt");
-		isDefaultDestination = true;
-	}
 
+	private void setDefaultDestination() {
+		txtDestination.setText(System.getProperty("user.dir")
+				+ System.getProperty("file.separator") + getProjectName()
+				+ ".odt");
+		destinationFile = new File(txtDestination.getText());
+	}
+	
 	@Override
 	public boolean isPageComplete() {
 		String fileName = txtDestination.getText();
@@ -293,24 +301,25 @@ public class ExportTestSpecWizardPage extends WizardPage {
 			setErrorMessage("Please select a single TestSpec to export");
 			return false;
 		}
-		
-		if (lstExportLayoutSelection.getSelectionIndex() == lstExportLayoutSelection.getItemCount() - 1){
-			if (!(new File(txtStylesheet.getText())).canRead()){
+
+		if (lstExportLayoutSelection.getSelectionIndex() == lstExportLayoutSelection
+				.getItemCount() - 1) {
+			if (!(new File(txtStylesheet.getText())).canRead()) {
 				setErrorMessage("Please select a XSL stylesheet");
 				return false;
 			}
-			if (!(new File(txtSourcesZip.getText())).canRead()){
+			if (!(new File(txtSourcesZip.getText())).canRead()) {
 				setErrorMessage("Please select a OpenDocument template zip");
 				return false;
 			}
 		}
-		
+
 		setErrorMessage(null);
 		return true;
 	}
 
-	public String getDestination() {
-		return txtDestination.getText();
+	public File getDestination() {
+		return destinationFile;
 	}
 
 	public String getProjectName() {
@@ -318,15 +327,22 @@ public class ExportTestSpecWizardPage extends WizardPage {
 	}
 
 	private void validateAndUpdate() {
-		// update destination
-		if (isDefaultDestination) {
-			setDefaultDestination();
+		// check if destination exists and warn user
+		File newDestination = new File(txtDestination.getText());
+		if (!newDestination.equals(destinationFile)) {
+			if (newDestination.exists()) {
+				Status warning = new Status(IStatus.WARNING,
+						Activator.PLUGIN_ID, "The file "
+								+ newDestination.getAbsolutePath()
+								+ " already exists.");
+				ErrorDialog.openError(getShell(), "Warning", null, warning);
+			}
 		}
-		
+		destinationFile = newDestination;
 		// update the description
 		int selectionIndex = lstExportLayoutSelection.getSelectionIndex();
 		// last item is selected, means custom
-		if (selectionIndex == lstExportLayoutSelection.getItemCount() - 1){
+		if (selectionIndex == lstExportLayoutSelection.getItemCount() - 1) {
 			customExport.setVisible(true);
 			txtLayoutDescription.setVisible(false);
 		} else {
@@ -334,50 +350,58 @@ public class ExportTestSpecWizardPage extends WizardPage {
 			txtLayoutDescription.setVisible(true);
 		}
 
-		if (configElements != null && configElements.length > selectionIndex){
-			txtLayoutDescription.setText(configElements[selectionIndex].getAttribute("description"));
+		if (configElements != null && configElements.length > selectionIndex) {
+			txtLayoutDescription.setText(configElements[selectionIndex]
+					.getAttribute("description"));
 		}
-		
+
 		// update the dialog appearance
 		getContainer().updateButtons();
 		getContainer().updateMessage();
 	}
-	
+
 	/**
 	 * Return the stylesheet from the exporter plugin or the custom file
+	 * 
 	 * @return the selected stylesheet
 	 * @throws IOException
 	 */
-	public InputStream getStylesheet() throws IOException{
+	public InputStream getStylesheet() throws IOException {
 		IConfigurationElement exporter = getExporter();
-		if (exporter != null){
+		if (exporter != null) {
 			String stylesheet = getExporter().getAttribute("stylesheet");
-			String plugin = exporter.getDeclaringExtension().getUniqueIdentifier();
-			return FileLocator.openStream(Platform.getBundle(plugin), new Path("/" + stylesheet), false);
+			String plugin = exporter.getDeclaringExtension()
+					.getUniqueIdentifier();
+			return FileLocator.openStream(Platform.getBundle(plugin), new Path(
+					"/" + stylesheet), false);
 		} else {
 			return new FileInputStream(txtStylesheet.getText());
 		}
 	}
-	
+
 	/**
-	 * Return the OpenDocument template zip from the exporter plugin or the custom file
+	 * Return the OpenDocument template zip from the exporter plugin or the
+	 * custom file
+	 * 
 	 * @return the selected stylesheet
 	 * @throws IOException
-	 */	
-	public InputStream getSourcesZip() throws IOException{
+	 */
+	public InputStream getSourcesZip() throws IOException {
 		IConfigurationElement exporter = getExporter();
-		if (exporter != null){
+		if (exporter != null) {
 			String sourcesZip = exporter.getAttribute("sourceZip");
-			String plugin = exporter.getDeclaringExtension().getUniqueIdentifier();
-			return FileLocator.openStream(Platform.getBundle(plugin), new Path("/" + sourcesZip), false);
+			String plugin = exporter.getDeclaringExtension()
+					.getUniqueIdentifier();
+			return FileLocator.openStream(Platform.getBundle(plugin), new Path(
+					"/" + sourcesZip), false);
 		} else {
 			return new FileInputStream(txtSourcesZip.getText());
 		}
 	}
-	
+
 	private IConfigurationElement getExporter() {
 		int selectionIndex = lstExportLayoutSelection.getSelectionIndex();
-		if (configElements.length > selectionIndex){
+		if (configElements.length > selectionIndex) {
 			return configElements[selectionIndex];
 		}
 		return null;

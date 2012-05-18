@@ -36,8 +36,8 @@ public class ExportTestSpecWizard extends Wizard implements IExportWizard {
 	@Override
 	public boolean performFinish() {
 		String projectName = _pageOne.getProjectName();
-		String targetFile = _pageOne.getDestination();
-		
+		File target = _pageOne.getDestination();
+
 		IProject project = ResourcesPlugin.getWorkspace().getRoot()
 				.getProject(projectName);
 		try {
@@ -48,17 +48,17 @@ public class ExportTestSpecWizard extends Wizard implements IExportWizard {
 			String pathToProject = project.getProject().getLocationURI().getPath();
 			File testSpecification = new File(pathToProject + File.separator + testSpecIFile.getProjectRelativePath().toString());
 			try {
-				Exporter.export(new File(targetFile), testSpecification, stylesheetStream, sourceZipStream);
+				Exporter.export(target, testSpecification, stylesheetStream, sourceZipStream);
 			} catch (CoreException e) {
 				ErrorDialog.openError(getShell(), null, null, e.getStatus());
 			}
+
 			stylesheetStream.close();
 			sourceZipStream.close();
 		} catch (IOException e) {
 			GtErrorLogger.log(Activator.PLUGIN_ID, e);
 		}
-		
-		
+
 		return true;
 	}
 
