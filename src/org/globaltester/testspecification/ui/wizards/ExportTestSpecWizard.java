@@ -10,14 +10,14 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Status;
-import org.eclipse.jface.dialogs.ErrorDialog;
+import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.ui.IExportWizard;
 import org.eclipse.ui.IWorkbench;
+import org.eclipse.ui.PlatformUI;
 import org.globaltester.core.Activator;
 import org.globaltester.document.export.Exporter;
 import org.globaltester.logging.logger.GtErrorLogger;
@@ -36,7 +36,6 @@ public class ExportTestSpecWizard extends Wizard implements IExportWizard {
 	
 	public ExportTestSpecWizard() {
 		setWindowTitle(Messages.ExportTestSpecWizard_WIZARD_NAME);
-		setNeedsProgressMonitor(true);
 	}
 
 	@Override
@@ -53,7 +52,8 @@ public class ExportTestSpecWizard extends Wizard implements IExportWizard {
 			stylesheetStream = _pageOne.getStylesheet();
 			sourceZipStream = _pageOne.getSourcesZip();
 			
-			getContainer().run(true, false, new IRunnableWithProgress() {
+			
+			IRunnableWithProgress exportRunnable = new IRunnableWithProgress() {
 				
 				@Override
 				public void run(IProgressMonitor monitor) throws InvocationTargetException,
@@ -72,33 +72,71 @@ public class ExportTestSpecWizard extends Wizard implements IExportWizard {
 						monitor.subTask("Export");
 						Exporter.export(target, testSpecification, stylesheetStream, sourceZipStream);
 						monitor.worked(2);
-						
+						showSuccess();
 					} catch (IOException e) {
+						showIoError();
 						GtErrorLogger.log(Activator.PLUGIN_ID, e);
-						ErrorDialog.openError(null, null, null, new Status(IStatus.ERROR, Activator.PLUGIN_ID, "Input/Output error"));
 					} catch (CoreException e) {
-						ErrorDialog.openError(null, null, null, new Status(IStatus.ERROR, Activator.PLUGIN_ID, "Conversion error."));
+						showConversionError();
+						GtErrorLogger.log(Activator.PLUGIN_ID, e);
 					} finally {
 						monitor.done();
 					}
 				}
-			});
+
+
+			};
+			
+
+			ProgressMonitorDialog pmd = new ProgressMonitorDialog(getShell());
+			pmd.setOpenOnRun(true);
+			pmd.setBlockOnOpen(false);
+			pmd.run(true, true, exportRunnable);
+			
 			
 			stylesheetStream.close();
 			sourceZipStream.close();
-			ErrorDialog.openError(null, null, null, new Status(IStatus.OK, Activator.PLUGIN_ID, "Export successfull."));
 		} catch (IOException e) {
+			showIoError();
 			GtErrorLogger.log(Activator.PLUGIN_ID, e);
-			ErrorDialog.openError(null, null, null, new Status(IStatus.ERROR, Activator.PLUGIN_ID, "Input/Output Error"));
 		} catch (InvocationTargetException e) {
+			showError();
 			GtErrorLogger.log(Activator.PLUGIN_ID, e);
 		} catch (InterruptedException e) {
+			showError();
 			GtErrorLogger.log(Activator.PLUGIN_ID, e);
 		}	
 
 		return true;
 	}
 
+	private void showConversionError() {
+		PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
+			public void run() {
+			MessageDialog.openInformation(getShell(), "Export", "Conversion error.");
+			}}); 
+	}
+	
+	private void showSuccess(){
+		PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
+			public void run() {
+			MessageDialog.openInformation(getShell(), "Export", "Export successfull.");
+			}}); 
+	}
+	
+	private void showIoError(){
+		PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
+			public void run() {
+			MessageDialog.openError(getShell(), "Export", "Input/Output error.");
+			}}); 
+	}
+	
+	private void showError(){
+		PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
+			public void run() {
+			MessageDialog.openError(getShell(), "Export", "Unexpected error.");
+			}}); 
+	}
 	
 	@Override
 	public void addPages() {
@@ -106,10 +144,5 @@ public class ExportTestSpecWizard extends Wizard implements IExportWizard {
 
 		_pageOne = new ExportTestSpecWizardPage();
 		addPage(_pageOne);
-	}
-
-	@Override
-	public boolean needsProgressMonitor() {
-		return true;
 	}
 }
