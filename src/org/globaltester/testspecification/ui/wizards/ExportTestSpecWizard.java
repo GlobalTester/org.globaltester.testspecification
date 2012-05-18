@@ -120,7 +120,7 @@ public class ExportTestSpecWizard extends Wizard implements IExportWizard {
 	private void showSuccess(){
 		PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
 			public void run() {
-			MessageDialog.openInformation(getShell(), "Export", "Export successfull.");
+			MessageDialog.openInformation(getShell(), "Export", "Testspecification \"" + projectName + "\" exported successfully.");
 			}}); 
 	}
 	
