@@ -27,6 +27,15 @@
 
 	<xsl:output method="xml" indent="yes" />
 
+	<xsl:param name="document.title" />
+	<xsl:param name="document.subtitle" />
+	<xsl:param name="company.name" />
+	<xsl:param name="company.address1" />
+	<xsl:param name="company.address2" />
+	<xsl:param name="company.tel" />
+	<xsl:param name="company.mail" />
+	<xsl:param name="company.www" />
+	<xsl:param name="year" />
 
 	<xsl:template match="gt:TestSpecification">
 
@@ -446,16 +455,16 @@
 					<text:alphabetical-index-auto-mark-file
 						xlink:href="../../../../../tmp/ÖA-Stichwortverzeichnis-V01.sdi" />
 					<text:p text:style-name="P17">
-						GlobalTester
+						<xsl:value-of select="$document.title"/>
 					</text:p>
-					<text:p text:style-name="Subtitle">Test Specification</text:p>
+					<text:p text:style-name="Subtitle">
+						<xsl:value-of select="$document.subtitle"></xsl:value-of></text:p>
 					<text:p text:style-name="P11" />
-					<text:p text:style-name="P11">HJP Consulting GmbH</text:p>
-					<text:p text:style-name="P9">Hauptstraße 35</text:p>
-					<text:p text:style-name="P9">33178 Borchen, Germany</text:p>
+					<text:p text:style-name="P11"><xsl:value-of select="$company.name"/></text:p>
+					<text:p text:style-name="P9"><xsl:value-of select="$company.address1"/></text:p>
+					<text:p text:style-name="P9"><xsl:value-of select="$company.address2"/></text:p>
 					<text:p text:style-name="P9">
-						Tel.: +49 5251 41776-
-						<text:span text:style-name="T3">0</text:span>
+						<xsl:value-of select="$company.tel"/>
 					</text:p>
 					<text:p text:style-name="P9">
 						<text:alphabetical-index-mark
@@ -463,15 +472,15 @@
 						<text:alphabetical-index-mark
 							text:string-value="E-Mail (Electronic Mail)" />
 						<text:span text:style-name="T1">E-Mail: </text:span>
-						<text:span text:style-name="T2">globaltester@hjp-consulting.com
+						<text:span text:style-name="T2"><xsl:value-of select="$company.mail"/>
 						</text:span>
 					</text:p>
 					<text:p text:style-name="P9">Internet:
-						http://www.globaltester.org
+						<xsl:value-of select="$company.www"/>
 					</text:p>
 					<text:p text:style-name="P9">
-						© HJP Consulting GmbH
-						<text:span text:style-name="T2">2012</text:span>
+						© <xsl:value-of select="$company.name"/>
+						<text:span text:style-name="T2"><xsl:value-of select="$year"/></text:span>
 					</text:p>
 					<text:p text:style-name="P14" />
 					<text:table-of-content text:style-name="Sect1"
