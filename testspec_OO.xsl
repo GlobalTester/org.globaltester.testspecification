@@ -453,10 +453,28 @@
 					</text:p>
 					<text:p text:style-name="Subtitle">Test Specification</text:p>
 					<text:p text:style-name="P11" />
-					<text:p text:style-name="P11">HJP Consulting</text:p>
-					<text:p text:style-name="P9">Adresse 1</text:p>
-					<text:p text:style-name="P9">Adresse 2</text:p>
-					
+					<text:p text:style-name="P11">HJP Consulting GmbH</text:p>
+					<text:p text:style-name="P9">Hauptstraße 35</text:p>
+					<text:p text:style-name="P9">33178 Borchen, Germany</text:p>
+					<text:p text:style-name="P9">
+						Tel.: +49 5251 41776-
+						<text:span text:style-name="T3">0</text:span>
+					</text:p>
+					<text:p text:style-name="P9">
+						<text:alphabetical-index-mark
+							text:string-value="E-Mail (Electronic Mail)" />
+						<text:alphabetical-index-mark
+							text:string-value="E-Mail (Electronic Mail)" />
+						<text:span text:style-name="T1">E-Mail: </text:span>
+						<text:span text:style-name="T2">globaltester@hjp-consulting.com
+						</text:span>
+					</text:p>
+					<text:p text:style-name="P9">Internet: http://www.globaltester.org
+					</text:p>
+					<text:p text:style-name="P9">
+						© HJP Consulting GmbH
+						<text:span text:style-name="T2">2012</text:span>
+					</text:p>
 					<text:p text:style-name="P14" />
 					<text:table-of-content text:style-name="Sect1"
 						text:protected="true" text:name="Inhaltsverzeichnis1">
@@ -912,7 +930,7 @@
 
 	<!-- Use this template to handle all three kinds of headlines -->
 	<xsl:template name="Headline">
-		<xsl:if test=".='gt:Introduction'">
+		<xsl:if test=".='Introduction'">
 			<!-- Use this type of heading to activate naming of paragraphs in 
 				headers -->
 			<text:h text:style-name="P15" text:outline-level="1"
@@ -922,7 +940,7 @@
 				<text:bookmark-end text:name="__RefHeading__5546_763239732" />
 			</text:h>
 		</xsl:if>
-		<xsl:if test="(./@level='1') and not (.='gt:Introduction')">
+		<xsl:if test="(./@level='1') and not (.='Introduction')">
 			<text:h text:style-name="Heading_20_1"
 				text:outline-level="1">
 				<text:bookmark text:name="__RefHeading__5546_763239732" />
