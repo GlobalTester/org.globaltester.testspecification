@@ -46,7 +46,7 @@ public class ExportTestSpecWizardCustomizationPage extends WizardPage {
 		
 		txtDocTitle = new Text(container, SWT.BORDER);
 		txtDocTitle.setText("GlobalTester");
-		txtDocTitle.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, true,	false, 1, 1));
+		txtDocTitle.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true,	false, 1, 1));
 
 		Label lblDocSubTitle = new Label(container, SWT.NONE);
 		lblDocSubTitle.setText("Subtitle:");
@@ -54,7 +54,7 @@ public class ExportTestSpecWizardCustomizationPage extends WizardPage {
 		
 		txtDocSubTitle = new Text(container, SWT.BORDER);
 		txtDocSubTitle.setText("Test Specification");
-		txtDocSubTitle.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, true,	false, 1, 1));
+		txtDocSubTitle.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true,	false, 1, 1));
 		
 		Label lblCompanyName = new Label(container, SWT.NONE);
 		lblCompanyName.setText("Company:");
@@ -62,7 +62,7 @@ public class ExportTestSpecWizardCustomizationPage extends WizardPage {
 		
 		txtCompanyName = new Text(container, SWT.BORDER);
 		txtCompanyName.setText("HJP Consulting GmbH");
-		txtCompanyName.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, true,	false, 1, 1));
+		txtCompanyName.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true,	false, 1, 1));
 		
 		Label lblCompanyAddress1 = new Label(container, SWT.NONE);
 		lblCompanyAddress1.setText("Address:");
@@ -70,7 +70,7 @@ public class ExportTestSpecWizardCustomizationPage extends WizardPage {
 		
 		txtCompanyAddress1 = new Text(container, SWT.BORDER);
 		txtCompanyAddress1.setText("Hauptstraﬂe 35");
-		txtCompanyAddress1.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, true,	false, 1, 1));
+		txtCompanyAddress1.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true,	false, 1, 1));
 		
 		Label lblCompanyAddress2 = new Label(container, SWT.NONE);
 		lblCompanyAddress2.setText("Address:");
@@ -78,7 +78,7 @@ public class ExportTestSpecWizardCustomizationPage extends WizardPage {
 		
 		txtCompanyAddress2 = new Text(container, SWT.BORDER);
 		txtCompanyAddress2.setText("33178 Borchen, Germany");
-		txtCompanyAddress2.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, true,	false, 1, 1));
+		txtCompanyAddress2.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true,	false, 1, 1));
 		
 		Label lblCompanyTel = new Label(container, SWT.NONE);
 		lblCompanyTel.setText("Telephone:");
@@ -86,7 +86,7 @@ public class ExportTestSpecWizardCustomizationPage extends WizardPage {
 		
 		txtCompanyTel = new Text(container, SWT.BORDER);
 		txtCompanyTel.setText("+49 5251 41776- 0");
-		txtCompanyTel.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, true,	false, 1, 1));
+		txtCompanyTel.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true,	false, 1, 1));
 		
 		Label lblCompanyMail = new Label(container, SWT.NONE);
 		lblCompanyMail.setText("eMail:");
@@ -94,7 +94,7 @@ public class ExportTestSpecWizardCustomizationPage extends WizardPage {
 		
 		txtCompanyMail = new Text(container, SWT.BORDER);
 		txtCompanyMail.setText("globaltester@hjp-consulting.com");
-		txtCompanyMail.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, true,	false, 1, 1));
+		txtCompanyMail.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true,	false, 1, 1));
 		
 		Label lblCompanyWWW = new Label(container, SWT.NONE);
 		lblCompanyWWW.setText("Internet:");
@@ -102,7 +102,7 @@ public class ExportTestSpecWizardCustomizationPage extends WizardPage {
 		
 		txtCompanyWWW = new Text(container, SWT.BORDER);
 		txtCompanyWWW.setText("http://www.globaltester.org");
-		txtCompanyWWW.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, true,	false, 1, 1));
+		txtCompanyWWW.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true,	false, 1, 1));
 	}
 
 	public XslParameter [] getXslParams() {
