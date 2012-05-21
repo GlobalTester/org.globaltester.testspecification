@@ -37,7 +37,7 @@ public class GtTestSpecProject {
 		try {
 			GtResourceHelper.addNature(project, GtTestSpecNature.NATURE_ID);
 
-			String[] paths = {"TestCases" }; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+			String[] paths = { "TestData/Certificates", "TestData/Subroutines", "TestCases" }; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 			GtResourceHelper.addToProjectStructure(project, paths);
 			createDefaultFile(defaultTestSpec, project.getFile("testSpecification.xml"));
 			TestCase.createDefaultTestCase(project.getFile("TestCases" + File.separator + "testCase.xml"));
