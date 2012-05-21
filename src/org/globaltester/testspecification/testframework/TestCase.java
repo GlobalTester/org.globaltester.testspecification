@@ -198,7 +198,7 @@ public class TestCase extends FileTestExecutable {
 	
 	private static final String defaultTestCase = ""+
 	"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
-	"<TestCase id=\"TestCase\" xmlns=\"http://globaltester.org/testspecification\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://globaltester.org/schema/testspecification.xsd\">\n" +
+	"<TestCase id=\"TestCase\" xmlns=\"http://globaltester.org/testspecification\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\n" +
 	"	<Title>Sample TestCase</Title>\n" +
 	"	<Version>1.00</Version>\n" +
 	"	<Purpose>This test is used as simple base testcase for your own modifications</Purpose>\n" +
@@ -221,15 +221,9 @@ public class TestCase extends FileTestExecutable {
 	"			Select the MF\n"+
 	"		</Description>\n"+
 	"		<ExpectedResult xsi:type=\"APDUResult\">\n"+
-	"			<Text>First byte MUST be '61'</Text>\n"+
-	"			<TechnicalResult>\n"+
-	"				assertStatusWord(new Array(\"9000\"), card.SW.toString(HEX), FAILURE);\n"+
-	"				assertMatchValue(\"61\", dg1.bytes(0,1), FAILURE);\n"+
-	"			</TechnicalResult>\n"+
+	"			<Text>Describe the expected result</Text>\n"+
 	"		</ExpectedResult>\n"+
 	"	</TestStep>\n"+
-	"	<Postcondition>\n"+
-	"	</Postcondition>\n"+
 	"</TestCase>";
 	
 }

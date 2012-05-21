@@ -1,13 +1,19 @@
 package org.globaltester.testspecification;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.net.URI;
 
+import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.core.runtime.CoreException;
 import org.globaltester.core.resources.GtResourceHelper;
+import org.globaltester.testspecification.testframework.TestCase;
 
 
 public class GtTestSpecProject {
@@ -31,9 +37,12 @@ public class GtTestSpecProject {
 		try {
 			GtResourceHelper.addNature(project, GtTestSpecNature.NATURE_ID);
 
-			String[] paths = { "TestData/Certificates", "TestData/Subroutines",
-					"TestCases" }; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+			String[] paths = {"TestCases" }; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 			GtResourceHelper.addToProjectStructure(project, paths);
+			createDefaultFile(defaultTestSpec, project.getFile("testSpecification.xml"));
+			TestCase.createDefaultTestCase(project.getFile("TestCases" + File.separator + "testCase.xml"));
+			createDefaultFile(defaultTestLayer, project.getFile("TestCases" + File.separator + "testLayer.xml"));
+			createDefaultFile(defaultTestUnit, project.getFile("TestCases" + File.separator + "testUnit.xml"));
 		} catch (CoreException e) {
 			e.printStackTrace();
 			project = null;
@@ -51,5 +60,70 @@ public class GtTestSpecProject {
 
 		return project;
 	}
+	
+	//FIXME: Remove
+	private static void createDefaultFile(String content, IFile iFile) {
+		BufferedWriter out = null;
+		try {
+			File file = new File(iFile.getLocationURI());
+			// Create file
+			FileWriter fstream = new FileWriter(file);
+			out = new BufferedWriter(fstream);
+			out.write(content);
+			
+			
+			} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (out != null) {
+					out.close();
+				}
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+	private static final String defaultTestUnit = ""+
+	"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+	"<TestUnit id=\"Unit_1\"\n" +
+	"	xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n" +
+	"	xmlns=\"http://globaltester.org/testspecification\">\n" +
+	"  <TestCase>testCase.xml</TestCase>\n" +
+	"</TestUnit>";
+	
 
+
+	private static final String defaultTestLayer = ""+
+	"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+	"<TestLayer id=\"Layer_1\"\n" +
+	"	xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n" +
+	"	xmlns=\"http://globaltester.org/testspecification\">\n" +
+	"  <TestUnit>testUnit.xml</TestUnit>\n" +
+	"</TestLayer>";
+	
+
+
+	private static final String defaultTestSpec = ""+
+	"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+	"<TestSpecification\n" +
+	"	xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n" +
+	"	xmlns=\"http://globaltester.org/testspecification\">\n" +
+	"  <VersionHistory>\n" +
+	"    <Version>\n" +
+	"      <VersionID>0.10</VersionID>\n" +
+	"      <Date>Some Date</Date>\n" +
+	"      <Editor>Some Author</Editor>\n" +
+	"      <Description>Working Draft</Description>\n" +
+	"    </Version>\n" +
+	"  </VersionHistory>\n" +
+
+	"  <Text>\n" +
+	"  	<Heading level=\"1\">Introduction</Heading>\n" +
+	"		<Paragraph>This file can be used as a starting point.</Paragraph>\n" +
+	"  </Text>\n" +
+	"  <TestLayer>TestCases/testLayer.xml</TestLayer>\n" +
+	"</TestSpecification>";
+	
 }
