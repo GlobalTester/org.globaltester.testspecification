@@ -1,40 +1,37 @@
 <?xml version="1.0"?>
 
-<xsl:stylesheet
-			xmlns:gt="http://globaltester.org/testspecification"
-			xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-			xmlns:office="urn:oasis:names:tc:opendocument:xmlns:office:1.0"
-			xmlns:style="urn:oasis:names:tc:opendocument:xmlns:style:1.0"
-			xmlns:text="urn:oasis:names:tc:opendocument:xmlns:text:1.0"
-			xmlns:table="urn:oasis:names:tc:opendocument:xmlns:table:1.0"
-			xmlns:draw="urn:oasis:names:tc:opendocument:xmlns:drawing:1.0"
-			xmlns:fo="urn:oasis:names:tc:opendocument:xmlns:xsl-fo-compatible:1.0"
-			xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/"
-			xmlns:meta="urn:oasis:names:tc:opendocument:xmlns:meta:1.0"
-			xmlns:number="urn:oasis:names:tc:opendocument:xmlns:datastyle:1.0"
-			xmlns:svg="urn:oasis:names:tc:opendocument:xmlns:svg-compatible:1.0"
-			xmlns:chart="urn:oasis:names:tc:opendocument:xmlns:chart:1.0"
-			xmlns:dr3d="urn:oasis:names:tc:opendocument:xmlns:dr3d:1.0"
-			xmlns:math="http://www.w3.org/1998/Math/MathML" xmlns:form="urn:oasis:names:tc:opendocument:xmlns:form:1.0"
-			xmlns:script="urn:oasis:names:tc:opendocument:xmlns:script:1.0"
-			xmlns:ooo="http://openoffice.org/2004/office" xmlns:ooow="http://openoffice.org/2004/writer"
-			xmlns:oooc="http://openoffice.org/2004/calc" xmlns:dom="http://www.w3.org/2001/xml-events"
-			xmlns:xforms="http://www.w3.org/2002/xforms" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-			xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:rpt="http://openoffice.org/2005/report"
-			xmlns:of="urn:oasis:names:tc:opendocument:xmlns:of:1.2" xmlns:xhtml="http://www.w3.org/1999/xhtml"
-			xmlns:grddl="http://www.w3.org/2003/g/data-view#" xmlns:tableooo="http://openoffice.org/2009/table"
-			xmlns:field="urn:openoffice:names:experimental:ooo-ms-interop:xmlns:field:1.0"
-	
-			version="1.0">
-	
+<xsl:stylesheet xmlns:gt="http://globaltester.org/testspecification"
+	xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:office="urn:oasis:names:tc:opendocument:xmlns:office:1.0"
+	xmlns:style="urn:oasis:names:tc:opendocument:xmlns:style:1.0"
+	xmlns:text="urn:oasis:names:tc:opendocument:xmlns:text:1.0"
+	xmlns:table="urn:oasis:names:tc:opendocument:xmlns:table:1.0"
+	xmlns:draw="urn:oasis:names:tc:opendocument:xmlns:drawing:1.0"
+	xmlns:fo="urn:oasis:names:tc:opendocument:xmlns:xsl-fo-compatible:1.0"
+	xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:meta="urn:oasis:names:tc:opendocument:xmlns:meta:1.0"
+	xmlns:number="urn:oasis:names:tc:opendocument:xmlns:datastyle:1.0"
+	xmlns:svg="urn:oasis:names:tc:opendocument:xmlns:svg-compatible:1.0"
+	xmlns:chart="urn:oasis:names:tc:opendocument:xmlns:chart:1.0"
+	xmlns:dr3d="urn:oasis:names:tc:opendocument:xmlns:dr3d:1.0" xmlns:math="http://www.w3.org/1998/Math/MathML"
+	xmlns:form="urn:oasis:names:tc:opendocument:xmlns:form:1.0"
+	xmlns:script="urn:oasis:names:tc:opendocument:xmlns:script:1.0"
+	xmlns:ooo="http://openoffice.org/2004/office" xmlns:ooow="http://openoffice.org/2004/writer"
+	xmlns:oooc="http://openoffice.org/2004/calc" xmlns:dom="http://www.w3.org/2001/xml-events"
+	xmlns:xforms="http://www.w3.org/2002/xforms" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:rpt="http://openoffice.org/2005/report"
+	xmlns:of="urn:oasis:names:tc:opendocument:xmlns:of:1.2" xmlns:xhtml="http://www.w3.org/1999/xhtml"
+	xmlns:grddl="http://www.w3.org/2003/g/data-view#" xmlns:tableooo="http://openoffice.org/2009/table"
+	xmlns:field="urn:openoffice:names:experimental:ooo-ms-interop:xmlns:field:1.0"
+
+	version="1.0">
+
 	<xsl:output method="xml" indent="yes" />
 
 
 	<xsl:template match="gt:TestSpecification">
-	
+
 		<!-- Start of ODT file structure -->
-		<office:document-content
-			office:version="1.2"
+		<office:document-content office:version="1.2"
 			grddl:transformation="http://docs.oasis-open.org/office/1.2/xslt/odf2rdf.xsl">
 			<office:scripts />
 			<office:font-face-decls>
@@ -424,7 +421,7 @@
 			</office:automatic-styles>
 
 
-			
+
 
 			<office:body>
 				<office:text text:use-soft-page-breaks="true">
@@ -469,7 +466,8 @@
 						<text:span text:style-name="T2">globaltester@hjp-consulting.com
 						</text:span>
 					</text:p>
-					<text:p text:style-name="P9">Internet: http://www.globaltester.org
+					<text:p text:style-name="P9">Internet:
+						http://www.globaltester.org
 					</text:p>
 					<text:p text:style-name="P9">
 						© HJP Consulting GmbH
@@ -620,10 +618,10 @@
 								</text:p>
 							</xsl:if>
 							<xsl:if test="name(.)='Heading'">
-								<xsl:call-template name="Headline"/>
+								<xsl:call-template name="Headline" />
 							</xsl:if>
 							<xsl:if test="name(.)='Table'">
-								<xsl:call-template name="Table"/>
+								<xsl:call-template name="Table" />
 							</xsl:if>
 							<xsl:if test="name(.)='List'">
 								<xsl:for-each select="./gt:Item">
@@ -676,10 +674,10 @@
 										</text:p>
 									</xsl:if>
 									<xsl:if test="name(.)='Heading'">
-										<xsl:call-template name="Headline"/>
+										<xsl:call-template name="Headline" />
 									</xsl:if>
 									<xsl:if test="name(.)='Table'">
-										<xsl:call-template name="Table"/>
+										<xsl:call-template name="Table" />
 									</xsl:if>
 								</xsl:for-each>
 
@@ -730,7 +728,7 @@
 											</text:p>
 										</xsl:if>
 										<xsl:if test="name(.)='Heading'">
-											<xsl:call-template name="Headline"/>
+											<xsl:call-template name="Headline" />
 										</xsl:if>
 									</xsl:for-each>
 								</xsl:for-each>
@@ -793,64 +791,68 @@
 													</text:p>
 												</table:table-cell>
 											</table:table-row>
-											<table:table-row>
-												<table:table-cell table:style-name="Tabelle1.A2"
-													office:value-type="string">
-													<text:p text:style-name="P8">Pre-conditions</text:p>
-												</table:table-cell>
-												<table:table-cell table:style-name="Tabelle1.B2"
-													office:value-type="string">
-													<text:list text:style-name="L675">
-														<xsl:for-each select="gt:TestCase/gt:Precondition">
-															<text:list-item>
-																<!-- Handling of all Action Step -->
-																<xsl:call-template name="ActionStep"/>
-															</text:list-item>
-														
-														</xsl:for-each>
-													</text:list>
+											<xsl:if test="gt:TestCase/gt:Precondition">
+												<table:table-row>
+													<table:table-cell table:style-name="Tabelle1.A2"
+														office:value-type="string">
+														<text:p text:style-name="P8">Pre-conditions</text:p>
+													</table:table-cell>
+													<table:table-cell table:style-name="Tabelle1.B2"
+														office:value-type="string">
+														<text:list text:style-name="L675">
+															<xsl:for-each select="gt:TestCase/gt:Precondition">
+																<text:list-item>
+																	<!-- Handling of all Action Step -->
+																	<xsl:call-template name="ActionStep" />
+																</text:list-item>
 
-												</table:table-cell>
-											</table:table-row>
-											<table:table-row>
-												<table:table-cell table:style-name="Tabelle1.A2"
-													office:value-type="string">
-													<text:p text:style-name="P8">Test scenario</text:p>
-												</table:table-cell>
-												<table:table-cell table:style-name="Tabelle1.B2"
-													office:value-type="string">
-													<text:list text:style-name="L675">
-														<xsl:for-each select="gt:TestCase/gt:TestStep">
-															<text:list-item>
-																<!-- Handling of all Action Step -->
-																<xsl:call-template name="ActionStep"/>
-															</text:list-item>
-														</xsl:for-each>
-													</text:list>
+															</xsl:for-each>
+														</text:list>
 
-												</table:table-cell>
-											</table:table-row>
-											
-											<table:table-row>
-												<table:table-cell table:style-name="Tabelle1.A2"
-													office:value-type="string">
-													<text:p text:style-name="P8">Post-conditions</text:p>
-												</table:table-cell>
-												<table:table-cell table:style-name="Tabelle1.B2"
-													office:value-type="string">
-													<text:list text:style-name="L675">
-														<xsl:for-each select="gt:TestCase/gt:Postcondition">
-															<text:list-item>
-																<!-- Handling of all Action Step -->
-																<xsl:call-template name="ActionStep"/>
-															</text:list-item>
-														
-														</xsl:for-each>
-													</text:list>
+													</table:table-cell>
+												</table:table-row>
+											</xsl:if>
+											<xsl:if test="gt:TestCase/gt:TestStep">
+												<table:table-row>
+													<table:table-cell table:style-name="Tabelle1.A2"
+														office:value-type="string">
+														<text:p text:style-name="P8">Test scenario</text:p>
+													</table:table-cell>
+													<table:table-cell table:style-name="Tabelle1.B2"
+														office:value-type="string">
+														<text:list text:style-name="L675">
+															<xsl:for-each select="gt:TestCase/gt:TestStep">
+																<text:list-item>
+																	<!-- Handling of all Action Step -->
+																	<xsl:call-template name="ActionStep" />
+																</text:list-item>
+															</xsl:for-each>
+														</text:list>
 
-												</table:table-cell>
-											</table:table-row>
-											
+													</table:table-cell>
+												</table:table-row>
+											</xsl:if>
+											<xsl:if test="gt:TestCase/gt:Postcondition">
+												<table:table-row>
+													<table:table-cell table:style-name="Tabelle1.A2"
+														office:value-type="string">
+														<text:p text:style-name="P8">Post-conditions</text:p>
+													</table:table-cell>
+													<table:table-cell table:style-name="Tabelle1.B2"
+														office:value-type="string">
+														<text:list text:style-name="L675">
+															<xsl:for-each select="gt:TestCase/gt:Postcondition">
+																<text:list-item>
+																	<!-- Handling of all Action Step -->
+																	<xsl:call-template name="ActionStep" />
+																</text:list-item>
+
+															</xsl:for-each>
+														</text:list>
+
+													</table:table-cell>
+												</table:table-row>
+											</xsl:if>
 										</table:table>
 
 
@@ -924,15 +926,14 @@
 				</office:text>
 			</office:body>
 
-	</office:document-content>
+		</office:document-content>
 
 	</xsl:template>
 
 	<!-- Use this template to handle all three kinds of headlines -->
 	<xsl:template name="Headline">
 		<xsl:if test=".='Introduction'">
-			<!-- Use this type of heading to activate naming of paragraphs in 
-				headers -->
+			<!-- Use this type of heading to activate naming of paragraphs in headers -->
 			<text:h text:style-name="P15" text:outline-level="1"
 				text:restart-numbering="true" text:start-value="-1">
 				<text:bookmark text:name="__RefHeading__5546_763239732" />
@@ -941,24 +942,21 @@
 			</text:h>
 		</xsl:if>
 		<xsl:if test="(./@level='1') and not (.='Introduction')">
-			<text:h text:style-name="Heading_20_1"
-				text:outline-level="1">
+			<text:h text:style-name="Heading_20_1" text:outline-level="1">
 				<text:bookmark text:name="__RefHeading__5546_763239732" />
 				<xsl:apply-templates select="." />
 				<text:bookmark-end text:name="__RefHeading__5546_763239732" />
 			</text:h>
 		</xsl:if>
 		<xsl:if test="./@level='2'">
-			<text:h text:style-name="Heading_20_2"
-				text:outline-level="2">
+			<text:h text:style-name="Heading_20_2" text:outline-level="2">
 				<text:bookmark text:name="__RefHeading__5546_763239732" />
 				<xsl:apply-templates select="." />
 				<text:bookmark-end text:name="__RefHeading__5546_763239732" />
 			</text:h>
 		</xsl:if>
 		<xsl:if test="./@level='3'">
-			<text:h text:style-name="Heading_20_3"
-				text:outline-level="3">
+			<text:h text:style-name="Heading_20_3" text:outline-level="3">
 				<xsl:apply-templates select="." />
 			</text:h>
 		</xsl:if>
@@ -977,8 +975,7 @@
 
 		<xsl:variable name="numberOfRows" select="count(current()//Row)" />
 		<xsl:variable name="numberOfCells" select="count(current()//Cell)" />
-		<xsl:variable name="numberOfColumns"
-			select="$numberOfCells div $numberOfRows " />
+		<xsl:variable name="numberOfColumns" select="$numberOfCells div $numberOfRows " />
 
 		<!-- Constructing basic table -->
 		<table:table table:name="TabelleTEST">
@@ -1070,7 +1067,7 @@
 			</xsl:if>
 		</xsl:for-each>
 	</xsl:template>
-	
+
 
 </xsl:stylesheet> 
 
