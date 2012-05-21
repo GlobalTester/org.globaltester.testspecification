@@ -42,9 +42,9 @@
 	Note that there can be several TestSteps, so you can copy this tag template as often as you need TestSteps. 
 	</p>
 	
-	<h4>Using the Java Script scope - sending commands</h4>
+	<h4>Using the JavaScript scope - sending commands</h4>
 	<p>
-	All communication in a TestCase is handled in the same Java Script scope that uses a Global Platform card object provided by the SmartCardShell. 
+	All communication in a TestCase is handled in the same JavaScript scope that uses a GlobalPlatform card object provided by the SmartCardShell. 
 	</p>
 	<p>
 	In the <b>TechnicalCommand</b> tag, you can set variables, call Java Script functions, and send APDU commands.
@@ -52,7 +52,7 @@
 	</p>
 	<p>
 	You can use the SmartCardShell &quot;card&quot; object to call functions, for example <code>card.reset();</code>.<br>
-	GlobalTester 3 offers you a variety of own implementations that can be called with and <code>gt_</code> prefix,
+	GlobalTester offers you a variety of own implementations that can be called with and <code>gt_</code> prefix,
 	for example <code>card.gt_getCardConfig("ICAO9303","MRZ");</code>.<br>
 	There are several protocols and scopes you can use as well, for example ISO 7816, Basic Access Control (BAC),
 	Extended Access Control (EAC), Supplemental Access Control (SAC), and so on.
@@ -90,7 +90,7 @@
 	You can achieve this if you define an APDU as ByteString in the &quot;TechnicalCommand&quot; tag
 	(for example <br>
 	<code>var command = new ByteString("00 B0 83 00 01", HEX);</code>),<br>
-	and then send it using the GlobalTester 3 send Command function (<code>card.gt_sendCommand(command);</code>).
+	and then send it using the GlobalTester send Command function (<code>card.gt_sendCommand(command);</code>).
 	</p>
 	
 	<h4>Using the Java Script scope - evaluating commands</h4>
