@@ -476,8 +476,7 @@
 						<xsl:value-of select="$company.www"/>
 					</text:p>
 					<text:p text:style-name="P9">
-						© <xsl:value-of select="$company.name"/>
-						<text:span text:style-name="P9"> <xsl:value-of select="$year"/></text:span>
+						<text:span text:style-name="P9">© <xsl:value-of select="$company.name"/> - <xsl:value-of select="$year"/></text:span>
 					</text:p>
 					<text:p text:style-name="P14" />
 					<text:table-of-content text:style-name="Sect1"
