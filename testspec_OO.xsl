@@ -643,6 +643,450 @@
 						</xsl:for-each>
 					</xsl:for-each>
 
+					<!-- Handling of profiles -->
+					<xsl:variable name="filenameProfiles" select="gt:TestProfiles" />
+					<xsl:for-each select="document($filenameProfiles)">
+						<!-- Introducing text paragraphs of profiles -->
+						<xsl:for-each select="gt:Profiles/gt:Text">
+							<xsl:for-each select="*">
+								<xsl:if test="name(.)='Paragraph'">
+									<text:p text:style-name="Standard">
+										<xsl:value-of select="." />
+									</text:p>
+								</xsl:if>
+								<xsl:if test="name(.)='Heading'">
+									<xsl:call-template name="Headline"/>
+								</xsl:if>
+							</xsl:for-each>
+						</xsl:for-each>
+
+						<!-- Profiles -->
+						<text:h text:style-name="Heading_20_3" text:outline-level="3">Application
+							Profiles</text:h>
+						<table:table>
+							<table:table-column />
+							<table:table-column />
+							<table:table-column />
+							<table:table-row>
+								<table:table-cell>
+									<text:p>Profile ID</text:p>
+								</table:table-cell>
+								<table:table-cell>
+									<text:p>Profile Name</text:p>
+								</table:table-cell>
+								<table:table-cell>
+									<text:p>Description</text:p>
+								</table:table-cell>
+							</table:table-row>
+
+							<xsl:for-each select="gt:Profiles/gt:Profile[@type='Application Profile']">
+								<table:table-row>
+									<table:table-cell>
+										<text:p>
+											<xsl:apply-templates select="./@id" />
+										</text:p>
+									</table:table-cell>
+									<table:table-cell>
+										<text:p>
+											<xsl:apply-templates select="./gt:Name" />
+										</text:p>
+									</table:table-cell>
+									<table:table-cell>
+										<text:p>
+											<xsl:apply-templates select="./gt:Description" />
+										</text:p>
+									</table:table-cell>
+								</table:table-row>
+							</xsl:for-each>
+						</table:table>
+
+						<text:h text:style-name="Heading_20_3" text:outline-level="3">Protocol
+							Profiles</text:h>
+						<table:table>
+							<table:table-column />
+							<table:table-column />
+							<table:table-column />
+							<table:table-row>
+								<table:table-cell>
+									<text:p>Profile ID</text:p>
+								</table:table-cell>
+								<table:table-cell>
+									<text:p>Profile Name</text:p>
+								</table:table-cell>
+								<table:table-cell>
+									<text:p>Description</text:p>
+								</table:table-cell>
+							</table:table-row>
+
+							<xsl:for-each select="gt:Profiles/gt:Profile[@type='Protocol Profile']">
+								<table:table-row>
+									<table:table-cell>
+										<text:p>
+											<xsl:apply-templates select="./@id" />
+										</text:p>
+									</table:table-cell>
+									<table:table-cell>
+										<text:p>
+											<xsl:apply-templates select="./gt:Name" />
+										</text:p>
+									</table:table-cell>
+									<table:table-cell>
+										<text:p>
+											<xsl:apply-templates select="./gt:Description" />
+										</text:p>
+									</table:table-cell>
+								</table:table-row>
+							</xsl:for-each>
+						</table:table>
+
+						<text:h text:style-name="Heading_20_3" text:outline-level="3">Algorithm
+							Profiles</text:h>
+						<table:table>
+							<table:table-column />
+							<table:table-column />
+							<table:table-column />
+							<table:table-row>
+								<table:table-cell>
+									<text:p>Profile ID</text:p>
+								</table:table-cell>
+								<table:table-cell>
+									<text:p>Profile Name</text:p>
+								</table:table-cell>
+								<table:table-cell>
+									<text:p>Description</text:p>
+								</table:table-cell>
+							</table:table-row>
+
+							<xsl:for-each select="Profiles/Profile[@type='Algorithm Profile']">
+								<table:table-row>
+									<table:table-cell>
+										<text:p>
+											<xsl:apply-templates select="./@id" />
+										</text:p>
+									</table:table-cell>
+									<table:table-cell>
+										<text:p>
+											<xsl:apply-templates select="./gt:Name" />
+										</text:p>
+									</table:table-cell>
+									<table:table-cell>
+										<text:p>
+											<xsl:apply-templates select="./gt:Description" />
+										</text:p>
+									</table:table-cell>
+								</table:table-row>
+							</xsl:for-each>
+						</table:table>
+
+						<text:h text:style-name="Heading_20_3" text:outline-level="3">Data
+							Group Profiles</text:h>
+						<table:table>
+							<table:table-column />
+							<table:table-column />
+							<table:table-column />
+							<table:table-row>
+								<table:table-cell>
+									<text:p>Profile ID</text:p>
+								</table:table-cell>
+								<table:table-cell>
+									<text:p>Profile Name</text:p>
+								</table:table-cell>
+								<table:table-cell>
+									<text:p>Description</text:p>
+								</table:table-cell>
+							</table:table-row>
+
+							<xsl:for-each select="Profiles/Profile[@type='Data Group Profile']">
+								<table:table-row>
+									<table:table-cell>
+										<text:p>
+											<xsl:apply-templates select="./@id" />
+										</text:p>
+									</table:table-cell>
+									<table:table-cell>
+										<text:p>
+											<xsl:apply-templates select="./gt:Name" />
+										</text:p>
+									</table:table-cell>
+									<table:table-cell>
+										<text:p>
+											<xsl:apply-templates select="./gt:Description" />
+										</text:p>
+									</table:table-cell>
+								</table:table-row>
+							</xsl:for-each>
+						</table:table>
+
+					</xsl:for-each>
+
+
+					<!-- Handling of certificates -->
+					<xsl:variable name="filenameCertificates" select="gt:CertificateDefinition" />
+					<xsl:for-each select="document($filenameCertificates)">
+						<!-- Introducing text paragraphs of certificates -->
+						<xsl:for-each select="Certificates/Text">
+							<xsl:for-each select="*">
+								<xsl:if test="name(.)='Paragraph'">
+									<text:p text:style-name="Standard">
+										<xsl:value-of select="." />
+									</text:p>
+								</xsl:if>
+								<xsl:if test="name(.)='Heading'">
+									<xsl:call-template name="Headline"/>
+								</xsl:if>
+								<xsl:if test="name(.)='Table'">
+									<xsl:call-template name="Table"/>
+								</xsl:if>
+
+							</xsl:for-each>
+						</xsl:for-each>
+
+						<!-- Certificates -->
+						<xsl:for-each select="gt:Certificates/gt:Certificate">
+							<xsl:variable name="filenameCertificate" select="." />
+							<xsl:for-each select="document($filenameCertificate)">
+								<text:h text:style-name="Heading_20_3"
+									text:outline-level="3">
+									Certificate <xsl:apply-templates select="gt:Certificate/@id" />
+								</text:h>
+
+								<table:table table:name="TabelleCertificate"
+									table:style-name="Tabelle1">
+									<table:table-column table:style-name="Tabelle1.A" />
+									<table:table-column table:style-name="Tabelle1.B" />
+									<table:table-row>
+										<table:table-cell table:style-name="Tabelle1.A1"
+											office:value-type="string">
+											<text:p text:style-name="P8">ID</text:p>
+										</table:table-cell>
+										<table:table-cell table:style-name="Tabelle1.B1"
+											office:value-type="string">
+											<text:p text:style-name="Table_20_Contents">
+												<text:bookmark-start text:name="{Certificate/@id}"/><xsl:apply-templates select="gt:Certificate/@id" /><text:bookmark-end text:name="{Certificate/@id}"/>
+											</text:p>
+										</table:table-cell>
+									</table:table-row>
+									<table:table-row>
+										<table:table-cell table:style-name="Tabelle1.A1"
+											office:value-type="string">
+											<text:p text:style-name="P8">Purpose</text:p>
+										</table:table-cell>
+										<table:table-cell table:style-name="Tabelle1.B1"
+											office:value-type="string">
+											<text:p text:style-name="Table_20_Contents">
+												<xsl:apply-templates select="gt:Certificate/gt:Purpose" />
+											</text:p>
+										</table:table-cell>
+									</table:table-row>
+									<table:table-row>
+										<table:table-cell table:style-name="Tabelle1.A1"
+											office:value-type="string">
+											<text:p text:style-name="P8">Version</text:p>
+										</table:table-cell>
+										<table:table-cell table:style-name="Tabelle1.B1"
+											office:value-type="string">
+											<text:p text:style-name="Table_20_Contents">
+												<xsl:apply-templates select="gt:Certificate/gt:Version" />
+											</text:p>
+										</table:table-cell>
+									</table:table-row>
+									<table:table-row>
+										<table:table-cell table:style-name="Tabelle1.A1"
+											office:value-type="string">
+											<text:p text:style-name="P8">Content / Parameter</text:p>
+										</table:table-cell>
+										<table:table-cell table:style-name="Tabelle1.B1"
+											office:value-type="string">
+											<xsl:for-each select="gt:Certificate/gt:CertificateContent/*">
+												<xsl:if
+													test="name(.)='CertificateAuthorityReference' and string-length(.)>=1">
+													<text:p text:style-name="Table_20_Contents">
+														CAR:
+														<xsl:value-of select="." />
+													</text:p>
+												</xsl:if>
+												<xsl:if
+													test="name(.)='SignerCertificate' and string-length(.)>=1">
+													<text:p text:style-name="Table_20_Contents">
+														Signer:
+														<xsl:value-of select="." />
+													</text:p>
+												</xsl:if>
+												<xsl:if test="name(.)='SigningKey' and string-length(.)>=1">
+													<text:p text:style-name="Table_20_Contents">
+														Signing Key:
+														<xsl:value-of select="." />
+													</text:p>
+												</xsl:if>
+												<xsl:if
+													test="name(.)='CertificateHolderReference' and string-length(.)>=1">
+													<text:p text:style-name="Table_20_Contents">
+														CHR:
+														<xsl:value-of select="." />
+													</text:p>
+												</xsl:if>
+												<xsl:if
+													test="name(.)='CertificateHolderAuthorization' and string-length(.)>=1">
+													<text:p text:style-name="Table_20_Contents">
+														CHA:
+														<xsl:value-of select="." />
+													</text:p>
+												</xsl:if>
+												<xsl:if
+													test="name(.)='CertificateEffectiveDate' and string-length(.)>=1">
+													<text:p text:style-name="Table_20_Contents">
+														Eff. Date:
+														<xsl:value-of select="." />
+													</text:p>
+												</xsl:if>
+												<xsl:if
+													test="name(.)='CertificateExpirationDate' and string-length(.)>=1">
+													<text:p text:style-name="Table_20_Contents">
+														Exp. Date:
+														<xsl:value-of select="." />
+													</text:p>
+												</xsl:if>
+												<xsl:if test="name(.)='PublicKey' and string-length(.)>=1">
+													<text:p text:style-name="Table_20_Contents">
+														Public Key:
+														<xsl:value-of select="." />
+													</text:p>
+												</xsl:if>
+											</xsl:for-each>
+										</table:table-cell>
+									</table:table-row>
+
+									<!-- Check for modifications -->
+									<xsl:for-each select="gt:Certificate/gt:CertificateModification">
+										<table:table-row>
+											<table:table-cell table:style-name="Tabelle1.A1"
+												office:value-type="string">
+												<text:p text:style-name="P8">Modification</text:p>
+											</table:table-cell>
+											<table:table-cell table:style-name="Tabelle1.B1"
+												office:value-type="string">
+												<text:p text:style-name="Table_20_Contents">
+													<xsl:value-of select="./gt:Description" />
+												</text:p>
+											</table:table-cell>
+										</table:table-row>
+									</xsl:for-each>
+
+								</table:table>
+
+							</xsl:for-each>
+						</xsl:for-each>
+					</xsl:for-each>
+
+
+					<!-- Handling of routines -->
+					<xsl:variable name="filenameRoutines" select="gt:Routines" />
+
+					<xsl:for-each select="document($filenameRoutines)">
+						<!-- Introducing text paragraphs of routines -->
+						<xsl:for-each select="gt:Routines/gt:Text">
+							<xsl:for-each select="*">
+								<xsl:if test="name(.)='Paragraph'">
+									<text:p text:style-name="Standard">
+										<xsl:value-of select="." />
+									</text:p>
+								</xsl:if>
+								<xsl:if test="name(.)='Heading'">
+									<xsl:call-template name="Headline"/>
+								</xsl:if>
+							</xsl:for-each>
+						</xsl:for-each>
+
+						<!-- Routines -->
+						<xsl:for-each select="gt:Routines/gt:Routine">
+							<xsl:variable name="filenameRoutine" select="." />
+							<xsl:for-each select="document($filenameRoutine)">
+								<text:h text:style-name="Heading_20_2"
+									text:outline-level="2">
+									Routine
+									<xsl:apply-templates select="gt:Routine/gt:Title" />
+								</text:h>
+								<table:table table:name="TabelleRoutines"
+									table:style-name="Tabelle1">
+									<table:table-column table:style-name="Tabelle1.A" />
+									<table:table-column table:style-name="Tabelle1.B" />
+									<table:table-row>
+										<table:table-cell table:style-name="Tabelle1.A1"
+											office:value-type="string">
+											<text:p text:style-name="P8">Routine ID</text:p>
+										</table:table-cell>
+										<table:table-cell table:style-name="Tabelle1.B1"
+											office:value-type="string">
+											<text:p text:style-name="Table_20_Contents">
+												<xsl:apply-templates select="Routine/@id" />
+											</text:p>
+										</table:table-cell>
+									</table:table-row>
+									<table:table-row>
+										<table:table-cell table:style-name="Tabelle1.A1"
+											office:value-type="string">
+											<text:p text:style-name="P8">Purpose</text:p>
+										</table:table-cell>
+										<table:table-cell table:style-name="Tabelle1.B1"
+											office:value-type="string">
+											<text:p text:style-name="Table_20_Contents">
+												<xsl:apply-templates select="Routine/Purpose" />
+											</text:p>
+										</table:table-cell>
+									</table:table-row>
+									<table:table-row>
+										<table:table-cell table:style-name="Tabelle1.A1"
+											office:value-type="string">
+											<text:p text:style-name="P8">Reference</text:p>
+										</table:table-cell>
+										<table:table-cell table:style-name="Tabelle1.B1"
+											office:value-type="string">
+											<text:p text:style-name="Table_20_Contents">
+												<xsl:for-each select="Routine/Reference">
+													<xsl:apply-templates select="." />
+													<xsl:if test="position() != last()">
+														<xsl:text>, </xsl:text>
+													</xsl:if>
+												</xsl:for-each>
+											</text:p>
+										</table:table-cell>
+									</table:table-row>
+									<table:table-row>
+										<table:table-cell table:style-name="Tabelle1.A1"
+											office:value-type="string">
+											<text:p text:style-name="P8">Parameter</text:p>
+										</table:table-cell>
+										<table:table-cell table:style-name="Tabelle1.B1"
+											office:value-type="string">
+											<xsl:for-each select="Routine/Parameter">
+												<text:p text:style-name="Table_20_Contents">
+													<xsl:apply-templates select="./@key"/>:	<xsl:apply-templates select="." />
+												</text:p>
+											</xsl:for-each>
+										</table:table-cell>
+									</table:table-row>
+
+									<table:table-row>
+										<table:table-cell table:style-name="Tabelle1.A2"
+											office:value-type="string">
+											<text:p text:style-name="P8">Routine steps</text:p>
+										</table:table-cell>
+										<table:table-cell table:style-name="Tabelle1.B2"
+											office:value-type="string">
+											<text:list text:style-name="L675">
+												<xsl:for-each select="gt:Routine/gt:RoutineStep">
+													<text:list-item>
+														<!-- Handling of all Action Step -->
+														<xsl:call-template name="ActionStep" />
+													</text:list-item>
+												</xsl:for-each>
+											</text:list>
+										</table:table-cell>
+									</table:table-row>
+								</table:table>
+							</xsl:for-each>
+						</xsl:for-each>
+					</xsl:for-each>
 
 					<!-- Handling of test layers -->
 					<xsl:for-each select="gt:TestLayer">
