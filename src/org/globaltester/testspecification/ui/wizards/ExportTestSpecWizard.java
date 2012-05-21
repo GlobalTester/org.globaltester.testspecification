@@ -20,6 +20,7 @@ import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.PlatformUI;
 import org.globaltester.core.Activator;
 import org.globaltester.document.export.Exporter;
+import org.globaltester.document.export.XslParameter;
 import org.globaltester.logging.logger.GtErrorLogger;
 import org.globaltester.testspecification.ui.Messages;
 import org.globaltester.testspecification.ui.UiImages;
@@ -28,11 +29,13 @@ public class ExportTestSpecWizard extends Wizard implements IExportWizard {
 
 
 	private ExportTestSpecWizardPage _pageOne;
+	private ExportTestSpecWizardCustomizationPage _pageTwo;
 
 	String projectName;
 	File target;
 	InputStream stylesheetStream;
 	InputStream sourceZipStream;
+	XslParameter [] parameters;
 	
 	public ExportTestSpecWizard() {
 		setWindowTitle(Messages.ExportTestSpecWizard_WIZARD_NAME);
@@ -52,6 +55,7 @@ public class ExportTestSpecWizard extends Wizard implements IExportWizard {
 			stylesheetStream = _pageOne.getStylesheet();
 			sourceZipStream = _pageOne.getSourcesZip();
 			
+			parameters = _pageTwo.getXslParams();
 			
 			IRunnableWithProgress exportRunnable = new IRunnableWithProgress() {
 				
@@ -70,7 +74,7 @@ public class ExportTestSpecWizard extends Wizard implements IExportWizard {
 						File testSpecification = new File(pathToProject + File.separator + testSpecIFile.getProjectRelativePath().toString());
 						monitor.worked(1);
 						monitor.subTask("Export");
-						Exporter.export(target, testSpecification, stylesheetStream, sourceZipStream);
+						Exporter.export(target, testSpecification, stylesheetStream, sourceZipStream, parameters);
 						monitor.worked(2);
 						showSuccess();
 					} catch (IOException e) {
@@ -144,5 +148,7 @@ public class ExportTestSpecWizard extends Wizard implements IExportWizard {
 
 		_pageOne = new ExportTestSpecWizardPage();
 		addPage(_pageOne);
+		_pageTwo = new ExportTestSpecWizardCustomizationPage();
+		addPage(_pageTwo);
 	}
 }
