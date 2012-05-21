@@ -469,10 +469,7 @@
 					<text:p text:style-name="P9">
 						<text:alphabetical-index-mark
 							text:string-value="E-Mail (Electronic Mail)" />
-						<text:alphabetical-index-mark
-							text:string-value="E-Mail (Electronic Mail)" />
-						<text:span text:style-name="T1">E-Mail: </text:span>
-						<text:span text:style-name="T2"><xsl:value-of select="$company.mail"/>
+						<text:span text:style-name="P9">E-Mail: <xsl:value-of select="$company.mail"/>
 						</text:span>
 					</text:p>
 					<text:p text:style-name="P9">Internet:
@@ -480,7 +477,7 @@
 					</text:p>
 					<text:p text:style-name="P9">
 						© <xsl:value-of select="$company.name"/>
-						<text:span text:style-name="T2"><xsl:value-of select="$year"/></text:span>
+						<text:span text:style-name="P9"> <xsl:value-of select="$year"/></text:span>
 					</text:p>
 					<text:p text:style-name="P14" />
 					<text:table-of-content text:style-name="Sect1"
