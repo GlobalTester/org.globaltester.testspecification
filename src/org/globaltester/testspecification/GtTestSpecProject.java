@@ -29,6 +29,47 @@ public class GtTestSpecProject {
 	 *            default workspace location will be used.
 	 * @return the created project
 	 */
+	public static IProject createProjectWithInitialStructure(String projectName, URI location) {
+		Assert.isNotNull(projectName);
+		Assert.isTrue(projectName.trim().length() > 0);
+
+		IProject project = createProject(projectName, location);
+		try {
+			String[] paths = { "TestData/Certificates", "TestData/Subroutines", "TestCases" }; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+			GtResourceHelper.addToProjectStructure(project, paths);
+			createDefaultFile(defaultTestSpec, project.getFile("testSpecification.xml"));
+			TestCase.createDefaultTestCase(project.getFile("TestCases" + File.separator + "testCase.xml"));
+			createDefaultFile(defaultTestLayer, project.getFile("TestCases" + File.separator + "testLayer.xml"));
+			createDefaultFile(defaultTestUnit, project.getFile("TestCases" + File.separator + "testUnit.xml"));
+		} catch (CoreException e) {
+			e.printStackTrace();
+			project = null;
+		}
+
+		// refresh the workspace
+		try {
+			ResourcesPlugin.getWorkspace().getRoot()
+						.refreshLocal(IResource.DEPTH_INFINITE, null);
+		} catch (CoreException e) {
+			// refresh of workspace failed
+			// relevant CoreException will be in the eclipse log anyhow
+			// users most probably will ignore this behavior and refresh manually 
+		}
+
+		return project;
+	}
+	
+	/**
+	 * Create a GlobalTester TestSpecification Project. This includes creation
+	 * of the Eclipse project and adding the according nature.
+	 * 
+	 * @param projectName
+	 *            name of the project to be created
+	 * @param location
+	 *            location where the project shall be created. If empty the
+	 *            default workspace location will be used.
+	 * @return the created project
+	 */
 	public static IProject createProject(String projectName, URI location) {
 		Assert.isNotNull(projectName);
 		Assert.isTrue(projectName.trim().length() > 0);
@@ -36,13 +77,6 @@ public class GtTestSpecProject {
 		IProject project = GtResourceHelper.createEmptyProject(projectName, location);
 		try {
 			GtResourceHelper.addNature(project, GtTestSpecNature.NATURE_ID);
-
-			String[] paths = { "TestData/Certificates", "TestData/Subroutines", "TestCases" }; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-			GtResourceHelper.addToProjectStructure(project, paths);
-			createDefaultFile(defaultTestSpec, project.getFile("testSpecification.xml"));
-			TestCase.createDefaultTestCase(project.getFile("TestCases" + File.separator + "testCase.xml"));
-			createDefaultFile(defaultTestLayer, project.getFile("TestCases" + File.separator + "testLayer.xml"));
-			createDefaultFile(defaultTestUnit, project.getFile("TestCases" + File.separator + "testUnit.xml"));
 		} catch (CoreException e) {
 			e.printStackTrace();
 			project = null;
