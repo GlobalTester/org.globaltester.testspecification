@@ -34,6 +34,21 @@ public class GtTestSpecProjectTest {
 		Assert.assertTrue("GtTestSpecNature is not correctly added",
 				project.hasNature(GtTestSpecNature.NATURE_ID));
 
+		// delete the project after the test
+		project.delete(true, null);
+	}
+
+	@Test
+	public void testCreateProjectWithInitialStructureWithGoodArgs() throws Exception {
+		String projectName = "junitTestProject-deleteMe";
+
+		IProject project = GtTestSpecProject.createProjectWithInitialStructure(projectName,
+				null);
+
+		// check nature is added
+		Assert.assertTrue("GtTestSpecNature is not correctly added",
+				project.hasNature(GtTestSpecNature.NATURE_ID));
+
 		// check directory structure is created correctly
 		String[] paths = { "TestData/Certificates", "TestData/Subroutines",
 				"TestCases" };
