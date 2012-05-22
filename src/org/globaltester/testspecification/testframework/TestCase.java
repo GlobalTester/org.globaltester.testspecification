@@ -215,13 +215,21 @@ public class TestCase extends FileTestExecutable {
 	"	<TestStep>\n"+
 	"		<Command xsi:type=\"APDUCommand\">\n"+
 	"			<Text>Select the MF application</Text>\n"+
-	"			<APDU>00 A4 3F 00 00</APDU>\n"+
+	"			<APDU>00 A4 00 0C 02 3F 00</APDU>\n"+
 	"		</Command>\n"+
+	"		<TechnicalCommand>\n"+
+	"			var cmd = new ByteString(\"00 A4 00 0C 02 3F 00\", HEX);\n"+
+	"			card.gt_sendCommand(cmd);\n"+
+	"		</TechnicalCommand>\n"+
 	"		<Description>\n"+
 	"			Select the MF\n"+
 	"		</Description>\n"+
 	"		<ExpectedResult xsi:type=\"APDUResult\">\n"+
-	"			<Text>Describe the expected result</Text>\n"+
+	"			<Text>Chip must return status bytes indicating no error.</Text>\n"+
+	"			<APDU sm=\"false\">90 00</APDU>\n"+
+	"			<TechnicalResult>\n"+
+	"				assertStatusWord(SW_NoError, card.SW.toString(HEX), FAILURE);\n"+
+	"			</TechnicalResult>\n"+
 	"		</ExpectedResult>\n"+
 	"	</TestStep>\n"+
 	"</TestCase>";
