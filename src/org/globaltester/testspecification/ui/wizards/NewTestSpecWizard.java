@@ -29,7 +29,7 @@ public class NewTestSpecWizard extends Wizard implements INewWizard {
 	public boolean performFinish() {
 	    String name = _pageOne.getProjectName();
 	    URI location = (_pageOne.useDefaults()) ? null : _pageOne.getLocationURI();
-	    GtTestSpecProject.createProject(name, location);
+	    GtTestSpecProject.createProjectWithInitialStructure(name, location);
 
 	    return true;
 	}
