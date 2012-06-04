@@ -24,7 +24,7 @@
 	xmlns:field="urn:openoffice:names:experimental:ooo-ms-interop:xmlns:field:1.0"
 
 	version="1.0">
-
+							
 	<xsl:output method="xml" indent="yes" />
 
 	<xsl:param name="document.title" />
@@ -38,7 +38,6 @@
 	<xsl:param name="year" />
 
 	<xsl:template match="gt:TestSpecification">
-
 		<!-- Start of ODT file structure -->
 		<office:document-content office:version="1.2"
 			grddl:transformation="http://docs.oasis-open.org/office/1.2/xslt/odf2rdf.xsl">
@@ -753,7 +752,7 @@
 								</table:table-cell>
 							</table:table-row>
 
-							<xsl:for-each select="Profiles/Profile[@type='Algorithm Profile']">
+							<xsl:for-each select="gt:Profiles/gt:Profile[@type='Algorithm Profile']">
 								<table:table-row>
 									<table:table-cell>
 										<text:p>
@@ -792,7 +791,7 @@
 								</table:table-cell>
 							</table:table-row>
 
-							<xsl:for-each select="Profiles/Profile[@type='Data Group Profile']">
+							<xsl:for-each select="gt:Profiles/gt:Profile[@type='Data Group Profile']">
 								<table:table-row>
 									<table:table-cell>
 										<text:p>
@@ -820,7 +819,7 @@
 					<xsl:variable name="filenameCertificates" select="gt:CertificateDefinition" />
 					<xsl:for-each select="document($filenameCertificates)">
 						<!-- Introducing text paragraphs of certificates -->
-						<xsl:for-each select="Certificates/Text">
+						<xsl:for-each select="gt:Certificates/gt:Text">
 							<xsl:for-each select="*">
 								<xsl:if test="name(.)='Paragraph'">
 									<text:p text:style-name="Standard">
@@ -977,7 +976,6 @@
 
 					<!-- Handling of routines -->
 					<xsl:variable name="filenameRoutines" select="gt:Routines" />
-
 					<xsl:for-each select="document($filenameRoutines)">
 						<!-- Introducing text paragraphs of routines -->
 						<xsl:for-each select="gt:Routines/gt:Text">
@@ -1014,7 +1012,7 @@
 										<table:table-cell table:style-name="Tabelle1.B1"
 											office:value-type="string">
 											<text:p text:style-name="Table_20_Contents">
-												<xsl:apply-templates select="Routine/@id" />
+												<xsl:apply-templates select="gt:Routine/@id" />
 											</text:p>
 										</table:table-cell>
 									</table:table-row>
@@ -1026,7 +1024,7 @@
 										<table:table-cell table:style-name="Tabelle1.B1"
 											office:value-type="string">
 											<text:p text:style-name="Table_20_Contents">
-												<xsl:apply-templates select="Routine/Purpose" />
+												<xsl:apply-templates select="gt:Routine/gt:Purpose" />
 											</text:p>
 										</table:table-cell>
 									</table:table-row>
@@ -1038,7 +1036,7 @@
 										<table:table-cell table:style-name="Tabelle1.B1"
 											office:value-type="string">
 											<text:p text:style-name="Table_20_Contents">
-												<xsl:for-each select="Routine/Reference">
+												<xsl:for-each select="gt:Routine/gt:Reference">
 													<xsl:apply-templates select="." />
 													<xsl:if test="position() != last()">
 														<xsl:text>, </xsl:text>
@@ -1054,7 +1052,7 @@
 										</table:table-cell>
 										<table:table-cell table:style-name="Tabelle1.B1"
 											office:value-type="string">
-											<xsl:for-each select="Routine/Parameter">
+											<xsl:for-each select="gt:Routine/gt:Parameter">
 												<text:p text:style-name="Table_20_Contents">
 													<xsl:apply-templates select="./@key"/>:	<xsl:apply-templates select="." />
 												</text:p>
@@ -1312,6 +1310,35 @@
 					</xsl:for-each>	<!-- End of test layer -->
 
 
+
+
+					<!-- Annex -->
+					<text:h text:style-name="Heading_20_1" text:outline-level="1"
+						text:is-list-header="true">
+						<text:bookmark text:name="__RefHeading__5558_763239732" />
+						Annex
+						<text:bookmark-end text:name="__RefHeading__5558_763239732" />
+					</text:h>
+
+					<!-- Handling of references -->
+					<text:p text:style-name="Standard" />
+					<text:h text:style-name="Heading_20_2" text:outline-level="2"
+						text:is-list-header="true">References</text:h>
+
+					<xsl:variable name="filenameReferences" select="gt:References" />
+					<xsl:for-each select="document($filenameReferences)">
+						<xsl:for-each select="gt:References/gt:Reference">
+							<text:p text:style-name="Standard">
+								[ <text:bookmark-start text:name="{./@id}"/><xsl:apply-templates select="./@id" /><text:bookmark-end text:name="{./@id}"/> ]:
+								<xsl:text>&#9; &#9;</xsl:text>
+								<xsl:apply-templates select="gt:Content" />
+							</text:p>
+						</xsl:for-each>
+					</xsl:for-each>
+
+
+
+
 					<!-- Revision history -->
 					<text:p text:style-name="Standard" />
 					<text:h text:style-name="Heading_20_2" text:outline-level="2"
@@ -1377,6 +1404,11 @@
 
 		</office:document-content>
 
+	</xsl:template>
+
+	<!-- Use this template to add references to every certificate -->
+	<xsl:template match="gt:Link">
+		<text:bookmark-ref text:reference-format="text" text:ref-name="{@target}"><xsl:apply-templates select="@target" /></text:bookmark-ref>
 	</xsl:template>
 
 	<!-- Use this template to handle all three kinds of headlines -->
