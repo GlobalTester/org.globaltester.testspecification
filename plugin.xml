@@ -9,8 +9,61 @@
             description="Export test specification as a GlobalTester OpenDocument Format"
             name="GlobalTester"
             sourceZip="oosources.zip"
-            stylesheet="testspec_OO.xsl">
+            stylesheet="testspec_OO.xsl"
+            validator="org.globaltester.testspecification.export.hjp.Validator">
       </exportData>
+      <customData
+            defaultValue="GlobalTester"
+            enabled="true"
+            key="document.title"
+            text="Title">
+      </customData>
+      <customData
+            defaultValue="Test Specification"
+            enabled="true"
+            key="document.subtitle"
+            text="Subtitle">
+      </customData>
+      <customData
+            defaultValue="HJP Consulting GmbH"
+            enabled="true"
+            key="company.name"
+            text="Name">
+      </customData>
+      <customData
+            defaultValue="Hauptstraße 35"
+            enabled="true"
+            key="company.address1"
+            text="Address">
+      </customData>
+      <customData
+            defaultValue="33178 Borchen, Germany"
+            enabled="true"
+            key="company.address2"
+            text="Address">
+      </customData>
+      <customData
+            defaultValue="+49 5251 41776- 0"
+            enabled="true"
+            key="company.tel"
+            text="Telephone">
+      </customData>
+      <customData
+            defaultValue="globaltester@hjp-consulting.com "
+            enabled="true"
+            key="company.mail"
+            text="Mail">
+      </customData>
+      <customData
+            defaultValue="http://www.globaltester.org"
+            enabled="true"
+            key="company.www"
+            text="Internet">
+      </customData>
+      <customData
+            enabled="false"
+            key="year"
+            text="Year">
+      </customData>
    </extension>
-
 </plugin>
