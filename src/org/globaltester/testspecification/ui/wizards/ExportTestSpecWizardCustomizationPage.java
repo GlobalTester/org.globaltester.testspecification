@@ -102,14 +102,20 @@ public class ExportTestSpecWizardCustomizationPage extends WizardPage implements
 					txt.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false,1, 1));
 
 					txt.setData(key);
-					if (!enabled && validator != null) {
+					
+					if (!enabled){
 						txt.setEditable(false);
-						Object generatedValue = validator.generate(key);
-						txt.setText(generatedValue.toString());
-						params.put(key, generatedValue);
+						if (validator != null){
+							Object generatedValue = validator.generate(key);
+							txt.setText(generatedValue.toString());
+							params.put(key, generatedValue);
+						} else {
+							params.put(key, defaultValue);
+						}
 					} else {
 						params.put(key, defaultValue);
 					}
+					
 					if (params.get(key) != null){
 						txt.setText(params.get(key).toString());
 					}
