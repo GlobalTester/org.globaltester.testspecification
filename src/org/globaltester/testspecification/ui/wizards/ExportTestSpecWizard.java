@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
+import java.util.HashMap;
+import java.util.Map.Entry;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
@@ -14,13 +16,13 @@ import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.jface.wizard.IWizardPage;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.ui.IExportWizard;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.PlatformUI;
 import org.globaltester.core.Activator;
 import org.globaltester.document.export.Exporter;
-import org.globaltester.document.export.XslParameter;
 import org.globaltester.logging.logger.GtErrorLogger;
 import org.globaltester.testspecification.ui.Messages;
 import org.globaltester.testspecification.ui.UiImages;
@@ -35,7 +37,7 @@ public class ExportTestSpecWizard extends Wizard implements IExportWizard {
 	File target;
 	InputStream stylesheetStream;
 	InputStream sourceZipStream;
-	XslParameter [] parameters;
+	HashMap<String, Object> xslParams;
 	
 	public ExportTestSpecWizard() {
 		setWindowTitle(Messages.ExportTestSpecWizard_WIZARD_NAME);
@@ -55,8 +57,6 @@ public class ExportTestSpecWizard extends Wizard implements IExportWizard {
 			stylesheetStream = _pageOne.getStylesheet();
 			sourceZipStream = _pageOne.getSourcesZip();
 			
-			parameters = _pageTwo.getXslParams();
-			
 			IRunnableWithProgress exportRunnable = new IRunnableWithProgress() {
 				
 				@Override
@@ -74,7 +74,24 @@ public class ExportTestSpecWizard extends Wizard implements IExportWizard {
 						File testSpecification = new File(pathToProject + File.separator + testSpecIFile.getProjectRelativePath().toString());
 						monitor.worked(1);
 						monitor.subTask("Export");
-						Exporter.export(target, testSpecification, stylesheetStream, sourceZipStream, parameters);
+						
+						PlatformUI.getWorkbench().getDisplay().syncExec(new Runnable() {
+							@Override
+							public void run() {
+								_pageTwo.update();
+							}
+						});
+						
+						HashMap<String,Object> params = _pageTwo.getXslParams();
+
+						Exporter.export(target, testSpecification, stylesheetStream, sourceZipStream, params);
+
+						// save modified String values as preferences
+						for (Entry<String, Object> entry : params.entrySet()){
+							if (entry.getValue() instanceof String){
+								PlatformUI.getPreferenceStore().putValue(ExportTestSpecWizardCustomizationPage.PREFERENCE_PREFIX + "." + entry.getKey(), (String) entry.getValue());
+							}
+						}
 						monitor.worked(2);
 						showSuccess();
 					} catch (IOException e) {
@@ -151,4 +168,15 @@ public class ExportTestSpecWizard extends Wizard implements IExportWizard {
 		_pageTwo = new ExportTestSpecWizardCustomizationPage();
 		addPage(_pageTwo);
 	}
+
+	@Override
+	public IWizardPage getNextPage(IWizardPage page) {
+		if (page == _pageOne){
+			_pageTwo.update();
+		}
+		return super.getNextPage(page);
+	}
+	
+	
+	
 }

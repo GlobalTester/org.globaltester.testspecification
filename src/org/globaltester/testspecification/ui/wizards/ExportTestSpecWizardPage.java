@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
@@ -11,6 +12,7 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.IConfigurationElement;
+import org.eclipse.core.runtime.IExtension;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.jface.viewers.ISelection;
@@ -41,8 +43,9 @@ public class ExportTestSpecWizardPage extends WizardPage {
 	private List lstExportLayoutSelection;
 	private Text txtDestination;
 	private Text txtLayoutDescription;
-
-	private IConfigurationElement[] configElements;
+	private Label lblLayoutDescr;
+	
+	private IExtension[] extensions;
 	private Text txtSourcesZip;
 	private Text txtStylesheet;
 	private Composite customExport;
@@ -174,7 +177,7 @@ public class ExportTestSpecWizardPage extends WizardPage {
 		});
 
 		// Create the TestSpec export layout description text
-		Label lblLayoutDescr = new Label(container, SWT.NONE);
+		lblLayoutDescr = new Label(container, SWT.NONE);
 		lblLayoutDescr.setText("Description export layout:");
 		lblLayoutDescr.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, true,
 				false, 2, 1));
@@ -232,6 +235,28 @@ public class ExportTestSpecWizardPage extends WizardPage {
 			}
 		}
 
+
+
+		// Add all export layouts to the list
+		extensions = Platform.getExtensionRegistry().getExtensionPoint(Exporter.EXTENSIONPOINT_ID).getExtensions();
+		
+		for (int i = 0; i < extensions.length; i++) {
+			IExtension curElem = extensions[i];
+			for (IConfigurationElement configElem : curElem.getConfigurationElements()){
+				if (configElem.getName().equals("exportData")) {
+					String name = configElem.getAttribute("name");
+					lstExportLayoutSelection.add(name);
+				}
+			}
+			
+		}
+		lstExportLayoutSelection.add("Custom");
+
+		setDefaults();
+
+	}
+	
+	protected void setDefaults(){		
 		// fill with default values
 		if (lstTestSpecSelection.getItemCount() > 0) {
 			// select the first element
@@ -244,17 +269,6 @@ public class ExportTestSpecWizardPage extends WizardPage {
 			// message
 			setErrorMessage("Currently no GT TestSpecification projects are available in the workspace.");
 		}
-
-		// Add all export layouts to the list
-		configElements = Platform.getExtensionRegistry()
-				.getConfigurationElementsFor(Exporter.EXTENSIONPOINT_ID);
-		for (int i = 0; i < configElements.length; i++) {
-			IConfigurationElement curElem = configElements[i];
-			String name = curElem.getAttribute("name");
-			lstExportLayoutSelection.add(name);
-		}
-		lstExportLayoutSelection.add("Custom");
-
 		// fill with default values
 		if (lstExportLayoutSelection.getItemCount() > 0) {
 			// defaultName = true;
@@ -380,14 +394,19 @@ public class ExportTestSpecWizardPage extends WizardPage {
 		if (selectionIndex == lstExportLayoutSelection.getItemCount() - 1) {
 			customExport.setVisible(true);
 			txtLayoutDescription.setVisible(false);
+			lblLayoutDescr.setVisible(false);
 		} else {
 			customExport.setVisible(false);
 			txtLayoutDescription.setVisible(true);
+			lblLayoutDescr.setVisible(true);
 		}
 
-		if (configElements != null && configElements.length > selectionIndex) {
-			txtLayoutDescription.setText(configElements[selectionIndex]
-					.getAttribute("description"));
+		if (extensions != null && extensions.length > selectionIndex) {
+			IConfigurationElement exportData = getExportData();
+			if (exportData != null) {
+				txtLayoutDescription.setText(getExportData().getAttribute(
+						"description"));
+			}
 		}
 
 		// update the dialog appearance
@@ -402,9 +421,9 @@ public class ExportTestSpecWizardPage extends WizardPage {
 	 * @throws IOException
 	 */
 	public InputStream getStylesheet() throws IOException {
-		IConfigurationElement exporter = getExporter();
+		IConfigurationElement exporter = getExportData();
 		if (exporter != null) {
-			String stylesheet = getExporter().getAttribute("stylesheet");
+			String stylesheet = exporter.getAttribute("stylesheet");
 			String plugin = exporter.getDeclaringExtension()
 					.getUniqueIdentifier();
 			return FileLocator.openStream(Platform.getBundle(plugin), new Path(
@@ -422,7 +441,7 @@ public class ExportTestSpecWizardPage extends WizardPage {
 	 * @throws IOException
 	 */
 	public InputStream getSourcesZip() throws IOException {
-		IConfigurationElement exporter = getExporter();
+		IConfigurationElement exporter = getExportData();
 		if (exporter != null) {
 			String sourcesZip = exporter.getAttribute("sourceZip");
 			String plugin = exporter.getDeclaringExtension()
@@ -434,10 +453,42 @@ public class ExportTestSpecWizardPage extends WizardPage {
 		}
 	}
 
-	private IConfigurationElement getExporter() {
+	protected IConfigurationElement getExportData(){
+		IExtension exporter = getExporter();
+		if (exporter != null) {
+			IConfigurationElement[] elements = exporter
+					.getConfigurationElements();
+			for (IConfigurationElement curElem : elements) {
+				if (curElem.getName().equals("exportData")) {
+					return curElem;
+				}
+			}
+		}
+		return null;
+
+	}
+	
+	protected IConfigurationElement[] getCustomData(){
+		IExtension exporter = getExporter();
+		if (exporter != null) {
+			IConfigurationElement[] elements = getExporter()
+					.getConfigurationElements();
+			java.util.List<IConfigurationElement> result = new ArrayList<IConfigurationElement>();
+			for (IConfigurationElement curElem : elements) {
+				if (curElem.getName().equals("customData")) {
+					result.add(curElem);
+				}
+			}
+			return result.toArray(new IConfigurationElement[result.size()]);
+		} else {
+			return new IConfigurationElement[0];
+		}
+	}
+	
+	protected IExtension getExporter() {
 		int selectionIndex = lstExportLayoutSelection.getSelectionIndex();
-		if (configElements.length > selectionIndex) {
-			return configElements[selectionIndex];
+		if (extensions.length > selectionIndex && selectionIndex >= 0) {
+			return extensions[selectionIndex];
 		}
 		return null;
 	}
