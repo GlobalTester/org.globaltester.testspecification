@@ -6,8 +6,8 @@ import static org.junit.Assert.assertTrue;
 import java.io.IOException;
 
 import org.eclipse.core.runtime.CoreException;
-import org.globaltester.swtbot.uihelper.ExportWizardUiHelper;
 import org.globaltester.swtbot.uihelper.GlobalTesterUiHelper;
+import org.globaltester.swtbot.uihelper.TestSpecificationExportWizardUiHelper;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -20,7 +20,7 @@ public class ExportWizardTest {
 	
 	@Test
 	public void testExportWizardPO() throws CoreException{
-		ExportWizardUiHelper exportWizard = GlobalTesterUiHelper.openExportWizardByMenu();
+		TestSpecificationExportWizardUiHelper exportWizard = GlobalTesterUiHelper.openExportWizardByMenu().openTestSpecificationExportWizard();
 		assertEquals("while testing there should be no test specification projects", exportWizard.getNumberOfTestSpecifications(), 0);
 		assertTrue("at least one entry should be in the exporters list", exportWizard.getNumberOfExporters() >= 1);
 		assertTrue("Custom exporter should be in the exporters list", exportWizard.hasExporter("Custom"));
