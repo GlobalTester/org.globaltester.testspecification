@@ -1,58 +1,31 @@
 package org.globaltester.testspecification.ui.test;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
-import org.eclipse.swtbot.eclipse.finder.SWTWorkbenchBot;
-import org.eclipse.swtbot.swt.finder.waits.Conditions;
-import org.eclipse.swtbot.swt.finder.widgets.SWTBotLabel;
-import org.eclipse.swtbot.swt.finder.widgets.SWTBotList;
-import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
+import java.io.IOException;
+
+import org.eclipse.core.runtime.CoreException;
+import org.globaltester.swtbot.uihelper.ExportWizardUiHelper;
+import org.globaltester.swtbot.uihelper.GlobalTesterUiHelper;
+import org.junit.Before;
 import org.junit.Test;
 
 public class ExportWizardTest {
-	public static String gtMainWindowTitle = "GlobalTester";
 
-	private SWTWorkbenchBot bot = new SWTWorkbenchBot();
+	@Before
+	public void prepare() throws IOException, CoreException{
+		GlobalTesterUiHelper.init();
+	}
+	
 	@Test
-	public void testExportWizard() {
-		bot.waitUntil(Conditions.shellIsActive(gtMainWindowTitle));
-		bot.menu("File").menu("Export...").click();
-
-		String wizardTitle = "Export";
-		bot.waitUntil(Conditions.shellIsActive(wizardTitle));
-
-		SWTBotShell exportWizardShell = bot.shell(wizardTitle);
-		exportWizardShell.activate();
-		exportWizardShell.setFocus();
-		assertNotNull(exportWizardShell);
-		bot.waitUntil(Conditions.shellIsActive(wizardTitle), 5000, 500);
-		exportWizardShell.bot().tree().getTreeItem("GlobalTester").expand()
-				.select("Export TestSpecification to OpenDocument Format");
-		bot.button("Next >").click();
-		bot.sleep(500);
-
-		SWTBotList projectList = bot.list(0);
-		assertEquals(
-				"while testing there should be no test specification projects",
-				projectList.itemCount(), 0);
-
-		SWTBotList exporterList = bot.list(1);
-		assertTrue("at least one entry should be in the exporters list",
-				exporterList.itemCount() >= 1);
-		String[] items = exporterList.getItems();
-		assertEquals("Custom", items[items.length - 1]);
-
-		// select custom to show custom input fields
-		exporterList.select("Custom");
-
-		SWTBotLabel stylesheetLabel = bot.label("Stylesheet:");
-		
-		// check change of visibility
-		assertTrue(
-				"by selecting custom export, additional fields should become visible", stylesheetLabel.isVisible());
-
-		bot.button("Cancel").click();
+	public void testExportWizardPO() throws CoreException{
+		ExportWizardUiHelper exportWizard = GlobalTesterUiHelper.openExportWizardByMenu();
+		assertEquals("while testing there should be no test specification projects", exportWizard.getNumberOfTestSpecifications(), 0);
+		assertTrue("at least one entry should be in the exporters list", exportWizard.getNumberOfExporters() >= 1);
+		assertTrue("Custom exporter should be in the exporters list", exportWizard.hasExporter("Custom"));
+		assertTrue("before selecting custom export, additional fields should not be visible", !exportWizard.visibilityOfCustomOptions());
+		exportWizard.selectExportLayout("Custom");
+		assertTrue("by selecting custom export, additional fields should become visible", exportWizard.visibilityOfCustomOptions());
 	}
 }
