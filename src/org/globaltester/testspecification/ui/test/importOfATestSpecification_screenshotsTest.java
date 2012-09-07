@@ -1,5 +1,7 @@
 package org.globaltester.testspecification.ui.test;
 
+import java.io.File;
+
 import org.eclipse.core.runtime.CoreException;
 import org.globaltester.swtbot.Strings;
 import org.globaltester.swtbot.SwtBotHelper;
@@ -16,13 +18,14 @@ public class importOfATestSpecification_screenshotsTest {
 	public void testImportOfATestSpecification_screenshots() throws CoreException{
 		
 		GlobalTesterUiHelper.init();
+		GlobalTesterUiHelper.captureScreenshot(Strings.FILE_SCREENSHOTS_SUBFOLDER + File.separator + "importTestSpec00.png");
 		NavigatorViewUiHelper navigator = GlobalTesterUiHelper.focusNavigatorView();
-		navigator.captureScreenshot("importTestSpec01.png");
+		navigator.captureScreenshot(Strings.FILE_SCREENSHOTS_SUBFOLDER + File.separator + "importTestSpec01.png");
 		ImportWizardUiHelper importWizard = navigator.openImportWizardByNavigatorContextMenu();
 		SwtBotHelper.selectInTree(importWizard.getBot().tree(), Strings.WIZARD_CATEGORY_GLOBALTESTER, Strings.WIZARD_ITEM_IMPORT);
-		importWizard.captureScreenshot("importTestSpec02.png");
+		importWizard.captureScreenshot(Strings.FILE_SCREENSHOTS_SUBFOLDER + File.separator + "importTestSpec02.png");
 		TestSpecificationImportWizardUiHelper testSpecImportWizard = importWizard.openTestSpecificationImportWizard();
-		testSpecImportWizard.captureScreenshot("importTestSpec03.png");
+		testSpecImportWizard.captureScreenshot(Strings.FILE_SCREENSHOTS_SUBFOLDER + File.separator + "importTestSpec03.png");
 
 	}
 	
