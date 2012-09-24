@@ -1,10 +1,8 @@
 package org.globaltester.testspecification.ui.editors;
 
-import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jface.text.IDocument;
 import org.eclipse.jface.text.IDocumentPartitioner;
 import org.eclipse.jface.text.rules.FastPartitioner;
-import org.eclipse.ui.editors.text.FileDocumentProvider;
 import org.eclipse.ui.editors.text.TextFileDocumentProvider;
 import org.globaltester.core.ui.editors.GtScanner;
 import org.globaltester.core.ui.editors.GtScanner.TokenType;
