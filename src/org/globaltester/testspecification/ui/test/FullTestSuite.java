@@ -5,7 +5,7 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
-@SuiteClasses({importOfATestSpecification_screenshotsTest.class,ExportWizardTest.class})
+@SuiteClasses({importOfATestSpecification_screenshotsTest.class,ExportWizardTest.class, CheatSheetTest.class})
 public class FullTestSuite {
 
 }

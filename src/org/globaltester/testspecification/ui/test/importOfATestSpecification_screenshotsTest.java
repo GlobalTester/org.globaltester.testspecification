@@ -26,7 +26,10 @@ public class importOfATestSpecification_screenshotsTest {
 		importWizard.captureScreenshot(Strings.FILE_SCREENSHOTS_SUBFOLDER + File.separator + "importTestSpec02.png");
 		TestSpecificationImportWizardUiHelper testSpecImportWizard = importWizard.openTestSpecificationImportWizard();
 		testSpecImportWizard.captureScreenshot(Strings.FILE_SCREENSHOTS_SUBFOLDER + File.separator + "importTestSpec03.png");
-
+		testSpecImportWizard.selectProject(Strings.SAMPLE_TESTSPEC);
+		testSpecImportWizard.finish();
+		navigator = GlobalTesterUiHelper.focusNavigatorView();
+		navigator.captureScreenshot(Strings.FILE_SCREENSHOTS_SUBFOLDER + File.separator + "importTestSpec04.png");
 	}
 	
 }
