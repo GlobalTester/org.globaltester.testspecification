@@ -18,18 +18,18 @@ public class importOfATestSpecification_screenshotsTest {
 	public void testImportOfATestSpecification_screenshots() throws CoreException{
 		
 		GlobalTesterUiHelper.init();
-		GlobalTesterUiHelper.captureScreenshot(Strings.FILE_SCREENSHOTS_SUBFOLDER + File.separator + "importTestSpec00.png");
+		GlobalTesterUiHelper.captureScreenshot(Strings.FILE_SCREENSHOTS_SUBFOLDER + File.separator + "MainWindow.png");
 		NavigatorViewUiHelper navigator = GlobalTesterUiHelper.focusNavigatorView();
-		navigator.captureScreenshot(Strings.FILE_SCREENSHOTS_SUBFOLDER + File.separator + "importTestSpec01.png");
+		navigator.captureScreenshot(Strings.FILE_SCREENSHOTS_SUBFOLDER + File.separator + "Navigator_empty.png");
 		ImportWizardUiHelper importWizard = navigator.openImportWizardByNavigatorContextMenu();
 		SwtBotHelper.selectInTree(importWizard.getBot().tree(), Strings.WIZARD_CATEGORY_GLOBALTESTER, Strings.WIZARD_ITEM_IMPORT);
-		importWizard.captureScreenshot(Strings.FILE_SCREENSHOTS_SUBFOLDER + File.separator + "importTestSpec02.png");
+		importWizard.captureScreenshot(Strings.FILE_SCREENSHOTS_SUBFOLDER + File.separator + "ImportWizard.png");
 		TestSpecificationImportWizardUiHelper testSpecImportWizard = importWizard.openTestSpecificationImportWizard();
-		testSpecImportWizard.captureScreenshot(Strings.FILE_SCREENSHOTS_SUBFOLDER + File.separator + "importTestSpec03.png");
+		testSpecImportWizard.captureScreenshot(Strings.FILE_SCREENSHOTS_SUBFOLDER + File.separator + "TestSpecImportWizard.png");
 		testSpecImportWizard.selectProject(Strings.SAMPLE_TESTSPEC);
 		testSpecImportWizard.finish();
 		navigator = GlobalTesterUiHelper.focusNavigatorView();
-		navigator.captureScreenshot(Strings.FILE_SCREENSHOTS_SUBFOLDER + File.separator + "importTestSpec04.png");
+		navigator.captureScreenshot(Strings.FILE_SCREENSHOTS_SUBFOLDER + File.separator + "Navigator_nonEmpty.png");
 	}
 	
 }
