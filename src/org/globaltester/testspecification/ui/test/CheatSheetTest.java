@@ -1,6 +1,6 @@
 package org.globaltester.testspecification.ui.test;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import java.io.File;
 import java.io.IOException;
@@ -12,7 +12,6 @@ import org.globaltester.swtbot.uihelper.TestSpecificationExportWizardUiHelper;
 import org.globaltester.swtbot.uihelper.TestSpecificationImportWizardUiHelper;
 import org.globaltester.swtbot.uihelper.TestSpecificationWizardUiHelper;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 /**
  * Test the workflows that are given as eclipse cheat cheet.
@@ -31,7 +30,6 @@ public class CheatSheetTest {
 	}
 	
 	@Test
-	@Ignore
 	public void createAndExportTestSpecification() throws IOException {
 		TestSpecificationWizardUiHelper testSpecWizard = GlobalTesterUiHelper.openNewWizardByMenu().selectTestSpecification();
 		testSpecWizard.setProjectName(projectName);
