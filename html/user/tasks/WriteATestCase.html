@@ -9,10 +9,10 @@
 	<h1>Write a TestCase</h1>
 	<p>
 	In a few steps, this user guide will show you how to write a basic <a href="../concepts/TestCase.html">TestCase</a>.
-	You will be given references for further details. Basic Java Script and and SmartCardShell Usage is of advantage.
+	You will be given references for further details. Basic Java Script and SmartCardShell knowledge is of advantage.
 	You can use the default TestCase that selects the master file as a template.<br>
-    In the sub-folder TestCases of you TestSpecification, 
-	right-click with you mouse, and choose <b>&quot;New -&gt; Other...&quot;</b>.<br>
+    In the sub-folder TestCases of your TestSpecification, 
+	right-click with your mouse, and choose <b>&quot;New -&gt; Other...&quot;</b>.<br>
     In the &quot;New&quot; wizard, select <b>&quot;GlobalTester -&gt; TestCase&quot;</b>, and click <b>&quot;Next &gt;&quot;</b>.
     Enter a name for your TestCase in the text field <b>&quot;File name&quot;</b>.
     Then click <b>&quot;Finish&quot;</b><br>
@@ -52,7 +52,7 @@
 	</p>
 	<p>
 	You can use the SmartCardShell &quot;card&quot; object to call functions, for example <code>card.reset();</code>.<br>
-	GlobalTester offers you a variety of own implementations that can be called with and <code>gt_</code> prefix,
+	GlobalTester offers you a variety of own implementations that can be called with <code>gt_</code> prefix,
 	for example <code>card.gt_getCardConfig("ICAO9303","MRZ");</code>.<br>
 	There are several protocols and scopes you can use as well, for example ISO 7816, Basic Access Control (BAC),
 	Extended Access Control (EAC), Supplemental Access Control (SAC), and so on.
@@ -77,10 +77,10 @@
 	The variable <code>aid</code> can be set in the &quot;TechnicalCommand&quot; tag.
 	This tag will be evaluated at first, so you can set variables there for the Java Script code,
 	and then the &quot;APDU&quot; tag will use them.<br>
-	The variable <code>lc</code> always encodes the length of the directly following element.
+	The variable <code>lc</code> always encodes the length of the element directly following.
 	If necessary, it will be transformed to an ExtendedLength field according to ISO 7816.<br>
 	You can also build constructed TLV structures with the {}-braces:
-	If you put in two values separated with a comma,
+	If you put in two values separated by a comma,
 	the first one will be interpreted as tag, and the second as value.
 	The length will be automatically completed.<br>
 	If you nest one {}-expression in another, you can build constructed TLV structures.   
@@ -103,7 +103,7 @@
 	<h4>Specifying TestData</h4>
 	<p>
 	If you need any <a href="../concepts/Certificates.html">certificates</a> or any other test data,
-	you can store it in the folder &quot;TestData&quot; of your TestSpecification.
+	you can store them in the folder &quot;TestData&quot; of your TestSpecification.
 	You must reference it in the &quot;TestDataReference&quot; tag.
 	</p>
 	
