@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Write a TestCase</title>
+</head>
+
+<body>
+	<h1>Write a TestCase</h1>
+	<p>
+	In a few steps, this user guide will show you how to write a basic <a href="../concepts/TestCase.html">TestCase</a>.
+	You will be given references for further details. Basic Java Script and SmartCardShell knowledge is of advantage.
+	You can use the default TestCase that selects the master file as a template.<br>
+    In the sub-folder TestCases of your TestSpecification, 
+	right-click with your mouse, and choose <b>&quot;New -&gt; Other...&quot;</b>.<br>
+    In the &quot;New&quot; wizard, select <b>&quot;GlobalTester -&gt; TestCase&quot;</b>, and click <b>&quot;Next &gt;&quot;</b>.
+    Enter a name for your TestCase in the text field <b>&quot;File name&quot;</b>.
+    Then click <b>&quot;Finish&quot;</b><br>
+	</p>
+	
+	<h2>The TestCase structure</h2>
+	<p>
+	The TestCase is written in an <a href="../reference/XMLStructureForTestCases.html">XML structure</a>.
+	These are the most important things you have to consider:
+	</p>
+	
+	<h3>Profiles</h3>
+	<p>
+	You can list the profiles your TestCase fits to in the according tag.
+	When your TestCase is carried over in a TestCampaign and this is executed,
+	you have to select the according profile in order to have your TestCase executed.
+	If you assign no profile to your TestCase, your TestCase will be executed in any case.
+	</p>
+	
+	<h3>ActionSteps</h3>
+	<p>
+	A TestCase is executed in ActionSteps.
+	There are three types of ActionSteps: <a href="../concepts/TestCase.html#PreCondition">PreCondition</a>,
+	<a href="../concepts/TestCase.html#TestStep">TestStep</a>, and <a href="../concepts/TestCase.html#PostCondition">PostCondition</a>.<br>
+	Each of them is organized in tags according to the <a href="../reference/XMLStructureForTestCases.html">XML structure for TestCases</a>.
+	If you write your TestCase with the default one as a template, just adjust your tags accordingly.
+	Note that there can be several TestSteps, so you can copy this tag template as often as you need TestSteps. 
+	</p>
+	
+	<h4>Using the JavaScript scope - sending commands</h4>
+	<p>
+	All communication in a TestCase is handled in the same JavaScript scope that uses a GlobalPlatform card object provided by the SmartCardShell. 
+	</p>
+	<p>
+	In the <b>TechnicalCommand</b> tag, you can set variables, call Java Script functions, and send APDU commands.
+	Setting Variables is pretty straightforward, for example <code>var P1 = "83";</code>.
+	</p>
+	<p>
+	You can use the SmartCardShell &quot;card&quot; object to call functions, for example <code>card.reset();</code>.<br>
+	GlobalTester offers you a variety of own implementations that can be called with <code>gt_</code> prefix,
+	for example <code>card.gt_getCardConfig("ICAO9303","MRZ");</code>.<br>
+	There are several protocols and scopes you can use as well, for example ISO 7816, Basic Access Control (BAC),
+	Extended Access Control (EAC), Supplemental Access Control (SAC), and so on.
+	You can call them with <code>card.gt_PROTOCOL_COMMAND();</code>, with <code>PROTOCOL</code> being the abbreviation of the protocol
+	(for example <code>ISO7816</code> or <code>BAC</code>),
+	and <code>COMMAND</code> a command that has been implemented (for example <code>selectAID</code> or <code>selectApplicationEPASS</code>).
+	So your function call could be <code>card.gt_ISO7816_selectAID(aid);</code> (where AID is a variable that has been previously set)
+	or <code>card.gt_BAC_selectApplicationEPASS();</code>.<br>
+	
+	</p>
+	<p>
+	If you want to send an APDU, you can do that in the &quot;Command&quot; tag as an APDUCommand.
+	Here is an example of one:<br>
+	<code>&lt;Command xsi:type="APDUCommand"&gt;<br>
+			&lt;Text&gt;Select the ePassport application with a plain SELECT Application APDU&lt;/Text&gt;<br>
+			&lt;APDU sm=&quot;false&quot;&gt;00 A4 04 00 {lc} {aid} 00&lt;/APDU&gt;<br>
+		&lt;/Command&gt;</code><br>
+	As you can see, the APDU is enclosed in the &quot;APDU&quot; tag.
+	The sm flag indicates if Secure Messaging should be used or not.
+	The APDU is written as byte string.<br>
+	There are two variables used, <code>lc</code> and <code>aid</code>.<br>
+	The variable <code>aid</code> can be set in the &quot;TechnicalCommand&quot; tag.
+	This tag will be evaluated at first, so you can set variables there for the Java Script code,
+	and then the &quot;APDU&quot; tag will use them.<br>
+	The variable <code>lc</code> always encodes the length of the element directly following.
+	If necessary, it will be transformed to an ExtendedLength field according to ISO 7816.<br>
+	You can also build constructed TLV structures with the {}-braces:
+	If you put in two values separated by a comma,
+	the first one will be interpreted as tag, and the second as value.
+	The length will be automatically completed.<br>
+	If you nest one {}-expression in another, you can build constructed TLV structures.   
+	</p>
+	<p>
+	Sometimes a TestCase requires that you send an erroneous APDU.
+	You can achieve this if you define an APDU as ByteString in the &quot;TechnicalCommand&quot; tag
+	(for example <br>
+	<code>var command = new ByteString("00 B0 83 00 01", HEX);</code>),<br>
+	and then send it using the GlobalTester send Command function (<code>card.gt_sendCommand(command);</code>).
+	</p>
+	
+	<h4>Using the Java Script scope - evaluating commands</h4>
+	<p>
+	When you send a command APDU to the chip, its response APDU is logged in the variable <code>response</code>;
+	in the &quot;TechnicalResult&quot; tag (which is nested in the &quot;APDUResult&quot; tag, an extension of the ExpectedResult).<br>
+	There you can evaluate its data and status words with <code>assertStatusWord</code> and <code>assertMatchValue</code>.
+	</p>
+	
+	<h4>Specifying TestData</h4>
+	<p>
+	If you need any <a href="../concepts/Certificates.html">certificates</a> or any other test data,
+	you can store them in the folder &quot;TestData&quot; of your TestSpecification.
+	You must reference it in the &quot;TestDataReference&quot; tag.
+	</p>
+	
+</body>
+</html>

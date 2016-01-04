@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>TestCase</title>
+</head>
+<body>
+	<h1>TestCase</h1>
+	<p>
+	A TestCase is an XML file. The XML structure is a further development of the new German BSI XML structure
+	that can be used to either execute the TestCases or use them to create a human-readable test specification in the Open Document Format.<br>
+	TestCase are structured in the so called &quot;ActionSteps&quot;: <b>PreCondition</b>, <b>TestStep</b>s, and <b>PostCondition</b>.
+	</p>
+	<p>
+	ActionSteps can encapsulate simple APDU commands,
+	or call more complex Java Script functions that may use variables that have been defined in the ActionSteps or predefined globally.
+	All APDUs, their responses, variables and functions are evaluated in the same Java Script scope.
+	So if for example one ActionStep sets a variable, a following ActionStep still has access to that variable.
+	predefined variables can also be used.
+	</p>
+	<A NAME="PreCondition"></a>
+	<p>
+	A PreCondition may be a state of the card or simulator that can be achieved by performing some operations before the
+	TestSteps are performed.
+	</p>
+	<A NAME="TestStep"></a>
+	<p>
+	In TestSteps, the actual purpose of the TestCase will be implemented.<br>
+	A TestStep may cover one major step of a TestCase, for example &quot;Perform BAC&quot;, &quot;Read Data Group XY&quot;,
+	&quot;Select Application Z&quot;, and so on.<br>
+	Sometimes the TestSpecification requires a finer granularity, for example if an erroneous APDU is sent,
+	and the according response APDU shall be checked.
+	Examples are &quot;MSE: Set AT&quot;, &quot;General Authenticate&quot;, &quot;PSO: Verify Certificate&quot;, etc.
+	</p>
+	<A NAME="PostCondition"></a>
+	<p>
+	A PostCondition may be a state of the card or simulator that should be achieved after the TestSteps are performed.
+	To ensure this condition, several commands can be sent and their responses be checked.
+	If the results comply to the ones that this certain state of the chip is supposed to send back,
+	the PostCondition is fulfilled.
+	</p>
+	<p>
+	TestCases will be executed in a Java Script scope.<br>
+	PreCondition, TestSteps, and PostCondition will be organized in XML tags.
+	In those, variables can be set in the Java Script scope , Java Script functions called, and plain APDUs sent (even incorrect ones).
+	Status words and response data can be checked using assertions.
+	</p>
+	<p>
+	The profiles defined for each TestCase matter in the execution of a TestCampaign:
+	Only those TestCases that match the selected profiles will be executed.
+	</p>
+	<p>
+	For further and specific information also have a look at the 
+	<a href="../reference/XMLStructureForTestCases.html">XML structure for TestCases</a>.
+	</p>
+	
+</body>
+</html>

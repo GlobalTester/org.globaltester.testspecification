@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.help.toc">
+      
+      <toc
+            file="toc/user/gettingstarted.xml">
+      </toc>
+      <toc
+            file="toc/user/concepts.xml">
+      </toc>
+      <toc
+            file="toc/user/reference.xml">
+      </toc>
+      <toc
+            file="toc/user/tasks.xml">
+      </toc>
+   </extension>
+   
+   <extension
+         point="org.eclipse.ui.cheatsheets.cheatSheetContent">
+      <cheatsheet
+            category="org.globaltester.core.doc.userGuide"
+            composite="false"
+            contentFile="cheatsheets/user/importOfATestSpec.xml"
+            id="org.globaltester.testspecification.doc.cheatsheet.importOfATestSpec"
+            name="Import of a TestSpecification">
+      </cheatsheet>
+      <cheatsheet
+            category="org.globaltester.core.doc.userGuide"
+            composite="false"
+            contentFile="cheatsheets/user/createAndExportATestSpec.xml"
+            id="org.globaltester.testspecification.doc.cheatsheets.createAndExportATestSpec"
+            name="Create and Export a TestSpecification">
+      </cheatsheet>
+   </extension>
+   
+   
+
+</plugin>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cheatsheet
+      title="Import of a TestSpecification">
+   <intro>
+   <description>
+     In a few steps, this cheat sheet will guide you through the import of a TestSpecification.
+      </description>
+   </intro>
+   <item
+         title="Open menu" dialog = "true">
+         <command serialization="org.eclipse.ui.file.import"/>
+      <description>
+         First, move the mouse cursor into the &quot;GlobalTester Navigator&quot; window. Right-click, and choose <b>&quot;Import&quot;.</b>
+      </description>
+   </item>
+   <item
+         title="Select TestSpecification">
+         <onCompletion> </onCompletion>
+      <description>
+         In the tree view, select <b>&quot;GlobalTester &gt; Import TestSpecification from Plugin&quot;</b>. Click the <b>&quot;Next&quot;</b> button.
+      </description>
+   </item>
+   <item
+         title="Choose a Project Name">
+      <description>
+         In the text field <b>&quot;Projectname&quot;</b>, choose a name for your project, for example &quot;GlobalTester Sample TestSpecification&quot;.
+		 In the list, choose the TestSpecification &quot;GlobalTester Sample TestSpecification&quot;.
+		 Have a look at the description of it that is given in the field below to get a quick overview of the purpose of the TestSpecification.
+		 Then click <b>&quot;Finish&quot;</b>.
+      </description>
+      <onCompletion> Congratulations! You have just learned how to import a TestSpecification! </onCompletion>
+   </item>
+
+</cheatsheet>

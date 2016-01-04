@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cheatsheet
+      title="Create and Export a TestSpecification">
+   <intro>
+      <description>
+         In a few steps, this cheat sheet will show you how to create and export a TestSpecification.
+      </description>
+   </intro>
+   <item
+         title="Create your own TestSpecification" dialog="true">
+         <command serialization="org.eclipse.ui.newWizard"/>
+      <description>
+         First, move the mouse cursor into the &quot;GlobalTester Navigator&quot; window. Right-click, and choose <b>&quot;New -> Project...&quot;</b>.
+         In the &quot;New Project&quot; wizard, select <b>&quot;GlobalTester -> TestSpecification&quot;</b>, and click <b>&quot;Next &gt;&quot;</b>.
+         Enter a name for your TestSpecification Project in the text field <b>&quot;Project name&quot;</b>.
+         Then click <b>&quot;Finish&quot;</b>
+      </description>
+   </item>
+   <item
+         title="Add a TestCase" dialog="true">
+         <command serialization="org.eclipse.ui.newWizard"/>
+      <description>
+        In the &quot;GlobalTester Navigator&quot; window, your own TestSpecification will be shown as a project folder.
+        In its sub-folder TestCases, you can now add a default TestCase that will select the master file: <br/>
+        Move the mouse cursor into the &quot;GlobalTester Navigator&quot; window and choose the <b>&quot;TestCases&quot;</b> folder.
+        Right-click, and choose <b>&quot;New -> Other...&quot;</b>.<br/>
+        In the &quot;New&quot; wizard, select <b>&quot;GlobalTester -> TestCase&quot;</b>, and click <b>&quot;Next &gt;&quot;</b>.
+        Enter a name for your TestCase in the text field <b>&quot;File name&quot;</b>.
+        Then click <b>&quot;Finish&quot;</b>
+      </description>
+   </item>
+   <item
+         title="Export your TestSpecification" dialog="true">
+         <command serialization="org.eclipse.ui.file.export"/>
+      <description>
+        Go with the mouse cursor in the &quot;GlobalTester Navigator&quot; window. Right-click, and choose <b>&quot;Export&quot;</b>.
+        In the tree view, select <b>&quot;GlobalTester &gt; Export TestSpecification to OpenDocument Format&quot;</b>. Click the <b>&quot;Next&quot;</b> button.<br/>
+        In the TestSpecification Export Wizard, select the TestSpecification you want to export, its layout, and the destination.
+        Then click <b>&quot;Finish&quot;</b>.
+      </description>
+   </item>
+</cheatsheet>

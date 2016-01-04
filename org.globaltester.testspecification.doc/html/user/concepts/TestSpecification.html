@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>TestSpecification</title>
+</head>
+<body>
+
+	<h1>TestSpecification</h1>
+	
+	<p>
+	A TestSpecification is a static collection of TestCases.
+	Those are stored as XML files. The XML structure is based the new German BSI XML structure.<br>
+	TestCases can be used to create a TestCampaign and be executed there. This is a pretty common approach.<br>
+	But they also can be used to generate a human-readable test specification in the Open Document Format.
+	So with the new XML structure, it is not at first a human-readable test specification that is then implemented in test cases,
+	it is at first an executable XML file out of which the human-readable test specification can be generated if required.
+	</p>
+	<p>
+	A TestSpecification often defines profiles.
+	Each test case has some of them assigned to in the &quot;Profile&quot;-tag.
+	For an execution of a TestCampaign, you can then choose profiles, and only the TestCases covering those profiles will be executed. 
+	</p>
+	<p>
+	All data needed for the TestCases (like <a href="Certificates.html">certificates</a>
+	and <a href="Subroutines.html">subroutines</a>)
+	will be stored in the TestSpecification as XML files as well.
+	</p>
+	
+</body>
+</html>
