@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <wizard
+            category="org.globaltester.core.ui.newWizards.category"
+            class="org.globaltester.testspecification.ui.wizards.NewTestSpecWizard"
+            icon="icons/testspec.png"
+            id="org.globaltester.testspecification.ui.wizards.newTestSpecWizard"
+            name="TestSpecification"
+            project="true">
+            <description>
+            Create a new empty TestSpecification project.
+         </description>
+      </wizard>
+      <wizard
+            category="org.globaltester.core.ui.newWizards.category"
+            class="org.globaltester.testspecification.ui.wizards.NewTestCaseWizard"
+            icon="icons/testcase.png"
+            id="org.globaltester.testspecification.ui.wizards.newTestCaseWizard"
+            name="TestCase"
+            project="false">
+            <description>
+            Create a new TestCase project.
+         </description>
+      </wizard>
+   </extension>
+   
+   <!--extension
+         point="org.eclipse.ui.importWizards">
+      <wizard
+            category="org.globaltester.core.ui.importWizards.category"
+            class="org.globaltester.testspecification.ui.wizards.ImportGT2ScriptsWizard"
+            icon="icons/testspec.png"
+            id="org.globaltester.testspecification.ui.wizards.importGT2ScriptsWizard"
+            name="Import GT2 scripts from Plugin">
+      </wizard>
+   </extension-->
+   
+    <extension
+         point="org.eclipse.ui.importWizards">
+      <wizard
+            category="org.globaltester.core.ui.importWizards.category"
+            class="org.globaltester.testspecification.ui.wizards.ImportTestSpecWizard"
+            icon="icons/testspec.png"
+            id="org.globaltester.testspecification.ui.wizards.importTestSpecWizard"
+            name="Import TestSpecification from Plugin">
+            <description>
+            Create new TestSpecification project as defined in an existing plug-in.
+         </description>
+      </wizard>
+   </extension>
+   
+    <extension
+         point="org.eclipse.ui.exportWizards">
+      <wizard
+            category="org.globaltester.core.ui.exportWizards.category"
+            class="org.globaltester.testspecification.ui.wizards.ExportTestSpecWizard"
+            icon="icons/testspec.png"
+            id="org.globaltester.testspecification.ui.wizards.importTestSpecWizard"
+            name="Export TestSpecification to OpenDocument Format">
+            <description>
+            Export a TestSpecification project to an OpenDocument Format document.
+         </description>
+      </wizard>
+   </extension>
+   
+   <extension
+         point="org.eclipse.ui.navigator.navigatorContent">
+      <navigatorContent
+            contentProvider="org.globaltester.testspecification.ui.navigator.ContentProvider"
+            icon="icons/testspec.png"
+            id="org.globaltester.testspecification.ui.gtTestSpecificationNavigatorContent"
+            labelProvider="org.globaltester.testspecification.ui.navigator.LabelProvider"
+            name="GlobalTester TestSpecification Content">
+         <triggerPoints>
+            <instanceof
+                  value="org.eclipse.core.resources.IResource">
+            </instanceof>
+         </triggerPoints>
+      </navigatorContent>
+   </extension>
+   <extension
+         point="org.eclipse.ui.navigator.viewer">
+      <viewer
+            viewerId="org.globaltester.core.ui.views.GlobalTesterNavigator">
+      </viewer>
+      <viewerContentBinding
+            viewerId="org.globaltester.core.ui.views.GlobalTesterNavigator">
+         <includes>
+            <contentExtension
+                  pattern="org.globaltester.testspecification.ui.gtTestSpecificationNavigatorContent">
+            </contentExtension>
+         </includes>
+      </viewerContentBinding>
+   </extension>
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            class="org.globaltester.testspecification.ui.editors.TestSpecEditor"
+            icon="icons/testspec.png"
+            id="org.globaltester.testspecification.ui.testSpecEditor"
+            name="GT TestSpecEditor">
+         <contentTypeBinding
+               contentTypeId="org.globaltester.testspecification.contenttypes.TestSpecification">
+         </contentTypeBinding>
+      </editor>
+   </extension>
+   <extension
+         point="org.eclipse.ui.ide.projectNatureImages">
+      <image
+            icon="icons/ovr_testspec.png"
+            id="org.globaltester.testspecification.ui.image.testspec"
+            natureId="org.globaltester.testspecification.gtTestSpecNature">
+      </image>
+   </extension>
+</plugin>
