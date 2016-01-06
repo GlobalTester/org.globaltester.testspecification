@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: GlobalTester TestSpecification UI
 Bundle-SymbolicName: org.globaltester.testspecification.ui;singleton:=true
-Bundle-Version: 3.0.2.qualifier
+Bundle-Version: 3.0.2
 Bundle-Activator: org.globaltester.testspecification.ui.Activator
 Bundle-Vendor: HJP Consulting GmbH
 Require-Bundle: org.eclipse.ui,
