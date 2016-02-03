@@ -65,11 +65,11 @@
 	</p>
 	<p>
 	If you want to send an APDU, you can do that in the &quot;Command&quot; tag as an APDUCommand.
-	Here is an example of one:<br>
+	Here is an example of one:<br/><br/>
 	<code>&lt;Command xsi:type="APDUCommand"&gt;<br>
 			&lt;Text&gt;Select the ePassport application with a plain SELECT Application APDU&lt;/Text&gt;<br>
 			&lt;APDU sm=&quot;false&quot;&gt;00 A4 04 00 {lc} {aid} 00&lt;/APDU&gt;<br>
-		&lt;/Command&gt;</code><br>
+		&lt;/Command&gt;</code><br/><br/>
 	As you can see, the APDU is enclosed in the &quot;APDU&quot; tag.
 	The sm flag indicates if Secure Messaging should be used or not.
 	The APDU is written as byte string.<br>
@@ -88,8 +88,8 @@
 	<p>
 	Sometimes a TestCase requires that you send an erroneous APDU.
 	You can achieve this if you define an APDU as ByteString in the &quot;TechnicalCommand&quot; tag
-	(for example <br>
-	<code>var command = new ByteString("00 B0 83 00 01", HEX);</code>),<br>
+	(for example 
+	<code>var command = new ByteString("00 B0 83 00 01", HEX);</code>),
 	and then send it using the GlobalTester send Command function (<code>card.gt_sendCommand(command);</code>).
 	</p>
 	
