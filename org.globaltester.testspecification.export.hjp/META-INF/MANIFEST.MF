@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: GlobalTester TestSpecification Export HJP
+Bundle-Name: GT TestSpec Export HJP
 Bundle-SymbolicName: org.globaltester.testspecification.export.hjp;singleton:=true
 Bundle-Version: 3.0.3
 Bundle-Activator: org.globaltester.testspecification.export.hjp.Activator

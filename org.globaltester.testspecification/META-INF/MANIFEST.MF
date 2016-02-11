@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: GlobalTester TestSpecification
+Bundle-Name: GT TestSpec
 Bundle-SymbolicName: org.globaltester.testspecification;singleton:=true
 Bundle-Version: 3.0.3
 Bundle-Activator: org.globaltester.testspecification.Activator
