@@ -64,7 +64,7 @@ public class ImportTestSpecWizard extends Wizard implements IImportWizard {
 				boolean errors = false;
 				
 				try {
-					GtResourceHelper.copyPluginFilesToWorkspaceProject(pluginName, project, "/", "TestCases", "testSpecification.xml");
+					GtResourceHelper.copyPluginFilesToWorkspaceProject(pluginName, project, "/", "TestCases", "testSpecification.gtspec");
 					monitor.worked(1);
 				} catch (IOException e) {
 					errors = true;

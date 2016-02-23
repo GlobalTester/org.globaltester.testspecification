@@ -16,9 +16,16 @@
    <extension
          point="org.eclipse.core.contenttype.contentTypes">
       <content-type
+            file-extensions="gt, gtsuite, gtspec"
+            id="org.globaltester.testspecification.contenttypes.TestSpecification"
+            name="GlobalTester TestSpecification"
+            priority="normal">
+      </content-type>
+      
+      <content-type
             base-type="org.eclipse.core.runtime.xml"
             file-extensions="xml"
-            id="org.globaltester.testspecification.contenttypes.TestSpecification"
+            id="org.globaltester.testspecification.contenttypes.TestSpecification.Xml"
             name="GlobalTester TestSpecification"
             priority="normal">
          <describer
@@ -29,6 +36,7 @@
             </parameter>
          </describer>
       </content-type>
+      
    </extension>
 
 </plugin>

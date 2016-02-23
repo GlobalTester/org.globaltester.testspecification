@@ -99,11 +99,14 @@
          point="org.eclipse.ui.editors">
       <editor
             class="org.globaltester.testspecification.ui.editors.TestSpecEditor"
-            icon="icons/testspec.png"
+            icon="icons/testcase.png"
             id="org.globaltester.testspecification.ui.testSpecEditor"
             name="GT TestSpecEditor">
          <contentTypeBinding
                contentTypeId="org.globaltester.testspecification.contenttypes.TestSpecification">
+         </contentTypeBinding>
+         <contentTypeBinding
+               contentTypeId="org.globaltester.testspecification.contenttypes.TestSpecification.Xml">
          </contentTypeBinding>
       </editor>
    </extension>

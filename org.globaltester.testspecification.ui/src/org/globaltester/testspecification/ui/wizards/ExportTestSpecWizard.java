@@ -69,7 +69,7 @@ public class ExportTestSpecWizard extends Wizard implements IExportWizard {
 						monitor.beginTask("Export to OpenDocument format.", 3);
 						// get stylesheet and OpenDocument sources
 						monitor.subTask("Preparation");
-						IFile testSpecIFile = project.getFile("testSpecification.xml");
+						IFile testSpecIFile = project.getFile("testSpecification.gtspec");
 						String pathToProject = project.getProject().getLocationURI().getPath();
 						File testSpecification = new File(pathToProject + File.separator + testSpecIFile.getProjectRelativePath().toString());
 						monitor.worked(1);
