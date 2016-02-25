@@ -65,8 +65,8 @@ public class NewTestCaseWizard extends Wizard implements INewWizard {
 		_pageOne = new WizardNewFileCreationPage(Messages.NewTestCaseWizard_PAGE_NAME, getSelection());
 	    _pageOne.setTitle(Messages.NewTestCaseWizard_GT_TestCase_Project);
 	    _pageOne.setDescription(Messages.NewTestCaseWizard_create_new_GT_TestCase);
-	    _pageOne.setFileExtension("xml");
-	    _pageOne.setFileName("TestCase.xml");
+	    _pageOne.setFileExtension("gt");
+	    _pageOne.setFileName("TestCase.gt");
 
 	    addPage(_pageOne);
 	}

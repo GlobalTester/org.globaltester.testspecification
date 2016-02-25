@@ -37,10 +37,10 @@ public class GtTestSpecProject {
 		try {
 			String[] paths = { "TestData/Certificates", "TestData/Subroutines", "TestCases" }; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 			GtResourceHelper.addToProjectStructure(project, paths);
-			createDefaultFile(defaultTestSpec, project.getFile("testSpecification.xml"));
-			TestCase.createDefaultTestCase(project.getFile("TestCases" + File.separator + "testCase.xml"));
-			createDefaultFile(defaultTestLayer, project.getFile("TestCases" + File.separator + "testLayer.xml"));
-			createDefaultFile(defaultTestUnit, project.getFile("TestCases" + File.separator + "testUnit.xml"));
+			createDefaultFile(defaultTestSpec, project.getFile("testSpecification.gtspec"));
+			TestCase.createDefaultTestCase(project.getFile("TestCases" + File.separator + "testCase.gt"));
+			createDefaultFile(defaultTestLayer, project.getFile("TestCases" + File.separator + "testLayer.gtspec"));
+			createDefaultFile(defaultTestUnit, project.getFile("TestCases" + File.separator + "testUnit.gtspec"));
 		} catch (CoreException e) {
 			e.printStackTrace();
 			project = null;
@@ -124,7 +124,7 @@ public class GtTestSpecProject {
 	"<TestUnit id=\"Unit_1\"\n" +
 	"	xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n" +
 	"	xmlns=\"http://globaltester.org/testspecification\">\n" +
-	"  <TestCase>testCase.xml</TestCase>\n" +
+	"  <TestCase>testCase.gt</TestCase>\n" +
 	"</TestUnit>";
 	
 
@@ -134,7 +134,7 @@ public class GtTestSpecProject {
 	"<TestLayer id=\"Layer_1\"\n" +
 	"	xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n" +
 	"	xmlns=\"http://globaltester.org/testspecification\">\n" +
-	"  <TestUnit>testUnit.xml</TestUnit>\n" +
+	"  <TestUnit>testUnit.gtspec</TestUnit>\n" +
 	"</TestLayer>";
 	
 
@@ -157,7 +157,7 @@ public class GtTestSpecProject {
 	"  	<Heading level=\"1\">Introduction</Heading>\n" +
 	"		<Paragraph>This file can be used as a starting point.</Paragraph>\n" +
 	"  </Text>\n" +
-	"  <TestLayer>TestCases/testLayer.xml</TestLayer>\n" +
+	"  <TestLayer>TestCases/testLayer.gtspec</TestLayer>\n" +
 	"</TestSpecification>";
 	
 }
