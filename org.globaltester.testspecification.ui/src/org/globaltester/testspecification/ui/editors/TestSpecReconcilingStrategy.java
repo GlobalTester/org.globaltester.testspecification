@@ -3,7 +3,7 @@ package org.globaltester.testspecification.ui.editors;
 import org.eclipse.jface.text.BadLocationException;
 import org.eclipse.jface.text.IRegion;
 import org.eclipse.jface.text.Position;
-import org.globaltester.core.ui.editors.ReconcilingStrategy;
+import org.globaltester.base.ui.editors.ReconcilingStrategy;
 
 public class TestSpecReconcilingStrategy extends ReconcilingStrategy {
 	// TODO this strategy does not work correctly for tags closed on the same line

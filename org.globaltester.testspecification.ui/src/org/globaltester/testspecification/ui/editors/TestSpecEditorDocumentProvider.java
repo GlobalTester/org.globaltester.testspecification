@@ -4,10 +4,10 @@ import org.eclipse.jface.text.IDocument;
 import org.eclipse.jface.text.IDocumentPartitioner;
 import org.eclipse.jface.text.rules.FastPartitioner;
 import org.eclipse.ui.editors.text.TextFileDocumentProvider;
-import org.globaltester.core.ui.editors.GtScanner;
-import org.globaltester.core.ui.editors.GtScanner.TokenType;
-import org.globaltester.core.ui.editors.JSScanner;
-import org.globaltester.core.ui.editors.XMLScanner;
+import org.globaltester.base.ui.editors.GtScanner;
+import org.globaltester.base.ui.editors.JSScanner;
+import org.globaltester.base.ui.editors.XMLScanner;
+import org.globaltester.base.ui.editors.GtScanner.TokenType;
 
 /**
  * This class defines the DocumentProvider of TestSpecEditor

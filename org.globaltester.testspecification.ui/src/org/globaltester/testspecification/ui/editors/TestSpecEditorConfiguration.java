@@ -10,10 +10,10 @@ import org.eclipse.jface.text.reconciler.MonoReconciler;
 import org.eclipse.jface.text.rules.DefaultDamagerRepairer;
 import org.eclipse.jface.text.source.ISourceViewer;
 import org.eclipse.jface.text.source.SourceViewerConfiguration;
-import org.globaltester.core.ui.editors.GtScanner;
-import org.globaltester.core.ui.editors.GtScanner.TokenType;
-import org.globaltester.core.ui.editors.JSScanner;
-import org.globaltester.core.ui.editors.XMLScanner;
+import org.globaltester.base.ui.editors.GtScanner;
+import org.globaltester.base.ui.editors.JSScanner;
+import org.globaltester.base.ui.editors.XMLScanner;
+import org.globaltester.base.ui.editors.GtScanner.TokenType;
 
 public class TestSpecEditorConfiguration extends SourceViewerConfiguration {
 	private ITextDoubleClickStrategy doubleClickStrategy;

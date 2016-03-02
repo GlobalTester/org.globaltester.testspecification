@@ -10,7 +10,7 @@ import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IPropertyListener;
 import org.eclipse.ui.IWorkbenchPartConstants;
 import org.eclipse.ui.part.FileEditorInput;
-import org.globaltester.core.ui.editors.FoldingEditor;
+import org.globaltester.base.ui.editors.FoldingEditor;
 import org.globaltester.logging.logger.GtErrorLogger;
 import org.globaltester.testspecification.ui.Activator;
 
