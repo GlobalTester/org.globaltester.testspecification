@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.globaltester.document.export.IExportValidator;
+import org.globaltester.testspecification.document.export.IExportValidator;
 
 /**
  * @author Martin Boonk
