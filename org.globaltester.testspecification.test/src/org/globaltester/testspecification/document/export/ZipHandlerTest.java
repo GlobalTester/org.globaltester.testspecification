@@ -28,7 +28,7 @@ public class ZipHandlerTest {
 	@Test
 	public void testWithZipFile() throws IOException{
 		FileOutputStream out = new FileOutputStream(tempFile);
-		Bundle curBundle = Platform.getBundle("org.globaltester.core.test");
+		Bundle curBundle = Platform.getBundle("org.globaltester.base.test");
 		URL archive = curBundle.getEntry("files/testArchive.zip");
 		
 		ZipInputStream input = null;
