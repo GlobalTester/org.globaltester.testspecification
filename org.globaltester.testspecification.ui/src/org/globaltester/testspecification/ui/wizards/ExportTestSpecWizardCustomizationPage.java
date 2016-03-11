@@ -19,9 +19,9 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.PlatformUI;
-import org.globaltester.core.Activator;
-import org.globaltester.document.export.IExportValidator;
+import org.globaltester.Activator;
 import org.globaltester.logging.logger.GtErrorLogger;
+import org.globaltester.testspecification.document.export.IExportValidator;
 
 /**
  * @author Martin Boonk

@@ -4,7 +4,7 @@
    <extension
          id="org.globaltester.testspecification.export.hjp"
          name="HJP GlobalTester export data"
-         point="org.globaltester.core.document.export.exportData">
+         point="org.globaltester.base.document.export.exportData">
       <exportData
             description="Export test specification as a GlobalTester OpenDocument Format"
             name="GlobalTester"

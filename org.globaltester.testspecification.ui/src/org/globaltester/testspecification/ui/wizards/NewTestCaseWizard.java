@@ -9,7 +9,7 @@ import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.ui.INewWizard;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.dialogs.WizardNewFileCreationPage;
-import org.globaltester.core.ui.GtUiHelper;
+import org.globaltester.base.ui.GtUiHelper;
 import org.globaltester.logging.logger.GtErrorLogger;
 import org.globaltester.testspecification.testframework.TestCase;
 import org.globaltester.testspecification.ui.Activator;

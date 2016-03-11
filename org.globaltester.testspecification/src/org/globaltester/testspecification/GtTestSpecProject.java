@@ -12,7 +12,7 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.core.runtime.CoreException;
-import org.globaltester.core.resources.GtResourceHelper;
+import org.globaltester.base.resources.GtResourceHelper;
 import org.globaltester.testspecification.testframework.TestCase;
 
 

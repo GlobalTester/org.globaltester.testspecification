@@ -19,7 +19,7 @@ import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.ui.IImportWizard;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.PlatformUI;
-import org.globaltester.core.resources.GtResourceHelper;
+import org.globaltester.base.resources.GtResourceHelper;
 import org.globaltester.logging.logger.GtErrorLogger;
 import org.globaltester.testspecification.GtTestSpecProject;
 import org.globaltester.testspecification.ui.Activator;

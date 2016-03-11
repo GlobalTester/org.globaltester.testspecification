@@ -33,10 +33,10 @@ import org.eclipse.swt.widgets.List;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
-import org.globaltester.core.Activator;
-import org.globaltester.document.export.Exporter;
+import org.globaltester.Activator;
 import org.globaltester.logging.logger.GtErrorLogger;
 import org.globaltester.testspecification.GtTestSpecNature;
+import org.globaltester.testspecification.document.export.Exporter;
 
 public class ExportTestSpecWizardPage extends WizardPage {
 	private List lstTestSpecSelection;

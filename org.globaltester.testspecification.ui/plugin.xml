@@ -4,7 +4,7 @@
    <extension
          point="org.eclipse.ui.newWizards">
       <wizard
-            category="org.globaltester.core.ui.newWizards.category"
+            category="org.globaltester.base.ui.newWizards.category"
             class="org.globaltester.testspecification.ui.wizards.NewTestSpecWizard"
             icon="icons/testspec.png"
             id="org.globaltester.testspecification.ui.wizards.newTestSpecWizard"
@@ -15,7 +15,7 @@
          </description>
       </wizard>
       <wizard
-            category="org.globaltester.core.ui.newWizards.category"
+            category="org.globaltester.base.ui.newWizards.category"
             class="org.globaltester.testspecification.ui.wizards.NewTestCaseWizard"
             icon="icons/testcase.png"
             id="org.globaltester.testspecification.ui.wizards.newTestCaseWizard"
@@ -30,7 +30,7 @@
     <extension
          point="org.eclipse.ui.importWizards">
       <wizard
-            category="org.globaltester.core.ui.importWizards.category"
+            category="org.globaltester.base.ui.importWizards.category"
             class="org.globaltester.testspecification.ui.wizards.ImportTestSpecWizard"
             icon="icons/testspec.png"
             id="org.globaltester.testspecification.ui.wizards.importTestSpecWizard"
@@ -44,7 +44,7 @@
     <extension
          point="org.eclipse.ui.exportWizards">
       <wizard
-            category="org.globaltester.core.ui.exportWizards.category"
+            category="org.globaltester.base.ui.exportWizards.category"
             class="org.globaltester.testspecification.ui.wizards.ExportTestSpecWizard"
             icon="icons/testspec.png"
             id="org.globaltester.testspecification.ui.wizards.importTestSpecWizard"
@@ -73,10 +73,10 @@
    <extension
          point="org.eclipse.ui.navigator.viewer">
       <viewer
-            viewerId="org.globaltester.core.ui.views.GlobalTesterNavigator">
+            viewerId="org.globaltester.base.ui.views.GlobalTesterNavigator">
       </viewer>
       <viewerContentBinding
-            viewerId="org.globaltester.core.ui.views.GlobalTesterNavigator">
+            viewerId="org.globaltester.base.ui.views.GlobalTesterNavigator">
          <includes>
             <contentExtension
                   pattern="org.globaltester.testspecification.ui.gtTestSpecificationNavigatorContent">
