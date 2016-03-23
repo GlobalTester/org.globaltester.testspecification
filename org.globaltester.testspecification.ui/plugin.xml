@@ -58,6 +58,7 @@
    <extension
          point="org.eclipse.ui.navigator.navigatorContent">
       <navigatorContent
+      		activeByDefault="false"
             contentProvider="org.globaltester.testspecification.ui.navigator.ContentProvider"
             icon="icons/testspec.png"
             id="org.globaltester.testspecification.ui.gtTestSpecificationNavigatorContent"
