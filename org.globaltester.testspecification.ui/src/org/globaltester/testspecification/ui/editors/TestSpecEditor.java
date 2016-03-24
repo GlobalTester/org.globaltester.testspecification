@@ -25,8 +25,13 @@ public class TestSpecEditor extends FoldingEditor implements IPropertyListener {
 	public TestSpecEditor() {
 		super();
 		setDocumentProvider(new TestSpecEditorDocumentProvider());
-		setSourceViewerConfiguration(new TestSpecEditorConfiguration(this));
 		addPropertyListener(this);
+	}
+	
+	@Override
+	protected void initializeEditor() {
+		super.initializeEditor();
+		setSourceViewerConfiguration(new TestSpecEditorConfiguration(this));
 	}
 
 	public void connect() {
