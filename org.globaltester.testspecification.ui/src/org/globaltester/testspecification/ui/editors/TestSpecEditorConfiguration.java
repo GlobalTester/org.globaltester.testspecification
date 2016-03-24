@@ -4,9 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import org.eclipse.jface.text.DefaultTextDoubleClickStrategy;
 import org.eclipse.jface.text.IDocument;
-import org.eclipse.jface.text.ITextDoubleClickStrategy;
 import org.eclipse.jface.text.presentation.IPresentationReconciler;
 import org.eclipse.jface.text.presentation.PresentationReconciler;
 import org.eclipse.jface.text.reconciler.IReconciler;
@@ -21,7 +19,6 @@ import org.globaltester.base.ui.editors.ReconcilingStrategy;
 import org.globaltester.base.ui.editors.XMLScanner;
 
 public class TestSpecEditorConfiguration extends SourceViewerConfiguration {
-	private ITextDoubleClickStrategy doubleClickStrategy;
 	private GtScanner xmlFormatScanner;
 	private GtScanner jsFormatScanner;
 	private TestSpecEditor editor;
@@ -37,14 +34,6 @@ public class TestSpecEditorConfiguration extends SourceViewerConfiguration {
 		types.addAll(Arrays.asList(getXmlScanner().getLegalContentTypes()));
 		types.addAll(Arrays.asList(getJsScanner().getLegalContentTypes()));
 		return types.toArray(new String [types.size()]);
-	}
-	
-	@Override
-	public ITextDoubleClickStrategy getDoubleClickStrategy(
-			ISourceViewer sourceViewer, String contentType) {
-		if (doubleClickStrategy == null)
-			doubleClickStrategy = new DefaultTextDoubleClickStrategy();
-		return doubleClickStrategy;
 	}
 
 	private GtScanner getXmlScanner() {
