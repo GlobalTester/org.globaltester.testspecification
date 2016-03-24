@@ -47,7 +47,7 @@ public class TestSpecEditorConfiguration extends SourceViewerConfiguration {
 		return doubleClickStrategy;
 	}
 
-	protected GtScanner getXmlScanner() {
+	private GtScanner getXmlScanner() {
 		if (xmlFormatScanner != null){
 			return xmlFormatScanner;
 		}
@@ -58,7 +58,7 @@ public class TestSpecEditorConfiguration extends SourceViewerConfiguration {
 		return xmlFormatScanner;
 	}
 
-	protected GtScanner getJsScanner() {
+	private GtScanner getJsScanner() {
 		if (jsFormatScanner != null){
 			return jsFormatScanner;
 		}
@@ -94,5 +94,4 @@ public class TestSpecEditorConfiguration extends SourceViewerConfiguration {
 		
 		return reconciler;
 	}
-
 }
