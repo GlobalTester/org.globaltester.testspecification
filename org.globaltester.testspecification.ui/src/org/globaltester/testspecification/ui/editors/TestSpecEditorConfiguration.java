@@ -1,8 +1,10 @@
 package org.globaltester.testspecification.ui.editors;
 
-import org.eclipse.jface.text.DefaultTextDoubleClickStrategy;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import org.eclipse.jface.text.IDocument;
-import org.eclipse.jface.text.ITextDoubleClickStrategy;
 import org.eclipse.jface.text.presentation.IPresentationReconciler;
 import org.eclipse.jface.text.presentation.PresentationReconciler;
 import org.eclipse.jface.text.reconciler.IReconciler;
@@ -11,13 +13,14 @@ import org.eclipse.jface.text.rules.DefaultDamagerRepairer;
 import org.eclipse.jface.text.source.ISourceViewer;
 import org.eclipse.jface.text.source.SourceViewerConfiguration;
 import org.globaltester.base.ui.editors.GtScanner;
-import org.globaltester.base.ui.editors.JSScanner;
-import org.globaltester.base.ui.editors.XMLScanner;
 import org.globaltester.base.ui.editors.GtScanner.TokenType;
+import org.globaltester.base.ui.editors.JSScanner;
+import org.globaltester.base.ui.editors.ReconcilingStrategy;
+import org.globaltester.base.ui.editors.XMLScanner;
 
 public class TestSpecEditorConfiguration extends SourceViewerConfiguration {
-	private ITextDoubleClickStrategy doubleClickStrategy;
-	private GtScanner formatScanner;
+	private GtScanner xmlFormatScanner;
+	private GtScanner jsFormatScanner;
 	private TestSpecEditor editor;
 
 	public TestSpecEditorConfiguration(TestSpecEditor editor) {
@@ -26,61 +29,58 @@ public class TestSpecEditorConfiguration extends SourceViewerConfiguration {
 
 	@Override
 	public String[] getConfiguredContentTypes(ISourceViewer sourceViewer) {
-		return getScanner().getLegalContentTypes();
+		List<String> types = new ArrayList<String>();
+		types.addAll(Arrays.asList(super.getConfiguredContentTypes(sourceViewer)));
+		types.addAll(Arrays.asList(getXmlScanner().getLegalContentTypes()));
+		types.addAll(Arrays.asList(getJsScanner().getLegalContentTypes()));
+		return types.toArray(new String [types.size()]);
 	}
 
-	@Override
-	public ITextDoubleClickStrategy getDoubleClickStrategy(
-			ISourceViewer sourceViewer, String contentType) {
-		if (doubleClickStrategy == null)
-			doubleClickStrategy = new DefaultTextDoubleClickStrategy();
-		return doubleClickStrategy;
-	}
-
-	protected GtScanner getScanner() {
-		if (formatScanner == null) {
-			formatScanner = new GtScanner(TokenType.TEXT_ATTRIBUTES);
-
-			XMLScanner.addAllPredicateRules(formatScanner,
-					TokenType.TEXT_ATTRIBUTES);
-			JSScanner.addAllPredicateRules(formatScanner,
-					TokenType.TEXT_ATTRIBUTES);
-			
+	private GtScanner getXmlScanner() {
+		if (xmlFormatScanner != null){
+			return xmlFormatScanner;
 		}
-		return formatScanner;
+		xmlFormatScanner = new GtScanner(TokenType.TEXT_ATTRIBUTES);
+
+		XMLScanner.addAllPredicateRules(xmlFormatScanner,
+				TokenType.TEXT_ATTRIBUTES);
+		return xmlFormatScanner;
 	}
 
+	private GtScanner getJsScanner() {
+		if (jsFormatScanner != null){
+			return jsFormatScanner;
+		}
+		jsFormatScanner = new GtScanner(TokenType.TEXT_ATTRIBUTES);
+
+		JSScanner.addAllPredicateRules(jsFormatScanner,
+				TokenType.TEXT_ATTRIBUTES);
+		return jsFormatScanner;
+	}
+	
 	@Override
 	public IPresentationReconciler getPresentationReconciler(
 			ISourceViewer sourceViewer) {
 		PresentationReconciler reconciler = new PresentationReconciler();
-
-		// create DamagerRepairer
-		GtScanner scanner = getScanner();
-		DefaultDamagerRepairer dr = new DefaultDamagerRepairer(scanner);
-		reconciler.setDamager(dr, IDocument.DEFAULT_CONTENT_TYPE);
-		reconciler.setRepairer(dr, IDocument.DEFAULT_CONTENT_TYPE);
-
-		// register damager/repairer for all content types supported by scanner
-		String[] contentTypes = scanner.getLegalContentTypes();
-		for (int i = 0; i < contentTypes.length; i++) {
-			if (contentTypes[i] == null)
-				continue;
-			reconciler.setDamager(dr, contentTypes[i]);
-			reconciler.setRepairer(dr, contentTypes[i]);
-		}
-
+		
+		DefaultDamagerRepairer xmldr = new DefaultDamagerRepairer(getXmlScanner());
+		reconciler.setDamager(xmldr, IDocument.DEFAULT_CONTENT_TYPE);
+		reconciler.setRepairer(xmldr, IDocument.DEFAULT_CONTENT_TYPE);
+		
+		DefaultDamagerRepairer jsdr = new DefaultDamagerRepairer(getJsScanner());
+		reconciler.setDamager(jsdr, TestSpecEditorDocumentProvider.CT_JS);
+		reconciler.setRepairer(jsdr, TestSpecEditorDocumentProvider.CT_JS);
+		
 		return reconciler;
 	}
 
 	@Override
 	public IReconciler getReconciler(ISourceViewer sourceViewer) {
-		TestSpecReconcilingStrategy strategy = new TestSpecReconcilingStrategy();
+		ReconcilingStrategy strategy = new TestSpecReconcilingStrategy();
 		strategy.setEditor(editor);
 
 		MonoReconciler reconciler = new MonoReconciler(strategy, false);
-
+		
 		return reconciler;
 	}
-
 }
