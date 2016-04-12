@@ -11,7 +11,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.globaltester.base,
  org.globaltester.lib.jdom,
  org.globaltester.testspecification.doc;resolution:=optional
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: org.globaltester.testspecification,
  org.globaltester.testspecification.document.export,
