@@ -34,7 +34,7 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
 import org.globaltester.Activator;
-import org.globaltester.logging.logger.GtErrorLogger;
+import org.globaltester.logging.legacy.logger.GtErrorLogger;
 import org.globaltester.testspecification.GtTestSpecNature;
 import org.globaltester.testspecification.document.export.Exporter;
 

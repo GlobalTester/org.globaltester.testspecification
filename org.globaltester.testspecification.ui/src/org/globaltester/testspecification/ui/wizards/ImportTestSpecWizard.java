@@ -20,7 +20,7 @@ import org.eclipse.ui.IImportWizard;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.PlatformUI;
 import org.globaltester.base.resources.GtResourceHelper;
-import org.globaltester.logging.logger.GtErrorLogger;
+import org.globaltester.logging.legacy.logger.GtErrorLogger;
 import org.globaltester.testspecification.GtTestSpecProject;
 import org.globaltester.testspecification.ui.Activator;
 import org.globaltester.testspecification.ui.Messages;

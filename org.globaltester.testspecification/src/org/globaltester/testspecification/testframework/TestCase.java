@@ -12,7 +12,7 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.core.runtime.CoreException;
 import org.globaltester.base.xml.XMLHelper;
-import org.globaltester.logging.logger.TestLogger;
+import org.globaltester.logging.legacy.logger.TestLogger;
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.Namespace;

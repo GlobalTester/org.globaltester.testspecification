@@ -8,7 +8,7 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.part.FileEditorInput;
 import org.globaltester.base.ui.editors.FoldingEditor;
-import org.globaltester.logging.logger.GtErrorLogger;
+import org.globaltester.logging.legacy.logger.GtErrorLogger;
 import org.globaltester.testspecification.ui.Activator;
 
 /**

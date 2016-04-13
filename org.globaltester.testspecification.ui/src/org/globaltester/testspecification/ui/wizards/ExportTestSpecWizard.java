@@ -22,7 +22,7 @@ import org.eclipse.ui.IExportWizard;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.PlatformUI;
 import org.globaltester.Activator;
-import org.globaltester.logging.logger.GtErrorLogger;
+import org.globaltester.logging.legacy.logger.GtErrorLogger;
 import org.globaltester.testspecification.document.export.Exporter;
 import org.globaltester.testspecification.ui.Messages;
 import org.globaltester.testspecification.ui.UiImages;
