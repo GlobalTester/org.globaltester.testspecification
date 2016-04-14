@@ -17,7 +17,11 @@ public abstract class ActionStep implements ITestExecutable{
 	private List<String> descriptions;
 	private LinkedList<ExpectedResult> expResults;
 	
-
+/**
+ * Constructor for Elements in valid GT III format.
+ * @param elem
+ * @param id
+ */
 	public ActionStep(Element elem, String id) {
 		Assert.isTrue(elem.getName().equals(getElementName()),
 				"Element is not a <" + getElementName() + ">");
@@ -59,6 +63,25 @@ public abstract class ActionStep implements ITestExecutable{
 				expResults.add(curExpResult);
 			}
 		}
+	}
+	
+	/**
+	 * Constructor for elements that differ from the standard GT III format.
+	 * It is used to translate legacy elements to their new counterpart.
+	 * 
+	 * @param elem
+	 * @param id
+	 * @param checkElement The name of the XML element
+	 */
+	public ActionStep(Element elem, String id, String checkElement){
+		Assert.isTrue(elem.getName().equals(checkElement),
+				"Element is not a <" + checkElement + ">");
+		Namespace ns = elem.getNamespace();
+		
+		stepId = id;
+		
+		//extract TechincalResult
+		techCommand = elem.getText();
 	}
 
 	protected abstract String getElementName();

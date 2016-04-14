@@ -1,5 +1,7 @@
 package org.globaltester.testspecification.testframework;
 
+import java.util.List;
+
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.CoreException;
 
@@ -60,12 +62,17 @@ public abstract class FileTestExecutable implements ITestExecutable {
 	 * @return
 	 * @throws CoreException
 	 */
-	public FileTestExecutable copyTo(IFile targetSpecIFile) throws CoreException {
-		// copy the spec file
-		iFile.copy(targetSpecIFile.getFullPath(), false, null);
-		
-		//create and return the new instance
-		return TestExecutableFactory.getInstance(targetSpecIFile);
-	}
-
+	public abstract FileTestExecutable copyTo(IFile targetSpecIFile) throws CoreException; 
+	
+	public abstract List<PreCondition> getPreConditions();
+	public abstract List<TestStep> getTestSteps();
+	public abstract List<PostCondition> getPostConditions();
+	
+	/**
+	 * Dumps general information of the test case
+	 */
+	public abstract void dumpTestCaseInfos();
+	
+	public abstract String getTestCasePurpose();
+	public abstract String getTestCaseID();
 }
