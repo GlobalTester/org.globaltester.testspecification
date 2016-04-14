@@ -9,8 +9,9 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.globaltester.base.xml.XMLHelper;
-import org.globaltester.logging.logger.TestLogger;
+import org.globaltester.logging.legacy.logger.TestLogger;
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.Namespace;
@@ -65,7 +66,7 @@ public class TestCaseLegacy extends FileTestExecutable implements ILegacyConstan
 		// extract TestSteps from "testscript" node
 		testSteps = new LinkedList<TestStep>();
 		Element testElem = testcase.getChild(teststepsLegacy, ns);
-		TestStep testStep = new TestStep(testElem, testCaseId+" - TestStep ", teststepsLegacy);
+		TestStep testStep = new TestStep(testElem, testCaseId+" - Teststep ", teststepsLegacy);
 		testSteps.add(testStep);
 		
 		// extract Postconditions
@@ -115,7 +116,7 @@ public class TestCaseLegacy extends FileTestExecutable implements ILegacyConstan
 		TestLogger.info(String.format(format, "Title:", testCaseTitle));
 		TestLogger.info(String.format(format, "ID:", testCaseId));
 		TestLogger.info(String.format(format, "version:", testCaseVersion));
-		TestLogger.info("------------------------------------------------------------------ -");
+		TestLogger.info("-------------------------------------------------------------------");
 	}
 
 	public String getTestCaseID() {
@@ -151,28 +152,37 @@ public class TestCaseLegacy extends FileTestExecutable implements ILegacyConstan
 	public FileTestExecutable copyTo(IFile targetSpecIFile) throws CoreException {
 		IWorkspace workspace = ResourcesPlugin.getWorkspace(); 
 		
-		//copy testcase
-		iFile.copy(targetSpecIFile.getFullPath(), false, null);
+		String dtdPathFromTestScript = extractDtdLocationString();
 		
+		//copy testcase
+		iFile.copy(targetSpecIFile.getFullPath(), false, new NullProgressMonitor());
+
 		//copy dtd file
 		IPath pathToTestCase = iFile.getFullPath();
-		IPath pathTogrammar = pathToTestCase.removeLastSegments(3);
-		IPath pathTogrammarDestination = targetSpecIFile.getFullPath().removeLastSegments(3);
-		
-		IPath dtdFilePath = pathTogrammar.append("testcase.dtd");
-		IFile dtdFile = workspace.getRoot().getFile(dtdFilePath);
+		IPath pathToDtdSource = pathToTestCase.removeLastSegments(1).append(dtdPathFromTestScript);
 
+		IFile dtdFileSource = workspace.getRoot().getFile(pathToDtdSource);
+		IPath pathTogrammarDestination = targetSpecIFile.getFullPath().uptoSegment(2).append(pathToDtdSource);	
+		IFile dtdFileDestination = workspace.getRoot().getFile(pathTogrammarDestination);
 		
-//		dtdFile.copy(pathTogrammarDestination, true, null);
+		if(!dtdFileDestination.exists()){ //may already exist if multiple test cases are copied to campaign
+			dtdFileSource.copy(pathTogrammarDestination, false, new NullProgressMonitor());
+		}
 
-//		IFile wSDLFile = (IFile) workspaceRoot.findMember(locationString);
-//		String strPathToDtd="";
-//		for(int i=0; i<tempPath.length-2; i++){
-//			strPathToDtd+=tempPath[i]+File.separator;
-//		}
-//		IPath pathToDtd = new Path(strPathToDtd);
-//		iFile.copy(targetSpecIFile.getFullPath(), false, null);
 		return TestExecutableFactory.getInstance(targetSpecIFile);
+	}
+	
+	/**
+	 * LegacyTestCases always use a dtd file. This method reads its location
+	 * from the test.
+	 * 
+	 * @return the Location as String
+	 */
+	
+	private String extractDtdLocationString() {
+		Assert.isNotNull(iFile);
+		Document doc = XMLHelper.readDocument(iFile);
+		return doc.getDocType().getSystemID();
 	}
 	
 }

@@ -55,9 +55,6 @@ public abstract class FileTestExecutable implements ITestExecutable {
 	 * Copy the specification of this TestExecutable to the new location and returns
 	 * a new instance of TestExecutable relating to the new file.
 	 * 
-	 * This needs to be overwritten if the underlying TestExecutable needs to
-	 * preserve any file based relationships other than the IFile.
-	 * 
 	 * @param targetSpecIFile
 	 * @return
 	 * @throws CoreException
@@ -67,12 +64,12 @@ public abstract class FileTestExecutable implements ITestExecutable {
 	public abstract List<PreCondition> getPreConditions();
 	public abstract List<TestStep> getTestSteps();
 	public abstract List<PostCondition> getPostConditions();
-	
-	/**
-	 * Dumps general information of the test case
-	 */
-	public abstract void dumpTestCaseInfos();
-	
 	public abstract String getTestCasePurpose();
 	public abstract String getTestCaseID();
+	
+	/**
+	 * Dumps general information of the test case to the log
+	 */
+	public abstract void dumpTestCaseInfos();
+
 }
