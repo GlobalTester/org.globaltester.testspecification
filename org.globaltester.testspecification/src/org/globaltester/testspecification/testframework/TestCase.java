@@ -206,6 +206,15 @@ public class TestCase extends FileTestExecutable {
 	"	<Reference></Reference>\n" +
 	"	<Precondition>\n" +
 	"		<Command>\n" +
+	"			<Text>Set environment</Text>\n" +
+	"		</Command>\n" +
+	"		<TechnicalCommand>\n" +
+	"			Packages.org.globaltester.testrunner.TestRunnerEnvironmentInitializer.setEnvironment(getRunnerInstance());\n" +
+	"		</TechnicalCommand>\n" +
+	"		<Description></Description>\n" +
+	"	</Precondition>\n" +
+	"	<Precondition>\n" +
+	"		<Command>\n" +
 	"			<Text>Reset card</Text>\n" +
 	"		</Command>\n" +
 	"		<TechnicalCommand>\n" +
