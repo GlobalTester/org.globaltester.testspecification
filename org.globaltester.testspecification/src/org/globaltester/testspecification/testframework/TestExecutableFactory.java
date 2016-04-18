@@ -23,6 +23,8 @@ public class TestExecutableFactory {
 
 			if (TestCase.isFileRepresentation(iFile)) {
 				newExecutionInstance = new TestCase(iFile);
+			} else if (TestCaseLegacy.isFileRepresentation(iFile)){
+				newExecutionInstance = new TestCaseLegacy(iFile);
 			}
 			
 			if (newExecutionInstance != null) {

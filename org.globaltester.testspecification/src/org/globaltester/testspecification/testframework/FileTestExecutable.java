@@ -1,5 +1,7 @@
 package org.globaltester.testspecification.testframework;
 
+import java.util.List;
+
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.CoreException;
 
@@ -53,19 +55,21 @@ public abstract class FileTestExecutable implements ITestExecutable {
 	 * Copy the specification of this TestExecutable to the new location and returns
 	 * a new instance of TestExecutable relating to the new file.
 	 * 
-	 * This needs to be overwritten if the underlying TestExecutable needs to
-	 * preserve any file based relationships other than the IFile.
-	 * 
 	 * @param targetSpecIFile
 	 * @return
 	 * @throws CoreException
 	 */
-	public FileTestExecutable copyTo(IFile targetSpecIFile) throws CoreException {
-		// copy the spec file
-		iFile.copy(targetSpecIFile.getFullPath(), false, null);
-		
-		//create and return the new instance
-		return TestExecutableFactory.getInstance(targetSpecIFile);
-	}
+	public abstract FileTestExecutable copyTo(IFile targetSpecIFile) throws CoreException; 
+	
+	public abstract List<PreCondition> getPreConditions();
+	public abstract List<TestStep> getTestSteps();
+	public abstract List<PostCondition> getPostConditions();
+	public abstract String getTestCasePurpose();
+	public abstract String getTestCaseID();
+	
+	/**
+	 * Dumps general information of the test case to the log
+	 */
+	public abstract void dumpTestCaseInfos();
 
 }

@@ -17,7 +17,11 @@ public abstract class ActionStep implements ITestExecutable{
 	private List<String> descriptions;
 	private LinkedList<ExpectedResult> expResults;
 	
-
+/**
+ * Constructor for Elements in valid GT III format.
+ * @param elem
+ * @param id
+ */
 	public ActionStep(Element elem, String id) {
 		Assert.isTrue(elem.getName().equals(getElementName()),
 				"Element is not a <" + getElementName() + ">");
@@ -59,6 +63,20 @@ public abstract class ActionStep implements ITestExecutable{
 				expResults.add(curExpResult);
 			}
 		}
+	}
+	
+	/**
+	 * More simple constructor that only requires the JavaScript code to execute
+	 * and an id. It is used for testcases to don't satisfy the specified GT III
+	 * test case format.
+	 * 
+	 * @param techCommand
+	 *            the JavaScript code as String
+	 * @param id
+	 */
+	public ActionStep(String techCommand, String id){
+		this.stepId = id;
+		this.techCommand=techCommand;
 	}
 
 	protected abstract String getElementName();
