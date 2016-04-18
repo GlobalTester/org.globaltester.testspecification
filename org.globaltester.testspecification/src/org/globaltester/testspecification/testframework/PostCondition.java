@@ -8,8 +8,8 @@ public class PostCondition extends ActionStep{
 		super(elem, id);
 	}
 	
-	public PostCondition(Element elem, String id, String checkElement) {
-		super(elem, id, checkElement);
+	public PostCondition(String techCommand, String id) {
+		super(techCommand, id);
 	}
 
 	@Override

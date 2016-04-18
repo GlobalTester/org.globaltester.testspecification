@@ -66,22 +66,17 @@ public abstract class ActionStep implements ITestExecutable{
 	}
 	
 	/**
-	 * Constructor for elements that differ from the standard GT III format.
-	 * It is used to translate legacy elements to their new counterpart.
+	 * More simple constructor that only requires the JavaScript code to execute
+	 * and an id. It is used for testcases to don't satisfy the specified GT III
+	 * test case format.
 	 * 
-	 * @param elem
+	 * @param techCommand
+	 *            the JavaScript code as String
 	 * @param id
-	 * @param checkElement The name of the XML element
 	 */
-	public ActionStep(Element elem, String id, String checkElement){
-		Assert.isTrue(elem.getName().equals(checkElement),
-				"Element is not a <" + checkElement + ">");
-		Namespace ns = elem.getNamespace();
-		
-		stepId = id;
-		
-		//extract TechincalResult
-		techCommand = elem.getText();
+	public ActionStep(String techCommand, String id){
+		this.stepId = id;
+		this.techCommand=techCommand;
 	}
 
 	protected abstract String getElementName();

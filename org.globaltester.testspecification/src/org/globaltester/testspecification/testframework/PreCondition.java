@@ -8,8 +8,8 @@ public class PreCondition extends ActionStep{
 		super(elem, id);
 	}
 	
-	public PreCondition(Element elem, String id, String checkElement) {
-		super(elem, id, checkElement);
+	public PreCondition(String techCommand, String id) {
+		super(techCommand, id);
 	}
 
 	@Override

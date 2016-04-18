@@ -50,19 +50,19 @@ public class TestCaseLegacy extends TestCase implements ILegacyConstants{
 		// extract Preconditions
 		preConditions = new LinkedList<PreCondition>();
 		Element preConElement = testcase.getChild(preconditionsLegacy, ns);
-		PreCondition preCon = new PreCondition(preConElement, testCaseId+" - Preconditions", preconditionsLegacy);
+		PreCondition preCon = new PreCondition(preConElement.getText(), testCaseId+" - Preconditions");
 		preConditions.add(preCon);
 		
 		// extract TestSteps from "testscript" node
 		testSteps = new LinkedList<TestStep>();
 		Element testElem = testcase.getChild(teststepsLegacy, ns);
-		TestStep testStep = new TestStep(testElem, testCaseId+" - Teststep ", teststepsLegacy);
+		TestStep testStep = new TestStep(testElem.getText(), testCaseId+" - Teststep ");
 		testSteps.add(testStep);
 		
 		// extract Postconditions
 		postConditions = new LinkedList<PostCondition>();
 		Element postConElem = testcase.getChild(postconditionsLegacy, ns);
-		PostCondition postCon = new PostCondition(postConElem, testCaseId+" - Postconditions ", postconditionsLegacy);
+		PostCondition postCon = new PostCondition(postConElem.getText(), testCaseId+" - Postconditions ");
 		postConditions.add(postCon);
 
 	}

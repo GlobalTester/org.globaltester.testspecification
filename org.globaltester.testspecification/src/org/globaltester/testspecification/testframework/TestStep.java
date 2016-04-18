@@ -8,8 +8,8 @@ public class TestStep extends ActionStep{
 		super(elem, id);
 	}
 	
-	public TestStep(Element elem, String id, String checkElement) {
-		super(elem, id, checkElement);
+	public TestStep(String techCommand, String id) {
+		super(techCommand, id);
 	}
 
 	@Override
