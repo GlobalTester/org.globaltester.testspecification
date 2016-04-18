@@ -13,6 +13,8 @@ import org.eclipse.core.runtime.Assert;
 import org.eclipse.core.runtime.CoreException;
 import org.globaltester.base.xml.XMLHelper;
 import org.globaltester.logging.legacy.logger.TestLogger;
+import org.globaltester.sampleconfiguration.profiles.expressions.ProfileExpression;
+import org.globaltester.sampleconfiguration.profiles.parser.ProfileExpressionParser;
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.Namespace;
@@ -26,6 +28,11 @@ public class TestCase extends FileTestExecutable {
 	protected LinkedList<PreCondition> preConditions;
 	protected LinkedList<TestStep> testSteps;
 	protected LinkedList<PostCondition> postConditions;
+	private ProfileExpression profileExpression;
+
+	public ProfileExpression getProfileExpression() {
+		return profileExpression;
+	}
 
 	public TestCase(IFile iFile) throws CoreException {
 		super(iFile);
@@ -49,6 +56,7 @@ public class TestCase extends FileTestExecutable {
 			testCaseTitle = root.getChild("Title", ns).getTextTrim();
 			testCaseVersion = root.getChild("Version", ns).getTextTrim();
 			testCasePurpose = root.getChild("Purpose", ns).getTextTrim();
+			profileExpression = ProfileExpressionParser.parse(root.getChild("Profile", ns).getTextTrim());
 	
 			// extract Preconditions
 			preConditions = new LinkedList<PreCondition>();
