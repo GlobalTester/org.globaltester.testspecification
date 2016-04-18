@@ -1,7 +1,6 @@
 package org.globaltester.testspecification.testframework;
 
 import java.util.LinkedList;
-import java.util.List;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IWorkspace;
@@ -11,7 +10,6 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.globaltester.base.xml.XMLHelper;
-import org.globaltester.logging.legacy.logger.TestLogger;
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.Namespace;
@@ -23,15 +21,7 @@ import org.jdom.Namespace;
  * 
  * @author jkoch
  */
-public class TestCaseLegacy extends FileTestExecutable implements ILegacyConstants{
-
-	private String testCaseId;
-	private String testCaseTitle;
-	private String testCaseVersion;
-	private String testCasePurpose;
-	private LinkedList<PreCondition> preConditions;
-	private LinkedList<TestStep> testSteps;
-	private LinkedList<PostCondition> postConditions;
+public class TestCaseLegacy extends TestCase implements ILegacyConstants{
 
 	public TestCaseLegacy(IFile iFile) throws CoreException {
 		super(iFile);
@@ -95,55 +85,6 @@ public class TestCaseLegacy extends FileTestExecutable implements ILegacyConstan
 			
 			return true;
 		}
-		
-		return false;
-	}
-
-	public List<PreCondition> getPreConditions() {
-		return preConditions;
-	}
-
-	public List<TestStep> getTestSteps() {
-		return testSteps;
-	}
-
-	public List<PostCondition> getPostConditions() {
-		return postConditions;
-	}
-
-	public void dumpTestCaseInfos() {
-		String format = "Testcase %-10s %-46s -"; //format the output to be 100 chars wide (including log4j start of line)
-		TestLogger.info(String.format(format, "Title:", testCaseTitle));
-		TestLogger.info(String.format(format, "ID:", testCaseId));
-		TestLogger.info(String.format(format, "version:", testCaseVersion));
-		TestLogger.info("-------------------------------------------------------------------");
-	}
-
-	public String getTestCaseID() {
-		return testCaseId;
-	}
-
-	public String getTestCasePurpose() {
-		return testCasePurpose;
-	}
-
-	@Override
-	public List<ITestExecutable> getChildren() {
-		LinkedList<ITestExecutable> children = new LinkedList<ITestExecutable>();
-		
-		//add test steps to list of children
-		children.addAll(preConditions);
-		children.addAll(testSteps);
-		children.addAll(postConditions);
-		
-		return children;
-	}
-
-	@Override
-	public boolean hasChildren() {
-		if ((preConditions != null) && (!preConditions.isEmpty())) return true;
-		if ((testSteps != null) && (!testSteps.isEmpty())) return true;
-		if ((postConditions != null) && (!postConditions.isEmpty())) return true;
 		
 		return false;
 	}

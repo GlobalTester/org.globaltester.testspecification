@@ -19,13 +19,13 @@ import org.jdom.Namespace;
 
 public class TestCase extends FileTestExecutable {
 
-	private String testCaseId;
-	private String testCaseTitle;
-	private String testCaseVersion;
-	private String testCasePurpose;
-	private LinkedList<PreCondition> preConditions;
-	private LinkedList<TestStep> testSteps;
-	private LinkedList<PostCondition> postConditions;
+	protected String testCaseId;
+	protected String testCaseTitle;
+	protected String testCaseVersion;
+	protected String testCasePurpose;
+	protected LinkedList<PreCondition> preConditions;
+	protected LinkedList<TestStep> testSteps;
+	protected LinkedList<PostCondition> postConditions;
 
 	public TestCase(IFile iFile) throws CoreException {
 		super(iFile);
