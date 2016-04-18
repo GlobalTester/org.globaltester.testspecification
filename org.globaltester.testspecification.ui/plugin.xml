@@ -11,7 +11,7 @@
             name="TestSpecification"
             project="true">
             <description>
-            Create a new empty TestSpecification project.
+            Creates a TestSpecification project
          </description>
       </wizard>
       <wizard
@@ -22,7 +22,7 @@
             name="TestCase"
             project="false">
             <description>
-            Create a new TestCase project.
+            Creates a TestCase
          </description>
       </wizard>
    </extension>
