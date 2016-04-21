@@ -21,12 +21,13 @@
       </description>
    </item>
    <item
-         title="Choose a Project Name">
+         title="Choose the TestSpecification you want to import">
       <description>
-         In the text field <b>&quot;Projectname&quot;</b>, choose a name for your project, for example &quot;GlobalTester Sample TestSpecification&quot;.
-		 In the list, choose the TestSpecification &quot;GlobalTester Sample TestSpecification&quot;.
-		 Have a look at the description of it that is given in the field below to get a quick overview of the purpose of the TestSpecification.
-		 Then click <b>&quot;Finish&quot;</b>.
+         In the list, you can choose the TestSpecification you want to import.
+	Just below the list you will find the bundle symbolic name of the last selected TestSpecification.
+	Also a description of the TestSpecification is given so that you can get a quick overview of its purpose.
+	For the ease of use several TestSpecifications can be selected for import.
+	Then click &quot;Finish&quot;.
       </description>
       <onCompletion> Congratulations! You have just learned how to import a TestSpecification! </onCompletion>
    </item>
