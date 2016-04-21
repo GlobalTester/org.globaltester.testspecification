@@ -200,8 +200,13 @@ public class ImportTestSpecWizardPage extends WizardPage {
 	private void validateAndUpdate() {
 		int selectedEntry = listOfSelectableBundles.getSelectionIndex();
 		
-		textBundleName.setText(configElements[selectedEntry].getAttribute(BUNDLE_SYMBOLIC_NAME));
-		textDescription.setText(configElements[selectedEntry].getAttribute(BUNDLE_DESCRIPTION));
+		if(selectedEntry < 0) {
+			textBundleName.setText("");
+			textDescription.setText("");
+		} else{
+			textBundleName.setText(configElements[selectedEntry].getAttribute(BUNDLE_SYMBOLIC_NAME));
+			textDescription.setText(configElements[selectedEntry].getAttribute(BUNDLE_DESCRIPTION));
+		}
 		
 		// update the dialog appearance
 		getContainer().updateButtons();
