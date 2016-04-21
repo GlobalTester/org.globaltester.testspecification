@@ -8,14 +8,14 @@
    </intro>
    <item
          title="Open menu" dialog = "true">
-         <command serialization="org.eclipse.ui.file.import"/>
+
       <description>
          First, move the mouse cursor into the &quot;GlobalTester Navigator&quot; window. Right-click, and choose <b>&quot;Import&quot;.</b>
       </description>
    </item>
    <item
          title="Select TestSpecification">
-         <onCompletion> </onCompletion>
+         
       <description>
          In the tree view, select <b>&quot;GlobalTester &gt; Import TestSpecification from Plugin&quot;</b>. Click the <b>&quot;Next&quot;</b> button.
       </description>
@@ -29,7 +29,7 @@
 	For the ease of use several TestSpecifications can be selected for import.
 	Then click &quot;Finish&quot;.
       </description>
-      <onCompletion> Congratulations! You have just learned how to import a TestSpecification! </onCompletion>
    </item>
 
 </cheatsheet>
+
