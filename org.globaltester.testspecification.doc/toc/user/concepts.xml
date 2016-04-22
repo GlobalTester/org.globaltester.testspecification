@@ -7,6 +7,8 @@
 	<topic label="TestSpecification"  href="html/user/concepts/TestSpecification.html">
 		
 			<topic label="TestCase"  href="html/user/concepts/TestCase.html" />
+   <topic href="html/user/concepts/TestUnitAndLayer.html" label="TestUnits and TestLayers">
+   </topic>
 			
 			<topic label="TestData"  href="html/user/concepts/TestData.html">
 			<topic label="Certificates" href="html/user/concepts/Certificates.html" />

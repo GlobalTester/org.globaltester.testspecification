@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>TestUnits and TestLayers</title>
+</head>
+<body>
+	<h1>TestUnits and TestLayers</h1>
+	<p>
+	TestUnits and Layers are XML-structures, which are used to group different collections of <a href="../reference/XMLStructureForTestCases.html">TestCases</a>.
+	This XML-Structures are an enhanced Version of the formerly used TestSuites (which are still supported by the GlobalTester). 
+	TestUnits are used to reference on TestCase files while TestLayers reference on TestUnit files. 
+	This is normally used to test on different layers within one test session.
+	</p>
+	
+	<p>
+	The structure of these files is quite simple. A TestUnit (root tag <b>TestUnit</b>) contains a <b>Text</b> tag and (one or more) <b>TestCase</b> tags which contains the path to the test files.
+	The Text tag also contains a <b>Paragraph</b> Tag with an description of the Unit.
+	</p>
+	
+	<p>
+	TestLayers are implemented in a very similar way. A TestLayer (root tag <b>TestLayer</b>) also contains a <b>Text</b> tag. 
+	This tag has a <b>Heading</b> tag to describe the Layer test. Instead of directly referencing TestCases it contains one or more <b>TestUnits</b> tags which reference to the previously mentioned TestUnit files.
+	</p>
+	
+</body>
+</html>
