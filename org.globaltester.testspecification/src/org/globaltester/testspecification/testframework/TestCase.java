@@ -8,11 +8,16 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.Path;
 import org.globaltester.base.xml.XMLHelper;
 import org.globaltester.logging.legacy.logger.TestLogger;
+import org.globaltester.sampleconfiguration.profiles.ProfileMapper;
+import org.globaltester.sampleconfiguration.profiles.expressions.ProfileExpression;
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.Namespace;
@@ -26,6 +31,11 @@ public class TestCase extends FileTestExecutable {
 	protected LinkedList<PreCondition> preConditions;
 	protected LinkedList<TestStep> testSteps;
 	protected LinkedList<PostCondition> postConditions;
+	protected ProfileExpression profileExpression;
+
+	public ProfileExpression getProfileExpression() {
+		return profileExpression;
+	}
 
 	public TestCase(IFile iFile) throws CoreException {
 		super(iFile);
@@ -49,6 +59,7 @@ public class TestCase extends FileTestExecutable {
 			testCaseTitle = root.getChild("Title", ns).getTextTrim();
 			testCaseVersion = root.getChild("Version", ns).getTextTrim();
 			testCasePurpose = root.getChild("Purpose", ns).getTextTrim();
+			profileExpression = ProfileMapper.parse(root.getChild("Profile", ns).getTextTrim(), getPropertyFiles());
 	
 			// extract Preconditions
 			preConditions = new LinkedList<PreCondition>();
@@ -101,6 +112,26 @@ public class TestCase extends FileTestExecutable {
 
 	}
 
+	protected IFile [] getPropertyFiles() {
+		LinkedList<IFile> result = new LinkedList<>();
+		String currentFileName = getIFile().getName().substring(0, getIFile().getName().lastIndexOf('.'));
+		IFile testCaseSpecificMapping = getIFile().getParent().getFile(new Path(currentFileName + "." + ProfileMapper.MAPPING_FILE_SUFFIX));
+		if (testCaseSpecificMapping.exists()){
+			result.addLast(testCaseSpecificMapping);
+		}
+
+		IContainer currentContainer = getIFile().getParent();
+		while (!(currentContainer instanceof IWorkspaceRoot)){
+			IFile folderMapping = currentContainer.getFile(new Path(ProfileMapper.MAPPING_FILE_NAME));
+			if (folderMapping.exists()){
+				result.addLast(folderMapping);
+			}
+			currentContainer = currentContainer.getParent();
+		}
+		
+		return result.toArray(new IFile[result.size()]);
+	}
+	
 	/**
 	 * checks whether the given file represents an TestCase object
 	 * 
