@@ -12,6 +12,7 @@ import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
+import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
@@ -142,7 +143,9 @@ public class ImportTestSpecWizardPage extends WizardPage {
 		container.layout(true, true);
 		
 		Shell shell = getShell();
-		shell.setSize(500, 580);
+		Point shellSize = shell.getSize();
+		shellSize.y += 200;
+		shell.setSize(shellSize);
 		
 		//update dialog size
 		parent.pack();
