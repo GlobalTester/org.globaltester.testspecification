@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.toc"?>
+
+<toc label="Concepts" link_to="/org.globaltester.sampleconfiguration.doc/toc/user/concepts.xml#testdata"> 
+	
+	<topic href="html/user/concepts/Certificates.html" label="Certificates">
+	</topic>
+
+</toc>

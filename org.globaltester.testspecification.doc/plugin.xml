@@ -12,7 +12,10 @@
             file="toc/user/concepts.xml">
       </toc>
       <toc
-            file="toc/user/tasks.xml">
+            file="toc/user/writetestcase.xml">
+      </toc>
+      <toc
+            file="toc/user/certs.xml">
       </toc>
    </extension>
    

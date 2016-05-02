@@ -6,18 +6,16 @@
 	
 	<topic label="TestSpecification"  href="html/user/concepts/TestSpecification.html">
 		
-			<topic label="TestCase"  href="html/user/concepts/TestCase.html" />
-   <topic href="html/user/concepts/TestUnitAndLayer.html" label="TestUnits and TestLayers">
-   </topic>
+	<topic label="TestCase"  href="html/user/concepts/TestCase.html" />
+	<topic href="html/user/concepts/TestUnitAndLayer.html" label="TestUnits and TestLayers">
+	</topic>
+ <anchor id="testspec"/>
+	<topic href="html/user/reference/XMLStructureForTestCases.html" label="XML Structure for TestCases">
+	</topic>
+	<topic href="html/user/reference/XMLStructureForCertificates.html" label="XML Structure for Certificates">
+	</topic>
 			
-			<topic label="TestData"  href="html/user/concepts/TestData.html">
-			<topic label="Certificates" href="html/user/concepts/Certificates.html" />
-			<topic label="Subroutines" href="html/user/concepts/Subroutines.html" />
-			</topic>
 			
 	</topic>
- <topic href="html/user/reference/XMLStructureForTestCases.html" label="XML Structure for TestCases">
- </topic>
- <topic href="html/user/reference/XMLStructureForCertificates.html" label="XML Structure for Certificates">
- </topic>
+
 </toc>
