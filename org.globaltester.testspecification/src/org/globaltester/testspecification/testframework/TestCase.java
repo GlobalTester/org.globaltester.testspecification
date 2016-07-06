@@ -203,15 +203,6 @@ public class TestCase extends FileTestExecutable {
 		return false;
 	}
 
-	@Override
-	public FileTestExecutable copyTo(IFile targetSpecIFile) throws CoreException {
-		// copy the spec file
-		iFile.copy(targetSpecIFile.getFullPath(), false, null);
-		
-		//create and return the new instance
-		return TestExecutableFactory.getInstance(targetSpecIFile);
-	}
-
 	public static void createDefaultTestCase(IFile iFile) {
 		BufferedWriter out = null;
 		try {
