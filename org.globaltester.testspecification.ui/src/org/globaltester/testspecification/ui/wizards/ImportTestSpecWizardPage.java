@@ -21,6 +21,7 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.List;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
+import org.globaltester.testspecification.GtTestSpecConstants;
 import org.globaltester.testspecification.ui.Messages;
 
 public class ImportTestSpecWizardPage extends WizardPage {
@@ -123,8 +124,7 @@ public class ImportTestSpecWizardPage extends WizardPage {
 		});
 		
 		// Add the bundles to the list
-		String importablesExtensionId = "org.globaltester.testspecification.importables";
-		configElements = Platform.getExtensionRegistry().getConfigurationElementsFor(importablesExtensionId);
+		configElements = Platform.getExtensionRegistry().getConfigurationElementsFor(GtTestSpecConstants.IMPORTABLES_EXTENSION_ID);
 		for (int i = 0; i < configElements.length; i++) {
 			IConfigurationElement curElem = configElements[i];
 			
