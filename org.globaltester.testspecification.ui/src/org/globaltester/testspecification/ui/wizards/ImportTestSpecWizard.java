@@ -1,7 +1,7 @@
 package org.globaltester.testspecification.ui.wizards;
 
-import static org.globaltester.testspecification.ui.wizards.ImportTestSpecWizardPage.BUNDLE_NAME;
-import static org.globaltester.testspecification.ui.wizards.ImportTestSpecWizardPage.BUNDLE_SYMBOLIC_NAME;
+import static org.globaltester.testspecification.GtTestSpecConstants.BUNDLE_NAME;
+import static org.globaltester.testspecification.GtTestSpecConstants.BUNDLE_SYMBOLIC_NAME;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;

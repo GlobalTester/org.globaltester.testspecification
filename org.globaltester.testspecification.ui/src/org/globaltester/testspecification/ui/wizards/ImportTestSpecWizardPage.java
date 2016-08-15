@@ -1,5 +1,10 @@
 package org.globaltester.testspecification.ui.wizards;
 
+import static org.globaltester.testspecification.GtTestSpecConstants.BUNDLE_DESCRIPTION;
+import static org.globaltester.testspecification.GtTestSpecConstants.BUNDLE_NAME;
+import static org.globaltester.testspecification.GtTestSpecConstants.BUNDLE_SYMBOLIC_NAME;
+import static org.globaltester.testspecification.GtTestSpecConstants.IMPORTABLES_EXTENSION_ID;
+
 import java.util.ArrayList;
 
 import org.eclipse.core.resources.ResourcesPlugin;
@@ -21,14 +26,9 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.List;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
-import org.globaltester.testspecification.GtTestSpecConstants;
 import org.globaltester.testspecification.ui.Messages;
 
 public class ImportTestSpecWizardPage extends WizardPage {
-	
-	public static String BUNDLE_SYMBOLIC_NAME = "bundle";
-	public static String BUNDLE_NAME          = "name";
-	public static String BUNDLE_DESCRIPTION   = "descr";
 	
 	public static String WARNING = "CONFLICT ---> ";
 	
@@ -124,7 +124,7 @@ public class ImportTestSpecWizardPage extends WizardPage {
 		});
 		
 		// Add the bundles to the list
-		configElements = Platform.getExtensionRegistry().getConfigurationElementsFor(GtTestSpecConstants.IMPORTABLES_EXTENSION_ID);
+		configElements = Platform.getExtensionRegistry().getConfigurationElementsFor(IMPORTABLES_EXTENSION_ID);
 		for (int i = 0; i < configElements.length; i++) {
 			IConfigurationElement curElem = configElements[i];
 			
