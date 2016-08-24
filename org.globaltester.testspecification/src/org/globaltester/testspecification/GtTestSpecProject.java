@@ -95,7 +95,6 @@ public class GtTestSpecProject {
 		return project;
 	}
 	
-	//FIXME: Remove
 	private static void createDefaultFile(String content, IFile iFile) {
 		BufferedWriter out = null;
 		try {
