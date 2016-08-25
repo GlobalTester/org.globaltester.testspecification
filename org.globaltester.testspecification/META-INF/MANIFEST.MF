@@ -16,6 +16,4 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: org.globaltester.testspecification,
  org.globaltester.testspecification.document.export,
- org.globaltester.testspecification.exporter,
- org.globaltester.testspecification.importer,
  org.globaltester.testspecification.testframework
