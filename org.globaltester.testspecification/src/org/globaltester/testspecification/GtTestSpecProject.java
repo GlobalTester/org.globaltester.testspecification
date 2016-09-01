@@ -95,7 +95,6 @@ public class GtTestSpecProject {
 		return project;
 	}
 	
-	//FIXME: Remove
 	private static void createDefaultFile(String content, IFile iFile) {
 		BufferedWriter out = null;
 		try {
@@ -114,7 +113,6 @@ public class GtTestSpecProject {
 					out.close();
 				}
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}

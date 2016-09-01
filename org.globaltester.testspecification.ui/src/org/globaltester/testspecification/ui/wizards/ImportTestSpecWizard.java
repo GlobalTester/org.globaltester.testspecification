@@ -80,7 +80,6 @@ public class ImportTestSpecWizard extends Wizard implements IImportWizard {
 								conflictingProject.delete(true, true, null);
 								workspace.getRoot().refreshLocal(IResource.DEPTH_INFINITE, null);
 							} catch (CoreException e) {
-								// TODO Auto-generated catch block
 								e.printStackTrace();
 							}
 							

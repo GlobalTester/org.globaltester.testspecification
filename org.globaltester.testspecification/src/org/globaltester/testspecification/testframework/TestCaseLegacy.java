@@ -113,7 +113,6 @@ public class TestCaseLegacy extends TestCase implements ILegacyConstants{
 			GtResourceHelper.copyFiles(iFile.getProject().getLocation().toFile(), targetFile);
 			targetSpecIFile.getProject().refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
