@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: GT TestSpec Test
 Bundle-SymbolicName: org.globaltester.testspecification.test
 Bundle-Version: 3.1.0.qualifier
-Bundle-Vendor: HJP Consulting GmbH
+Bundle-Vendor: secunet Security Networks AG
 Fragment-Host: org.globaltester.testspecification;bundle-version="3.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Require-Bundle: org.junit,
