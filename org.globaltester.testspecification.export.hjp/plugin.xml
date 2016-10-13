@@ -25,31 +25,31 @@
             text="Subtitle">
       </customData>
       <customData
-            defaultValue="HJP Consulting GmbH"
+            defaultValue="secunet Security Networks AG"
             enabled="true"
             key="company.name"
             text="Name">
       </customData>
       <customData
-            defaultValue="Hauptstraße 35"
+            defaultValue="Kurfürstenstraße 58"
             enabled="true"
             key="company.address1"
             text="Address">
       </customData>
       <customData
-            defaultValue="33178 Borchen, Germany"
+            defaultValue="45138 Essen, Germany"
             enabled="true"
             key="company.address2"
             text="Address">
       </customData>
       <customData
-            defaultValue="+49 5251 41776- 0"
+            defaultValue="+49 (0) 201 5454-0"
             enabled="true"
             key="company.tel"
             text="Telephone">
       </customData>
       <customData
-            defaultValue="globaltester@hjp-consulting.com "
+            defaultValue="info@secunet.com "
             enabled="true"
             key="company.mail"
             text="Mail">
