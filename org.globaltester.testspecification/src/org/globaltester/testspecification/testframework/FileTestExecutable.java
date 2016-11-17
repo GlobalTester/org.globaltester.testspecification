@@ -90,7 +90,7 @@ public abstract class FileTestExecutable implements ITestExecutable {
 		return TestExecutableFactory.getInstance(targetSpecIFile);
 	}
 
-	private IProject[] getDeps(IProject project) {
+	public static IProject[] getDeps(IProject project) {
 		List<IProject> deps = new LinkedList<>();
 
 		String dependencyString = getManifestValueForProject(project, "Require-Bundle");
@@ -118,7 +118,7 @@ public abstract class FileTestExecutable implements ITestExecutable {
 		return deps.toArray(new IProject[deps.size()]);
 	}
 	
-	private String getManifestValueForProject(IProject project, String key){
+	private static String getManifestValueForProject(IProject project, String key){
 		IFile manifestFile = project.getFolder("META-INF").getFile("MANIFEST.MF");
 
 		Manifest manifest;

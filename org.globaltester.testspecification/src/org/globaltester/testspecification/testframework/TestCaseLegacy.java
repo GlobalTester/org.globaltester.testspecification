@@ -3,8 +3,6 @@ package org.globaltester.testspecification.testframework;
 import java.io.File;
 import java.io.IOException;
 import java.util.LinkedList;
-import java.util.List;
-import java.util.jar.Manifest;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
@@ -103,8 +101,7 @@ public class TestCaseLegacy extends TestCase implements ILegacyConstants{
 			IPath targetFolder = targetSpecIFile.getFullPath().uptoSegment(3);
 			File targetFile = ResourcesPlugin.getWorkspace().getRoot().getFolder(targetFolder).getLocation().toFile();
 			
-			IFile manifest = iFile.getProject().getFolder("META-INF").getFile("MANIFEST.MF");
-			IProject [] dependencies = getDeps(manifest);
+			IProject [] dependencies = FileTestExecutable.getDeps(iFile.getProject());
 			
 			for (IProject dep : dependencies){
 				GtResourceHelper.copyFiles(dep.getLocation().toFile(), ResourcesPlugin.getWorkspace().getRoot().getFolder(targetFolder.removeLastSegments(1).append(dep.getName())).getLocation().toFile());
@@ -117,32 +114,6 @@ public class TestCaseLegacy extends TestCase implements ILegacyConstants{
 		}
 
 		return TestExecutableFactory.getInstance(targetSpecIFile);
-	}
-
-	private IProject[] getDeps(IFile manifestFile) {
-		List<IProject> deps = new LinkedList<>(); 
-		try {
-			Manifest manifest = new Manifest(manifestFile.getContents());
-			String dependencyString = manifest.getMainAttributes().getValue("Require-Bundle");
-			String [] dependencies = dependencyString.split(",");
-			for (String current : dependencies){
-				if (current.contains(";")){
-					current = current.substring(0, current.indexOf(";"));
-				}
-				
-				for (IProject currentProject : ResourcesPlugin.getWorkspace().getRoot().getProjects()){
-					if (currentProject.getLocation().lastSegment().equals(current)){
-						deps.add(currentProject);
-						break;
-					}
-				}
-				
-			}
-		} catch (IOException | CoreException e) {
-			return null;
-		}
-		
-		return deps.toArray(new IProject [deps.size()]);
 	}
 	
 }
