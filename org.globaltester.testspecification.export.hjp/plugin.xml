@@ -10,7 +10,7 @@
             name="GlobalTester"
             sourceZip="oosources.zip"
             stylesheet="testspec_OO.xsl"
-            validator="org.globaltester.testspecification.export.hjp.Validator">
+            validator="org.globaltester.testspecification.export.Validator">
       </exportData>
       <customData
             defaultValue="GlobalTester"
