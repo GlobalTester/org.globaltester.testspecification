@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: GT TestSpec Export HJP
 Bundle-SymbolicName: org.globaltester.testspecification.export.hjp;singleton:=true
 Bundle-Version: 3.1.0.qualifier
-Bundle-Activator: org.globaltester.testspecification.export.Activator
+Bundle-Activator: org.globaltester.testspecification.export.secunet.Activator
 Bundle-Vendor: secunet Security Networks AG
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,

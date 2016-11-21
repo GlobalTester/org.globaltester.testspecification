@@ -1,4 +1,4 @@
-package org.globaltester.testspecification.export.hjp;
+package org.globaltester.testspecification.export.secunet;
 
 import java.util.Calendar;
 import java.util.HashMap;

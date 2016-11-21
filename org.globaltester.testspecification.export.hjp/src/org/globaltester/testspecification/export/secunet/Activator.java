@@ -1,4 +1,4 @@
-package org.globaltester.testspecification.export.hjp;
+package org.globaltester.testspecification.export.secunet;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
