@@ -2,8 +2,8 @@
 <?eclipse version="3.4"?>
 <plugin>
    <extension
-         id="org.globaltester.testspecification.export.hjp"
-         name="HJP GlobalTester export data"
+         id="org.globaltester.testspecification.export.secunet"
+         name="secunet GlobalTester export data"
          point="org.globaltester.base.document.export.exportData">
       <exportData
             description="Export test specification as a GlobalTester OpenDocument Format"
