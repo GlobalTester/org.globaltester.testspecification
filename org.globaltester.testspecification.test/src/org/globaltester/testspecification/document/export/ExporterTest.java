@@ -24,7 +24,7 @@ public class ExporterTest {
 	
 	@Before
 	public void createFolders() throws IOException{
-		tempDir = File.createTempFile("hjp", "");
+		tempDir = File.createTempFile("globaltester", "");
 
 		// create a directory instead of the file, java 7 can create temporary directories
 		// directly
