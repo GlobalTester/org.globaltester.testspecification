@@ -18,8 +18,8 @@ import javax.xml.transform.stream.StreamSource;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.Status;
-import org.globaltester.Activator;
 import org.globaltester.logging.legacy.logger.GtErrorLogger;
+import org.globaltester.testspecification.Activator;
 
 /**
  * This class provides facilities for exporting test specifications
