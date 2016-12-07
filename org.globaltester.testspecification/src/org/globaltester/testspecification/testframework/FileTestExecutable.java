@@ -94,6 +94,8 @@ public abstract class FileTestExecutable implements ITestExecutable {
 		List<IProject> deps = new LinkedList<>();
 
 		String dependencyString = getManifestValueForProject(project, "Require-Bundle");
+		if (dependencyString == null) return new IProject[0];
+		
 		String[] dependencies = dependencyString.split(",");
 		for (String current : dependencies) {
 			if (current.contains(";")) {
@@ -118,6 +120,14 @@ public abstract class FileTestExecutable implements ITestExecutable {
 		return deps.toArray(new IProject[deps.size()]);
 	}
 	
+	/**
+	 * Return the value of the given key from Manifest. Or null if the key does
+	 * not exist or can't be parsed for any reason.
+	 * 
+	 * @param project
+	 * @param key
+	 * @return
+	 */
 	private static String getManifestValueForProject(IProject project, String key){
 		IFile manifestFile = project.getFolder("META-INF").getFile("MANIFEST.MF");
 
