@@ -23,7 +23,8 @@ import org.jdom.Element;
 import org.jdom.Namespace;
 
 public class TestCase extends FileTestExecutable {
-
+	
+	protected String profileString;
 	protected String testCaseId;
 	protected String testCaseTitle;
 	protected String testCaseVersion;
@@ -59,7 +60,8 @@ public class TestCase extends FileTestExecutable {
 			testCaseTitle = root.getChild("Title", ns).getTextTrim();
 			testCaseVersion = root.getChild("Version", ns).getTextTrim();
 			testCasePurpose = root.getChild("Purpose", ns).getTextTrim();
-			profileExpression = ProfileMapper.parse(root.getChild("Profile", ns).getTextTrim(), getPropertyFiles());
+			profileString = root.getChild("Profile", ns).getTextTrim();
+			profileExpression = ProfileMapper.parse(profileString, getPropertyFiles());
 	
 			// extract Preconditions
 			preConditions = new LinkedList<PreCondition>();
@@ -152,6 +154,10 @@ public class TestCase extends FileTestExecutable {
 		}
 		
 		return false;
+	}
+
+	public String getProfileString() {
+		return profileString;
 	}
 
 	public List<PreCondition> getPreConditions() {
