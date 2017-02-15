@@ -50,7 +50,8 @@ public class TestCaseLegacy extends TestCase implements ILegacyConstants{
 		testCaseTitle = testcase.getChild(testCaseTitleLegacy, ns).getTextTrim();
 		testCaseVersion = root.getChild(testCaseVersionLegacy, ns).getTextTrim();
 		testCasePurpose = root.getChild(testCasePurposeLegacy, ns).getTextTrim();
-		profileExpression = ProfileMapper.parse(testcase.getChild(testCaseProfile, ns).getTextTrim(), getPropertyFiles());
+		profileString = testcase.getChild(testCaseProfile, ns).getTextTrim();
+		profileExpression = ProfileMapper.parse(profileString, getPropertyFiles());
 		
 		
 		// extract Preconditions

@@ -145,6 +145,7 @@ public abstract class FileTestExecutable implements ITestExecutable {
 	public abstract List<PostCondition> getPostConditions();
 	public abstract String getTestCasePurpose();
 	public abstract String getTestCaseID();
+	public abstract String getProfileString();
 	
 	/**
 	 * Dumps general information of the test case to the log
