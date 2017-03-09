@@ -3,7 +3,7 @@
 <plugin>
    <extension
          id="org.globaltester.testspecification.export.secunet"
-         name="secunet GlobalTester export data"
+         name="My GlobalTester test specification export data"
          point="org.globaltester.base.document.export.exportData">
       <exportData
             description="Export test specification as a GlobalTester OpenDocument Format"
@@ -13,49 +13,49 @@
             validator="org.globaltester.testspecification.export.secunet.Validator">
       </exportData>
       <customData
-            defaultValue="GlobalTester"
+            defaultValue="My document title"
             enabled="true"
             key="document.title"
             text="Title">
       </customData>
       <customData
-            defaultValue="Test Specification"
+            defaultValue="My document subtitle"
             enabled="true"
             key="document.subtitle"
             text="Subtitle">
       </customData>
       <customData
-            defaultValue="secunet Security Networks AG"
+            defaultValue="My company name"
             enabled="true"
             key="company.name"
             text="Name">
       </customData>
       <customData
-            defaultValue="Kurfürstenstraße 58"
+            defaultValue="My company address 1"
             enabled="true"
             key="company.address1"
             text="Address">
       </customData>
       <customData
-            defaultValue="45138 Essen, Germany"
+            defaultValue="My company address 2"
             enabled="true"
             key="company.address2"
             text="Address">
       </customData>
       <customData
-            defaultValue="+49 (0) 201 5454-0"
+            defaultValue="My company telephone"
             enabled="true"
             key="company.tel"
             text="Telephone">
       </customData>
       <customData
-            defaultValue="info@secunet.com "
+            defaultValue="My company e-mail"
             enabled="true"
             key="company.mail"
             text="Mail">
       </customData>
       <customData
-            defaultValue="http://www.globaltester.org"
+            defaultValue="My company www"
             enabled="true"
             key="company.www"
             text="Internet">
