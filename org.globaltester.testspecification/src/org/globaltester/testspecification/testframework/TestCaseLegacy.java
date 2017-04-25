@@ -49,7 +49,7 @@ public class TestCaseLegacy extends TestCase implements ILegacyConstants{
 		name = testCaseId;
 		testCaseTitle = testcase.getChild(testCaseTitleLegacy, ns).getTextTrim();
 		testCaseVersion = root.getChild(testCaseVersionLegacy, ns).getTextTrim();
-		testCasePurpose = root.getChild(testCasePurposeLegacy, ns).getTextTrim();
+		testCasePurpose = testcase.getChild(testCasePurposeLegacy, ns).getTextTrim();
 		profileString = testcase.getChild(testCaseProfile, ns).getTextTrim();
 		profileExpression = ProfileMapper.parse(profileString, getPropertyFiles());
 		
