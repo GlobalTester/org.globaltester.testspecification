@@ -23,6 +23,8 @@ import org.globaltester.base.resources.GtResourceHelper;
  * 
  */
 public abstract class FileTestExecutable implements ITestExecutable {
+	private static final String LOG_DIR = "Logging";
+	private static final String REPORT_DIR = "Reports";
 	IFile iFile;
 	String name;
 
@@ -77,10 +79,10 @@ public abstract class FileTestExecutable implements ITestExecutable {
 			IProject [] dependencies = getDeps(iFile.getProject());
 			
 			for (IProject dep : dependencies){
-				GtResourceHelper.copyFiles(dep.getLocation().toFile(), ResourcesPlugin.getWorkspace().getRoot().getFolder(targetFolder.removeLastSegments(1).append(dep.getName())).getLocation().toFile());
+				GtResourceHelper.copyFiles(dep.getLocation().toFile(), ResourcesPlugin.getWorkspace().getRoot().getFolder(targetFolder.removeLastSegments(1).append(dep.getName())).getLocation().toFile(), LOG_DIR, REPORT_DIR);
 			}
 
-			GtResourceHelper.copyFiles(iFile.getProject().getLocation().toFile(), targetFile);
+			GtResourceHelper.copyFiles(iFile.getProject().getLocation().toFile(), targetFile, LOG_DIR, REPORT_DIR);
 			targetSpecIFile.getProject().refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
