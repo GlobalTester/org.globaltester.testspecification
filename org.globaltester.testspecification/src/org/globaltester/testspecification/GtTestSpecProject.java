@@ -13,10 +13,17 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.core.runtime.CoreException;
 import org.globaltester.base.resources.GtResourceHelper;
+import org.globaltester.logging.BasicLogger;
+import org.globaltester.logging.tags.LogLevel;
 import org.globaltester.testspecification.testframework.TestCase;
 
 
-public class GtTestSpecProject {
+public final class GtTestSpecProject {
+	
+	private GtTestSpecProject() {
+		//Not intendet to be instantiated
+	}
+	
 	/**
 	 * Create a GlobalTester TestSpecification Project. This includes creation
 	 * of the Eclipse project, adding the according nature and creating the
@@ -42,15 +49,14 @@ public class GtTestSpecProject {
 			createDefaultFile(defaultTestLayer, project.getFile("TestCases" + File.separator + "testLayer.gtspec"));
 			createDefaultFile(defaultTestUnit, project.getFile("TestCases" + File.separator + "testUnit.gtspec"));
 		} catch (CoreException e) {
-			e.printStackTrace();
-			project = null;
+			BasicLogger.logException("Unable to create initial structure in to project "+projectName, e, LogLevel.DEBUG);
 		}
 
 		// refresh the workspace
 		try {
 			ResourcesPlugin.getWorkspace().getRoot()
 						.refreshLocal(IResource.DEPTH_INFINITE, null);
-		} catch (CoreException e) {
+		} catch (CoreException e) { //NOSONAR
 			// refresh of workspace failed
 			// relevant CoreException will be in the eclipse log anyhow
 			// users most probably will ignore this behavior and refresh manually 
@@ -78,15 +84,14 @@ public class GtTestSpecProject {
 		try {
 			GtResourceHelper.addNature(project, GtTestSpecNature.NATURE_ID);
 		} catch (CoreException e) {
-			e.printStackTrace();
-			project = null;
+			BasicLogger.logException("Could not add GtTestSpecNature to project "+projectName, e, LogLevel.DEBUG);
 		}
 
 		// refresh the workspace
 		try {
 			ResourcesPlugin.getWorkspace().getRoot()
 						.refreshLocal(IResource.DEPTH_INFINITE, null);
-		} catch (CoreException e) {
+		} catch (CoreException e) { //NOSONAR
 			// refresh of workspace failed
 			// relevant CoreException will be in the eclipse log anyhow
 			// users most probably will ignore this behavior and refresh manually 
@@ -96,25 +101,12 @@ public class GtTestSpecProject {
 	}
 	
 	private static void createDefaultFile(String content, IFile iFile) {
-		BufferedWriter out = null;
-		try {
-			File file = new File(iFile.getLocationURI());
-			// Create file
-			FileWriter fstream = new FileWriter(file);
-			out = new BufferedWriter(fstream);
+		File file = new File(iFile.getLocationURI());
+		
+		try (FileWriter fstream = new FileWriter(file); BufferedWriter out = new BufferedWriter(fstream)) {
 			out.write(content);
-			
-			
-			} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (out != null) {
-					out.close();
-				}
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+		} catch (IOException e) {
+			BasicLogger.logException("Unable to create default file " + iFile.getFullPath(), e, LogLevel.DEBUG);
 		}
 	}
 	private static final String defaultTestUnit = ""+
