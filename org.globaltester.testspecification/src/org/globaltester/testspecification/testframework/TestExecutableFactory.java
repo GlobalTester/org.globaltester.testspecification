@@ -1,40 +1,28 @@
 package org.globaltester.testspecification.testframework;
 
-import java.util.Hashtable;
-
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.CoreException;
 
 public class TestExecutableFactory {
 
-	private static Hashtable<IFile, FileTestExecutable> instances = new Hashtable<IFile, FileTestExecutable>();
-
 	/**
-	 * Return the instance representing the given IFile
+	 * Return an instance representing the given IFile
 	 * 
 	 * @param iFile
 	 * @return
-	 * @throws CoreException 
+	 * @throws CoreException
 	 */
 	public static FileTestExecutable getInstance(IFile iFile) throws CoreException {
 
-		if (!instances.containsKey(iFile)) {
-			FileTestExecutable newExecutionInstance = null;
+		FileTestExecutable retVal = null;
 
-			if (TestCase.isFileRepresentation(iFile)) {
-				newExecutionInstance = new TestCase(iFile);
-			} else if (TestCaseLegacy.isFileRepresentation(iFile)){
-				newExecutionInstance = new TestCaseLegacy(iFile);
-			}
-			
-			if (newExecutionInstance != null) {
-				instances.put(iFile, newExecutionInstance);
-			} else {
-				return null;
-			}
+		if (TestCase.isFileRepresentation(iFile)) {
+			retVal = new TestCase(iFile);
+		} else if (TestCaseLegacy.isFileRepresentation(iFile)) {
+			retVal = new TestCaseLegacy(iFile);
 		}
 
-		return instances.get(iFile);
+		return retVal;
 	}
 
 }
