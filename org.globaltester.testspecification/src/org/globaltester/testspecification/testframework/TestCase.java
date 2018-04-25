@@ -24,6 +24,8 @@ import org.jdom.Namespace;
 
 public class TestCase extends FileTestExecutable {
 	
+    public static final String FILE_ENDING_GT_TEST_CASE = "gt";
+	
 	protected String profileString;
 	protected String testCaseId;
 	protected String testCaseTitle;

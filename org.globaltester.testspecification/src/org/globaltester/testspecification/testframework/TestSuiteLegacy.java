@@ -14,6 +14,8 @@ import org.jdom.Element;
 import org.jdom.Namespace;
 
 public class TestSuiteLegacy  implements ILegacyConstants{
+	
+    public static final String FILE_ENDING_GT_TEST_SUITE = "gtsuite";
 
 	public static LinkedList<IFile> extractTests(IFile sourceFile) {
 		Assert.isNotNull(sourceFile);
@@ -37,7 +39,6 @@ public class TestSuiteLegacy  implements ILegacyConstants{
 			IFile tc = workspace.getRoot().getFile(pathToTc);
 			foundTests.add(tc);
 		}
-
 		
 		return foundTests;
 	}
