@@ -179,16 +179,16 @@ public class ImportTestSpecWizardPage extends WizardPage {
 			}
 		}
 		
-		if(collidingBundleNames.size() > 0) {
-			setErrorMessage("The current workspace already contains projects with the same name");
-			checkbox.setEnabled(true);
-		} else{
+		if(collidingBundleNames.isEmpty()) {
 			checkbox.setSelection(false);
 			checkbox.setEnabled(false);
 			setErrorMessage(null);
+			return true;
+		} else{
+			setErrorMessage("The current workspace already contains projects with the same name");
+			checkbox.setEnabled(true);
+			return false;
 		}
-		
-		return true;
 	}
 
 	public java.util.List<IConfigurationElement> getSelectedElements() {
