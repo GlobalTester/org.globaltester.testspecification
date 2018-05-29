@@ -57,7 +57,7 @@ public class TestSet implements ITestExecutable {
 		IWorkspaceRoot workspaceRoot = ResourcesPlugin.getWorkspace().getRoot();
 		for (Element curChildElem : childElements) {
 			IPath fileName = new Path(curChildElem.getTextTrim());
-			IFile iFile = workspaceRoot.getFileForLocation(fileName);
+			IFile iFile = workspaceRoot.getFile(fileName);
 
 			FileTestExecutable curChild = TestExecutableFactory.getInstance(iFile);
 			if (curChild != null) {
@@ -73,7 +73,7 @@ public class TestSet implements ITestExecutable {
 		// create XML elements for children and add them to xmlElem
 		for (FileTestExecutable curChild : children) {		
 			Element childElem = new Element(XML_ELEM_CHILD);
-			childElem.addContent(curChild.getIFile().getProjectRelativePath().toString());
+			childElem.addContent(curChild.getIFile().getFullPath().toString());
 			xmlElem.addContent(childElem);
 		}
 
