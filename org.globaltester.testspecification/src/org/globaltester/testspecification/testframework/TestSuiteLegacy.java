@@ -35,7 +35,7 @@ public class TestSuiteLegacy  implements ILegacyConstants{
 		
 		for (int i = 0; i < testCases.size(); i++) {
 			IWorkspace workspace = ResourcesPlugin.getWorkspace();
-			IPath pathToTc = sourceFile.getFullPath().removeLastSegments(1).append(testCases.get(i).getText());
+			IPath pathToTc = sourceFile.getFullPath().removeLastSegments(1).append(testCases.get(i).getTextTrim());
 			IFile tc = workspace.getRoot().getFile(pathToTc);
 			foundTests.add(tc);
 		}
