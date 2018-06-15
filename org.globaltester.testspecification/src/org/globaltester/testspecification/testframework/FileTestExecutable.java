@@ -54,11 +54,7 @@ public abstract class FileTestExecutable implements ITestExecutable {
 	 */
 	protected abstract void initFromIFile();
 
-	/**
-	 * Returns the name of this instance
-	 * 
-	 * @return
-	 */
+	@Override
 	public String getName() {
 		return name;
 	}
