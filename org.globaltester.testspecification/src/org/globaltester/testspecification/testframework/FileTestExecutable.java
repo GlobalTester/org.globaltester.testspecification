@@ -1,6 +1,5 @@
 package org.globaltester.testspecification.testframework;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
@@ -8,12 +7,8 @@ import java.util.jar.Manifest;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
-import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IPath;
-import org.eclipse.core.runtime.NullProgressMonitor;
-import org.globaltester.base.resources.GtResourceHelper;
 
 /**
  * This class is used as super class for test cases and test suites to abstract
@@ -23,8 +18,6 @@ import org.globaltester.base.resources.GtResourceHelper;
  * 
  */
 public abstract class FileTestExecutable implements ITestExecutable {
-	private static final String LOG_DIR = "Logging";
-	private static final String REPORT_DIR = "Reports";
 	IFile iFile;
 	String name;
 
@@ -59,36 +52,7 @@ public abstract class FileTestExecutable implements ITestExecutable {
 		return name;
 	}
 
-	/**
-	 * Copy the specification of this TestExecutable to the new location and returns
-	 * a new instance of TestExecutable relating to the new file.
-	 * 
-	 * @param targetSpecIFile
-	 * @return
-	 * @throws CoreException
-	 */
-	public FileTestExecutable copyTo(final IFile targetSpecIFile) throws CoreException {		
-		try {
-			IPath targetFolder = targetSpecIFile.getFullPath().uptoSegment(3);
-			File targetFile = ResourcesPlugin.getWorkspace().getRoot().getFolder(targetFolder).getLocation().toFile();
-			
-			IProject [] dependencies = getDeps(iFile.getProject());
-			
-			for (IProject dep : dependencies){
-				GtResourceHelper.copyFiles(dep.getLocation().toFile(), ResourcesPlugin.getWorkspace().getRoot().getFolder(targetFolder.removeLastSegments(1).append(dep.getName())).getLocation().toFile(), LOG_DIR, REPORT_DIR);
-			}
-
-			GtResourceHelper.copyFiles(iFile.getProject().getLocation().toFile(), targetFile, LOG_DIR, REPORT_DIR);
-			targetSpecIFile.getProject().refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		return TestExecutableFactory.getInstance(targetSpecIFile);
-	}
-
-	public static IProject[] getDeps(IProject project) {
+	public static IProject[] getDeps(IProject project) { //FIXME AAF check whethter this is still needed
 		List<IProject> deps = new LinkedList<>();
 
 		String dependencyString = getManifestValueForProject(project, "Require-Bundle");
