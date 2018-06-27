@@ -1,6 +1,7 @@
 package org.globaltester.testspecification.testframework;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -104,7 +105,7 @@ public abstract class ActionStep implements ITestExecutable{
 	@Override
 	public List<ITestExecutable> getChildren() {
 		// has no children
-		return null;
+		return Collections.emptyList();
 	}
 
 	@Override
