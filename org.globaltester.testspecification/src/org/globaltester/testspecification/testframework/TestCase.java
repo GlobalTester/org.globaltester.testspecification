@@ -31,10 +31,13 @@ public class TestCase extends FileTestExecutable {
 	protected String testCaseTitle;
 	protected String testCaseVersion;
 	protected String testCasePurpose;
+	protected ParameterGenerator paramGenerator;
 	protected LinkedList<PreCondition> preConditions;
 	protected LinkedList<TestStep> testSteps;
 	protected LinkedList<PostCondition> postConditions;
 	protected ProfileExpression profileExpression;
+
+;
 
 	public ProfileExpression getProfileExpression() {
 		return profileExpression;
@@ -64,6 +67,12 @@ public class TestCase extends FileTestExecutable {
 			testCasePurpose = root.getChild("Purpose", ns).getTextTrim();
 			profileString = root.getChild("Profile", ns).getTextTrim();
 			profileExpression = ProfileMapper.parse(profileString, getPropertyFiles());
+			
+			// extract parameter generator
+			Element parametersElement = root.getChild("Parameters", ns);
+			if (parametersElement!= null) {
+				paramGenerator = ParameterGeneratorFactory.createParameterGenerator(parametersElement);
+			}
 	
 			// extract Preconditions
 			preConditions = new LinkedList<PreCondition>();
@@ -232,6 +241,14 @@ public class TestCase extends FileTestExecutable {
 				e.printStackTrace();
 			}
 		}
+	}
+
+	public ParameterGenerator getParameterGenerator() {
+		return paramGenerator;
+	}
+	
+	public boolean isParameterized() {
+		return getParameterGenerator() != null;
 	}
 	
 	private static final String defaultTestCase = ""+
