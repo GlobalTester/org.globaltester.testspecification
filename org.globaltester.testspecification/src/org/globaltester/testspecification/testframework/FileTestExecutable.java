@@ -1,13 +1,8 @@
 package org.globaltester.testspecification.testframework;
 
-import java.io.IOException;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.jar.Manifest;
 
 import org.eclipse.core.resources.IFile;
-import org.eclipse.core.resources.IProject;
-import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 
 /**
@@ -50,56 +45,6 @@ public abstract class FileTestExecutable implements ITestExecutable {
 	@Override
 	public String getName() {
 		return name;
-	}
-
-	public static IProject[] getDeps(IProject project) { //FIXME AAF check whethter this is still needed
-		List<IProject> deps = new LinkedList<>();
-
-		String dependencyString = getManifestValueForProject(project, "Require-Bundle");
-		if (dependencyString == null) return new IProject[0];
-		
-		String[] dependencies = dependencyString.split(",");
-		for (String current : dependencies) {
-			if (current.contains(";")) {
-				current = current.substring(0, current.indexOf(";"));
-			}
-
-			for (IProject currentProject : ResourcesPlugin.getWorkspace().getRoot().getProjects()) {
-				String projectFolder = currentProject.getLocation().lastSegment();
-				String projectSymbolicName = getManifestValueForProject(currentProject, "Bundle-SymbolicName");
-
-				if (projectSymbolicName != null && projectSymbolicName.contains(";")){
-					projectSymbolicName = projectSymbolicName.substring(0, projectSymbolicName.indexOf(";"));
-				}
-				if (projectFolder.equals(current) || current.equals(projectSymbolicName)) {
-					deps.add(currentProject);
-					break;
-				}
-			}
-
-		}
-
-		return deps.toArray(new IProject[deps.size()]);
-	}
-	
-	/**
-	 * Return the value of the given key from Manifest. Or null if the key does
-	 * not exist or can't be parsed for any reason.
-	 * 
-	 * @param project
-	 * @param key
-	 * @return
-	 */
-	private static String getManifestValueForProject(IProject project, String key){
-		IFile manifestFile = project.getFolder("META-INF").getFile("MANIFEST.MF");
-
-		Manifest manifest;
-		try {
-			manifest = new Manifest(manifestFile.getContents());
-			return manifest.getMainAttributes().getValue(key);
-		} catch (IOException | CoreException e) {
-			return null;
-		}
 	}
 	
 	public abstract List<PreCondition> getPreConditions();

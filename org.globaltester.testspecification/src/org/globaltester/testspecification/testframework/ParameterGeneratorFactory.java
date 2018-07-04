@@ -5,7 +5,6 @@ import org.globaltester.logging.tags.LogLevel;
 import org.jdom.Attribute;
 import org.jdom.Element;
 
-//FIXME MBK move ParameterGeneratorFactory and implementations to another bundle/package? 
 public class ParameterGeneratorFactory {
 
 	private static final String GENERATOR_STATIC = "static";
