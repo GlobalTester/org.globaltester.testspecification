@@ -37,10 +37,19 @@ public class TestCase extends FileTestExecutable {
 	protected LinkedList<PostCondition> postConditions;
 	protected ProfileExpression profileExpression;
 
-;
 
 	public ProfileExpression getProfileExpression() {
 		return profileExpression;
+	}
+	
+	/**
+	 * This parses a profile string in the context of this {@link TestCase}
+	 * @param profileString
+	 * @return the {@link ProfileExpression}
+	 * @throws IOException when the property files can not be read
+	 */
+	public ProfileExpression getProfileExpression(String profileString) {
+		return ProfileMapper.parse((String) profileString, getPropertyFiles());
 	}
 
 	public TestCase(IFile iFile) throws CoreException {

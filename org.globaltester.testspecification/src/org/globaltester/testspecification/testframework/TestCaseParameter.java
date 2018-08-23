@@ -25,6 +25,11 @@ public class TestCaseParameter {
 	public void put(String key, Object value) {
 		values.put(key, value);
 	}
+
+	@Override
+	public String toString() {
+		return "TestCaseParameter [id=" + id + ", values=" + values + "]";
+	}
 	
 
 }
