@@ -1,6 +1,9 @@
 package org.globaltester.testspecification.testframework;
 
+import java.io.IOException;
 import java.util.ArrayList;
+
+import org.globaltester.sampleconfiguration.SampleConfig;
 
 /**
  * Parameter generator can be referenced in TestCase XMl and allows the testcase
@@ -16,9 +19,11 @@ public interface ParameterGenerator {
 
 	/**
 	 * Generate the actual parameters used for specific parametrized executions
+	 * @param sampleConfig provide access to SampleConfig
 	 * 
 	 * @return
+	 * @throws IOException 
 	 */
-	public ArrayList<TestCaseParameter> generateParameters();
+	public ArrayList<TestCaseParameter> generateParameters(SampleConfig sampleConfig) throws ParameterGenerationFailedException;
 
 }

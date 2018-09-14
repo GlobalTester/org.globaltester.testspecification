@@ -2,6 +2,7 @@ package org.globaltester.testspecification.testframework;
 
 import java.util.ArrayList;
 
+import org.globaltester.sampleconfiguration.SampleConfig;
 import org.jdom.Attribute;
 import org.jdom.Element;
 import org.jdom.Namespace;
@@ -40,7 +41,7 @@ public class ParameterGeneratorStatic implements ParameterGenerator {
 	}
 
 	@Override
-	public ArrayList<TestCaseParameter> generateParameters() {
+	public ArrayList<TestCaseParameter> generateParameters(SampleConfig sampleConfig) {
 		return generatedParameters;
 	}
 
