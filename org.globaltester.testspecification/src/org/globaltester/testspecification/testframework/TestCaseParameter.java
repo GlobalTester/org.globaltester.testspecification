@@ -17,6 +17,10 @@ public class TestCaseParameter {
 	public String getIdSuffix() {
 		return id;
 	}
+
+	public void appendIdSuffix(String additionalSuffix) {
+		id = id + additionalSuffix;
+	}
 	
 	public Object get(String key) {
 		return values.get(key);
@@ -31,5 +35,13 @@ public class TestCaseParameter {
 		return "TestCaseParameter [id=" + id + ", values=" + values + "]";
 	}
 	
+	@Override
+	public TestCaseParameter clone() {
+		TestCaseParameter retVal = new TestCaseParameter(id);
+		for (String curKey : values.keySet()) {
+			retVal.put(curKey, get(curKey));
+		}
+		return retVal ;
+	}
 
 }
