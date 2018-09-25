@@ -55,7 +55,7 @@ public class Exporter{
 		// a TransformerFactory. The javax.xml.transform.TransformerFactory
 		// system property setting determines the actual class to instantiate --
 		// org.apache.xalan.transformer.TransformerImpl.
-		TransformerFactory tFactory = TransformerFactory.newInstance();
+		TransformerFactory tFactory = TransformerFactory.newInstance(); //NOSONAR
 		Transformer transformer;
 		try { 
 
