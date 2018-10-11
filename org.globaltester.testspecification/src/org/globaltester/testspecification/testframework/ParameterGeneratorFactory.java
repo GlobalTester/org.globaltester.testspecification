@@ -11,8 +11,11 @@ import org.osgi.framework.Bundle;
 
 public class ParameterGeneratorFactory {
 
+	private static final String BUNDLE = "bundle";
+	private static final String CLASS = "class";
+	
 	private static final String GENERATOR_STATIC = "static";
-	private static final String GENERATOR_CLASS = "class";
+	private static final String GENERATOR_CLASS = CLASS;
 
 	public static ParameterGenerator createParameterGenerator(Element parametersElement) {
 		if (parametersElement == null) return null;
@@ -24,14 +27,7 @@ public class ParameterGeneratorFactory {
 		case GENERATOR_STATIC:
 			return new ParameterGeneratorStatic(parametersElement);
 		case GENERATOR_CLASS:
-			Attribute bundleAtt = parametersElement.getAttribute("bundle");
-			Attribute classAtt = parametersElement.getAttribute("class");
-			if ((bundleAtt == null) || (classAtt == null)) {
-				BasicLogger.log("Attribute missing. Attributes \"bundle\" and \"class\" are required for ParameterGenerator of type \"class\"", LogLevel.WARN);
-				return null;
-			}
-			
-			return createParameterGeneratorFromBundle(bundleAtt.getValue(), classAtt.getValue(), parametersElement);
+			return createParameterGeneratorClass(parametersElement);
 
 		default:
 			BasicLogger.log("No ParameterGenerator found for value: " + generatorAttribute.getValue(), LogLevel.WARN);
@@ -42,16 +38,20 @@ public class ParameterGeneratorFactory {
 
 	}
 
-	private static ParameterGenerator createParameterGeneratorFromBundle(String bundle, String classname,
-			Element parametersElement) {
+	private static ParameterGenerator createParameterGeneratorClass(Element parametersElement) {
+		Attribute bundleAtt = parametersElement.getAttribute(BUNDLE);
+		Attribute classAtt = parametersElement.getAttribute(CLASS);
+		if ((bundleAtt == null) || (classAtt == null)) {
+			BasicLogger.log("Attribute missing. Attributes \"bundle\" and \"class\" are required for ParameterGenerator of type \"class\"", LogLevel.WARN);
+			return null;
+		}
 		
-		Bundle generatorBundle = Platform.getBundle(bundle);
-		
+		Bundle generatorBundle = Platform.getBundle(bundleAtt.getValue());
 		try {
-			Class<?> generatorClazz = generatorBundle.loadClass(classname);
+			Class<?> generatorClazz = generatorBundle.loadClass(classAtt.getValue());
 			Constructor<?> constructor = generatorClazz.getConstructor(Element.class);
 			return (ParameterGenerator) constructor.newInstance(parametersElement);
-		} catch (NullPointerException | SecurityException | ReflectiveOperationException | IllegalArgumentException e) {
+		} catch (SecurityException | ReflectiveOperationException | IllegalArgumentException e) {
 			BasicLogger.logException("ParameterGenerator can not be instantiated", e, LogLevel.ERROR);
 		}
 

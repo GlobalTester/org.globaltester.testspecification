@@ -1,7 +1,7 @@
 package org.globaltester.testspecification.testframework;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.List;
 
 import org.globaltester.sampleconfiguration.SampleConfig;
 
@@ -24,6 +24,6 @@ public interface ParameterGenerator {
 	 * @return
 	 * @throws IOException 
 	 */
-	public ArrayList<TestCaseParameter> generateParameters(SampleConfig sampleConfig) throws ParameterGenerationFailedException;
+	public List<TestCaseParameter> generateParameters(SampleConfig sampleConfig) throws ParameterGenerationFailedException;
 
 }
