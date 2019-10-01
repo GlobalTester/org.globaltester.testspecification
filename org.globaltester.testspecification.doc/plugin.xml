@@ -14,9 +14,11 @@
       <toc
             file="toc/user/writetestcase.xml">
       </toc>
+      <!--
       <toc
             file="toc/user/certs.xml">
       </toc>
+      -->
    </extension>
    
    <extension

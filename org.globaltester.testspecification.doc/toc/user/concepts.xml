@@ -12,8 +12,10 @@
  <anchor id="testspec"/>
 	<topic href="html/user/reference/XMLStructureForTestCases.html" label="XML Structure for TestCases">
 	</topic>
+	<!--
 	<topic href="html/user/reference/XMLStructureForCertificates.html" label="XML Structure for Certificates">
 	</topic>
+	-->
 			
 			
 	</topic>
