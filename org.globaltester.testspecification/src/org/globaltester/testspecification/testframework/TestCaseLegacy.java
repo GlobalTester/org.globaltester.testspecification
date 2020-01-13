@@ -45,6 +45,11 @@ public class TestCaseLegacy extends TestCase implements ILegacyConstants{
 		profileString = testcase.getChild(testCaseProfile, ns).getTextTrim();
 		profileExpression = ProfileMapper.parse(profileString, getPropertyFiles());
 		
+		// extract parameter generator
+		Element parametersElement = root.getChild(testCaseParameter, ns);
+		if (parametersElement!= null) {
+			paramGenerator = ParameterGeneratorFactory.createParameterGenerator(parametersElement);
+		}
 		
 		// extract Preconditions
 		preConditions = new LinkedList<PreCondition>();
