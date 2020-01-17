@@ -16,7 +16,8 @@ public class ParameterGeneratorFactory {
 	
 	private static final String GENERATOR_STATIC = "static";
 	private static final String GENERATOR_CLASS = CLASS;
-
+	private static final String GENERATOR_CROSS = "cross";
+	
 	public static ParameterGenerator createParameterGenerator(Element parametersElement) {
 		if (parametersElement == null) return null;
 		
@@ -28,14 +29,13 @@ public class ParameterGeneratorFactory {
 			return new ParameterGeneratorStatic(parametersElement);
 		case GENERATOR_CLASS:
 			return createParameterGeneratorClass(parametersElement);
+		case GENERATOR_CROSS:
+			return createParameterGeneratorCross(parametersElement);
 
 		default:
 			BasicLogger.log("No ParameterGenerator found for value: " + generatorAttribute.getValue(), LogLevel.WARN);
 			return null;
 		}
-
-		
-
 	}
 
 	private static ParameterGenerator createParameterGeneratorClass(Element parametersElement) {
@@ -58,4 +58,11 @@ public class ParameterGeneratorFactory {
 		
 		return null;
 	}
+	
+	
+	private static ParameterGenerator createParameterGeneratorCross(Element parametersElement) {
+		
+		return null;
+	}
+	
 }
