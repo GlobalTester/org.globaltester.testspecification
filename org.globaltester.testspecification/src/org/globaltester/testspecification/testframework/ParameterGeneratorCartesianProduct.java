@@ -16,8 +16,9 @@ import org.jdom.Namespace;
  */
 public class ParameterGeneratorCartesianProduct implements ParameterGenerator {
 	
-	ArrayList<ArrayList<Element>> paramList = new ArrayList<>(); //ArrayList containg List of Param XML Objects
 	ArrayList<TestCaseParameter> generatedParameters = new ArrayList<>();
+	private static ArrayList<ArrayList<Element>> paramList = new ArrayList<>(); //ArrayList containg List of Param XML Objects
+	private static ArrayList<ArrayList<Element>> resList = new ArrayList<>();
 
 	public ParameterGeneratorCartesianProduct (Element parametersElement) {
 		Namespace ns = parametersElement.getNamespace();
@@ -36,6 +37,7 @@ public class ParameterGeneratorCartesianProduct implements ParameterGenerator {
 			}
 		}
 		
+		resList.add(paramList.get(0));
 		//make a crossproduct TestCaseParameter
 		
 		
@@ -65,17 +67,17 @@ public class ParameterGeneratorCartesianProduct implements ParameterGenerator {
 	}
 	
 	/*
-	 * create Cartesian Product of given ArrayList containing ArrayList of Elements
+	 * create Cartesian Product given ArrayList @paramList containing ArrayList of Elements
 	 * */
-	private ArrayList<ArrayList<Element>> doCartesianProduct (ArrayList<ArrayList<Element>> givenList, ArrayList<ArrayList<Element>> resList, int k) {
-		if (k == givenList.size()){ //reached end of list
-			return resList;
+	private static void doCartesianProduct (int k) {
+		if (k == paramList.size()){ //reached end of list
+			return;
 		}
 		ArrayList<Element> tmp = new ArrayList<>();
-		for (Element e : givenList.get(k)) {
+		for (Element e : paramList.get(k-1)) {
 			tmp.add(e);
 		}
-		return doCartesianProduct(givenList, resList, k+1);
+		doCartesianProduct(k+1);
 	
 	}
 
