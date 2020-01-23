@@ -16,7 +16,7 @@ public class ParameterGeneratorFactory {
 	
 	private static final String GENERATOR_STATIC = "static";
 	private static final String GENERATOR_CLASS = CLASS;
-	private static final String GENERATOR_CROSS = "cross";
+	private static final String GENERATOR_CARTESIAN_PRODUCT = "cartesianProduct";
 	
 	public static ParameterGenerator createParameterGenerator(Element parametersElement) {
 		if (parametersElement == null) return null;
@@ -29,8 +29,8 @@ public class ParameterGeneratorFactory {
 			return new ParameterGeneratorStatic(parametersElement);
 		case GENERATOR_CLASS:
 			return createParameterGeneratorClass(parametersElement);
-		case GENERATOR_CROSS:
-			return createParameterGeneratorCross(parametersElement);
+		case GENERATOR_CARTESIAN_PRODUCT:
+			return new ParameterGeneratorCartesianProduct(parametersElement);
 
 		default:
 			BasicLogger.log("No ParameterGenerator found for value: " + generatorAttribute.getValue(), LogLevel.WARN);
