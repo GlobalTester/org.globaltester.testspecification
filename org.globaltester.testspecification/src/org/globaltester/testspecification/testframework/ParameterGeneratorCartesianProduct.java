@@ -17,7 +17,7 @@ import org.jdom.Namespace;
 public class ParameterGeneratorCartesianProduct implements ParameterGenerator {
 	
 	ArrayList<TestCaseParameter> generatedParameters = new ArrayList<>();
-	private static ArrayList<ArrayList<Element>> paramList = new ArrayList<>(); //ArrayList containg List of Param XML Objects
+	private static ArrayList<ArrayList<Element>> paramList = new ArrayList<>(); //ArrayList containg List of Param Element(XML) Objects
 	private static ArrayList<ArrayList<Element>> resList = new ArrayList<>();
 
 	public ParameterGeneratorCartesianProduct (Element parametersElement) {
@@ -37,54 +37,80 @@ public class ParameterGeneratorCartesianProduct implements ParameterGenerator {
 			}
 		}
 		
-		resList.add(paramList.get(0));
-		//make a crossproduct TestCaseParameter
-		
-		
+		//create cartesianProduct of given Generator Elements
+		resList = cartesianProduct(paramList);
 	}
 	
 	
 	/*
 	 * extract idSuffix & Attributes from given Param Element
+	 * In case of equal Attribute Ids: Take the first occuring one!
 	 * 
 	 * Returns:
 	 * 		TestCaseParameter
 	 * */
-	private TestCaseParameter extractFromParam (Element paramElement) {
-		String idSuffix = paramElement.getAttributeValue("idSuffix");
-
-		TestCaseParameter curParam = new TestCaseParameter(idSuffix);
-		
-		for (Object curAttribObj : paramElement.getAttributes()) {
-			if (curAttribObj instanceof Attribute) {
-				Attribute curAttrib = (Attribute) curAttribObj;
-				curParam.put(curAttrib.getName(), curAttrib.getValue());
-			}
-			
+	private TestCaseParameter extractFromParamList (ArrayList<Element> paramList) {
+//		String idSuffix = paramElement.getAttributeValue("idSuffix");
+		TestCaseParameter tcp = new TestCaseParameter("");
+		ArrayList<Attribute> attributes = new ArrayList<>();
+		// get all attributes
+		for (Element param: paramList) {
+			attributes.addAll(param.getAttributes());
 		}
-		
-		return curParam;
+		// set suffix
+		for (Attribute attr : attributes) {
+			if (attr.getValue().equals("idSuffix") || attr.getValue().equals("suffix")) {
+				tcp.appendIdSuffix(attr.getValue());
+			}
+		}
+		for (Attribute attr : attributes) {
+			if (tcp.contains(attr.getValue())) continue;
+			tcp.put(attr.getName(), attr.getValue());
+		}
+		return tcp;
 	}
 	
 	/*
 	 * create Cartesian Product given ArrayList @paramList containing ArrayList of Elements
+	 * 
+	 * e.g. (p1,p2), (p1',p2') --> (p1,p1'), (p1,p2'), (p2,p1'), (p2,p2')
 	 * */
-	private static void doCartesianProduct (int k) {
-		if (k == paramList.size()){ //reached end of list
-			return;
-		}
-		ArrayList<Element> tmp = new ArrayList<>();
-		for (Element e : paramList.get(k-1)) {
-			tmp.add(e);
-		}
-		doCartesianProduct(k+1);
+	private static ArrayList<ArrayList<Element>> cartesianProduct(ArrayList<ArrayList<Element>> lists) {
+	    if (lists.size() < 2)
+	        throw new IllegalArgumentException(
+	                "Can't have a product of fewer than two sets (got " +
+	                lists.size() + ")");
+
+	    return _cartesianProduct(0, lists);
+	}
 	
+	private static ArrayList<ArrayList<Element>> _cartesianProduct(int index, ArrayList<ArrayList<Element>> lists) {
+		// create result Array
+		ArrayList<ArrayList<Element>> res = new ArrayList<ArrayList<Element>>();
+		if (index== lists.size()) {
+			res.add(new ArrayList<Element>());
+		} else {
+			for (Element s: lists.get(index)) {
+				for (ArrayList<Element> list: _cartesianProduct(index+1, lists)) {
+					list.add(s);
+					res.add(list);
+				}
+			}
+		}
+		return res;
 	}
 
 
 	@Override
 	public ArrayList<TestCaseParameter> generateParameters(SampleConfig sampleConfig) throws ParameterGenerationFailedException {
-		return null;
+		// variable containing ArrayList of TestCaseParameters
+		ArrayList<TestCaseParameter> generatedParameters = new ArrayList<>();
+		// fill List
+		for (ArrayList<Element> parentList : resList) {
+			TestCaseParameter tcp = extractFromParamList(parentList);
+			generatedParameters.add(tcp);
+		}
+		return generatedParameters;
 	}
 	
 	

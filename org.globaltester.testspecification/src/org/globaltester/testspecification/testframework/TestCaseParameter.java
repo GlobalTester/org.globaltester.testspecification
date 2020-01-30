@@ -26,6 +26,10 @@ public class TestCaseParameter {
 		return values.get(key);
 	}
 	
+	public boolean contains(String key) {
+		return values.containsKey(key);
+	}
+	
 	public void put(String key, Object value) {
 		values.put(key, value);
 	}
