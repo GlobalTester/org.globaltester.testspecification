@@ -17,17 +17,20 @@ import org.jdom.Namespace;
 public class ParameterGeneratorCartesianProduct implements ParameterGenerator {
 	
 	ArrayList<TestCaseParameter> generatedParameters = new ArrayList<>();
-	private static ArrayList<ArrayList<Element>> paramList = new ArrayList<>(); //ArrayList containg List of Param Element(XML) Objects
-	private static ArrayList<ArrayList<Element>> resList = new ArrayList<>();
+	private static ArrayList<ArrayList<Element>> paramList; //ArrayList containg List of Param Element(XML) Objects
+	private static ArrayList<ArrayList<Element>> resList;
 
 	public ParameterGeneratorCartesianProduct (Element parametersElement) {
+		paramList = new ArrayList<>();
+		resList = new ArrayList<>();
 		Namespace ns = parametersElement.getNamespace();
 		// iterate through the root Parameters Element
-		for (Object curParameters: parametersElement.getChildren("Parameters", ns)) {
-			if (curParameters instanceof Element) {
+		for (Object curParametersObject: parametersElement.getChildren("Parameters", ns)) {
+			if (curParametersObject instanceof Element) {
 				// iterate through child Parameter Elements
+				Element curParameters = (Element) curParametersObject;
 				ArrayList<Element> tmpList = new ArrayList<>();
-				for (Object curParam: ((Element) curParameters).getChildren()) {
+				for (Object curParam: curParameters.getChildren()) {
 					if (curParam instanceof Element) {
 						tmpList.add((Element) curParam);
 					}
@@ -36,9 +39,14 @@ public class ParameterGeneratorCartesianProduct implements ParameterGenerator {
 				paramList.add(tmpList);
 			}
 		}
-		
 		//create cartesianProduct of given Generator Elements
 		resList = cartesianProduct(paramList);
+		
+		for (ArrayList<Element> parentList : resList) {
+			TestCaseParameter tcp = extractFromParamList(parentList);
+			generatedParameters.add(tcp);
+		}
+		
 	}
 	
 	
@@ -103,13 +111,6 @@ public class ParameterGeneratorCartesianProduct implements ParameterGenerator {
 
 	@Override
 	public ArrayList<TestCaseParameter> generateParameters(SampleConfig sampleConfig) throws ParameterGenerationFailedException {
-		// variable containing ArrayList of TestCaseParameters
-		ArrayList<TestCaseParameter> generatedParameters = new ArrayList<>();
-		// fill List
-		for (ArrayList<Element> parentList : resList) {
-			TestCaseParameter tcp = extractFromParamList(parentList);
-			generatedParameters.add(tcp);
-		}
 		return generatedParameters;
 	}
 	
