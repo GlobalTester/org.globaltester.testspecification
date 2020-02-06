@@ -1,6 +1,10 @@
 package org.globaltester.testspecification.testframework;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+
+import org.jdom.Attribute;
 
 public class TestCaseParameter {
 
@@ -32,6 +36,37 @@ public class TestCaseParameter {
 	
 	public void put(String key, Object value) {
 		values.put(key, value);
+	}
+	
+	public TestCaseParameter merge(TestCaseParameter param, Attribute profileParseType) {
+		TestCaseParameter tcp = this.clone();
+		boolean listFlag = (profileParseType.equals("list"));
+		for (String key: param.values.keySet()) {
+			// if key is profile, check if should treat as List
+			if (key.equals("profile") && listFlag) {
+				ArrayList<String> initList = new ArrayList<>();
+				if (tcp.contains(key)) { 
+					// is existing value a String? -> create new List with appended values
+					if (tcp.get(key) instanceof String) {
+						String tmpString = (String) tcp.get(key);
+						initList.add(tmpString); initList.add((String) param.get(key));
+						tcp.put(key, initList);
+					} // is existing value a List? -> append paramValue to list 
+					else if (tcp.get(key) instanceof List<?>) {
+						ArrayList<String> currList = (ArrayList<String>) tcp.get(key);
+						currList.add((String) param.get(key));
+					}
+				} // no key "profile" contained -> set new entry 
+				else {
+					initList.add((String) param.get(key));
+					tcp.put(key, initList);
+				}
+				continue;
+			}
+			// ad key,value to map as usual
+			tcp.put(key, param.get(key));
+		}
+		return tcp;
 	}
 
 	@Override
