@@ -24,13 +24,15 @@ public class ParameterGeneratorFactory {
 		Attribute generatorAttribute = parametersElement.getAttribute("generator");
 		if (generatorAttribute == null) return null;
 		
+		Attribute profileParseTypeAttribute = parametersElement.getAttribute("profileParseType");
+		
 		switch (generatorAttribute.getValue()) {
 		case GENERATOR_STATIC:
 			return new ParameterGeneratorStatic(parametersElement);
 		case GENERATOR_CLASS:
 			return createParameterGeneratorClass(parametersElement);
 		case GENERATOR_CARTESIAN_PRODUCT:
-			return new ParameterGeneratorCartesianProduct(parametersElement);
+			return new ParameterGeneratorCartesianProduct(parametersElement, profileParseTypeAttribute);
 
 		default:
 			BasicLogger.log("No ParameterGenerator found for value: " + generatorAttribute.getValue(), LogLevel.WARN);

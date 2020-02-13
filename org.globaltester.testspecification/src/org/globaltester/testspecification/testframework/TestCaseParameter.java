@@ -40,19 +40,20 @@ public class TestCaseParameter {
 	
 	public TestCaseParameter merge(TestCaseParameter param, Attribute profileParseType) {
 		TestCaseParameter tcp = this.clone();
-		boolean listFlag = (profileParseType.equals("list"));
+		boolean listFlag = (profileParseType.getValue().equals("list"));
+		ArrayList<String> initList = new ArrayList<>();
 		for (String key: param.values.keySet()) {
 			// if key is profile, check if should treat as List
+			System.out.println("Type of " + key + "..."+ key.getClass().toString() + ", listFlag="+ listFlag);
 			if (key.equals("profile") && listFlag) {
-				ArrayList<String> initList = new ArrayList<>();
 				if (tcp.contains(key)) { 
 					// is existing value a String? -> create new List with appended values
 					if (tcp.get(key) instanceof String) {
 						String tmpString = (String) tcp.get(key);
 						initList.add(tmpString); initList.add((String) param.get(key));
 						tcp.put(key, initList);
-					} // is existing value a List? -> append paramValue to list 
-					else if (tcp.get(key) instanceof List<?>) {
+					} // is existing value of type List? -> append paramValue to list 
+					else if (tcp.get(key) instanceof ArrayList<?>) {
 						ArrayList<String> currList = (ArrayList<String>) tcp.get(key);
 						currList.add((String) param.get(key));
 					}
@@ -62,8 +63,12 @@ public class TestCaseParameter {
 					tcp.put(key, initList);
 				}
 				continue;
+			} else if (key.equals("idSuffix")) {
+				tcp.appendIdSuffix("_"+param.getIdSuffix());
+				tcp.put(key, tcp.getIdSuffix());
+				continue;
 			}
-			// ad key,value to map as usual
+			// add key,value to map as usual
 			tcp.put(key, param.get(key));
 		}
 		return tcp;
