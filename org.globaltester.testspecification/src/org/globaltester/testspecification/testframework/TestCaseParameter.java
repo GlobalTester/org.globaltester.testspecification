@@ -44,7 +44,6 @@ public class TestCaseParameter {
 		ArrayList<String> initList = new ArrayList<>();
 		for (String key: param.values.keySet()) {
 			// if key is profile, check if should treat as List
-			System.out.println("Type of " + key + "..."+ key.getClass().toString() + ", listFlag="+ listFlag);
 			if (key.equals("profile") && listFlag) {
 				if (tcp.contains(key)) { 
 					// is existing value a String? -> create new List with appended values
