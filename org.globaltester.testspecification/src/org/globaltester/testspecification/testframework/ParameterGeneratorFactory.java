@@ -21,10 +21,10 @@ public class ParameterGeneratorFactory {
 	public static ParameterGenerator createParameterGenerator(Element parametersElement) {
 		if (parametersElement == null) return null;
 		
+		Attribute profileParseTypeAttribute = parametersElement.getAttribute("profileParseType");
 		Attribute generatorAttribute = parametersElement.getAttribute("generator");
 		if (generatorAttribute == null) return null;
 		
-		Attribute profileParseTypeAttribute = parametersElement.getAttribute("profileParseType");
 		
 		switch (generatorAttribute.getValue()) {
 		case GENERATOR_STATIC:
