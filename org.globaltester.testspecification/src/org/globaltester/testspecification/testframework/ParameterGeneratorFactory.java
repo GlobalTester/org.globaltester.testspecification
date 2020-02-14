@@ -61,10 +61,4 @@ public class ParameterGeneratorFactory {
 		return null;
 	}
 	
-	
-	private static ParameterGenerator createParameterGeneratorCross(Element parametersElement) {
-		
-		return null;
-	}
-	
 }
