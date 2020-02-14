@@ -134,7 +134,7 @@ public class TestCase extends FileTestExecutable {
 
 	}
 
-	protected IFile [] getPropertyFiles() {
+	public IFile [] getPropertyFiles() {
 		LinkedList<IFile> result = new LinkedList<>();
 		String currentFileName = getIFile().getName().substring(0, getIFile().getName().lastIndexOf('.'));
 		IFile testCaseSpecificMapping = getIFile().getParent().getFile(new Path(currentFileName + "." + ProfileMapper.MAPPING_FILE_SUFFIX));
