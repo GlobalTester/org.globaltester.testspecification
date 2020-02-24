@@ -70,21 +70,31 @@ public class ParameterGeneratorCartesianProduct implements ParameterGenerator {
 	public ArrayList<TestCaseParameter> generateParameters(SampleConfig sampleConfig) throws ParameterGenerationFailedException {
 		// add TestCaseParameters to paramList
 		for (ParameterGenerator curGenerator: generators) {
-			paramList.add((ArrayList<TestCaseParameter>) curGenerator.generateParameters(sampleConfig));
+			if (curGenerator.generateParameters(sampleConfig).size()>0)
+				paramList.add((ArrayList<TestCaseParameter>) curGenerator.generateParameters(sampleConfig));	
 		}
-		//System.out.println("PARAMLIST:" + paramList);
 		// get cartesianProduct of TestCaseParameters (List containing List of cartesianTestCaseParameters)
-		resList = cartesianProduct(paramList);
-		// merge TestCaseParameters
-		for (ArrayList<TestCaseParameter> curList: resList) {
-			TestCaseParameter tcp = curList.get(0).clone();
-			for (TestCaseParameter currTcp: curList.subList(1, curList.size())) {
-				tcp = tcp.merge(currTcp, profileParseType);
-			}
-			generatedParameters.add(tcp);
+		if (paramList.size()>1) {
+			resList = cartesianProduct(paramList);							
+		} else {
+			resList = paramList;
 		}
-		//System.out.println("hereee");
-		//System.out.println(generatedParameters);
+		// merge TestCaseParameters if there is something to merge
+		if(resList!=paramList) {
+			for (ArrayList<TestCaseParameter> curList: resList) {
+				TestCaseParameter tcp = curList.get(0).clone();
+				for (TestCaseParameter currTcp: curList.subList(1, curList.size())) {
+					tcp = tcp.merge(currTcp, profileParseType);
+				}
+				generatedParameters.add(tcp);
+			}
+		} else {
+			for (ArrayList<TestCaseParameter> curList: resList) {
+				for (TestCaseParameter currTcp: curList) {
+					generatedParameters.add(currTcp);
+				}
+			}
+		}
 		return generatedParameters;
 	}
 	
