@@ -18,6 +18,7 @@ public interface ILegacyConstants {
 	public static final String testCaseVersionLegacy = "version"; 
 	public static final String testCasePurposeLegacy = "description"; 
 	public static final String testCaseProfile = "profile";
+	public static final String testCaseParameter = "parameters";
 	
 	//For testsuites
 	public static final String testcasesLegacy = "testcases"; 
