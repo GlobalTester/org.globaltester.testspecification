@@ -74,7 +74,9 @@ public class ParameterGeneratorCartesianProduct implements ParameterGenerator {
 				paramList.add((ArrayList<TestCaseParameter>) curGenerator.generateParameters(sampleConfig));	
 		}
 		// get cartesianProduct of TestCaseParameters (List containing List of cartesianTestCaseParameters)
-		if (paramList.size()>1) {
+		if (paramList.size()==1) {
+			return generatedParameters;							
+		} else if (paramList.size()>1) {
 			resList = cartesianProduct(paramList);							
 		} else {
 			resList = paramList;
