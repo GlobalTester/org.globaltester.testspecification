@@ -15,6 +15,7 @@ public class ParameterGeneratorFactory {
 	private static final String CLASS = "class";
 	
 	private static final String GENERATOR_STATIC = "static";
+	private static final String GENERATOR_EPP_IDL = "eppIdl";
 	private static final String GENERATOR_CLASS = CLASS;
 	private static final String GENERATOR_CARTESIAN_PRODUCT = "cartesianProduct";
 	
@@ -28,6 +29,8 @@ public class ParameterGeneratorFactory {
 		
 		switch (generatorAttribute.getValue()) {
 		case GENERATOR_STATIC:
+			return new ParameterGeneratorStatic(parametersElement);
+		case GENERATOR_EPP_IDL:
 			return new ParameterGeneratorStatic(parametersElement);
 		case GENERATOR_CLASS:
 			return createParameterGeneratorClass(parametersElement);
