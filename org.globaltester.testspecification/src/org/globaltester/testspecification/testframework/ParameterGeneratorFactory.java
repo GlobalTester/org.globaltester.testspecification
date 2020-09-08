@@ -31,7 +31,7 @@ public class ParameterGeneratorFactory {
 		case GENERATOR_STATIC:
 			return new ParameterGeneratorStatic(parametersElement);
 		case GENERATOR_EPP_IDL:
-			return new ParameterGeneratorStatic(parametersElement);
+			return createParameterGeneratorClass("com.secunet.globaltester.prove.epp","com.secunet.globaltester.prove.epp.paramgenerator.ParameterGeneratorEppIdl", parametersElement);
 		case GENERATOR_CLASS:
 			return createParameterGeneratorClass(parametersElement);
 		case GENERATOR_CARTESIAN_PRODUCT:
@@ -51,9 +51,13 @@ public class ParameterGeneratorFactory {
 			return null;
 		}
 		
-		Bundle generatorBundle = Platform.getBundle(bundleAtt.getValue());
+		return createParameterGeneratorClass(bundleAtt.getValue(), classAtt.getValue(), parametersElement);
+	}
+
+	private static ParameterGenerator createParameterGeneratorClass(String bundle, String className, Element parametersElement) {
+		Bundle generatorBundle = Platform.getBundle(bundle);
 		try {
-			Class<?> generatorClazz = generatorBundle.loadClass(classAtt.getValue());
+			Class<?> generatorClazz = generatorBundle.loadClass(className);
 			Constructor<?> constructor = generatorClazz.getConstructor(Element.class);
 			return (ParameterGenerator) constructor.newInstance(parametersElement);
 		} catch (SecurityException | ReflectiveOperationException | IllegalArgumentException e) {

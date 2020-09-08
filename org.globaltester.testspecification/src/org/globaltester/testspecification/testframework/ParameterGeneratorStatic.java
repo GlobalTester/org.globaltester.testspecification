@@ -22,22 +22,26 @@ public class ParameterGeneratorStatic implements ParameterGenerator {
 			if (curChildObject instanceof Element) {
 				Element curChild = (Element) curChildObject;
 				String idSuffix = curChild.getAttributeValue("idSuffix");
-
-				
-				TestCaseParameter curParam = new TestCaseParameter(idSuffix);
-				
-				for (Object curAttribObj : curChild.getAttributes()) {
-					if (curAttribObj instanceof Attribute) {
-						Attribute curAttrib = (Attribute) curAttribObj;
-						curParam.put(curAttrib.getName(), curAttrib.getValue());
-					}
-					
+				TestCaseParameter curParam = createParam(curChild, idSuffix);
+				if (curParam != null){
+					generatedParameters.add(curParam);
 				}
-				
-				generatedParameters.add(curParam);
 			}
 		}
 		
+	}
+
+	protected TestCaseParameter createParam(Element curChild, String idSuffix) {
+		TestCaseParameter curParam = new TestCaseParameter(idSuffix);
+		
+		for (Object curAttribObj : curChild.getAttributes()) {
+			if (curAttribObj instanceof Attribute) {
+				Attribute curAttrib = (Attribute) curAttribObj;
+				curParam.put(curAttrib.getName(), curAttrib.getValue());
+			}
+			
+		}
+		return curParam;
 	}
 
 	@Override
