@@ -63,7 +63,7 @@ public class TestCaseParameter {
 				}
 				continue;
 			} else if (key.equals("idSuffix")) {
-				tcp.appendIdSuffix("_"+param.getIdSuffix());
+				tcp.appendIdSuffix(" "+param.getIdSuffix());
 				tcp.put(key, tcp.getIdSuffix());
 				continue;
 			}
