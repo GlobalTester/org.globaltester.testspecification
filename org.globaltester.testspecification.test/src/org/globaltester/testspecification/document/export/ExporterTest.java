@@ -34,7 +34,7 @@ public class ExporterTest {
 	
 	@Test
 	public void testExportedFileHasContentXml() throws IOException, CoreException {
-		String folder = "files" + File.separator + "SuccessfullExportFiles" + File.separator;
+		String folder = "files" + File.separator + "SuccessfulExportFiles" + File.separator;
 
 		String plugin = "org.globaltester.base.test";
 		InputStream stylesheet = FileLocator.openStream(
